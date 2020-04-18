@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('menu-open')
+@section('menu-open1')
 menu-open
 @endsection
 @section('active6')
