@@ -26,7 +26,7 @@
           </li>
 
           <li class="nav-item has-treeview @yield('menu-open')">
-            <a href="#" class="nav-link @yield('active2') @yield('active3') @yield('active4') @yield('active5') @yield('active6')">
+            <a href="#" class="nav-link @yield('active2') @yield('active3') @yield('active4') @yield('active5')">
               <i class="nav-icon fas fa-user-alt"></i>
               <p>
                 Usuarios
@@ -37,7 +37,7 @@
               <li class="nav-item">
                 <a href="registro_usuarios" class="nav-link @yield('active2')">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Registro de usuarios</p>
+                  <p>Usuarios</p>
                 </a>
               </li>
               <li class="nav-item">
@@ -47,28 +47,22 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a href="lista_usuarios" class="nav-link @yield('active4')">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Lista de usuarios</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="permisos" class="nav-link @yield('active5')">
+                <a href="permisos" class="nav-link @yield('active4')">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Permisos</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="pais" class="nav-link @yield('active6')">
+                <a href="tipo_documento" class="nav-link @yield('active5')">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>País</p>
+                  <p>Tipo documento</p>
                 </a>
-              </li>
+              </li>              
             </ul>
           </li>
 
-          <li class="nav-item has-treeview">
-            <a href="#" class="nav-link">
+          <li class="nav-item has-treeview @yield('menu-open1')">
+            <a href="#" class="nav-link @yield('active6')">
               <i class="nav-icon fas fa-user-alt"></i>
               <p>
                 Ubicación
@@ -77,7 +71,7 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="registro_usuarios" class="nav-link">
+                <a href="pais" class="nav-link @yield('active6')">
                   <i class="far fa-circle nav-icon"></i>
                   <p>pais</p>
                 </a>
