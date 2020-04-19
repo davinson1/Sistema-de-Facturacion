@@ -22,7 +22,10 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/usuarios', 'UsuariosController@index')->name('usuarios');
 Route::get('/lista_usuarios', 'ListaUsuariosController@index')->name('lista_usuarios');
 Route::get('/permisos', 'PermisosController@index')->name('permisos');
+
+// Rutas tipo de documentos
 Route::get('/tipo_documento', 'TipoDocumentoController@index')->name('tipo_documento');
+Route::get('tabla_tipo_documento', 'TipoDocumentoController@listing');
 
 
 

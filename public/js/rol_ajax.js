@@ -1,3 +1,17 @@
+// ListarRol();
+$(document).ready(function() {
+  listroles();
+});
+
+var listroles = function(){
+  $.ajax({
+    type:'get',
+    url:('roleslist'),
+    success: function(data){
+      $('#list-roles').empty().html(data);
+    }
+  });
+};
 
 // Insertar rol
 $('#roles').click(function(e) {
@@ -48,18 +62,3 @@ function callbackStoreRoles(status, response){
   $(".close").click();
   listroles();
 }
-
-// ListarRol();
-$(document).ready(function() {
-  listroles();
-});
-
-var listroles = function(){
-  $.ajax({
-    type:'get',
-    url:('roleslist'),
-    success: function(data){
-      $('#list-roles').empty().html(data);
-    }
-  });
-};

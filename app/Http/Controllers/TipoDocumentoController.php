@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use App\Models\TipoDocumento;
+
 class TipoDocumentoController extends Controller
 {
     /**
@@ -11,6 +13,16 @@ class TipoDocumentoController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
+    public function listing(){
+        $tipoDoc = TipoDocumento::all();
+        return view('usuarios/tabla_tipo_documento',compact('tipoDoc'));
+    }
+
     public function index()
     {
         return view('/usuarios/tipo_documento');
