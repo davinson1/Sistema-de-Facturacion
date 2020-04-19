@@ -22,6 +22,9 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/usuarios', 'UsuariosController@index')->name('usuarios');
 Route::get('/lista_usuarios', 'ListaUsuariosController@index')->name('lista_usuarios');
 Route::get('/permisos', 'PermisosController@index')->name('permisos');
+Route::get('/tipo_documento', 'TipoDocumentoController@index')->name('tipo_documento');
+
+
 
 //rutas para rolres
 Route::get('/roles', 'RolesController@index')->name('roles');

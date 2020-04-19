@@ -57,7 +57,7 @@
                   <i class="far fa-circle nav-icon"></i>
                   <p>Tipo documento</p>
                 </a>
-              </li>              
+              </li>
             </ul>
           </li>
 
