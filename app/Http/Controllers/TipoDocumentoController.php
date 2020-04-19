@@ -4,7 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use Illuminate\Http\Response;
 use App\Models\TipoDocumento;
+use App\Http\Requests\TipoDocRequest;
+use Illuminate\Support\Facades\DB;
 
 class TipoDocumentoController extends Controller
 {
@@ -44,9 +47,16 @@ class TipoDocumentoController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(TipoDocRequest $request)
     {
-        //
+        if ($request->ajax()) {
+        $tipoDoc = new TipoDocumento();
+        $tipoDoc->Nombre = $request->nombre;
+        $tipoDoc->save();
+        return response()->json([
+        "mensaje" => "Tipo de documento creado correctamente."
+         ]);
+      }
     }
 
     /**
@@ -78,9 +88,18 @@ class TipoDocumentoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(TipoDocRequest $request)
     {
-        //
+        if ($request->ajax()) {
+
+        $rol = TipoDocumento::Find($request->id_tipo);
+        $rol->Nombre = $request->nombre;
+        $rol->save();
+
+        return response()->json([
+        "mensaje" => "Tipo de documento editado correctamente."
+         ]);
+      }
     }
 
     /**
@@ -89,8 +108,13 @@ class TipoDocumentoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $id)
     {
-        //
+        $rol = TipoDocumento::Find($id->id_tipo);
+        $rol->delete();
+
+        return response()->json([
+        "mensaje" => "Tipo de documento eliminado correctamente."
+         ]);
     }
 }

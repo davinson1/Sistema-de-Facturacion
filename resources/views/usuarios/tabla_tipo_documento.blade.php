@@ -31,7 +31,7 @@
               <button class="btn btn-info btn-xs" data-toggle="modal" data-target="#modal-editar" onclick="Editar('{{$tipo_documento->Id_Tp_Doc}}','{{$tipo_documento->Nombre}}')">
                 <i class="fa fa-pen"></i>
               </button>
-              <button class="btn btn-danger btn-xs" data-toggle="modal" data-target="#modal-eliminar" onclick="Eliminar('{{$tipo_documento->Id_Tp_Doc}}')">
+              <button class="btn btn-danger btn-xs" data-toggle="modal" data-target="#modal-eliminar" onclick="Eliminar('{{$tipo_documento->Id_Tp_Doc}}','{{$tipo_documento->Nombre}}')">
                 <i class="fa fa-times"></i>
               </button>
              </td>

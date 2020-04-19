@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 
 use Illuminate\Http\Response;
 use App\Models\Paises;
+use App\Http\Requests\PaisRequest;
 use Illuminate\Support\Facades\DB;
 
 class PaisController extends Controller
@@ -48,7 +49,7 @@ public function __construct()
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(PaisRequest $request)
     {
         if ($request->ajax()) {
         $pais = new Paises();
@@ -89,7 +90,7 @@ public function __construct()
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request)
+    public function update(PaisRequest $request)
     {
         if ($request->ajax()) {
 

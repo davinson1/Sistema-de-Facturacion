@@ -26,15 +26,18 @@ Route::get('/permisos', 'PermisosController@index')->name('permisos');
 // Rutas tipo de documentos
 Route::get('/tipo_documento', 'TipoDocumentoController@index')->name('tipo_documento');
 Route::get('tabla_tipo_documento', 'TipoDocumentoController@listing');
+Route::post('/tipo_documento_crear', 'TipoDocumentoController@store')->name('tipo_documento_crear');
+Route::post('/tipo_documento_editar', 'TipoDocumentoController@update')->name('tipo_documento_editar');
+Route::post('/tipo_documento_eliminar', 'TipoDocumentoController@destroy')->name('tipo_documento_eliminar');
 
 
 
 //rutas para rolres
 Route::get('/roles', 'RolesController@index')->name('roles');
+Route::get('roleslist', 'RolesController@listing');
 Route::post('/roles_crear', 'RolesController@store')->name('roles_crear');
 Route::post('/roles_editar', 'RolesController@update')->name('roles_editar');
 Route::post('/roles_eliminar', 'RolesController@destroy')->name('roles_eliminar');
-Route::get('roleslist', 'RolesController@listing');
 
 // rutas para pais
 Route::get('/pais', 'PaisController@index')->name('pais');
