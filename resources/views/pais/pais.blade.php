@@ -89,7 +89,7 @@ active
       @csrf
       <form method="POST" id="frm_eliminar_pais" name="frm_eliminar_pais" action="{{ url('pais_eliminar') }}" >
         <div class="modal-body">
-          <h3 class="text-center">¿Esta seguro de eliminar el País?</h3>
+          <h3 class="text-center">¿Esta seguro de eliminar el País <span id="nombre_de_pais"></span>?</h3>
           <input type="hidden" name="id_pais_eliminar" id="id_pais_eliminar" class="form-control" required>
         </div>
         <div class="modal-footer">
