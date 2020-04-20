@@ -23,12 +23,12 @@ class RolesController extends Controller
     
     public function listing(){
         $rol = Roles::all();
-        return view('roles/list',compact('rol'));
+        return view('usuarios/roles/list',compact('rol'));
     }
 
     public function index()
     {
-        return view('roles/roles');
+        return view('usuarios/roles/roles');
     }
 
     /**

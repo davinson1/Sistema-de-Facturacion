@@ -45,3 +45,11 @@ Route::get('/listar_pais', 'PaisController@listar_pais');
 Route::post('/pais_crear', 'PaisController@store')->name('pais_crear');
 Route::post('/pais_editar', 'PaisController@update')->name('pais_editar');
 Route::post('/paises_eliminar', 'PaisController@destroy')->name('paises_eliminar');
+
+
+// rutas para municipios
+Route::get('/municipios', 'MunicipiosController@index')->name('municipios');
+Route::get('/listar_municipios', 'MunicipiosController@listarMunicipios');
+Route::post('/municipios_crear', 'MunicipiosController@store')->name('municipios_crear');
+Route::post('/municipios_editar', 'MunicipiosController@update')->name('municipios_editar');
+Route::post('/municipios_eliminar', 'MunicipiosController@destroy')->name('municipios_eliminar');

@@ -62,7 +62,7 @@
           </li>
 
           <li class="nav-item has-treeview @yield('menu-open1')">
-            <a href="#" class="nav-link @yield('active6')">
+            <a href="#" class="nav-link @yield('active6') @yield('active7') @yield('active8')">
               <i class="nav-icon fas fa-user-alt"></i>
               <p>
                 Ubicación
@@ -77,13 +77,13 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a href="roles" class="nav-link">
+                <a href="roles" class="nav-link @yield('active7')">
                   <i class="far fa-circle nav-icon"></i>
                   <p>departamento</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="lista_usuarios" class="nav-link">
+                <a href="municipios" class="nav-link @yield('active8')">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Municipio</p>
                 </a>
