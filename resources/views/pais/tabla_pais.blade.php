@@ -31,7 +31,7 @@
               <button class="btn btn-info btn-xs" data-toggle="modal" data-target="#modal-editar-pais" onclick="Editar('{{$paises->Id_Pais}}','{{$paises->Nombre}}')">
                 <i class="fa fa-pen"></i>
               </button>
-              <button class="btn btn-danger btn-xs" data-toggle="modal" data-target="#modal-eliminar-pais" onclick="Eliminar('{{$paises->Id_Pais}}')">
+              <button class="btn btn-danger btn-xs" data-toggle="modal" data-target="#modal-eliminar-pais" onclick="Eliminar('{{$paises->Id_Pais}}','{{$paises->Nombre}}')">
                 <i class="fa fa-times"></i>
               </button>
              </td>

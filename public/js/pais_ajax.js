@@ -30,16 +30,17 @@ function Editar(id_pais, nombre_pais) {
 
 $('#edit_pais').click(function(e) {
   e.preventDefault();
-  var nombre = $("#editar_pais").val();
   var id_pais = $("#id_pais").val();
+  var nombre = $("#editar_pais").val();
   const url = 'pais_editar';
   const params = {'id_pais':id_pais, 'nombre':nombre};
   proccessFunction(url, 'POST', params, callbackStoreRoles);
 });
 
 //Eliminar Rol
-function Eliminar(id_pais) {
+function Eliminar(id_pais, nombre_pais) {
   $("#id_pais_eliminar").val(id_pais);
+  document.getElementById("nombre_de_pais").innerHTML = nombre_pais;
 }
 
 $('#eliminar_pais').click(function(e) {
@@ -58,7 +59,7 @@ function callbackStoreRoles(status, response){
   };
 
   toastr.success(response.mensaje);
-  $("#nom_rol").val('');   
+  $("#nombre_pais").val('');   
   $(".close").click();
   listroles();
 }

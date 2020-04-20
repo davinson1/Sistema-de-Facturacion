@@ -24,7 +24,7 @@ active
 </div>
 <!-- /.content-header -->
 
-{{-- Modal para registro de un nuevo rol --}}
+{{-- Modal para registro de un nuevo tipo de documento --}}
 <div class="modal fade" id="modal-default" >
   <div class="modal-dialog">
     <div class="modal-content">
@@ -49,7 +49,7 @@ active
   </div>
 </div>
 
-{{-- Modal para Editar un rol --}}
+{{-- Modal para Editar un tipo de documento --}}
 <div class="modal fade" id="modal-editar" >
   <div class="modal-dialog">
     <div class="modal-content">
@@ -75,7 +75,7 @@ active
   </div>
 </div>
 
-{{-- Modal para Eliminar un rol --}}
+{{-- Modal para Eliminar un tipo de documento --}}
 <div class="modal fade" id="modal-eliminar" >
   <div class="modal-dialog">
     <div class="modal-content">
@@ -87,9 +87,9 @@ active
       </div>
 
       @csrf
-      <form method="POST" id="frm_tipo_documento" name="frm_tipo_documento" action="{{ url('roles_eliminar') }}" >
+      <form method="POST" id="frm_tipo_documento" name="frm_tipo_documento">
         <div class="modal-body">
-          <h3 class="text-center">¿Esta seguro de eliminar el Rol?</h3>
+          <h3 class="text-center">¿Esta seguro de eliminar el Tipo de documento <span id="nombre_de_tipo"></span>?</h3>
           <input type="hidden" name="id_tipo_eliminar" id="id_tipo_eliminar" class="form-control" required>
         </div>
         <div class="modal-footer">
