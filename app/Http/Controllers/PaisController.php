@@ -16,7 +16,7 @@ class PaisController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-public function __construct()
+    public function __construct()
     {
         $this->middleware('auth');
     }
@@ -25,12 +25,12 @@ public function __construct()
     public function listar_pais()
     {
       $pais = Paises::all();
-      return view('pais/tabla_pais', compact('pais'));
+      return view('ubicacion/pais/tabla_pais', compact('pais'));
     }
 
     public function index()
     {
-        return view('pais/pais');
+        return view('ubicacion/pais/pais');
     }
 
     /**

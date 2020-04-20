@@ -1,8 +1,8 @@
 @extends('layouts.app')
-@section('menu-open')
+@section('menu-open1')
 menu-open
 @endsection
-@section('active5')
+@section('active8')
 active
 @endsection
 @section('contenido')
@@ -11,12 +11,12 @@ active
   <div class="container-fluid">
     <div class="row mb-2">
       <div class="col-sm-6">
-        <h1 class="m-0 text-dark">Tipo Documento</h1>
+        <h1 class="m-0 text-dark">Municipios</h1>
       </div><!-- /.col -->
       <div class="col-sm-6">
         <ol class="breadcrumb float-sm-right">
           <li class="breadcrumb-item"><a href="#">Inicio</a></li>
-          <li class="breadcrumb-item"><a href="#">Tipo documento</a></li>
+          <li class="breadcrumb-item"><a href="#">municipios</a></li>
         </ol>
       </div><!-- /.col -->
     </div><!-- /.row -->
@@ -24,77 +24,77 @@ active
 </div>
 <!-- /.content-header -->
 
-{{-- Modal para registro de un nuevo tipo de documento --}}
-<div class="modal fade" id="modal-default" >
+{{-- Modal para registro de un nuevo rol --}}
+<div class="modal fade" id="modal-crear-pais" >
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header bg-info">
-        <h4 class="modal-title"><i class="fas fa-plus"></i> Registrar un Tipo documento</h4>
+        <h4 class="modal-title"><i class="fas fa-plus"></i> Registrar un municipio</h4>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
 
       @csrf
-      <form method="POST" id="frm_tipo_documento" name="frm_tipo_documento">
+      <form method="POST" id="frmCrearMunicipio" name="frmCrearMunicipio">
         <div class="modal-body">
-          <input type="text" name="nombre_tipo" id="nombre_tipo" class="form-control" placeholder="Nombre tipo documento" required>
+          <input type="text" name="nombreMunicipio" id="nombreMunicipio" class="form-control" placeholder="Nombre del municipio" required>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-          <button type="button"  id="tipo_documento" type="submit" class="btn btn-info">Crear Tipo </button>
+          <button type="submit" id="crearMunicipio" class="btn btn-info">Crear País </button>
         </div>
       </form>
     </div>
   </div>
 </div>
 
-{{-- Modal para Editar un tipo de documento --}}
-<div class="modal fade" id="modal-editar" >
+{{-- Modal para Editar un rol --}}
+<div class="modal fade" id="modal-editar-municipio" >
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header bg-info">
-        <h4 class="modal-title"><i class="fa fa-pen"></i> Editar nombre tipo documento</h4>
+        <h4 class="modal-title"><i class="fa fa-pen"></i> Editar municipio</h4>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
 
       @csrf
-      <form method="POST" id="frm_tipo_documento" name="frm_tipo_documento">
+      <form method="POST" id="frmEditarMunicipio" name="frmEditarMunicipio">
         <div class="modal-body">
-          <input type="hidden" name="id_tipo_documento" id="id_tipo_documento" class="form-control" required>
-          <input type="text" name="editar_tipo" id="editar_tipo" class="form-control" required>
+          <input type="hidden" name="idMunicipio" id="idMunicipio" class="form-control" required>
+          <input type="text" name="editarMunicipio" id="editarMunicipio" class="form-control" required>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-          <button type="button"  id="edit_tipo" type="submit" class="btn btn-primary">Editar Tipo </button>
+          <button type="submit" id="editMunicipio" class="btn btn-info">Editar municipio </button>
         </div>
       </form>
     </div>
   </div>
 </div>
 
-{{-- Modal para Eliminar un tipo de documento --}}
-<div class="modal fade" id="modal-eliminar" >
+{{-- Modal para Eliminar un rol --}}
+<div class="modal fade" id="modal-eliminar-municipio" >
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header bg-danger">
-        <h4 class="modal-title" id="modal-title"><i class="fa fa-trash"></i> Eliminar Tipo documento</h4>
+        <h4 class="modal-title" id="modal-title"><i class="fa fa-trash"></i> Eliminar municipio</h4>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
 
       @csrf
-      <form method="POST" id="frm_tipo_documento" name="frm_tipo_documento">
+      <form method="POST" id="frmEliminarMunicipio" name="frmEliminarMunicipio">
         <div class="modal-body">
-          <h3 class="text-center">¿Esta seguro de eliminar el Tipo de documento <span id="nombre_de_tipo"></span>?</h3>
-          <input type="hidden" name="id_tipo_eliminar" id="id_tipo_eliminar" class="form-control" required>
+          <h3 class="text-center">¿Esta seguro de eliminar el País <span id="nombreDeMunicipio"></span>?</h3>
+          <input type="hidden" name="idMunicipioEliminar" id="idMunicipioEliminar" class="form-control" required>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
-          <button type="button"  id="eliminar_tipo" type="submit" class="btn btn-danger">Eliminar </button>
+          <button type="submit"  id="eliminarMunicipio" class="btn btn-danger">Eliminar </button>
         </div>
       </form>
     </div>
@@ -102,12 +102,12 @@ active
 </div>
 
 <div class="content">
-  <div id="listar-tipos-documentos">
+  <div id="listarMunicipios">
 
   </div>
 </div>
 
 @endsection
 @section('script_ajax')
-<script type="text/javascript" src="/js/tipo_documento_ajax.js"></script>
+<script  type="text/javascript" src="/js/municipio_ajax.js"></script>
 @endsection

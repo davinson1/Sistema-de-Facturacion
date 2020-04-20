@@ -1,9 +1,9 @@
 // Listar los paises
 $(document).ready(function() {
-  listroles();
+  listadoPaises();
 });
 
-var listroles = function(){
+function listadoPaises(){
   $.ajax({
     type:'get',
     url:('listar_pais'),
@@ -61,5 +61,5 @@ function callbackStoreRoles(status, response){
   toastr.success(response.mensaje);
   $("#nombre_pais").val('');   
   $(".close").click();
-  listroles();
+  listadoPaises();
 }
