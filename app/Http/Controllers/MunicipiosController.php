@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Models\Municipios;
+use App\Models\Departamentos;
 use App\Http\Requests\MunicipioRequest;
 
 class MunicipiosController extends Controller
@@ -28,7 +29,8 @@ class MunicipiosController extends Controller
 
     public function index()
     {
-        return view('ubicacion/municipio/municipio');
+      $departamento = Departamentos::all();      
+      return view('ubicacion/municipio/municipio', compact('departamento'));
     }
 
     /**
@@ -47,9 +49,17 @@ class MunicipiosController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(MunicipioRequest $request)
     {
-        //
+      if ($request->ajax()) {
+      $municipio = new Municipios();
+      $municipio->Id_Depar = $request->idDepartamento;
+      $municipio->Nombre = $request->nombre;
+      $municipio->save();
+      return response()->json([
+      "mensaje" => "Municipio creado correctamente."
+       ]);
+      }
     }
 
     /**

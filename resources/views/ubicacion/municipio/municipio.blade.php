@@ -38,7 +38,18 @@ active
       @csrf
       <form method="POST" id="frmCrearMunicipio" name="frmCrearMunicipio">
         <div class="modal-body">
-          <input type="text" name="nombreMunicipio" id="nombreMunicipio" class="form-control" placeholder="Nombre del municipio" required>
+          <div class="form-group">
+          <label for="exampleFormControlSelect1">Seleccione el departamento</label>
+            <select class="custom-select mb-3" id="idDepartamento">
+              @foreach ($departamento as $departamentos)
+              <option value="{{$departamentos->Id_Depar}}">{{$departamentos->Nombre}}</option>
+              @endforeach
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="exampleFormControlSelect2">Nombre del municipio</label>
+            <input type="text" name="nombreMunicipio" id="nombreMunicipio" class="form-control" placeholder="Nombre del municipio" required>
+          </div>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
