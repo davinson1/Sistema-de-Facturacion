@@ -1,4 +1,3 @@
-
 // Listar los municipios
 function listadoMunicipios(){
   $.ajax({
@@ -61,7 +60,7 @@ function callbackStoreRoles(status, response){
   };
 
   toastr.success(response.mensaje);
-  $("#nombre_pais").val('');   
+  $("#nombreMunicipio").val('');   
   $(".close").click();
   listadoMunicipios();
 }

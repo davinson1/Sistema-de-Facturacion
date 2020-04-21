@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use App\Models\Usuarios;
+
 class UsuariosController extends Controller
 {
     /**
@@ -11,9 +13,20 @@ class UsuariosController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+     public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
+    public function listarUsuarios()
+    {
+      $usuario = Usuarios::all();
+      return view('usuarios/usuario/tabla_usuarios', compact('usuario'));
+    }
+
     public function index()
     {
-        return view('usuarios');
+        return view('usuarios/usuario/usuarios');
     }
 
     /**

@@ -35,7 +35,7 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="registro_usuarios" class="nav-link @yield('active2')">
+                <a href="usuarios" class="nav-link @yield('active2')">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Usuarios</p>
                 </a>
