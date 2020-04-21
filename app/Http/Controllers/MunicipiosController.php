@@ -81,9 +81,18 @@ class MunicipiosController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(MunicipioRequest $request)
     {
-        //
+      if ($request->ajax()) {
+
+      $municipio = Municipios::Find($request->idMunicipio);
+      $municipio->Nombre = $request->nombre;
+      $municipio->save();
+
+      return response()->json([
+      "mensaje" => "Municipio editado correctamente."
+       ]);
+      }
     }
 
     /**
@@ -92,8 +101,13 @@ class MunicipiosController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $id)
     {
-        //
+      $municipio = Municipios::Find($id->idMunicipio);
+      $municipio->delete();
+
+      return response()->json([
+      "mensaje" => "Municipio eliminado correctamente."
+       ]);
     }
 }

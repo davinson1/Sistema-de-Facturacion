@@ -16,7 +16,8 @@
         <thead class="bg-info">
         <tr>
           <th>ID</th>
-          <th>Nombre</th>
+          <th>Departamento</th>
+          <th>Municipio</th>
           <th>Fecha de Creación</th>
           <th>Acciones</th>
         </tr>
@@ -25,13 +26,14 @@
           <tr>
           @foreach ($municipio as $municipios)
             <td>{{$municipios->Id_Mun}}</td>
+            <td>{{$municipios->departamentos->Nombre}}</td>
             <td>{{$municipios->Nombre}}</td>
             <td>{{$municipios->updated_at}}</td>
             <td>
-              <button class="btn btn-info btn-xs" data-toggle="modal" data-target="#modal-editar-pais" onclick="Editar('{{$municipios->Id_Mun}}','{{$municipios->Nombre}}')">
+              <button class="btn btn-info btn-xs" data-toggle="modal" data-target="#modal-editar-municipio" onclick="Editar('{{$municipios->Id_Mun}}','{{$municipios->Nombre}}')">
                 <i class="fa fa-pen"></i>
               </button>
-              <button class="btn btn-danger btn-xs" data-toggle="modal" data-target="#modal-eliminar-pais" onclick="Eliminar('{{$municipios->Id_Mun}}','{{$municipios->Nombre}}')">
+              <button class="btn btn-danger btn-xs" data-toggle="modal" data-target="#modal-eliminar-municipio" onclick="Eliminar('{{$municipios->Id_Mun}}','{{$municipios->Nombre}}')">
                 <i class="fa fa-times"></i>
               </button>
              </td>
