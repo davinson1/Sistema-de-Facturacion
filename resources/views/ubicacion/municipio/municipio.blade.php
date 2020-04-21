@@ -75,7 +75,7 @@ active
   </div>
 </div>
 
-{{-- Modal para Eliminar un rol --}}
+{{-- Modal para Eliminar un municipio --}}
 <div class="modal fade" id="modal-eliminar-municipio" >
   <div class="modal-dialog">
     <div class="modal-content">
@@ -89,7 +89,7 @@ active
       @csrf
       <form method="POST" id="frmEliminarMunicipio" name="frmEliminarMunicipio">
         <div class="modal-body">
-          <h3 class="text-center">¿Esta seguro de eliminar el País <span id="nombreDeMunicipio"></span>?</h3>
+          <h3 class="text-center">¿Esta seguro de eliminar el municipio <span id="nombreDeMunicipio"></span>?</h3>
           <input type="hidden" name="idMunicipioEliminar" id="idMunicipioEliminar" class="form-control" required>
         </div>
         <div class="modal-footer">

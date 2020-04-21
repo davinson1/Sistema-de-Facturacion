@@ -13,7 +13,7 @@ class MunicipioRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -23,8 +23,8 @@ class MunicipioRequest extends FormRequest
      */
     public function rules()
     {
-        return [
-            //
-        ];
+      return [
+            'nombre' => 'required|min:3|max:100|unique:municipio,nombre|regex:/^[\pL\s\-]+$/u',
+      ];
     }
 }
