@@ -4,7 +4,7 @@
     <div class="card-header ">
       <h3 class="card-title">Listado tipos de documentos</h3>
       <!--modal de boton registar rol-->
-      <button id="modal" type="button" class="btn btn-info float-right" data-toggle="modal" data-target="#modal-default">
+      <button id="modal" type="button" class="btn btn-info float-right" data-toggle="modal" data-target="#modal-crear">
       <i class="fas fa-plus"></i>
       Crear tipo
       </button>
@@ -12,7 +12,7 @@
     </div>
     <!-- /.card-header -->
     <div class="card-body">
-      <table id="tabla-documento" class="table table-bordered table-striped">
+      <table id="tablaDocumento" class="table table-bordered table-striped">
         <thead class="bg-info">
         <tr>
           <th>ID</th>
@@ -46,9 +46,13 @@
 <script type="text/javascript">
 //iniciacion de tabls de roles
 $(function () {
-   $("#tabla-documento").DataTable({
+   $("#tablaDocumento").DataTable({
     "responsive": true,
     "autoWidth": true,
+    });
+   // Autoenfoque para los campos inputs de los modals
+   $('#modal-crear, #modal-editar').on('shown.bs.modal', function (e) {
+    $('.focus').focus();
     });
   });
 </script>

@@ -1,53 +1,53 @@
-// ListarRol();
+// Listar tipo de documentos
 $(document).ready(function() {
-  listar_tipo();
+  listaTipoDocumento();
 });
 
-function listar_tipo(){
+function listaTipoDocumento(){
   $.ajax({
     type:'get',
     url:('tabla_tipo_documento'),
     success: function(data){
-      $('#listar-tipos-documentos').empty().html(data);
+      $('#listarTipoDocumento').empty().html(data);
     }
   });
 };
 
 // Insertar tipo documento
-$('#tipo_documento').click(function(e) {
+$('#tipoDocumento').click(function(e) {
   e.preventDefault();
-  var nombre = $("#nombre_tipo").val();
+  var nombre = $("#nombreTipo").val();
   const url = 'tipo_documento_crear';
   const params = {'nombre':nombre};
   proccessFunction(url, 'POST', params, callbackStoreRoles);
 });
 
-//Editar Tipo de documento
-function Editar(id_tip, nombre_tip) {  
-  $("#id_tipo_documento").val(id_tip);
-  $("#editar_tipo").val(nombre_tip);
+// Editar Tipo de documento
+function Editar(idTipo, nombreTipo) {  
+  $("#idTipoDocumento").val(idTipo);
+  $("#editarTipo").val(nombreTipo);
 }
 
-$('#edit_tipo').click(function(e) {
+$('#editarElTipo').click(function(e) {
   e.preventDefault();
-  var id_tipo = $("#id_tipo_documento").val();
-  var nombre = $("#editar_tipo").val();
+  var idTipo = $("#idTipoDocumento").val();
+  var nombre = $("#editarTipo").val();
   const url = 'tipo_documento_editar';
-  const params = {'id_tipo':id_tipo, 'nombre':nombre};
+  const params = {'idTipo':idTipo, 'nombre':nombre};
   proccessFunction(url, 'POST', params, callbackStoreRoles);
 });
 
-//Eliminar Rol
-function Eliminar(id_tipo, nombre_tipo) {
-  $("#id_tipo_eliminar").val(id_tipo);
-  document.getElementById("nombre_de_tipo").innerHTML = nombre_tipo;
+// Eliminar Tipo de documento
+function Eliminar(idTipo, nombreTipo) {
+  $("#idTipoEliminar").val(idTipo);
+  document.getElementById("nombreDeTipo").innerHTML = nombreTipo;
 }
 
-$('#eliminar_tipo').click(function(e) {
+$('#eliminarTipo').click(function(e) {
   e.preventDefault();
-  var id_rol = $("#id_tipo_eliminar").val();
+  var idTipo = $("#idTipoEliminar").val();
   const url = 'tipo_documento_eliminar';
-  const params = {'id_tipo':id_rol};
+  const params = {'idTipo':idTipo};
   proccessFunction(url, 'POST', params, callbackStoreRoles);
 });
 
@@ -58,7 +58,7 @@ function callbackStoreRoles(status, response){
   };
 
   toastr.success(response.mensaje);
-  $("#nombre_tipo").val('');   
+  $("#nombreTipo").val('');   
   $(".close").click();
-  listar_tipo();
+  listaTipoDocumento();
 }

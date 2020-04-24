@@ -27,7 +27,7 @@
 
           <li class="nav-item has-treeview @yield('menu-open')">
             <a href="#" class="nav-link @yield('active2') @yield('active3') @yield('active4') @yield('active5')">
-              <i class="nav-icon fas fa-user-alt"></i>
+              <i class="fas fa-users nav-icon"></i>              
               <p>
                 Usuarios
                 <i class="right fas fa-angle-left"></i>
@@ -36,25 +36,25 @@
             <ul class="nav nav-treeview">
               <li class="nav-item">
                 <a href="usuarios" class="nav-link @yield('active2')">
-                  <i class="far fa-circle nav-icon"></i>
+                  <i class="fas fa-user-friends nav-icon"></i>                  
                   <p>Usuarios</p>
                 </a>
               </li>
               <li class="nav-item">
                 <a href="roles" class="nav-link @yield('active3')">
-                  <i class="far fa-circle nav-icon"></i>
+                  <i class="fas fa-user-tag nav-icon"></i>
                   <p>Roles</p>
                 </a>
               </li>
               <li class="nav-item">
                 <a href="permisos" class="nav-link @yield('active4')">
-                  <i class="far fa-circle nav-icon"></i>
+                  <i class="fas fa-lock-open nav-icon"></i>
                   <p>Permisos</p>
                 </a>
               </li>
               <li class="nav-item">
                 <a href="tipo_documento" class="nav-link @yield('active5')">
-                  <i class="far fa-circle nav-icon"></i>
+                  <i class="fas fa-id-card nav-icon"></i>
                   <p>Tipo documento</p>
                 </a>
               </li>
@@ -63,7 +63,7 @@
 
           <li class="nav-item has-treeview @yield('menu-open1')">
             <a href="#" class="nav-link @yield('active6') @yield('active7') @yield('active8')">
-              <i class="nav-icon fas fa-user-alt"></i>
+              <i class="fas fa-map-marked-alt nav-icon"></i>
               <p>
                 Ubicación
                 <i class="right fas fa-angle-left"></i>
@@ -72,19 +72,19 @@
             <ul class="nav nav-treeview">
               <li class="nav-item">
                 <a href="pais" class="nav-link @yield('active6')">
-                  <i class="far fa-circle nav-icon"></i>
+                  <i class="fas fa-globe-americas nav-icon"></i>
                   <p>pais</p>
                 </a>
               </li>
               <li class="nav-item">
                 <a href="roles" class="nav-link @yield('active7')">
-                  <i class="far fa-circle nav-icon"></i>
+                  <i class="fas fa-location-arrow nav-icon"></i>
                   <p>departamento</p>
                 </a>
               </li>
               <li class="nav-item">
                 <a href="municipios" class="nav-link @yield('active8')">
-                  <i class="far fa-circle nav-icon"></i>
+                  <i class="fas fa-thumbtack nav-icon"></i>
                   <p>Municipio</p>
                 </a>
               </li>

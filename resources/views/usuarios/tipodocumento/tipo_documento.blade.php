@@ -11,7 +11,7 @@ active
   <div class="container-fluid">
     <div class="row mb-2">
       <div class="col-sm-6">
-        <h1 class="m-0 text-dark">Tipo Documento</h1>
+        <h1 class="m-0 text-dark"><i class="fas fa-id-card"></i> Tipo de documentos</h1>
       </div><!-- /.col -->
       <div class="col-sm-6">
         <ol class="breadcrumb float-sm-right">
@@ -25,7 +25,7 @@ active
 <!-- /.content-header -->
 
 {{-- Modal para registro de un nuevo tipo de documento --}}
-<div class="modal fade" id="modal-default" >
+<div class="modal fade" id="modal-crear" >
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header bg-info">
@@ -36,13 +36,16 @@ active
       </div>
 
       @csrf
-      <form method="POST" id="frm_tipo_documento" name="frm_tipo_documento">
+      <form>
         <div class="modal-body">
-          <input type="text" name="nombre_tipo" id="nombre_tipo" class="form-control" placeholder="Nombre tipo documento" required>
+          <div class="form-group">
+            <label for="nombreTipo">Nombre del tipo de documento: </label>
+            <input id="nombreTipo" class="form-control focus" type="text" placeholder="Nombre tipo documento" required>
+          </div>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-          <button type="submit" id="tipo_documento" class="btn btn-info">Crear Tipo </button>
+          <button id="tipoDocumento" class="btn btn-info" type="submit">Crear Tipo </button>
         </div>
       </form>
     </div>
@@ -55,20 +58,23 @@ active
     <div class="modal-content">
       <div class="modal-header bg-info">
         <h4 class="modal-title"><i class="fa fa-pen"></i> Editar nombre tipo documento</h4>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <button class="close" type="button" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
 
       @csrf
-      <form method="POST" id="frm_tipo_documento" name="frm_tipo_documento">
+      <form>
         <div class="modal-body">
-          <input type="hidden" name="id_tipo_documento" id="id_tipo_documento" class="form-control" required>
-          <input type="text" name="editar_tipo" id="editar_tipo" class="form-control" required>
+          <div class="form-group">
+            <label for="editarTipo">Editar el tipo de documento: </label>
+            <input id="idTipoDocumento" class="form-control" type="hidden" required="">
+            <input id="editarTipo" class="form-control focus" type="text" required="">
+          </div>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-          <button type="submit" id="edit_tipo" class="btn btn-primary">Editar Tipo </button>
+          <button id="editarElTipo" class="btn btn-primary" type="submit">Editar Tipo </button>
         </div>
       </form>
     </div>
@@ -80,21 +86,21 @@ active
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header bg-danger">
-        <h4 class="modal-title" id="modal-title"><i class="fa fa-trash"></i> Eliminar Tipo documento</h4>
+        <h4 class="modal-title"><i class="fa fa-trash"></i> Eliminar Tipo documento</h4>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
 
       @csrf
-      <form method="POST" id="frm_tipo_documento" name="frm_tipo_documento">
+      <form>
         <div class="modal-body">
-          <h3 class="text-center">¿Esta seguro de eliminar el Tipo de documento <span id="nombre_de_tipo"></span>?</h3>
-          <input type="hidden" name="id_tipo_eliminar" id="id_tipo_eliminar" class="form-control" required>
+          <h3 class="text-center">¿Esta seguro de eliminar el Tipo de documento <span id="nombreDeTipo"></span>?</h3>
+          <input id="idTipoEliminar" class="form-control" type="hidden" required="">
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
-          <button type="submit" id="eliminar_tipo" class="btn btn-danger">Eliminar </button>
+          <button type="submit" id="eliminarTipo" class="btn btn-danger">Eliminar </button>
         </div>
       </form>
     </div>
@@ -102,7 +108,7 @@ active
 </div>
 
 <div class="content">
-  <div id="listar-tipos-documentos">
+  <div id="listarTipoDocumento">
 
   </div>
 </div>

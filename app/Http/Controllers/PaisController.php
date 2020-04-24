@@ -22,7 +22,7 @@ class PaisController extends Controller
     }
 
 
-    public function listar_pais()
+    public function listarPais()
     {
       $pais = Paises::all();
       return view('ubicacion/pais/tabla_pais', compact('pais'));
@@ -94,7 +94,7 @@ class PaisController extends Controller
     {
       if ($request->ajax()) {
 
-      $pais = Paises::Find($request->id_pais);
+      $pais = Paises::Find($request->idPais);
       $pais->Nombre = $request->nombre;
       $pais->save();
 
@@ -112,7 +112,7 @@ class PaisController extends Controller
      */
     public function destroy(Request $id)
     {
-      $pais = Paises::Find($id->id_pais);
+      $pais = Paises::Find($id->idPais);
       $pais->delete();
 
       return response()->json([

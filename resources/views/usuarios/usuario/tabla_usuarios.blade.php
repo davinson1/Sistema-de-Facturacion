@@ -4,7 +4,7 @@
     <div class="card-header ">
       <h3 class="card-title">Listado de usuarios</h3>
       <!--modal de boton registar rol-->
-      <button id="modal" type="button" class="btn btn-info float-right" data-toggle="modal" data-target="#modal-crear-usuario">
+      <button id="modal" type="button" class="btn btn-info float-right" data-toggle="modal" data-target="#modal-crear">
         <i class="fas fa-plus"></i>
         Crear municipio
       </button>
@@ -34,10 +34,10 @@
             <td>{{ $usuarios->Direccion }}</td>
             <td>{{ $usuarios->updated_at }}</td>
             <td>
-              <button class="btn btn-info btn-xs" data-toggle="modal" data-target="#modal-editar-usuario" onclick="Editar('{{$usuarios->id}}','{{$usuarios->name}}')">
+              <button class="btn btn-info btn-xs" data-toggle="modal" data-target="#modal-editar" onclick="Editar('{{$usuarios->id}}','{{$usuarios->name}}')">
                 <i class="fa fa-pen"></i>
               </button>
-              <button class="btn btn-danger btn-xs" data-toggle="modal" data-target="#modal-eliminar-usuario" onclick="Eliminar('{{$usuarios->id}}','{{$usuarios->name}}')">
+              <button class="btn btn-danger btn-xs" data-toggle="modal" data-target="#modal-eliminar" onclick="Eliminar('{{$usuarios->id}}','{{$usuarios->name}}')">
                 <i class="fa fa-times"></i>
               </button>
              </td>
@@ -55,6 +55,11 @@ $(function () {
    $("#tabla-usuario").DataTable({
     "responsive": true,
     "autoWidth": true,
+    });
+
+   // Autoenfoque para los campos inputs de los modals
+   $('#modal-crear, #modal-editar').on('shown.bs.modal', function (e) {
+    $('.focus').focus();
     });
   });
 </script>
