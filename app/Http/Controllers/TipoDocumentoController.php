@@ -21,7 +21,7 @@ class TipoDocumentoController extends Controller
         $this->middleware('auth');
     }
 
-    public function listing(){
+    public function listarTipoDocumento(){
         $tipoDoc = TipoDocumento::all();
         return view('usuarios/tipodocumento/tabla_tipo_documento',compact('tipoDoc'));
     }
@@ -92,9 +92,9 @@ class TipoDocumentoController extends Controller
     {
         if ($request->ajax()) {
 
-        $rol = TipoDocumento::Find($request->id_tipo);
-        $rol->Nombre = $request->nombre;
-        $rol->save();
+        $tipoDoc = TipoDocumento::Find($request->idTipo);
+        $tipoDoc->Nombre = $request->nombre;
+        $tipoDoc->save();
 
         return response()->json([
         "mensaje" => "Tipo de documento editado correctamente."
@@ -110,8 +110,8 @@ class TipoDocumentoController extends Controller
      */
     public function destroy(Request $id)
     {
-        $rol = TipoDocumento::Find($id->id_tipo);
-        $rol->delete();
+        $tipoDoc = TipoDocumento::Find($id->idTipo);
+        $tipoDoc->delete();
 
         return response()->json([
         "mensaje" => "Tipo de documento eliminado correctamente."

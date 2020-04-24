@@ -21,9 +21,9 @@ class RolesController extends Controller
         $this->middleware('auth');
     }
     
-    public function listing(){
+    public function listarRoles(){
         $rol = Roles::all();
-        return view('usuarios/roles/list',compact('rol'));
+        return view('usuarios/roles/tabla_rol',compact('rol'));
     }
 
     public function index()
@@ -54,7 +54,7 @@ class RolesController extends Controller
         $rol->Nombre = $request->nombre;
         $rol->save();
         return response()->json([
-        "mensaje" => "Rol creado correctamente"
+        "mensaje" => "Rol creado correctamente."
          ]);
       }
     }
@@ -78,7 +78,7 @@ class RolesController extends Controller
      */
     public function edit($id)
     {
-
+      //
     }
 
     /**
@@ -92,7 +92,7 @@ class RolesController extends Controller
     {
       if ($request->ajax()) {
 
-        $rol = Roles::Find($request->id_rol);
+        $rol = Roles::Find($request->idRol);
         $rol->Nombre = $request->nombre;
         $rol->save();
 
@@ -110,7 +110,7 @@ class RolesController extends Controller
      */
     public function destroy(Request $id)
     {
-        $rol = Roles::Find($id->id_rol);
+        $rol = Roles::Find($id->idRol);
         $rol->delete();
 
         return response()->json([

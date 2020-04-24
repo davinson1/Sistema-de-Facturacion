@@ -11,7 +11,7 @@ active
   <div class="container-fluid">
     <div class="row mb-2">
       <div class="col-sm-6">
-        <h1 class="m-0 text-dark">País</h1>
+        <h1 class="m-0 text-dark"><i class="fas fa-globe-americas"></i> País</h1>
       </div><!-- /.col -->
       <div class="col-sm-6">
         <ol class="breadcrumb float-sm-right">
@@ -24,8 +24,8 @@ active
 </div>
 <!-- /.content-header -->
 
-{{-- Modal para registro de un nuevo rol --}}
-<div class="modal fade" id="modal-crear-pais" >
+{{-- Modal para registro de un nuevo país --}}
+<div class="modal fade" id="modal-crear" >
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header bg-info">
@@ -36,21 +36,24 @@ active
       </div>
 
       @csrf
-      <form method="POST" id="frm_crear_pais" name="frm_crear_pais">
+      <form>
         <div class="modal-body">
-          <input type="text" name="nombre_pais" id="nombre_pais" class="form-control" placeholder="Nombre del país" required>
+          <div class="form-group">
+            <label for="nombrePais"> Nombre del país: </label>
+            <input id="nombrePais" class="form-control focus" type="text" placeholder="Nombre del país" required="">
+          </div>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-          <button type="submit" id="crear_pais" class="btn btn-info">Crear País </button>
+          <button type="submit" id="crearPais" class="btn btn-info">Crear País </button>
         </div>
       </form>
     </div>
   </div>
 </div>
 
-{{-- Modal para Editar un rol --}}
-<div class="modal fade" id="modal-editar-pais" >
+{{-- Modal para Editar un país --}}
+<div class="modal fade" id="modal-editar" >
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header bg-info">
@@ -61,40 +64,42 @@ active
       </div>
 
       @csrf
-      <form method="POST" id="frm_editar_pais" name="frm_editar_pais">
+      <form>
         <div class="modal-body">
-          <input type="hidden" name="id_pais" id="id_pais" class="form-control" required>
-          <input type="text" name="editar_pais" id="editar_pais" class="form-control" required>
+          <div class="form-group">
+            <input id="idPais" class="form-control" type="hidden" required="">
+            <input id="editarPais" class="form-control focus" type="text" required="">
+          </div>          
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-          <button type="submit" id="edit_pais" class="btn btn-info">Editar País </button>
+          <button type="submit" id="editarElPais" class="btn btn-info">Editar País </button>
         </div>
       </form>
     </div>
   </div>
 </div>
 
-{{-- Modal para Eliminar un rol --}}
-<div class="modal fade" id="modal-eliminar-pais" >
+{{-- Modal para Eliminar un país --}}
+<div class="modal fade" id="modal-eliminar" >
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header bg-danger">
-        <h4 class="modal-title" id="modal-title"><i class="fa fa-trash"></i> Eliminar País</h4>
+        <h4 class="modal-title"><i class="fa fa-trash"></i> Eliminar País</h4>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
 
       @csrf
-      <form method="POST" id="frm_eliminar_pais" name="frm_eliminar_pais">
+      <form>
         <div class="modal-body">
-          <h3 class="text-center">¿Esta seguro de eliminar el País <span id="nombre_de_pais"></span>?</h3>
-          <input type="hidden" name="id_pais_eliminar" id="id_pais_eliminar" class="form-control" required>
+          <h3 class="text-center">¿Esta seguro de eliminar el País <span id="nombreDePais"></span>?</h3>
+          <input id="idPaisEliminar" class="form-control" type="hidden" required="">
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
-          <button type="submit"  id="eliminar_pais" class="btn btn-danger">Eliminar </button>
+          <button id="eliminarPais" class="btn btn-danger" type="submit">Eliminar </button>
         </div>
       </form>
     </div>
@@ -102,7 +107,7 @@ active
 </div>
 
 <div class="content">
-  <div id="lista-paises">
+  <div id="listarPaises">
     
   </div>
 </div>

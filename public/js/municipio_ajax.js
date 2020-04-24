@@ -1,4 +1,3 @@
-
 // Listar los municipios
 function listadoMunicipios(){
   $.ajax({
@@ -14,7 +13,18 @@ $(document).ready(function() {
   listadoMunicipios();
 });
 
-//Editar rol
+// Insertar municipio
+$('#crearMunicipio').click(function(e) {
+  e.preventDefault();
+  var idDepartamento = $("#idDepartamento").val();
+  var nombre = $("#nombreMunicipio").val();
+  const url = 'municipios_crear';
+  const params = {'idDepartamento':idDepartamento,'nombre':nombre};
+  proccessFunction(url, 'POST', params, callbackStoreRoles);
+});
+
+
+//Editar Municipio
 function Editar(idMunicipio, nombreMunicipio) {  
   $("#idMunicipio").val(idMunicipio);
   $("#editarMunicipio").val(nombreMunicipio);
@@ -50,7 +60,7 @@ function callbackStoreRoles(status, response){
   };
 
   toastr.success(response.mensaje);
-  $("#nombre_pais").val('');   
+  $("#nombreMunicipio").val('');   
   $(".close").click();
   listadoMunicipios();
 }

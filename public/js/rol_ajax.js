@@ -1,14 +1,14 @@
-// ListarRol();
+// Listar los roles
 $(document).ready(function() {
-  listroles();
+  listaRoles();
 });
 
-var listroles = function(){
+function listaRoles(){
   $.ajax({
     type:'get',
-    url:('roleslist'),
+    url:('listar_roles'),
     success: function(data){
-      $('#list-roles').empty().html(data);
+      $('#listarRoles').empty().html(data);
     }
   });
 };
@@ -16,38 +16,39 @@ var listroles = function(){
 // Insertar rol
 $('#roles').click(function(e) {
   e.preventDefault();
-  var nombre = $("#nom_rol").val();
+  var nombre = $("#nombreRol").val();
   const url = 'roles_crear';
   const params = {'nombre':nombre};
   proccessFunction(url, 'POST', params, callbackStoreRoles);
 });
 
 //Editar rol
-function Editar(id_rol, nombre_rol) {  
-  $("#editar_rol").val(nombre_rol);
-  $("#id_rol").val(id_rol);
+function Editar(idRol, nombreRol) {  
+  $("#idRol").val(idRol);
+  $("#editarRol").val(nombreRol);
 }
 
-$('#edit_rol').click(function(e) {
+$('#editarElRol').click(function(e) {
   e.preventDefault();
-  var nombre = $("#editar_rol").val();
-  var id_rol = $("#id_rol").val();
+  var nombre = $("#editarRol").val();
+  var idRol = $("#idRol").val();
   const url = 'roles_editar';
-  const params = {'id_rol':id_rol, 'nombre':nombre};
+  const params = {'idRol':idRol, 'nombre':nombre};
   proccessFunction(url, 'POST', params, callbackStoreRoles);
 });
 
 
 //Eliminar Rol
-function Eliminar(id_rol) {
-  $("#id_rol_eliminar").val(id_rol);
+function Eliminar(idRol, nombreRol) {
+  $("#idRolEliminar").val(idRol);
+  document.getElementById("nombreDeRol").innerHTML = nombreRol;
 }
 
-$('#eliminar_rol').click(function(e) {
+$('#eliminarRol').click(function(e) {
   e.preventDefault();
-  var id_rol = $("#id_rol_eliminar").val();
+  var idRol = $("#idRolEliminar").val();
   const url = 'roles_eliminar';
-  const params = {'id_rol':id_rol};
+  const params = {'idRol':idRol};
   proccessFunction(url, 'POST', params, callbackStoreRoles);
 });
 
@@ -58,7 +59,7 @@ function callbackStoreRoles(status, response){
   };
 
   toastr.success(response.mensaje);
-  $("#nom_rol").val('');   
+  $("#nombreRol").val('');   
   $(".close").click();
-  listroles();
+  listaRoles();
 }

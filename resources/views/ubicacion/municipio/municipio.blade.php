@@ -11,7 +11,7 @@ active
   <div class="container-fluid">
     <div class="row mb-2">
       <div class="col-sm-6">
-        <h1 class="m-0 text-dark">Municipios</h1>
+        <h1 class="m-0 text-dark"><i class="fas fa-thumbtack"></i> Municipios</h1>
       </div><!-- /.col -->
       <div class="col-sm-6">
         <ol class="breadcrumb float-sm-right">
@@ -24,21 +24,32 @@ active
 </div>
 <!-- /.content-header -->
 
-{{-- Modal para registro de un nuevo rol --}}
-<div class="modal fade" id="modal-crear-pais" >
+{{-- Modal para registro de un nuevo municipio --}}
+<div class="modal fade" id="modal-crear" >
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header bg-info">
         <h4 class="modal-title"><i class="fas fa-plus"></i> Registrar un municipio</h4>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <button class="close" type="button" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
 
       @csrf
-      <form method="POST" id="frmCrearMunicipio" name="frmCrearMunicipio">
+      <form>
         <div class="modal-body">
-          <input type="text" name="nombreMunicipio" id="nombreMunicipio" class="form-control" placeholder="Nombre del municipio" required>
+          <div class="form-group">
+            <label for="idDepartamento">Seleccione el departamento</label>
+            <select id="idDepartamento" class="custom-select mb-3">
+              @foreach ($departamento as $departamentos)
+              <option value="{{$departamentos->Id_Depar}}">{{$departamentos->Nombre}}</option>
+              @endforeach
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="nombreMunicipio">Nombre del municipio</label>
+            <input id="nombreMunicipio" class="form-control focus" type="text" placeholder="Nombre del municipio" required="">
+          </div>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
@@ -49,8 +60,8 @@ active
   </div>
 </div>
 
-{{-- Modal para Editar un rol --}}
-<div class="modal fade" id="modal-editar-municipio" >
+{{-- Modal para Editar un municipio --}}
+<div class="modal fade" id="modal-editar" >
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header bg-info">
@@ -61,14 +72,16 @@ active
       </div>
 
       @csrf
-      <form method="POST" id="frmEditarMunicipio" name="frmEditarMunicipio">
+      <form>
         <div class="modal-body">
-          <input type="hidden" name="idMunicipio" id="idMunicipio" class="form-control" required>
-          <input type="text" name="editarMunicipio" id="editarMunicipio" class="form-control" required>
+          <div class="form-group">
+            <input id="idMunicipio" class="form-control" type="hidden" required="">
+            <input id="editarMunicipio" class="form-control focus" type="text" required="">
+          </div>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-          <button type="submit" id="editMunicipio" class="btn btn-info">Editar municipio </button>
+          <button class="btn btn-default" type="button" data-dismiss="modal">Cerrar</button>
+          <button id="editMunicipio" class="btn btn-info" type="submit">Editar municipio </button>
         </div>
       </form>
     </div>
@@ -76,25 +89,25 @@ active
 </div>
 
 {{-- Modal para Eliminar un municipio --}}
-<div class="modal fade" id="modal-eliminar-municipio" >
+<div class="modal fade" id="modal-eliminar" >
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header bg-danger">
-        <h4 class="modal-title" id="modal-title"><i class="fa fa-trash"></i> Eliminar municipio</h4>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <h4 class="modal-title"><i class="fa fa-trash"></i> Eliminar municipio</h4>
+        <button class="close" type="button" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
 
       @csrf
-      <form method="POST" id="frmEliminarMunicipio" name="frmEliminarMunicipio">
+      <form>
         <div class="modal-body">
           <h3 class="text-center">¿Esta seguro de eliminar el municipio <span id="nombreDeMunicipio"></span>?</h3>
-          <input type="hidden" name="idMunicipioEliminar" id="idMunicipioEliminar" class="form-control" required>
+          <input id="idMunicipioEliminar" class="form-control" type="hidden" required="">
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
-          <button type="submit"  id="eliminarMunicipio" class="btn btn-danger">Eliminar </button>
+          <button class="btn btn-default" type="button"  data-dismiss="modal">Cancelar</button>
+          <button id="eliminarMunicipio" class="btn btn-danger" type="submit">Eliminar </button>
         </div>
       </form>
     </div>

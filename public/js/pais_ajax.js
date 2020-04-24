@@ -1,53 +1,53 @@
 // Listar los paises
 $(document).ready(function() {
-  listadoPaises();
+  listaPaises();
 });
 
-function listadoPaises(){
+function listaPaises(){
   $.ajax({
     type:'get',
     url:('listar_pais'),
     success: function(data){
-      $('#lista-paises').empty().html(data);
+      $('#listarPaises').empty().html(data);
     }
   });
 };
 
-// Insertar pais
-$('#crear_pais').click(function(e) {
+// Insertar país
+$('#crearPais').click(function(e) {
   e.preventDefault();
-  var nombre = $("#nombre_pais").val();
+  var nombre = $("#nombrePais").val();
   const url = 'pais_crear';
   const params = {'nombre':nombre};
   proccessFunction(url, 'POST', params, callbackStoreRoles);
 });
 
-//Editar rol
-function Editar(id_pais, nombre_pais) {  
-  $("#id_pais").val(id_pais);
-  $("#editar_pais").val(nombre_pais);
+// Editar país
+function Editar(idPais, nombrePais) {  
+  $("#idPais").val(idPais);
+  $("#editarPais").val(nombrePais);
 }
 
-$('#edit_pais').click(function(e) {
+$('#editarElPais').click(function(e) {
   e.preventDefault();
-  var id_pais = $("#id_pais").val();
-  var nombre = $("#editar_pais").val();
+  var idPais = $("#idPais").val();
+  var nombre = $("#editarPais").val();
   const url = 'pais_editar';
-  const params = {'id_pais':id_pais, 'nombre':nombre};
+  const params = {'idPais':idPais, 'nombre':nombre};
   proccessFunction(url, 'POST', params, callbackStoreRoles);
 });
 
-//Eliminar país
-function Eliminar(id_pais, nombre_pais) {
-  $("#id_pais_eliminar").val(id_pais);
-  document.getElementById("nombre_de_pais").innerHTML = nombre_pais;
+// Eliminar país
+function Eliminar(idPais, nombrePais) {
+  $("#idPaisEliminar").val(idPais);
+  document.getElementById("nombreDePais").innerHTML = nombrePais;
 }
 
-$('#eliminar_pais').click(function(e) {
+$('#eliminarPais').click(function(e) {
   e.preventDefault();
-  var id_pais = $("#id_pais_eliminar").val();
+  var idPais = $("#idPaisEliminar").val();
   const url = 'paises_eliminar';
-  const params = {'id_pais':id_pais};
+  const params = {'idPais':idPais};
   proccessFunction(url, 'POST', params, callbackStoreRoles);
 });
 
@@ -59,7 +59,7 @@ function callbackStoreRoles(status, response){
   };
 
   toastr.success(response.mensaje);
-  $("#nombre_pais").val('');   
+  $("#nombrePais").val('');   
   $(".close").click();
-  listadoPaises();
+  listaPaises();
 }

@@ -4,7 +4,7 @@
     <div class="card-header ">
       <h3 class="card-title">Listado de Roles</h3>
       <!--modal de boton registar rol-->
-      <button id="modal" type="button" class="btn btn-info float-right" data-toggle="modal" data-target="#modal-default">
+      <button id="modal" type="button" class="btn btn-info float-right" data-toggle="modal" data-target="#modal-crear">
       <i class="fas fa-plus"></i>
       Crear Rol
       </button>
@@ -12,7 +12,7 @@
     </div>
     <!-- /.card-header -->
     <div class="card-body">
-      <table id="tabla-roles" class="table table-bordered table-striped">
+      <table id="tablaRoles" class="table table-bordered table-striped">
         <thead class="bg-info">
         <tr>
           <th>ID</th>
@@ -31,7 +31,7 @@
               <button class="btn btn-info btn-xs" data-toggle="modal" data-target="#modal-editar" onclick="Editar('{{$roles->Id_Rol}}','{{$roles->Nombre}}')">
                 <i class="fa fa-pen"></i>
               </button>
-              <button class="btn btn-danger btn-xs" data-toggle="modal" data-target="#modal-eliminar" onclick="Eliminar('{{$roles->Id_Rol}}')">
+              <button class="btn btn-danger btn-xs" data-toggle="modal" data-target="#modal-eliminar" onclick="Eliminar('{{$roles->Id_Rol}}','{{$roles->Nombre}}')">
                 <i class="fa fa-times"></i>
               </button>
              </td>
@@ -46,9 +46,14 @@
 <script type="text/javascript">
 //iniciacion de tabls de roles
 $(function () {
-   $("#tabla-roles").DataTable({
+   $("#tablaRoles").DataTable({
     "responsive": true,
     "autoWidth": true,
+    });
+
+   // Autoenfoque para los campos inputs de los modals
+   $('#modal-crear, #modal-editar').on('shown.bs.modal', function (e) {
+    $('.focus').focus();
     });
   });
 </script>
