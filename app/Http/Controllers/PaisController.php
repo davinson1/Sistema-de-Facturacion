@@ -92,15 +92,15 @@ class PaisController extends Controller
      */
     public function update(PaisRequest $request)
     {
-        if ($request->ajax()) {
+      if ($request->ajax()) {
 
-        $pais = Paises::Find($request->id_pais);
-        $pais->Nombre = $request->nombre;
-        $pais->save();
+      $pais = Paises::Find($request->id_pais);
+      $pais->Nombre = $request->nombre;
+      $pais->save();
 
-        return response()->json([
-        "mensaje" => "País editado correctamente."
-         ]);
+      return response()->json([
+      "mensaje" => "País editado correctamente."
+       ]);
       }
     }
 
@@ -112,11 +112,11 @@ class PaisController extends Controller
      */
     public function destroy(Request $id)
     {
-        $pais = Paises::Find($id->id_pais);
-        $pais->delete();
+      $pais = Paises::Find($id->id_pais);
+      $pais->delete();
 
-        return response()->json([
-        "mensaje" => "País eliminado correctamente."
-         ]);
+      return response()->json([
+      "mensaje" => "País eliminado correctamente."
+       ]);
     }
 }

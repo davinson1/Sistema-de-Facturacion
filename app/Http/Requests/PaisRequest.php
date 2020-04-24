@@ -23,8 +23,8 @@ class PaisRequest extends FormRequest
      */
     public function rules()
     {
-        return [
-            'nombre' => 'required|min:3|max:100|unique:pais,nombre|regex:/^[\pL\s\-]+$/u',
-        ];
+      return [
+          'nombre' => 'required|min:3|max:100|unique:pais,nombre|regex:/^[\pL\s\-]+$/u',
+      ];
     }
 }

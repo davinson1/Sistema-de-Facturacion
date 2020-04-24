@@ -37,7 +37,7 @@ $('#edit_pais').click(function(e) {
   proccessFunction(url, 'POST', params, callbackStoreRoles);
 });
 
-//Eliminar Rol
+//Eliminar país
 function Eliminar(id_pais, nombre_pais) {
   $("#id_pais_eliminar").val(id_pais);
   document.getElementById("nombre_de_pais").innerHTML = nombre_pais;

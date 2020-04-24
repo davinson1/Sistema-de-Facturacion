@@ -9,4 +9,10 @@ class Municipios extends Model
     protected $table = 'municipio';
     protected $primaryKey = 'Id_Mun';
     protected $fillable = ['Nombre'];
+
+    public function departamentos()
+    {
+      // return $this->hasOne('App\Models\Departamentos', 'Id_Depar');      
+      return $this->belongsTo(Departamentos::class, 'Id_Depar');      
+    }
 }
