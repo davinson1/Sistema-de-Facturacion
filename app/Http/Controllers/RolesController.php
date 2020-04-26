@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use Illuminate\Http\Response;
-use App\Models\Roles;
+use Caffeinated\Shinobi\Models\Role;
 use App\Http\Requests\RolRequest;
 use Illuminate\Support\Facades\DB;
 
@@ -22,7 +22,7 @@ class RolesController extends Controller
     }
     
     public function listarRoles(){
-        $rol = Roles::all();
+        $rol = Role::all();
         return view('usuarios/roles/tabla_rol',compact('rol'));
     }
 
@@ -50,7 +50,7 @@ class RolesController extends Controller
     public function store(RolRequest $request)
     {
       if ($request->ajax()) {
-        $rol = new Roles();
+        $rol = new Role();
         $rol->Nombre = $request->nombre;
         $rol->save();
         return response()->json([
@@ -92,7 +92,7 @@ class RolesController extends Controller
     {
       if ($request->ajax()) {
 
-        $rol = Roles::Find($request->idRol);
+        $rol = Role::Find($request->idRol);
         $rol->Nombre = $request->nombre;
         $rol->save();
 

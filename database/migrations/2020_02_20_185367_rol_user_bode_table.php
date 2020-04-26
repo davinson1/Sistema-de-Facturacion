@@ -16,7 +16,7 @@ class RolUserBodeTable extends Migration
         Schema::create('rol_user_bode', function (Blueprint $table) {
             $table->bigIncrements('Id_rol_user_bode');
             $table->unsignedBigInteger('Id_Usu');
-            $table->unsignedBigInteger('Id_Rol');
+            // $table->unsignedBigInteger('Id_Rol');
             $table->unsignedBigInteger('Id_Bod');
             $table->unsignedBigInteger('Id_Cargo');
             
@@ -25,7 +25,7 @@ class RolUserBodeTable extends Migration
             $table->timestamps();
 
             $table->foreign('Id_Usu')->references('id')->on('users');
-            $table->foreign('Id_Rol')->references('Id_Rol')->on('rol');
+            // $table->foreign('Id_Rol')->references('Id_Rol')->on('rol');
             $table->foreign('Id_Bod')->references('Id_Bodega')->on('bodega');
             $table->foreign('Id_Cargo')->references('Id_Cargo')->on('cargo');
         });

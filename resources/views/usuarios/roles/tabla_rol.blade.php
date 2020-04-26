@@ -24,14 +24,14 @@
         <tbody id="datos">
           <tr>
           @foreach ($rol as $roles)
-            <td>{{$roles->Id_Rol}}</td>
-            <td>{{$roles->Nombre}}</td>
+            <td>{{$roles->id}}</td>
+            <td>{{$roles->name}}</td>
             <td>{{$roles->updated_at}}</td>
             <td>
-              <button class="btn btn-info btn-xs" data-toggle="modal" data-target="#modal-editar" onclick="Editar('{{$roles->Id_Rol}}','{{$roles->Nombre}}')">
+              <button class="btn btn-info btn-xs" data-toggle="modal" data-target="#modal-editar" onclick="Editar('{{$roles->id}}','{{$roles->name}}')">
                 <i class="fa fa-pen"></i>
               </button>
-              <button class="btn btn-danger btn-xs" data-toggle="modal" data-target="#modal-eliminar" onclick="Eliminar('{{$roles->Id_Rol}}','{{$roles->Nombre}}')">
+              <button class="btn btn-danger btn-xs" data-toggle="modal" data-target="#modal-eliminar" onclick="Eliminar('{{$roles->id}}','{{$roles->name}}')">
                 <i class="fa fa-times"></i>
               </button>
              </td>

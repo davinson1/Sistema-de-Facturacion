@@ -24,7 +24,7 @@
               </p>
             </a>
           </li>
-
+          @can('navegar.usuario')
           <li class="nav-item has-treeview @yield('menu-open')">
             <a href="#" class="nav-link @yield('active2') @yield('active3') @yield('active4') @yield('active5')">
               <i class="fas fa-users nav-icon"></i>              
@@ -60,7 +60,8 @@
               </li>
             </ul>
           </li>
-
+          @endcan
+          @can('navegar.ubicacion')
           <li class="nav-item has-treeview @yield('menu-open1')">
             <a href="#" class="nav-link @yield('active6') @yield('active7') @yield('active8')">
               <i class="fas fa-map-marked-alt nav-icon"></i>
@@ -90,6 +91,7 @@
               </li>
             </ul>
           </li>
+          @endcan
         </ul>
       </nav>
       <!-- /.sidebar-menu -->
