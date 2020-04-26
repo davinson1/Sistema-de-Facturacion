@@ -46,6 +46,8 @@ class UsuariosTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('usuarios');
+      DB::statement('SET FOREIGN_KEY_CHECKS = 0');
+      Schema::dropIfExists('usuarios');
+      DB::statement('SET FOREIGN_KEY_CHECKS = 1');
     }
 }
