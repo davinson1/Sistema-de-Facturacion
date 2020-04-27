@@ -14,8 +14,8 @@ class TipoTributarioTable extends Migration
     public function up()
     {
         Schema::create('tipo_tributario', function (Blueprint $table) {
-            $table->bigIncrements('Id_Tp_Tri');
-            $table->text('Nombre');
+            $table->bigIncrements('id');
+            $table->text('nombre');
             $table->timestamps();
         });
     }

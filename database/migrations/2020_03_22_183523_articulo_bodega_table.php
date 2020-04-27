@@ -14,18 +14,18 @@ class ArticuloBodegaTable extends Migration
     public function up()
     {
         Schema::create('articulo_bodega', function (Blueprint $table) {
-            $table->bigIncrements('Id_Art_bod');
-            $table->unsignedBigInteger('Id_Art');
-            $table->unsignedBigInteger('Id_Bod');
+            $table->bigIncrements('id');
+            $table->unsignedBigInteger('id_articulo');
+            $table->unsignedBigInteger('id_bodega');
 
-            $table->timestamp('Fecha_ingreso')->useCurrent();
-            $table->date('Fecha_Vencimiento');
-            $table->integer('Cantidad');
+            $table->timestamp('fecha_ingreso')->useCurrent();
+            $table->date('fecha_vencimiento');
+            $table->integer('cantidad');
             
             $table->timestamps();
 
-            $table->foreign('Id_Art')->references('Id_Art')->on('articulos');
-            $table->foreign('Id_Bod')->references('Id_Bodega')->on('bodega');
+            $table->foreign('id_articulo')->references('id')->on('articulos');
+            $table->foreign('id_bodega')->references('id')->on('bodega');
         });
     }
 

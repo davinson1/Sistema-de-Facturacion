@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-use App\Models\Usuarios;
+use App\User;
 
 class UsuariosController extends Controller
 {
@@ -20,7 +20,7 @@ class UsuariosController extends Controller
 
     public function listarUsuarios()
     {
-      $usuario = Usuarios::all();
+      $usuario = User::all();
       return view('usuarios/usuario/tabla_usuarios', compact('usuario'));
     }
 

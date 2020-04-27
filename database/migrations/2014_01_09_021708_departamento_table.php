@@ -14,12 +14,12 @@ class DepartamentoTable extends Migration
     public function up()
     {
         Schema::create('departamento', function (Blueprint $table) {
-            $table->bigIncrements('Id_Depar');
-            $table->unsignedBigInteger('Id_Pais');
-            $table->text('Nombre');
+            $table->bigIncrements('id');
+            $table->unsignedBigInteger('id_pais');
+            $table->text('nombre');
             $table->timestamps();
 
-            $table->foreign('Id_Pais')->references('Id_Pais')->on('pais');
+            $table->foreign('id_pais')->references('id')->on('pais');
         });
     }
 

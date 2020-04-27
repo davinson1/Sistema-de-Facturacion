@@ -14,10 +14,10 @@ class IvaTable extends Migration
     public function up()
     {
         Schema::create('iva', function (Blueprint $table) {
-            $table->bigIncrements('Id_Iva');
-            $table->integer('Valor_Iva');
-            $table->date('Fecha_Inicio');
-            $table->date('Fecha_Fin');
+            $table->bigIncrements('id');
+            $table->integer('valor_iva');
+            $table->date('fecha_inicio');
+            $table->date('fecha_fin');
             $table->timestamps();
         });
     }

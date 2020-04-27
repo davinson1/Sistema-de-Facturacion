@@ -14,8 +14,8 @@ class TipoArticuloTable extends Migration
     public function up()
     {
         Schema::create('tipo_articulo', function (Blueprint $table) {
-            $table->bigIncrements('Id_Tipo_Art');
-            $table->text('Nombre');
+            $table->bigIncrements('id');
+            $table->text('nombre');
             $table->timestamps();
         });
     }

@@ -13,20 +13,18 @@ class BodegaTable extends Migration
      */
     public function up()
     {
-        Schema::create('bodega', function (Blueprint $table) {
-            $table->bigIncrements('Id_Bodega');
-            $table->unsignedBigInteger('Id_Ciudad');
-            $table->unsignedBigInteger('Id_Rol_Usua_Emp');
+      Schema::create('bodega', function (Blueprint $table) {
+        $table->bigIncrements('id');
+        $table->unsignedBigInteger('id_ciudad');
 
-            $table->text('Nombre');
-            $table->text('Direccion');
-            $table->text('Celular');
+        $table->text('nombre');
+        $table->text('direccion');
+        $table->text('celular');
 
-            $table->timestamps();
+        $table->timestamps();
 
-            $table->foreign('Id_Ciudad')->references('Id_Mun')->on('municipio');
-            $table->foreign('Id_Rol_Usua_Emp')->references('Id_Rol_Usua_Emp')->on('Rol_Usuario_Empresa');
-        });
+        $table->foreign('id_ciudad')->references('id')->on('municipio');
+      });
     }
 
     /**

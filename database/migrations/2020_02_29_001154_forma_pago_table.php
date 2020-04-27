@@ -14,8 +14,8 @@ class FormaPagoTable extends Migration
     public function up()
     {
         Schema::create('forma_pago', function (Blueprint $table) {
-            $table->bigIncrements('Id_For_Pag');
-            $table->text('Nombre');
+            $table->bigIncrements('id');
+            $table->text('nombre');
             $table->timestamps();
         });
     }

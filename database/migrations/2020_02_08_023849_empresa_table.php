@@ -14,24 +14,24 @@ class EmpresaTable extends Migration
     public function up()
     {
         Schema::create('empresa', function (Blueprint $table) {
-            $table->bigIncrements('Id_Emp');
-            $table->unsignedBigInteger('Id_Tp_Tri');
-            $table->unsignedBigInteger('Id_Mun');
-            $table->text('Nombre');
-            $table->integer('Numero');
-            $table->text('Direccion');
-            $table->text('Telefono');
-            $table->text('Celular');
-            $table->text('Descripcion');
-            $table->text('Nombre_jefe');
-            $table->text('Celular_jefe');
+            $table->bigIncrements('id');
+            $table->unsignedBigInteger('id_tipo_tributario');
+            $table->unsignedBigInteger('id_municipio');
+            $table->text('nombre');
+            $table->integer('numero');
+            $table->text('direccion');
+            $table->text('telefono');
+            $table->text('celular');
+            $table->text('descripcion');
+            $table->text('nombre_jefe');
+            $table->text('celular_jefe');
             $table->tinyInteger('Activo');
-            $table->date('Creacion');
-            $table->timestamp('Fecha_Creacion')->useCurrent();
+            $table->date('creacion');
+            $table->timestamp('fecha_creacion')->useCurrent();
             $table->timestamps();
 
-            $table->foreign('Id_Tp_Tri')->references('Id_Tp_Tri')->on('tipo_tributario');
-            $table->foreign('Id_Mun')->references('Id_Mun')->on('municipio');
+            $table->foreign('id_tipo_tributario')->references('id')->on('tipo_tributario');
+            $table->foreign('id_municipio')->references('id')->on('municipio');
         });
     }
 

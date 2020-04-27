@@ -24,6 +24,7 @@ active
 </div>
 <!-- /.content-header -->
 
+@can('crear.usuario')
 {{-- Modal para registro de un nuevo usuario --}}
 <div class="modal fade" id="modal-crear" >
   <div class="modal-dialog">
@@ -51,7 +52,9 @@ active
     </div>
   </div>
 </div>
+@endcan
 
+@can('crear.editar')
 {{-- Modal para Editar un Usuario --}}
 <div id="modal-editar" class="modal fade">
   <div class="modal-dialog">
@@ -80,7 +83,9 @@ active
     </div>
   </div>
 </div>
+@endcan
 
+@can('crear.eliminar')
 {{-- Modal para Eliminar un Usuario --}}
 <div class="modal fade" id="modal-eliminar" >
   <div class="modal-dialog">
@@ -106,6 +111,7 @@ active
     </div>
   </div>
 </div>
+@endcan
 
 <div class="content">
   <div id="listarUsuarios">

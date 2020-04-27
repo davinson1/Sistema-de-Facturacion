@@ -13,24 +13,22 @@ class TrasladoTable extends Migration
      */
     public function up()
     {
-        Schema::create('traslado', function (Blueprint $table) {
-            $table->bigIncrements('Id_Tras');
-            $table->unsignedBigInteger('Id_Prod');
-            $table->unsignedBigInteger('Id_Rol_Usua_Emp');
-            $table->unsignedBigInteger('Id_Bod_Sal');
-            $table->unsignedBigInteger('Id_Bod_Entr');
-            $table->unsignedBigInteger('Id_Desc_tras');
-            
-            $table->integer('Cantidad');
-            $table->timestamp('Fecha_traslado')->useCurrent();
-            $table->timestamps();
+      Schema::create('traslado', function (Blueprint $table) {
+        $table->bigIncrements('id');
+        $table->unsignedBigInteger('id_producto');
+        $table->unsignedBigInteger('id_bodega_sale');
+        $table->unsignedBigInteger('id_bodega_entra');
+        $table->unsignedBigInteger('id_descuento_transporte');
+        
+        $table->integer('cantidad');
+        $table->timestamp('fecha_traslado')->useCurrent();
+        $table->timestamps();
 
-            $table->foreign('Id_Prod')->references('Id_Prod')->on('productos');
-            $table->foreign('Id_Rol_Usua_Emp')->references('Id_Rol_Usua_Emp')->on('Rol_Usuario_Empresa');
-            $table->foreign('Id_Bod_Sal')->references('Id_Bodega')->on('bodega');
-            $table->foreign('Id_Bod_Entr')->references('Id_Bodega')->on('bodega');
-            $table->foreign('Id_Desc_tras')->references('Id_Desc_Trans')->on('descuento_transporte');
-        });
+        $table->foreign('id_producto')->references('id')->on('productos');
+        $table->foreign('id_bodega_sale')->references('id')->on('bodega');
+        $table->foreign('id_bodega_entra')->references('id')->on('bodega');
+        $table->foreign('id_descuento_transporte')->references('id')->on('descuento_transporte');
+      });
     }
 
     /**

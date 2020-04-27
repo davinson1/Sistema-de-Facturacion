@@ -14,32 +14,27 @@ class FacturaTable extends Migration
     public function up()
     {
         Schema::create('factura', function (Blueprint $table) {
-            $table->bigIncrements('Id_Fac');
-            $table->unsignedBigInteger('Id_Usu');
-            //$table->unsignedBigInteger('Id_Cli');
-            $table->unsignedBigInteger('Id_Iva');
-            $table->unsignedBigInteger('Id_For_Pag');
-            $table->unsignedBigInteger('Id_Tip_Fac');
+          $table->bigIncrements('id');
+          $table->unsignedBigInteger('id_iva');
+          $table->unsignedBigInteger('id_forma_pago');
+          $table->unsignedBigInteger('id_tipo_factura');
 
-            $table->integer('Cod_Fac');
-            $table->timestamp('Fecha_Creacion')->useCurrent();
-            $table->date('Fecha_Anulacion');
-            $table->tinyInteger('Anulado');
-            $table->tinyInteger('Devolucion_producto');
-            $table->date('Fecha_Devolucion');
-            $table->integer('Valor_Iva');
-            $table->integer('Valor_Devolucion');
-            $table->integer('Valor_Total');
-            $table->tinyInteger('Iva');
+          $table->integer('codigo_factura');
+          $table->timestamp('fecha_creacion')->useCurrent();
+          $table->date('fecha_anulacion');
+          $table->tinyInteger('anulado');
+          $table->tinyInteger('devolucion_producto');
+          $table->date('fecha_devolucion');
+          $table->integer('valor_iva');
+          $table->integer('valor_devolucion');
+          $table->integer('valor_total');
+          $table->tinyInteger('iva');
 
-            $table->timestamps();
+          $table->timestamps();
 
-
-           // $table->foreign('Id_Cli')->references('Id_Rol_Usua_Emp')->on('rol_usuario_empresa');
-        $table->foreign('Id_Iva')->references('Id_Iva')->on('iva');
-        $table->foreign('Id_For_Pag')->references('Id_For_Pag')->on('forma_pago');
-        $table->foreign('Id_Tip_Fac')->references('Id_Tipo_Fac')->on('tipo_factura');
-        $table->foreign('Id_Usu')->references('Id_Rol_Usua_Emp')->on('rol_usuario_empresa');
+          $table->foreign('id_iva')->references('id')->on('iva');
+          $table->foreign('id_forma_pago')->references('id')->on('forma_pago');
+          $table->foreign('id_tipo_factura')->references('id')->on('tipo_factura');
         });
     }
 

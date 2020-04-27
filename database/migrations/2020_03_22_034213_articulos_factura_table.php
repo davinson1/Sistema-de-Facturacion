@@ -14,19 +14,19 @@ class ArticulosFacturaTable extends Migration
     public function up()
     {
         Schema::create('articulos_factura', function (Blueprint $table) {
-            $table->bigIncrements('Id_Art_Fac');
-            $table->unsignedBigInteger('Id_Art');
-            $table->unsignedBigInteger('Id_Fac');
+            $table->bigIncrements('id');
+            $table->unsignedBigInteger('id_articulo');
+            $table->unsignedBigInteger('id_factura');
             
-            $table->tinyInteger('Entregado');
-            $table->date('Fecha_Entrega');
-            $table->integer('Cantidad');
-            $table->tinyInteger('Por_May');
+            $table->tinyInteger('entregado');
+            $table->date('fecha_entrega');
+            $table->integer('cantidad');
+            $table->tinyInteger('por_mayor');
 
             $table->timestamps();
 
-            $table->foreign('Id_Art')->references('Id_Art')->on('articulos');
-            $table->foreign('Id_Fac')->references('Id_Fac')->on('factura');
+            $table->foreign('id_articulo')->references('id')->on('articulos');
+            $table->foreign('id_factura')->references('id')->on('factura');
         });
     }
 

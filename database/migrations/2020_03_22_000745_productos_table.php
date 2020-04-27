@@ -14,10 +14,10 @@ class ProductosTable extends Migration
     public function up()
     {
         Schema::create('productos', function (Blueprint $table) {
-            $table->bigIncrements('Id_Prod');
-            $table->text('Nombre');
-            $table->text('Especificaciones');
-            $table->timestamp('Fecha_Creacion')->useCurrent();            
+            $table->bigIncrements('id');
+            $table->text('nombre');
+            $table->text('especificaciones');
+            $table->timestamp('fecha_creacion')->useCurrent();            
             $table->timestamps();
         });
     }

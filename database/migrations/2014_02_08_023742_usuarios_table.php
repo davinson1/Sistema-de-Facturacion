@@ -16,25 +16,25 @@ class UsuariosTable extends Migration
 
         Schema::create('users', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->unsignedBigInteger('Id_Tp_Doc');
-            $table->unsignedBigInteger('Id_Mun');
-            $table->unsignedBigInteger('Id_Doc_Fir');
+            $table->unsignedBigInteger('id_tipo_documento');
+            $table->unsignedBigInteger('id_municipio');
+            // $table->unsignedBigInteger('Id_Doc_Fir');
             $table->string('name');
-            $table->text('Apellido');
-            $table->integer('Numero');
-            $table->text('Direccion');
+            $table->text('apellido');
+            $table->integer('numero_documento');
+            $table->text('direccion');
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();            
-            $table->string('Foto');
-            $table->string('Copia_Documento');
+            $table->string('foto');
+            $table->string('copia_documento');
             $table->string('password');
             $table->rememberToken();
-            $table->tinyInteger('Activo');
-            $table->timestamp('Fecha_Creacion')->useCurrent();
+            $table->tinyInteger('activo');
+            $table->timestamp('fecha_creacion')->useCurrent();
             $table->timestamps();
 
-            $table->foreign('Id_Tp_Doc')->references('Id_Tp_Doc')->on('tipo_documento');
-            $table->foreign('Id_Mun')->references('Id_Mun')->on('municipio');
+            $table->foreign('id_tipo_documento')->references('id')->on('tipo_documento');
+            $table->foreign('id_municipio')->references('id')->on('municipio');
 
         });
     }

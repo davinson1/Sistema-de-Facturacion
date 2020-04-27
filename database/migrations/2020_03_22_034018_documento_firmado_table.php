@@ -14,15 +14,15 @@ class DocumentoFirmadoTable extends Migration
     public function up()
     {
         Schema::create('documento_firmado', function (Blueprint $table) {
-            $table->bigIncrements('Id_Doc_Fir');
-            $table->unsignedBigInteger('Id_Usu');
-            $table->unsignedBigInteger('Id_Fac');
-            $table->timestamp('Fecha_Creacion')->useCurrent();
-            $table->text('Descripcion');
+            $table->bigIncrements('id');
+            $table->unsignedBigInteger('id_usuario');
+            $table->unsignedBigInteger('id_factura');
+            $table->timestamp('fecha_creacion')->useCurrent();
+            $table->text('descripcion');
             $table->timestamps();
 
-            $table->foreign('Id_Usu')->references('id')->on('users');
-            $table->foreign('Id_Fac')->references('Id_Fac')->on('factura');
+            $table->foreign('id_usuario')->references('id')->on('users');
+            $table->foreign('id_factura')->references('id')->on('factura');
         });
     }
 

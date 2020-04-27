@@ -3,12 +3,14 @@
   <div class="card">
     <div class="card-header ">
       <h3 class="card-title">Listado de usuarios</h3>
-      <!--modal de boton registar rol-->
+      @can('crear.usuario')
+      <!--modal de boton registar usuario-->
       <button id="modal" type="button" class="btn btn-info float-right" data-toggle="modal" data-target="#modal-crear">
         <i class="fas fa-plus"></i>
         Crear municipio
       </button>
-     <!--fin modal de boton registar rol-->
+     <!--fin modal de boton registar usuario-->
+     @endcan
     </div>
     <!-- /.card-header -->
     <div class="card-body">
@@ -34,12 +36,16 @@
             <td>{{ $usuarios->Direccion }}</td>
             <td>{{ $usuarios->updated_at }}</td>
             <td>
+              @can('crear.editar')
               <button class="btn btn-info btn-xs" data-toggle="modal" data-target="#modal-editar" onclick="Editar('{{$usuarios->id}}','{{$usuarios->name}}')">
                 <i class="fa fa-pen"></i>
               </button>
+              @endcan
+              @can('crear.eliminar')
               <button class="btn btn-danger btn-xs" data-toggle="modal" data-target="#modal-eliminar" onclick="Eliminar('{{$usuarios->id}}','{{$usuarios->name}}')">
                 <i class="fa fa-times"></i>
               </button>
+              @endcan
              </td>
             </tr>
           @endforeach

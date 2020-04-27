@@ -25,8 +25,8 @@ Route::middleware(['auth'])->group(function(){
 
   // Rutas para usuarios
   Route::get('/usuarios', 'UsuariosController@index')->name('usuarios')->middleware('can:navegar.usuario');
-  Route::get('/listar_usuarios', 'UsuariosController@listarUsuarios');
-  Route::post('/usuarios_eliminar', 'UsuariosController@destroy')->name('usuarios_eliminar');
+  Route::get('/listar_usuarios', 'UsuariosController@listarUsuarios')->middleware('can:navegar.usuario');
+  Route::post('/usuarios_eliminar', 'UsuariosController@destroy')->name('usuarios_eliminar')->middleware('can:eliminar.usuario');
 
   // Rutas para roles
   Route::get('/roles', 'RolesController@index')->name('roles');
@@ -34,9 +34,6 @@ Route::middleware(['auth'])->group(function(){
   Route::post('/roles_crear', 'RolesController@store')->name('roles_crear');
   Route::post('/roles_editar', 'RolesController@update')->name('roles_editar');
   Route::post('/roles_eliminar', 'RolesController@destroy')->name('roles_eliminar');
-
-  // Rutas para permisos
-  Route::get('/permisos', 'PermisosController@index')->name('permisos');
 
   // Rutas para tipo de documentos
   Route::get('/tipo_documento', 'TipoDocumentoController@index')->name('tipo_documento');

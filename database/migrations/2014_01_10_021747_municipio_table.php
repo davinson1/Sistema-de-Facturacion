@@ -14,12 +14,12 @@ class MunicipioTable extends Migration
     public function up()
     {
         Schema::create('municipio', function (Blueprint $table) {
-            $table->bigIncrements('Id_Mun');
-            $table->unsignedBigInteger('Id_Depar');
-            $table->text('Nombre');
+            $table->bigIncrements('id');
+            $table->unsignedBigInteger('id_departamento');
+            $table->text('nombre');
             $table->timestamps();
 
-            $table->foreign('Id_Depar')->references('Id_Depar')->on('departamento');
+            $table->foreign('id_departamento')->references('id')->on('departamento');
         });
     }
 
