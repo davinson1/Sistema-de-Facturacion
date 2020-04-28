@@ -53,8 +53,8 @@ class MunicipiosController extends Controller
     {
       if ($request->ajax()) {
       $municipio = new Municipios();
-      $municipio->Id_Depar = $request->idDepartamento;
-      $municipio->Nombre = $request->nombre;
+      $municipio->id = $request->idDepartamento;
+      $municipio->nombre = $request->nombre;
       $municipio->save();
       return response()->json([
       "mensaje" => "Municipio creado correctamente."
@@ -96,7 +96,7 @@ class MunicipiosController extends Controller
       if ($request->ajax()) {
 
       $municipio = Municipios::Find($request->idMunicipio);
-      $municipio->Nombre = $request->nombre;
+      $municipio->nombre = $request->nombre;
       $municipio->save();
 
       return response()->json([

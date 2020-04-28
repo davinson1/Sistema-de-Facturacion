@@ -49,9 +49,14 @@ class TipoDocumentoController extends Controller
      */
     public function store(TipoDocRequest $request)
     {
+      // $tipoDocumento = TipoDocumento::create($request->all());
+      // return response()->json([
+      //   "mensaje" => "Tipo de documento creado correctamente."
+      //    ]);
+
         if ($request->ajax()) {
         $tipoDoc = new TipoDocumento();
-        $tipoDoc->Nombre = $request->nombre;
+        $tipoDoc->nombre = $request->nombre;
         $tipoDoc->save();
         return response()->json([
         "mensaje" => "Tipo de documento creado correctamente."
@@ -93,7 +98,7 @@ class TipoDocumentoController extends Controller
         if ($request->ajax()) {
 
         $tipoDoc = TipoDocumento::Find($request->idTipo);
-        $tipoDoc->Nombre = $request->nombre;
+        $tipoDoc->nombre = $request->nombre;
         $tipoDoc->save();
 
         return response()->json([
@@ -110,11 +115,13 @@ class TipoDocumentoController extends Controller
      */
     public function destroy(Request $id)
     {
+      if ($id->ajax()) {
         $tipoDoc = TipoDocumento::Find($id->idTipo);
         $tipoDoc->delete();
 
         return response()->json([
         "mensaje" => "Tipo de documento eliminado correctamente."
          ]);
+      }
     }
 }

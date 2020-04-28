@@ -30,10 +30,10 @@
           <tr>
           @foreach ($usuario as $usuarios)
             <td>{{ $usuarios->id }}</td>
-            <td>{{ $usuarios->name }} {{ $usuarios->Apellido }}</td>
-            <td>{{ $usuarios->Numero }}</td>
+            <td>{{ $usuarios->name }} {{ $usuarios->apellido }}</td>
+            <td>{{ $usuarios->numero_documento }}</td>
             <td>{{ $usuarios->email }}</td>
-            <td>{{ $usuarios->Direccion }}</td>
+            <td>{{ $usuarios->direccion }}</td>
             <td>{{ $usuarios->updated_at }}</td>
             <td>
               @can('crear.editar')

@@ -51,7 +51,7 @@ class RolesController extends Controller
     {
       if ($request->ajax()) {
         $rol = new Role();
-        $rol->Nombre = $request->nombre;
+        $rol->nombre = $request->nombre;
         $rol->save();
         return response()->json([
         "mensaje" => "Rol creado correctamente."
@@ -93,7 +93,7 @@ class RolesController extends Controller
       if ($request->ajax()) {
 
         $rol = Role::Find($request->idRol);
-        $rol->Nombre = $request->nombre;
+        $rol->nombre = $request->nombre;
         $rol->save();
 
         return response()->json([

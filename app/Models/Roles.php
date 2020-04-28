@@ -8,5 +8,5 @@ class Roles extends Model
 {
     protected $table = 'rol';
     // protected $primaryKey = 'Id_Rol'; //por si la llave primaria tiene otro nombre
-    protected $fillable = ['Nombre'];
+    protected $fillable = ['nombre'];
 }

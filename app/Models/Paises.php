@@ -8,5 +8,5 @@ class Paises extends Model
 {
     protected $table = 'pais';
     // protected $primaryKey = 'Id_Pais'; //por si la llave primaria tiene otro nombre
-    protected $fillable = ['Nombre'];
+    protected $fillable = ['nombre'];
 }

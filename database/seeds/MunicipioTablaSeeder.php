@@ -26,7 +26,7 @@ class MunicipioTablaSeeder extends Seeder
       ]);
       Municipios::create([
         'id_departamento' => '4',
-        'nombre' => 'Mersedes',
+        'nombre' => 'Mercedes',
       ]);
     }
 }

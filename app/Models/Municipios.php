@@ -8,11 +8,11 @@ class Municipios extends Model
 {
     protected $table = 'municipio';
     // protected $primaryKey = 'Id_Mun'; //por si la llave primaria tiene otro nombre
-    protected $fillable = ['Nombre'];
+    protected $fillable = ['nombre'];
 
     public function departamentos()
     {
       // return $this->hasOne('App\Models\Departamentos', 'Id_Depar');      
-      return $this->belongsTo(Departamentos::class, 'Id_Depar');      
+      return $this->belongsTo(Departamentos::class, 'id');      
     }
 }
