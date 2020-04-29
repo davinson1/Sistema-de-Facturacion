@@ -14,18 +14,18 @@ class EnvioTable extends Migration
     public function up()
     {
         Schema::create('envio', function (Blueprint $table) {
-            $table->bigIncrements('Id_Envio');
-            $table->unsignedBigInteger('Id_Persona_Trans');
-            $table->unsignedBigInteger('Id_Fac');
+            $table->bigIncrements('id');
+            $table->unsignedBigInteger('id_persona_transporte');
+            $table->unsignedBigInteger('id_factura');
 
-            $table->tinyInteger('Entregado');
-            $table->date('Fecha_Envio');
-            $table->date('Fecha_Pro');
-            $table->text('Direccion');
+            $table->tinyInteger('entregado');
+            $table->date('fecha_envio');
+            $table->date('fecha_producto');
+            $table->text('direccion');
             $table->timestamps();
 
-            $table->foreign('Id_Persona_Trans')->references('id')->on('users');
-            $table->foreign('Id_Fac')->references('Id_Fac')->on('factura');
+            $table->foreign('id_persona_transporte')->references('id')->on('users');
+            $table->foreign('id_factura')->references('id')->on('factura');
         });
     }
 

@@ -14,17 +14,18 @@ class ArticuloCompraTable extends Migration
     public function up()
     {
         Schema::create('articulo_compra', function (Blueprint $table) {
-            $table->bigIncrements('Id_Art_Comp');
-            $table->unsignedBigInteger('Id_Art');
-            $table->unsignedBigInteger('Id_Comp');
-            $table->tinyInteger('Entregado');
-            $table->integer('Cantidad');
-            $table->text('Descripcion');
+            $table->bigIncrements('id');
+            $table->unsignedBigInteger('id_articulo');
+            $table->unsignedBigInteger('id_compra');
+
+            $table->tinyInteger('entregado');
+            $table->integer('cantidad');
+            $table->text('descripcion');
 
             $table->timestamps();
 
-            $table->foreign('Id_Art')->references('Id_Art')->on('articulos');
-            $table->foreign('Id_Comp')->references('Id_Comp')->on('compra');
+            $table->foreign('id_articulo')->references('id')->on('articulos');
+            $table->foreign('id_compra')->references('id')->on('compra');
         });
     }
 

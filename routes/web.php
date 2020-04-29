@@ -25,38 +25,35 @@ Route::middleware(['auth'])->group(function(){
 
   // Rutas para usuarios
   Route::get('/usuarios', 'UsuariosController@index')->name('usuarios')->middleware('can:navegar.usuario');
-  Route::get('/listar_usuarios', 'UsuariosController@listarUsuarios');
-  Route::post('/usuarios_eliminar', 'UsuariosController@destroy')->name('usuarios_eliminar');
+  Route::get('/listar_usuarios', 'UsuariosController@listarUsuarios')->middleware('can:navegar.usuario');
+  Route::post('/usuarios_eliminar', 'UsuariosController@destroy')->name('usuarios_eliminar')->middleware('can:eliminar.usuario');
 
   // Rutas para roles
-  Route::get('/roles', 'RolesController@index')->name('roles');
-  Route::get('listar_roles', 'RolesController@listarRoles');
-  Route::post('/roles_crear', 'RolesController@store')->name('roles_crear');
-  Route::post('/roles_editar', 'RolesController@update')->name('roles_editar');
-  Route::post('/roles_eliminar', 'RolesController@destroy')->name('roles_eliminar');
-
-  // Rutas para permisos
-  Route::get('/permisos', 'PermisosController@index')->name('permisos');
+  Route::get('/roles', 'RolesController@index')->name('roles')->middleware('can:navegar.rol');
+  Route::get('listar_roles', 'RolesController@listarRoles')->middleware('can:navegar.rol');
+  Route::post('/roles_crear', 'RolesController@store')->name('roles_crear')->middleware('can:crear.rol');
+  Route::post('/roles_editar', 'RolesController@update')->name('roles_editar')->middleware('can:editar.rol');
+  Route::post('/roles_eliminar', 'RolesController@destroy')->name('roles_eliminar')->middleware('can:eliminar.rol');
 
   // Rutas para tipo de documentos
-  Route::get('/tipo_documento', 'TipoDocumentoController@index')->name('tipo_documento');
-  Route::get('tabla_tipo_documento', 'TipoDocumentoController@listarTipoDocumento');
-  Route::post('/tipo_documento_crear', 'TipoDocumentoController@store')->name('tipo_documento_crear');
-  Route::post('/tipo_documento_editar', 'TipoDocumentoController@update')->name('tipo_documento_editar');
-  Route::post('/tipo_documento_eliminar', 'TipoDocumentoController@destroy')->name('tipo_documento_eliminar');
+  Route::get('/tipo_documento', 'TipoDocumentoController@index')->name('tipo_documento')->middleware('can:navegar.tipo.documento');
+  Route::get('tabla_tipo_documento', 'TipoDocumentoController@listarTipoDocumento')->middleware('can:navegar.tipo.documento');
+  Route::post('/tipo_documento_crear', 'TipoDocumentoController@store')->name('tipo_documento_crear')->middleware('can:crear.tipo.documento');
+  Route::post('/tipo_documento_editar', 'TipoDocumentoController@update')->name('tipo_documento_editar')->middleware('can:editar.tipo.documento');
+  Route::post('/tipo_documento_eliminar', 'TipoDocumentoController@destroy')->name('tipo_documento_eliminar')->middleware('can:eliminar.tipo.documento');
 
   // Rutas para pais
-  Route::get('/pais', 'PaisController@index')->name('pais');
-  Route::get('/listar_pais', 'PaisController@listarPais');
-  Route::post('/pais_crear', 'PaisController@store')->name('pais_crear');
-  Route::post('/pais_editar', 'PaisController@update')->name('pais_editar');
-  Route::post('/paises_eliminar', 'PaisController@destroy')->name('paises_eliminar');
+  Route::get('/pais', 'PaisController@index')->name('pais')->middleware('can:navegar.pais');
+  Route::get('/listar_pais', 'PaisController@listarPais')->middleware('can:navegar.pais');
+  Route::post('/pais_crear', 'PaisController@store')->name('pais_crear')->middleware('can:crear.pais');
+  Route::post('/pais_editar', 'PaisController@update')->name('pais_editar')->middleware('can:editar.pais');
+  Route::post('/paises_eliminar', 'PaisController@destroy')->name('paises_eliminar')->middleware('can:eliminar.pais');
 
 
   // Rutas para municipios
-  Route::get('/municipios', 'MunicipiosController@index')->name('municipios');
-  Route::get('/listar_municipios', 'MunicipiosController@listarMunicipios');
-  Route::post('/municipios_crear', 'MunicipiosController@store')->name('municipios_crear');
-  Route::post('/municipios_editar', 'MunicipiosController@update')->name('municipios_editar');
-  Route::post('/municipios_eliminar', 'MunicipiosController@destroy')->name('municipios_eliminar');
+  Route::get('/municipios', 'MunicipiosController@index')->name('municipios')->middleware('can:navegar.municipio');
+  Route::get('/listar_municipios', 'MunicipiosController@listarMunicipios')->middleware('can:navegar.municipio');
+  Route::post('/municipios_crear', 'MunicipiosController@store')->name('municipios_crear')->middleware('can:crear.municipio');
+  Route::post('/municipios_editar', 'MunicipiosController@update')->name('municipios_editar')->middleware('can:editar.municipio');
+  Route::post('/municipios_eliminar', 'MunicipiosController@destroy')->name('municipios_eliminar')->middleware('can:eliminar.municipio');
 });

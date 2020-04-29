@@ -14,10 +14,10 @@ class TipoCompraTable extends Migration
     public function up()
     {
         Schema::create('tipo_compra', function (Blueprint $table) {
-            $table->bigIncrements('Id_Tipo_Com');
-            $table->text('Nombre');
-            $table->text('Descripcion');
-            $table->timestamp('Fecha_Creacion')->useCurrent();
+            $table->bigIncrements('id');
+            $table->text('nombre');
+            $table->text('descripcion');
+            $table->timestamp('fecha_creacion')->useCurrent();
             $table->timestamps();
         });
     }

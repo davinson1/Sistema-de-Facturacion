@@ -24,6 +24,8 @@ active
 </div>
 <!-- /.content-header -->
 
+
+@can('crear.pais')
 {{-- Modal para registro de un nuevo país --}}
 <div class="modal fade" id="modal-crear" >
   <div class="modal-dialog">
@@ -51,7 +53,9 @@ active
     </div>
   </div>
 </div>
+@endcan
 
+@can('editar.pais')
 {{-- Modal para Editar un país --}}
 <div class="modal fade" id="modal-editar" >
   <div class="modal-dialog">
@@ -79,7 +83,9 @@ active
     </div>
   </div>
 </div>
+@endcan
 
+@can('eliminar.pais')
 {{-- Modal para Eliminar un país --}}
 <div class="modal fade" id="modal-eliminar" >
   <div class="modal-dialog">
@@ -105,6 +111,7 @@ active
     </div>
   </div>
 </div>
+@endcan
 
 <div class="content">
   <div id="listarPaises">

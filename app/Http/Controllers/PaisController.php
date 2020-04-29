@@ -53,7 +53,7 @@ class PaisController extends Controller
     {
       if ($request->ajax()) {
       $pais = new Paises();
-      $pais->Nombre = $request->nombre;
+      $pais->nombre = $request->nombre;
       $pais->save();
       return response()->json([
       "mensaje" => "País creado correctamente."
@@ -95,7 +95,7 @@ class PaisController extends Controller
       if ($request->ajax()) {
 
       $pais = Paises::Find($request->idPais);
-      $pais->Nombre = $request->nombre;
+      $pais->nombre = $request->nombre;
       $pais->save();
 
       return response()->json([

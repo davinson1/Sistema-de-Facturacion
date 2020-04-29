@@ -14,13 +14,13 @@ class HistorialTable extends Migration
     public function up()
     {
         Schema::create('historial', function (Blueprint $table) {
-            $table->bigIncrements('Id_Historial');
-            $table->unsignedBigInteger('Id_Usu');
-            $table->text('Descripcion');
-            $table->timestamp('Fecha_Creacion')->useCurrent();
+            $table->bigIncrements('id');
+            $table->unsignedBigInteger('id_usuario');
+            $table->text('descripcion');
+            $table->timestamp('fecha_creacion')->useCurrent();
             $table->timestamps();
 
-            $table->foreign('Id_Usu')->references('id')->on('users');
+            $table->foreign('id_usuario')->references('id')->on('users');
         });
     }
 

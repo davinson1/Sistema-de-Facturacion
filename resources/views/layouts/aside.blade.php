@@ -34,30 +34,30 @@
               </p>
             </a>
             <ul class="nav nav-treeview">
+              @can('navegar.usuario')
               <li class="nav-item">
                 <a href="usuarios" class="nav-link @yield('active2')">
                   <i class="fas fa-user-friends nav-icon"></i>                  
                   <p>Usuarios</p>
                 </a>
               </li>
+              @endcan
+              @can('navegar.rol')
               <li class="nav-item">
                 <a href="roles" class="nav-link @yield('active3')">
                   <i class="fas fa-user-tag nav-icon"></i>
                   <p>Roles</p>
                 </a>
               </li>
-              <li class="nav-item">
-                <a href="permisos" class="nav-link @yield('active4')">
-                  <i class="fas fa-lock-open nav-icon"></i>
-                  <p>Permisos</p>
-                </a>
-              </li>
+              @endcan
+              @can('navegar.tipo.documento')
               <li class="nav-item">
                 <a href="tipo_documento" class="nav-link @yield('active5')">
                   <i class="fas fa-id-card nav-icon"></i>
                   <p>Tipo documento</p>
                 </a>
               </li>
+              @endcan
             </ul>
           </li>
           @endcan
@@ -71,24 +71,30 @@
               </p>
             </a>
             <ul class="nav nav-treeview">
+              @can('navegar.pais')
               <li class="nav-item">
                 <a href="pais" class="nav-link @yield('active6')">
                   <i class="fas fa-globe-americas nav-icon"></i>
                   <p>pais</p>
                 </a>
               </li>
+              @endcan
+              @can('navegar.departamento')
               <li class="nav-item">
                 <a href="roles" class="nav-link @yield('active7')">
                   <i class="fas fa-location-arrow nav-icon"></i>
                   <p>departamento</p>
                 </a>
               </li>
+              @endcan
+              @can('navegar.municipio')
               <li class="nav-item">
                 <a href="municipios" class="nav-link @yield('active8')">
                   <i class="fas fa-thumbtack nav-icon"></i>
                   <p>Municipio</p>
                 </a>
               </li>
+              @endcan
             </ul>
           </li>
           @endcan

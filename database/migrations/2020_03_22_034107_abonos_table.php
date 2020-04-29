@@ -14,25 +14,23 @@ class AbonosTable extends Migration
     public function up()
     {
         Schema::create('abonos', function (Blueprint $table) {
-            $table->bigIncrements('Id_Abo');
-            $table->unsignedBigInteger('Id_Rol_Usu_Emp');
-            $table->unsignedBigInteger('Id_Fac');
+          $table->bigIncrements('id');
+          $table->unsignedBigInteger('id_factura');
 
-            $table->integer('Interes');
-            $table->integer('Numero_cuotas');
-            $table->integer('Total_cuotas');
-            $table->date('Fecha_Prog');
-            $table->date('Fecha_Com');
-            $table->date('Fecha_Pag');
-            $table->integer('Valor');
-            $table->integer('Valor_Pago');
-            $table->text('Descripcion_No_Pago');
-            $table->tinyInteger('Pagado');
-            
-            $table->timestamps();
+          $table->integer('interes');
+          $table->integer('numero_cuotas');
+          $table->integer('total_cuotas');
+          $table->date('fecha_programacion');
+          $table->date('fecha_compromete');
+          $table->date('fecha_pago');
+          $table->integer('valor');
+          $table->integer('valor_pago');
+          $table->text('descripcion_no_pago');
+          $table->tinyInteger('pagado');
+          
+          $table->timestamps();
 
-            $table->foreign('Id_Rol_Usu_Emp')->references('Id_Rol_Usua_Emp')->on('rol_usuario_empresa');
-            $table->foreign('Id_Fac')->references('Id_Fac')->on('factura');
+          $table->foreign('id_factura')->references('id')->on('factura');
         });
     }
 

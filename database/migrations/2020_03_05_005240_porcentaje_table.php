@@ -14,10 +14,10 @@ class PorcentajeTable extends Migration
     public function up()
     {
         Schema::create('porcentaje', function (Blueprint $table) {
-            $table->bigIncrements('Id_Porc');
-            $table->text('Nombre');
-            $table->text('Descripcion');
-            $table->integer('Porcentaje');
+            $table->bigIncrements('id');
+            $table->text('nombre');
+            $table->text('descripcion');
+            $table->integer('porcentaje');
             $table->timestamps();
         });
     }

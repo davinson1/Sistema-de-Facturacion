@@ -14,17 +14,17 @@ class DatosEmpresaFacturaTable extends Migration
     public function up()
     {
         Schema::create('datos_empresa_factura', function (Blueprint $table) {
-            $table->bigIncrements('Id_Dac_Emp_Fac');
-            $table->text('Nombre');
-            $table->text('Nit');
-            $table->text('Regimen');
-            $table->text('Reso_Dian');
-            $table->text('Representacion_Legal');
-            $table->text('Direccion');
-            $table->text('Telefono');
-            $table->text('Ciudad');
-            $table->text('Ofrece');
-            $table->text('Nombre_Empresa_2');
+            $table->bigIncrements('id');
+            $table->text('nombre');
+            $table->text('nit');
+            $table->text('regimen');
+            $table->text('reso_dian');
+            $table->text('representacion_legal');
+            $table->text('direccion');
+            $table->text('telefono');
+            $table->text('ciudad');
+            $table->text('ofrece');
+            $table->text('nombre_empresa_2');
             $table->timestamps();
         });
     }

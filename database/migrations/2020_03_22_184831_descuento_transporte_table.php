@@ -14,15 +14,15 @@ class DescuentoTransporteTable extends Migration
     public function up()
     {
         Schema::create('descuento_transporte', function (Blueprint $table) {
-            $table->bigIncrements('Id_Desc_Trans');
-            $table->integer('Id_Aut');
-            $table->integer('Id_Env');
-            $table->integer('Id_Rec');
+            $table->bigIncrements('id');
+            $table->integer('id_aut');
+            $table->integer('id_envio');
+            $table->integer('id_rec');
 
-            $table->timestamp('Fecha_Envio')->useCurrent();
-            $table->tinyInteger('Buen_Estado');
-            $table->text('Descripcion');
-            $table->string('Scanner');
+            $table->timestamp('fecha_envio')->useCurrent();
+            $table->tinyInteger('buen_estado');
+            $table->text('descripcion');
+            $table->string('scanner');
             
             $table->timestamps();
         });

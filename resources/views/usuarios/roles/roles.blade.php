@@ -23,7 +23,7 @@ active
   </div><!-- /.container-fluid -->
 </div>
 <!-- /.content-header -->
-
+@can('crear.rol')
 {{-- Modal para registro de un nuevo rol --}}
 <div class="modal fade" id="modal-crear" >
   <div class="modal-dialog">
@@ -51,7 +51,9 @@ active
     </div>
   </div>
 </div>
+@endcan
 
+@can('editar.rol')
 {{-- Modal para Editar un rol --}}
 <div class="modal fade" id="modal-editar" >
   <div class="modal-dialog">
@@ -80,7 +82,9 @@ active
     </div>
   </div>
 </div>
+@endcan
 
+@can('eliminar.rol')
 {{-- Modal para Eliminar un rol --}}
 <div class="modal fade" id="modal-eliminar" >
   <div class="modal-dialog">
@@ -106,6 +110,7 @@ active
     </div>
   </div>
 </div>
+@endcan
 
 <div class="content">
   <div id="listarRoles">

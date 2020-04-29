@@ -13,24 +13,21 @@ class ArticulosTable extends Migration
      */
     public function up()
     {
-        Schema::create('articulos', function (Blueprint $table) {
-            $table->bigIncrements('Id_Art');
-            $table->unsignedBigInteger('Id_Rol_Usua_Emp');
-            $table->unsignedBigInteger('Id_Prod');
-            $table->unsignedBigInteger('Id_Tipo');
-            
-            $table->integer('Valor_Compra');
-            $table->integer('Valor_Envio');
-            $table->integer('Id_Porcentaje_Min');
-            $table->integer('Id_Porcentaje');
-            $table->integer('Codigo_Barras');
+      Schema::create('articulos', function (Blueprint $table) {
+        $table->bigIncrements('id');
+        $table->unsignedBigInteger('id_producto');
+        $table->unsignedBigInteger('id_tipo');
+        
+        $table->integer('valor_compra');
+        $table->integer('valor_envio');
+        $table->integer('id_porcentaje_Min');
+        $table->integer('id_porcentaje');
+        $table->integer('codigo_barras');
 
-            $table->timestamps();
-
-            $table->foreign('Id_Rol_Usua_Emp')->references('Id_Rol_Usua_Emp')->on('rol_usuario_empresa');
-            $table->foreign('Id_Prod')->references('Id_Prod')->on('productos');
-            $table->foreign('Id_Tipo')->references('Id_Tipo_Art')->on('tipo_articulo');
-        });
+        $table->timestamps();
+        $table->foreign('id_producto')->references('id')->on('productos');
+        $table->foreign('id_tipo')->references('id')->on('tipo_articulo');
+      });
     }
 
     /**

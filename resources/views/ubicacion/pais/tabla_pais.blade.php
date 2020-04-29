@@ -3,12 +3,14 @@
   <div class="card">
     <div class="card-header ">
       <h3 class="card-title">Listado de paises</h3>
+      @can('crear.pais')
       <!--modal de boton registar rol-->
       <button id="modal" type="button" class="btn btn-info float-right" data-toggle="modal" data-target="#modal-crear">
         <i class="fas fa-plus"></i>
         Crear país
       </button>
      <!--fin modal de boton registar rol-->
+     @endcan
     </div>
     <!-- /.card-header -->
     <div class="card-body">
@@ -24,16 +26,20 @@
         <tbody>
           <tr>
           @foreach ($pais as $paises)
-            <td>{{$paises->Id_Pais}}</td>
-            <td>{{$paises->Nombre}}</td>
+            <td>{{$paises->id}}</td>
+            <td>{{$paises->nombre}}</td>
             <td>{{$paises->updated_at}}</td>
             <td>
-              <button class="btn btn-info btn-xs" data-toggle="modal" data-target="#modal-editar" onclick="Editar('{{$paises->Id_Pais}}','{{$paises->Nombre}}')">
+              @can('editar.pais')
+              <button class="btn btn-info btn-xs" data-toggle="modal" data-target="#modal-editar" onclick="Editar('{{$paises->id}}','{{$paises->nombre}}')">
                 <i class="fa fa-pen"></i>
               </button>
-              <button class="btn btn-danger btn-xs" data-toggle="modal" data-target="#modal-eliminar" onclick="Eliminar('{{$paises->Id_Pais}}','{{$paises->Nombre}}')">
+              @endcan
+              @can('eliminar.pais')
+              <button class="btn btn-danger btn-xs" data-toggle="modal" data-target="#modal-eliminar" onclick="Eliminar('{{$paises->id}}','{{$paises->nombre}}')">
                 <i class="fa fa-times"></i>
               </button>
+              @endcan
              </td>
             </tr>
           @endforeach

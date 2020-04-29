@@ -24,6 +24,7 @@ active
 </div>
 <!-- /.content-header -->
 
+@can('crear.tipo.documento')
 {{-- Modal para registro de un nuevo tipo de documento --}}
 <div class="modal fade" id="modal-crear" >
   <div class="modal-dialog">
@@ -51,7 +52,9 @@ active
     </div>
   </div>
 </div>
+@endcan
 
+@can('editar.tipo.documento')
 {{-- Modal para Editar un tipo de documento --}}
 <div class="modal fade" id="modal-editar" >
   <div class="modal-dialog">
@@ -80,7 +83,9 @@ active
     </div>
   </div>
 </div>
+@endcan
 
+@can('eliminar.tipo.documento')
 {{-- Modal para Eliminar un tipo de documento --}}
 <div class="modal fade" id="modal-eliminar" >
   <div class="modal-dialog">
@@ -106,6 +111,7 @@ active
     </div>
   </div>
 </div>
+@endcan
 
 <div class="content">
   <div id="listarTipoDocumento">
