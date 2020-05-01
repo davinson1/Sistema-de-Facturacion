@@ -8,6 +8,7 @@ use Illuminate\Http\Response;
 use Caffeinated\Shinobi\Models\Role;
 use App\Http\Requests\RolRequest;
 use Illuminate\Support\Facades\DB;
+use Caffeinated\Shinobi\Models\Permission;
 
 class RolesController extends Controller
 {
@@ -26,9 +27,10 @@ class RolesController extends Controller
         return view('usuarios/roles/tabla_rol',compact('rol'));
     }
 
-    public function index()
+    public function index(Role $rol)
     {
-        return view('usuarios/roles/roles');
+      $permissions = Permission::get();
+      return view('usuarios/roles/roles', compact('rol','permissions'));
     }
 
     /**
@@ -48,16 +50,19 @@ class RolesController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(RolRequest $request)
-    {
+    { 
       if ($request->ajax()) {
-        $rol = new Role();
-        $rol->nombre = $request->nombre;
-        $rol->save();
+        $rol = Role::create($request->all());
+
+        // Actualizar permisos
+        $rol->permissions()->sync($request->get('permissions'));
+        
         return response()->json([
         "mensaje" => "Rol creado correctamente."
          ]);
       }
     }
+
 
     /**
      * Display the specified resource.
@@ -76,9 +81,11 @@ class RolesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Role $rol)
     {
-      //
+      $permissions = Permission::get();
+      return view('usuarios/roles/editar_rol', compact('rol', 'permissions'));
+      // return compact('rol', 'permissions');
     }
 
     /**
@@ -92,9 +99,11 @@ class RolesController extends Controller
     {
       if ($request->ajax()) {
 
-        $rol = Role::Find($request->idRol);
-        $rol->nombre = $request->nombre;
-        $rol->save();
+        // Actualizar Rol
+        $rol->update($request->all());
+
+        //Actualizar permisos
+        $rol->permissions()->sync($request->get('permissions'));
 
         return response()->json([
         "mensaje" => "Rol editado correctamente."

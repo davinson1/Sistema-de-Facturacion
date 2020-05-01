@@ -25,7 +25,9 @@ class RolRequest extends FormRequest
     {
         return [
 
-       'nombre' => 'required|min:3|max:100|unique:rol,nombre|alpha',
+       'name' => 'required|min:3|max:100|unique:roles,name|regex:/^[\pL\s\-]+$/u',
+       'slug' => 'required|min:3|max:50|unique:roles,slug|alpha',
+       'description' => 'regex:/^[\pL\s\-]+$/u',
 
         ];
     }

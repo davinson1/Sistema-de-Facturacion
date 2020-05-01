@@ -31,7 +31,7 @@
             <td>{{$roles->updated_at}}</td>
             <td>
               @can('editar.rol')
-              <button class="btn btn-info btn-xs" data-toggle="modal" data-target="#modal-editar" onclick="Editar('{{$roles->id}}','{{$roles->name}}')">
+              <button class="btn btn-info btn-xs" data-toggle="modal" data-target="#modal-editar" onclick="Editar('{{$roles->id}}')">
                 <i class="fa fa-pen"></i>
               </button>
               @endcan

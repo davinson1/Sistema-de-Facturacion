@@ -36,12 +36,12 @@
             <td>{{ $usuarios->direccion }}</td>
             <td>{{ $usuarios->updated_at }}</td>
             <td>
-              @can('crear.editar')
+              @can('editar.usuario')
               <button class="btn btn-info btn-xs" data-toggle="modal" data-target="#modal-editar" onclick="Editar('{{$usuarios->id}}','{{$usuarios->name}}')">
                 <i class="fa fa-pen"></i>
               </button>
               @endcan
-              @can('crear.eliminar')
+              @can('eliminar.usuario')
               <button class="btn btn-danger btn-xs" data-toggle="modal" data-target="#modal-eliminar" onclick="Eliminar('{{$usuarios->id}}','{{$usuarios->name}}')">
                 <i class="fa fa-times"></i>
               </button>
