@@ -1,5 +1,6 @@
 <div class="modal-body">
   <div class="form-group">
+    {{ Form::hidden('id', null, ['id' => 'idRol']) }}
   	{{ Form::label('name', 'Nombre del rol *') }}
   	{{ Form::text('name', null, ['class' => 'form-control', 'id' => 'name']) }}
   </div>
@@ -27,7 +28,7 @@
 
       <div class="card-tools">
         <button type="button" class="btn btn-tool">
-          <input id="switch" class="switch" type="checkbox">
+          <input id="switch1" class="switch" type="checkbox">
           <label for="switch1" class="lbl align-middle"></label>
         </button>
         <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-plus"></i>
@@ -90,9 +91,5 @@
       <label>Nota:</label>
     </div>
     <!-- /.card-footer-->
-  </div>
-
-  <div class="form-group">
-  	{{ Form::submit('Guardar', ['id' => 'roles', 'class' => 'btn btn-sm btn-primary']) }}
   </div>
 </div>

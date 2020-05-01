@@ -46,7 +46,11 @@ active
         </button>
       </div>
         {{ Form::open(['id' => 'frm_crear_rol']) }}
-            @include('usuarios.roles.form.formulario')            
+            @include('usuarios.roles.form.formulario')
+
+            <div class="form-group">
+              {{ Form::submit('Guardar', ['id' => 'roles', 'class' => 'btn btn-sm btn-primary']) }}
+            </div>
         {{ Form::close() }}
     </div>
   </div>

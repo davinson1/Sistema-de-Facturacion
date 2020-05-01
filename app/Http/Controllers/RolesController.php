@@ -99,9 +99,11 @@ class RolesController extends Controller
     {
       if ($request->ajax()) {
 
-        $rol = Role::Find($request->idRol);
-        $rol->nombre = $request->nombre;
-        $rol->save();
+        // Actualizar Rol
+        $rol->update($request->all());
+
+        //Actualizar permisos
+        $rol->permissions()->sync($request->get('permissions'));
 
         return response()->json([
         "mensaje" => "Rol editado correctamente."

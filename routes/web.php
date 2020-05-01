@@ -33,7 +33,7 @@ Route::middleware(['auth'])->group(function(){
   Route::get('listar_roles', 'RolesController@listarRoles')->middleware('can:navegar.rol');
   Route::post('roles_crear', 'RolesController@store')->name('roles_crear')->middleware('can:crear.rol');
   Route::get('roles_editar/{rol}', 'RolesController@edit')->name('roles_editar')->middleware('can:editar.rol');
-  Route::get('roles_actualizar', 'RolesController@update')->name('roles_actualizar')->middleware('can:editar.rol');
+  Route::put('roles_actualizar/{rol}', 'RolesController@update')->name('roles_actualizar')->middleware('can:editar.rol');
   Route::post('/roles_eliminar', 'RolesController@destroy')->name('roles_eliminar')->middleware('can:eliminar.rol');
 
   // Rutas para tipo de documentos
