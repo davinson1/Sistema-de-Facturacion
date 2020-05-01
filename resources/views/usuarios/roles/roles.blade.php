@@ -22,11 +22,22 @@ active
     </div><!-- /.row -->
   </div><!-- /.container-fluid -->
 </div>
+@if (session('info'))
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-md-8">
+        <div class="alert alert-success">
+            {{ session('info') }}
+        </div>
+      </div>
+    </div>
+  </div>
+@endif
 <!-- /.content-header -->
 @can('crear.rol')
 {{-- Modal para registro de un nuevo rol --}}
-<div class="modal fade" id="modal-crear" >
-  <div class="modal-dialog">
+<div class="modal fade" id="modal-crear">
+  <div class="modal-dialog modal-lg">
     <div class="modal-content">
       <div class="modal-header bg-info">
         <h4 class="modal-title"><i class="fas fa-plus"></i> Registrar un Rol</h4>
@@ -34,20 +45,9 @@ active
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-
-      @csrf
-      <form>
-        <div class="modal-body">
-          <div class="form-group">
-            <label for="nombreRol">Nombre del rol:</label>
-            <input id="nombreRol" class="form-control focus" type="text" placeholder="Nombre del rol" required="required">
-          </div>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-          <button id="roles" class="btn btn-info" type="submit">Crear Rol </button>
-        </div>
-      </form>
+        {{ Form::open(['id' => 'frm_crear_rol']) }}
+            @include('usuarios.roles.form.formulario')            
+        {{ Form::close() }}
     </div>
   </div>
 </div>
@@ -64,21 +64,9 @@ active
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-
-      @csrf
-      <form>
-        <div class="modal-body">
-          <div class="form-group">
-            <label for="editarRol">Editar nombre del rol:</label>            
-            <input id="idRol" class="form-control" type="hidden" required>
-            <input id="editarRol" class="form-control focus" type="text" required>
-          </div>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-          <button type="submit" id="editarElRol" class="btn btn-primary">Editar Rol </button>
-        </div>
-      </form>
+      <div id="formulario">
+        
+      </div>
     </div>
   </div>
 </div>
@@ -115,10 +103,25 @@ active
 <div class="content">
   <div id="listarRoles">
     
-  </div>
+  </div>  
 </div>
-
 @endsection
 @section('script_ajax')
 <script src="/js/rol_ajax.js" type="text/javascript"></script>
+<!-- Page script -->
+<script>
+  $(function () {
+    // Seleccionar todos los selectores del usuario
+    $('#switch1').change(function() {
+      $('#todoUsuario > div > input').prop('checked', $(this).is(':checked'));      
+      $('#color1').toggleClass('card-info card-success');
+    });
+
+    // Seleccionar todos los selectores de ubicación
+    $('#switch2').change(function() {
+      $('#todoUbicacion > div > input').prop('checked', $(this).is(':checked'));      
+      $('#color2').toggleClass('card-info card-success');
+    });
+  });
+</script>
 @endsection

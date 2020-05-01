@@ -14,18 +14,23 @@ function listaRoles(){
 };
 
 // Insertar rol
-$('#roles').click(function(e) {
-  e.preventDefault();
-  var nombre = $("#nombreRol").val();
-  const url = 'roles_crear';
-  const params = {'nombre':nombre};
-  proccessFunction(url, 'POST', params, callbackStoreRoles);
-});
+  $('#roles').click(function(e) {
+    e.preventDefault();
+    var datos = $('#frm_crear_rol').serialize();
+    const url = 'roles_crear';
+    const params = datos;
+    proccessFunction(url, 'POST', params, callbackStoreRoles);
+  });
 
-//Editar rol
-function Editar(idRol, nombreRol) {  
-  $("#idRol").val(idRol);
-  $("#editarRol").val(nombreRol);
+// llamar formulario de editar rol
+function Editar(idRol) {  
+  $.ajax({
+      type:'get',
+      url:('roles_editar/'+idRol),
+      success: function(data){
+        $('#formulario').empty().html(data);
+      }
+  });
 }
 
 $('#editarElRol').click(function(e) {
@@ -54,11 +59,13 @@ $('#eliminarRol').click(function(e) {
 
 function callbackStoreRoles(status, response){
   if (status != 200){
-    toastr.error(response.responseJSON.errors.nombre);
+    toastr.error(response.responseJSON.errors.name || response.responseJSON.errors.slug || response.responseJSON.errors.description);
+    
     return false;
   };
 
   toastr.success(response.mensaje);
+
   $("#nombreRol").val('');   
   $(".close").click();
   listaRoles();
