@@ -24,6 +24,7 @@ function listaRoles(){
 
 // llamar formulario de editar rol
 function Editar(idRol) {
+  e.preventDefault();
   $.ajax({
       type:'get',
       url:('roles_editar/'+idRol),
