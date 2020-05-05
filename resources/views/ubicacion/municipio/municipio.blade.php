@@ -42,7 +42,7 @@ active
             <label for="idDepartamento">Seleccione el departamento</label>
             <select id="idDepartamento" class="custom-select mb-3">
               @foreach ($departamento as $departamentos)
-              <option value="{{$departamentos->Id_Depar}}">{{$departamentos->Nombre}}</option>
+              <option value="{{$departamentos->id}}">{{$departamentos->nombre}}</option>
               @endforeach
             </select>
           </div>
