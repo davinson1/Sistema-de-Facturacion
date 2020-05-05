@@ -58,3 +58,10 @@ Route::middleware(['auth'])->group(function(){
   Route::post('/municipios_editar', 'MunicipiosController@update')->name('municipios_editar')->middleware('can:editar.municipio');
   Route::post('/municipios_eliminar', 'MunicipiosController@destroy')->name('municipios_eliminar')->middleware('can:eliminar.municipio');
 });
+
+//rutas para departamentos
+Route::get('/departamentos', 'DepartamentosController@index')->name('departamentos')->middleware('can:navegar.departamentoo');
+Route::get('/listar_departamentos', 'DepartamentosController@ListarDepartamentos')->middleware('can:navegar.departamento');
+  Route::post('/departamentos_crear', 'DepartamentosController@store')->name('departamentos_crear')->middleware('can:crear.departamento');
+  Route::post('/departamentos_editar', 'DepartamentosController@update')->name('departamentos_editar')->middleware('can:editar.departamento');
+   Route::post('/departamentos_eliminar', 'DepartamentosController@destroy')->name('departamentos_eliminar')->middleware('can:eliminar.departamento');

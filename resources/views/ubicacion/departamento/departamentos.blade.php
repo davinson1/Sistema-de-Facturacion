@@ -2,7 +2,7 @@
 @section('menu-open1')
 menu-open
 @endsection
-@section('active8')
+@section('active7')
 active
 @endsection
 @section('contenido')
@@ -11,12 +11,12 @@ active
   <div class="container-fluid">
     <div class="row mb-2">
       <div class="col-sm-6">
-        <h1 class="m-0 text-dark"><i class="fas fa-thumbtack"></i> Municipios</h1>
+        <h1 class="m-0 text-dark"><i class="fas fa-thumbtack"></i> Departamentos</h1>
       </div><!-- /.col -->
       <div class="col-sm-6">
         <ol class="breadcrumb float-sm-right">
           <li class="breadcrumb-item"><a href="#">Inicio</a></li>
-          <li class="breadcrumb-item"><a href="#">municipios</a></li>
+          <li class="breadcrumb-item"><a href="#">departamentos</a></li>
         </ol>
       </div><!-- /.col -->
     </div><!-- /.row -->
@@ -24,12 +24,12 @@ active
 </div>
 <!-- /.content-header -->
 
-{{-- Modal para registro de un nuevo municipio --}}
+{{-- Modal para registro de un nuevo departamento --}}
 <div class="modal fade" id="modal-crear" >
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header bg-info">
-        <h4 class="modal-title"><i class="fas fa-plus"></i> Registrar un municipio</h4>
+        <h4 class="modal-title"><i class="fas fa-plus"></i> Registrar un departamento</h4>
         <button class="close" type="button" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -39,33 +39,34 @@ active
       <form>
         <div class="modal-body">
           <div class="form-group">
-            <label for="idDepartamento">Seleccione el departamento</label>
-            <select id="idDepartamento" class="custom-select mb-3">
-              @foreach ($departamento as $departamentos)
-              <option value="{{$departamentos->id}}">{{$departamentos->nombre}}</option>
+            <label for="idPais">Seleccione el pais</label>
+            <select id="idPais" class="custom-select mb-3">
+              @foreach ($pais as $paises)
+              <option value="{{$paises->id}}">{{$paises->nombre}}</option>
               @endforeach
             </select>
           </div>
           <div class="form-group">
-            <label for="nombreMunicipio">Nombre del municipio</label>
-            <input id="nombreMunicipio" class="form-control focus" type="text" placeholder="Nombre del municipio" required="">
+            <label for="nombreDepartamento">Nombre del departamento</label>
+            <input id="nombreDepartamento" class="form-control focus" type="text" placeholder="Nombre del departamento" required="">
           </div>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-          <button type="submit" id="crearMunicipio" class="btn btn-info">Crear País </button>
+          <button type="submit" id="crearDepartamento" class="btn btn-info">Crear departamento </button>
         </div>
       </form>
     </div>
   </div>
 </div>
 
-{{-- Modal para Editar un municipio --}}
+
+{{-- Modal para Editar un departamento --}}
 <div class="modal fade" id="modal-editar" >
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header bg-info">
-        <h4 class="modal-title"><i class="fa fa-pen"></i> Editar municipio</h4>
+        <h4 class="modal-title"><i class="fa fa-pen"></i> Editar departamento</h4>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -75,25 +76,28 @@ active
       <form>
         <div class="modal-body">
           <div class="form-group">
-            <input id="idMunicipio" class="form-control" type="hidden" required="">
-            <input id="editarMunicipio" class="form-control focus" type="text" required="">
+            <input id="idDepartamento" class="form-control" type="hidden" required="">
+
+            <input id="editarDepartamento" class="form-control focus" type="text" required="">
           </div>
         </div>
         <div class="modal-footer">
           <button class="btn btn-default" type="button" data-dismiss="modal">Cerrar</button>
-          <button id="editMunicipio" class="btn btn-info" type="submit">Editar municipio </button>
+          <button id="editarDepartamento1" class="btn btn-info" type="submit">Editar departamento </button>
         </div>
       </form>
     </div>
   </div>
 </div>
 
-{{-- Modal para Eliminar un municipio --}}
+
+
+{{-- Modal para Eliminar un departamento --}}
 <div class="modal fade" id="modal-eliminar" >
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header bg-danger">
-        <h4 class="modal-title"><i class="fa fa-trash"></i> Eliminar municipio</h4>
+        <h4 class="modal-title"><i class="fa fa-trash"></i> Eliminar departamento</h4>
         <button class="close" type="button" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -102,25 +106,27 @@ active
       @csrf
       <form>
         <div class="modal-body">
-          <h3 class="text-center">¿Esta seguro de eliminar el municipio <span id="nombreDeMunicipio"></span>?</h3>
-          <input id="idMunicipioEliminar" class="form-control" type="hidden" required="">
+          <h3 class="text-center">¿Esta seguro de eliminar el municipio <span id="nombreDeDepartamento"></span>?</h3>
+          <input id="idDepartamento" class="form-control" type="hidden" required="">
         </div>
         <div class="modal-footer">
           <button class="btn btn-default" type="button"  data-dismiss="modal">Cancelar</button>
-          <button id="eliminarMunicipio" class="btn btn-danger" type="submit">Eliminar </button>
+          <button id="eliminarDepartamento" class="btn btn-danger" type="submit">Eliminar </button>
         </div>
       </form>
     </div>
   </div>
 </div>
 
+
+
 <div class="content">
-  <div id="listarMunicipios">
+  <div id="listarDepartamentos">
 
   </div>
 </div>
 
 @endsection
 @section('script_ajax')
-<script  type="text/javascript" src="/js/municipio_ajax.js"></script>
+<script  type="text/javascript" src="/js/departamento_ajax.js"></script>
 @endsection

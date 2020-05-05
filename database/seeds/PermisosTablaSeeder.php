@@ -14,163 +14,164 @@ class PermisosTablaSeeder extends Seeder
     {
       // Permisos de usuarios
         Permission::create([
-          'categoria' => 'usuario',
           'name' => 'Navegar usuario',
+          'categoria' => 'usuario',
           'slug' => 'navegar.usuario',
           'description' => 'El usuario puede ver en el menú el enlace usuarios.',
         ]);
         Permission::create([
-          'categoria' => 'usuario',
           'name' => 'Crear usuario',
+          'categoria' => 'usuario',
           'slug' => 'crear.usuario',
           'description' => 'El usuario puede ver el boton de crear usuarios.',
         ]);
         Permission::create([
-          'categoria' => 'usuario',
           'name' => 'Editar usuario',
+          'categoria' => 'usuario',
           'slug' => 'editar.usuario',
           'description' => 'El usuario puede ver el boton de editar usuarios.',
         ]);
         Permission::create([
-          'categoria' => 'usuario',
           'name' => 'Eliminar usuario',
+          'categoria' => 'usuario',
           'slug' => 'eliminar.usuario',
           'description' => 'El usuario puede ver el boton de eliminar usuarios.',
         ]);
 
         // Permisos de roles
           Permission::create([
-            'categoria' => 'usuario',
             'name' => 'Navegar roles',
+            'categoria' => 'usuario',
             'slug' => 'navegar.rol',
             'description' => 'Lista y navega todos los roles del sistemas.',
           ]);
           Permission::create([
-            'categoria' => 'usuario',
             'name' => 'Crear de roles',
+            'categoria' => 'usuario',
             'slug' => 'crear.rol',
             'description' => 'Crear cualquier rol.',
           ]);
           Permission::create([
-            'categoria' => 'usuario',
             'name' => 'Edición de roles',
+            'categoria' => 'usuario',
             'slug' => 'editar.rol',
             'description' => 'Editar cualquier rol.',
           ]);
           Permission::create([
-            'categoria' => 'usuario',
             'name' => 'Eliminar rol',
+            'categoria' => 'usuario',
             'slug' => 'eliminar.rol',
             'description' => 'Eliminar cualquier rol.',
           ]);
 
         // Permisos de tipo de documento
           Permission::create([
-            'categoria' => 'usuario',
             'name' => 'Navegar tipo de documento',
+            'categoria' => 'usuario',
             'slug' => 'navegar.tipo.documento',
             'description' => 'Lista y navega todos los tipo de documento del sistemas.',
           ]);
           Permission::create([
-            'categoria' => 'usuario',
             'name' => 'Crear de tipo de documento',
+            'categoria' => 'usuario',
             'slug' => 'crear.tipo.documento',
             'description' => 'Crear cualquier tipo de documento.',
           ]);
           Permission::create([
-            'categoria' => 'usuario',
             'name' => 'Edición de tipo de documento',
+            'categoria' => 'usuario',
             'slug' => 'editar.tipo.documento',
             'description' => 'Editar cualquier tipo de documento.',
           ]);
           Permission::create([
-            'categoria' => 'usuario',
             'name' => 'Eliminar tipo de documento',
+            'categoria' => 'usuario',
             'slug' => 'eliminar.tipo.documento',
             'description' => 'Eliminar cualquier tipo de documento.',
           ]);
 
       // Permisos de ubicacion
         Permission::create([
-          'categoria' => 'ubicacion',
-          'name' => 'Navegar ubicación',
+         'name' => 'Navegar ubicación',
+         'categoria' => 'ubicacion',
           'slug' => 'navegar.ubicacion',
           'description' => 'El usuario puede ver en el menú el enlace ubicación.',
         ]);
         // Permisos de país
           Permission::create([
-            'categoria' => 'ubicacion',
             'name' => 'Navegar país',
+            'categoria' => 'ubicacion',
             'slug' => 'navegar.pais',
             'description' => 'El usuario puede ver en el menú el enlace país.',
           ]);
           Permission::create([
-            'categoria' => 'ubicacion',
             'name' => 'Crear país',
+            'categoria' => 'ubicacion',
             'slug' => 'crear.pais',
             'description' => 'El usuario puede ver el boton de crear país.',
           ]);
           Permission::create([
-            'categoria' => 'ubicacion',
             'name' => 'Editar país',
+            'categoria' => 'ubicacion',
             'slug' => 'editar.pais',
             'description' => 'El usuario puede ver el boton de editar país.',
           ]);
           Permission::create([
-            'categoria' => 'ubicacion',
             'name' => 'Eliminar país',
+            'categoria' => 'ubicacion',
             'slug' => 'eliminar.pais',
             'description' => 'El usuario puede ver el boton de eliminar país.',
           ]);
         // Permisos de departamento
           Permission::create([
-            'categoria' => 'ubicacion',
             'name' => 'Navegar departamento',
+            'categoria' => 'ubicacion',
             'slug' => 'navegar.departamento',
-            'description' => 'El usuario puede ver en el menú el enlace departamento.',
+            'description' => 'El usuario puede ver en el menú el enlace departamento',
           ]);
           Permission::create([
-            'categoria' => 'ubicacion',
             'name' => 'Crear departamento',
+            'categoria' => 'ubicacion',
             'slug' => 'crear.departamento',
             'description' => 'El usuario puede ver el boton de crear departamento.',
           ]);
           Permission::create([
-            'categoria' => 'ubicacion',
             'name' => 'Editar departamento',
+            'categoria' => 'ubicacion',
             'slug' => 'editar.departamento',
             'description' => 'El usuario puede ver el boton de editar departamento.',
           ]);
           Permission::create([
-            'categoria' => 'ubicacion',
             'name' => 'Eliminar departamento',
+            'categoria' => 'ubicacion',
             'slug' => 'eliminar.departamento',
             'description' => 'El usuario puede ver el boton de eliminar departamento.',
           ]);
         // Permisos de municipio
           Permission::create([
-            'categoria' => 'ubicacion',
             'name' => 'Navegar municipio',
+            'categoria' => 'ubicacion',
             'slug' => 'navegar.municipio',
             'description' => 'El usuario puede ver en el menú el enlace municipio.',
           ]);
           Permission::create([
-            'categoria' => 'ubicacion',
             'name' => 'Crear municipio',
+            'categoria' => 'ubicacion',
             'slug' => 'crear.municipio',
             'description' => 'El usuario puede ver el boton de crear municipio.',
           ]);
           Permission::create([
-            'categoria' => 'ubicacion',
             'name' => 'Editar municipio',
+            'categoria' => 'ubicacion',
             'slug' => 'editar.municipio',
             'description' => 'El usuario puede ver el boton de editar municipio.',
           ]);
           Permission::create([
-            'categoria' => 'ubicacion',
             'name' => 'Eliminar municipio',
+            'categoria' => 'ubicacion',
             'slug' => 'eliminar.municipio',
             'description' => 'El usuario puede ver el boton de eliminar municipio.',
           ]);
+
     }
 }
