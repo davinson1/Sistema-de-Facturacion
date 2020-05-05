@@ -8,7 +8,7 @@ class Municipios extends Model
 {
     protected $table = 'municipio';
     // protected $primaryKey = 'Id_Mun'; //por si la llave primaria tiene otro nombre
-    protected $fillable = ['nombre'];
+    protected $fillable = ['id_departamento', 'nombre'];
 
     public function departamentos()
     {

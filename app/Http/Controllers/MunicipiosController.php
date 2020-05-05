@@ -53,7 +53,7 @@ class MunicipiosController extends Controller
     {
       if ($request->ajax()) {
       $municipio = new Municipios();
-      $municipio->id = $request->idDepartamento;
+      $municipio->id_departamento = $request->idDepartamento;
       $municipio->nombre = $request->nombre;
       $municipio->save();
       return response()->json([
