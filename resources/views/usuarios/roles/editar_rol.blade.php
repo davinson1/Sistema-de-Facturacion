@@ -1,5 +1,8 @@
+<<<<<<< HEAD
 <!-- estilos personalizados-->
   <link rel="stylesheet" href="/css/style.css">
+=======
+>>>>>>> departamento
 {!! Form::model($rol, ['route' => ['roles_actualizar', $rol->id], 'method' => 'PUT', 'id' =>'frm_editar_rol']) !!}
     @include('usuarios.roles.form.formulario')
     <div class="form-group">

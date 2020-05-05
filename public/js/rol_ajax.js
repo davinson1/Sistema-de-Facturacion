@@ -23,7 +23,12 @@ function listaRoles(){
   });
 
 // llamar formulario de editar rol
+<<<<<<< HEAD
 function Editar(idRol) { 
+=======
+function Editar(idRol) {
+  e.preventDefault();
+>>>>>>> departamento
   $.ajax({
       type:'get',
       url:('roles_editar/'+idRol),

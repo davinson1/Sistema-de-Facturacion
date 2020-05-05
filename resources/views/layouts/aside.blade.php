@@ -27,7 +27,7 @@
           @can('navegar.usuario')
           <li class="nav-item has-treeview @yield('menu-open')">
             <a href="#" class="nav-link @yield('active2') @yield('active3') @yield('active4') @yield('active5')">
-              <i class="fas fa-users nav-icon"></i>              
+              <i class="fas fa-users nav-icon"></i>
               <p>
                 Usuarios
                 <i class="right fas fa-angle-left"></i>
@@ -37,7 +37,7 @@
               @can('navegar.usuario')
               <li class="nav-item">
                 <a href="usuarios" class="nav-link @yield('active2')">
-                  <i class="fas fa-user-friends nav-icon"></i>                  
+                  <i class="fas fa-user-friends nav-icon"></i>
                   <p>Usuarios</p>
                 </a>
               </li>
@@ -81,7 +81,7 @@
               @endcan
               @can('navegar.departamento')
               <li class="nav-item">
-                <a href="roles" class="nav-link @yield('active7')">
+                <a href="departamentos" class="nav-link @yield('active7')">
                   <i class="fas fa-location-arrow nav-icon"></i>
                   <p>departamento</p>
                 </a>
