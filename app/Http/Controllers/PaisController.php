@@ -52,12 +52,12 @@ class PaisController extends Controller
     public function store(PaisRequest $request)
     {
       if ($request->ajax()) {
-      $pais = new Paises();
-      $pais->nombre = $request->nombre;
-      $pais->save();
-      return response()->json([
-      "mensaje" => "País creado correctamente."
-       ]);
+        $pais = new Paises();
+        $pais->nombre = $request->nombre;
+        $pais->save();
+        return response()->json([
+          "mensaje" => "País creado correctamente."
+        ]);
       }
     }
 
