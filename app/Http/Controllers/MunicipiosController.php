@@ -96,6 +96,7 @@ class MunicipiosController extends Controller
       if ($request->ajax()) {
 
       $municipio = Municipios::Find($request->idMunicipio);
+      $municipio->id_departamento = $request->idDepartamento;
       $municipio->nombre = $request->nombre;
       $municipio->save();
 

@@ -12,12 +12,7 @@ class Municipios extends Model
 
     public function departamentos()
     {
-<<<<<<< HEAD
       // return $this->hasOne('App\Models\Departamentos', 'Id_Depar');      
-      return $this->belongsTo(Departamentos::class, 'id_departamento');      
-=======
-      // return $this->hasOne('App\Models\Departamentos', 'Id_Depar');
       return $this->belongsTo(Departamentos::class, 'id_departamento');
->>>>>>> departamento
     }
 }

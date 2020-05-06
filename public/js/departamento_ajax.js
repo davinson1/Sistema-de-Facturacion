@@ -24,27 +24,22 @@ $('#crearDepartamento').click(function(e) {
   proccessFunction(url, 'POST', params, callbackStoreRoles);
 });
 
-
-
-
-
 //Editar Departamento
-function Editar(idDepartamento, nombreDepartamento,nombrePais) {
+function Editar(idDepartamento, nombreDepartamento, idPais, nombrePais) {
   $("#idDepartamento").val(idDepartamento);
   $("#editarDepartamento").val(nombreDepartamento);
-   $("#pais").val(nombrePais);
+  $("#paisSeleccionado").val(idPais).html(nombrePais);
 }
 
 $('#editarDepartamento1').click(function(e) {
   e.preventDefault();
+  var idPais = $("#editarIdPais").val();
   var idDepartamento = $("#idDepartamento").val();
   var nombre = $("#editarDepartamento").val();
   const url = 'departamentos_editar';
-  const params = {'idDepartamento':idDepartamento, 'nombre':nombre};
+  const params = {'idPais':idPais, 'idDepartamento':idDepartamento, 'nombre':nombre};
   proccessFunction(url, 'POST', params, callbackStoreRoles);
 });
-
-
 
 //Eliminar municipio
 function Eliminar(idDepartamento, nombreDepartamento) {
@@ -72,11 +67,6 @@ function callbackDeleteDepartamentos(status, response){
   $(".close").click();
   listadoDepartamentos();
 }
-
-
-
-
-
 
 function callbackStoreRoles(status, response){
   if (status != 200){

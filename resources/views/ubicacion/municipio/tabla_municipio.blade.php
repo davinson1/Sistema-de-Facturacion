@@ -30,7 +30,7 @@
             <td>{{$municipios->nombre}}</td>
             <td>{{$municipios->updated_at}}</td>
             <td>
-              <button class="btn btn-info btn-xs" data-toggle="modal" data-target="#modal-editar" onclick="Editar('{{$municipios->id}}','{{$municipios->nombre}}')">
+              <button class="btn btn-info btn-xs" data-toggle="modal" data-target="#modal-editar" onclick="Editar('{{$municipios->id}}','{{$municipios->nombre}}','{{$municipios->id_departamento}}', '{{ $municipios->departamentos->nombre }}')">
                 <i class="fa fa-pen"></i>
               </button>
               <button class="btn btn-danger btn-xs" data-toggle="modal" data-target="#modal-eliminar" onclick="Eliminar('{{$municipios->id}}','{{$municipios->nombre}}')">

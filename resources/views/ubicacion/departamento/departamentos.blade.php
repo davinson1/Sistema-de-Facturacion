@@ -24,6 +24,7 @@ active
 </div>
 <!-- /.content-header -->
 
+@can('crear.departamento')
 {{-- Modal para registro de un nuevo departamento --}}
 <div class="modal fade" id="modal-crear" >
   <div class="modal-dialog">
@@ -42,7 +43,7 @@ active
             <label for="idPais">Seleccione el pais</label>
             <select id="idPais" class="custom-select mb-3">
               @foreach ($pais as $paises)
-              <option value="{{$paises->id}}">{{$paises->nombre}}</option>
+                <option value="{{$paises->id}}">{{$paises->nombre}}</option>
               @endforeach
             </select>
           </div>
@@ -59,8 +60,9 @@ active
     </div>
   </div>
 </div>
+@endcan
 
-
+@can('editar.departamento')
 {{-- Modal para Editar un departamento --}}
 <div class="modal fade" id="modal-editar" >
   <div class="modal-dialog">
@@ -76,8 +78,18 @@ active
       <form>
         <div class="modal-body">
           <div class="form-group">
+            <label for="editarIdPais">Seleccione el país</label>
+            <select id="editarIdPais" class="custom-select mb-3">
+              <option id="paisSeleccionado" onfocus=""></option>
+              <optgroup label="Paises">
+                @foreach ($pais as $paises)
+                  <option value="{{$paises->id}}">{{$paises->nombre}}</option>
+                @endforeach
+              </optgroup>
+            </select>
+          </div>
+          <div class="form-group">
             <input id="idDepartamento" class="form-control" type="hidden" required="">
-
             <input id="editarDepartamento" class="form-control focus" type="text" required="">
           </div>
         </div>
@@ -89,9 +101,9 @@ active
     </div>
   </div>
 </div>
+@endcan
 
-
-
+@can('eliminar.departamento')
 {{-- Modal para Eliminar un departamento --}}
 <div class="modal fade" id="modal-eliminar" >
   <div class="modal-dialog">
@@ -117,8 +129,7 @@ active
     </div>
   </div>
 </div>
-
-
+@endcan
 
 <div class="content">
   <div id="listarDepartamentos">

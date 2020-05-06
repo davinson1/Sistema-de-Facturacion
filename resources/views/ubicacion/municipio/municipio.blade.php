@@ -24,6 +24,7 @@ active
 </div>
 <!-- /.content-header -->
 
+@can('crear.municipio')
 {{-- Modal para registro de un nuevo municipio --}}
 <div class="modal fade" id="modal-crear" >
   <div class="modal-dialog">
@@ -59,7 +60,9 @@ active
     </div>
   </div>
 </div>
+@endcan
 
+@can('editar.municipio')
 {{-- Modal para Editar un municipio --}}
 <div class="modal fade" id="modal-editar" >
   <div class="modal-dialog">
@@ -75,8 +78,20 @@ active
       <form>
         <div class="modal-body">
           <div class="form-group">
+            <label for="editarIdDepartamento">Seleccione el departamento</label>
+            <select id="editarIdDepartamento" class="custom-select mb-3">
+              <option id="departamentoSeleccionado" onfocus=""></option>
+              <optgroup label="Departamentos">
+                @foreach ($departamento as $departamentos)
+                  <option value="{{$departamentos->id}}">{{$departamentos->nombre}}</option>
+                @endforeach
+              </optgroup>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="nombreMunicipio">Nombre del municipio</label>
             <input id="idMunicipio" class="form-control" type="hidden" required="">
-            <input id="editarMunicipio" class="form-control focus" type="text" required="">
+            <input id="editarMunicipio" class="form-control focus" type="text" placeholder="Nombre del municipio" required="">
           </div>
         </div>
         <div class="modal-footer">
@@ -87,7 +102,9 @@ active
     </div>
   </div>
 </div>
+@endcan
 
+@can('eliminar.municipios')
 {{-- Modal para Eliminar un municipio --}}
 <div class="modal fade" id="modal-eliminar" >
   <div class="modal-dialog">
@@ -113,6 +130,7 @@ active
     </div>
   </div>
 </div>
+@endcan
 
 <div class="content">
   <div id="listarMunicipios">

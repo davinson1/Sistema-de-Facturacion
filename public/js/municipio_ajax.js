@@ -24,18 +24,20 @@ $('#crearMunicipio').click(function(e) {
 });
 
 
-//Editar Municipio
-function Editar(idMunicipio, nombreMunicipio) {  
+// Editar Municipio
+function Editar(idMunicipio, nombreMunicipio, idDepartamento, nombreDepartamento) {  
   $("#idMunicipio").val(idMunicipio);
   $("#editarMunicipio").val(nombreMunicipio);
+  $("#editarIdDepartamento > #departamentoSeleccionado").val(idDepartamento).html(nombreDepartamento);  
 }
 
 $('#editMunicipio').click(function(e) {
   e.preventDefault();
+  var idDepartamento = $("#editarIdDepartamento").val();
   var idMunicipio = $("#idMunicipio").val();
   var nombre = $("#editarMunicipio").val();
   const url = 'municipios_editar';
-  const params = {'idMunicipio':idMunicipio, 'nombre':nombre};
+  const params = {'idDepartamento':idDepartamento, 'idMunicipio':idMunicipio, 'nombre':nombre};
   proccessFunction(url, 'POST', params, callbackStoreRoles);
 });
 

@@ -92,6 +92,7 @@ class DepartamentosController extends Controller
         if ($request->ajax()) {
 
       $departamento = Departamentos::Find($request->idDepartamento);
+      $departamento->id_pais = $request->idPais;
       $departamento->nombre = $request->nombre;
       $departamento->save();
       return response()->json([
