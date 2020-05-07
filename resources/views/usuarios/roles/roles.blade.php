@@ -22,17 +22,7 @@ active
     </div><!-- /.row -->
   </div><!-- /.container-fluid -->
 </div>
-@if (session('info'))
-  <div class="container">
-    <div class="row justify-content-center">
-      <div class="col-md-8">
-        <div class="alert alert-success">
-            {{ session('info') }}
-        </div>
-      </div>
-    </div>
-  </div>
-@endif
+
 <!-- /.content-header -->
 @can('crear.rol')
 {{-- Modal para registro de un nuevo rol --}}

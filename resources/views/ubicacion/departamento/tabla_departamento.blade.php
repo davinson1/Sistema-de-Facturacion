@@ -16,7 +16,7 @@
         <thead class="bg-info">
         <tr>
           <th>ID</th>
-          <th>Pais</th>
+          <th>País</th>
           <th>Departamento</th>
           <th>Fecha de Creación</th>
           <th>Acciones</th>
@@ -30,7 +30,7 @@
             <td>{{$departamentos->nombre}}</td>
             <td>{{$departamentos->updated_at}}</td>
             <td>
-              <button class="btn btn-info btn-xs" data-toggle="modal" data-target="#modal-editar" onclick="Editar('{{$departamentos->id}}','{{$departamentos->nombre}}','{{$departamentos->pais->nombre}}')">
+              <button class="btn btn-info btn-xs" data-toggle="modal" data-target="#modal-editar" onclick="Editar('{{$departamentos->id}}','{{$departamentos->nombre}}','{{$departamentos->id_pais}}','{{$departamentos->pais->nombre}}')">
                 <i class="fa fa-pen"></i>
               </button>
               <button class="btn btn-danger btn-xs" data-toggle="modal" data-target="#modal-eliminar" onclick="Eliminar('{{$departamentos->id}}','{{$departamentos->nombre}}')">

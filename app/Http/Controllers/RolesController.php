@@ -95,20 +95,16 @@ class RolesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(RolRequest $request)
+    public function update(Request $request, Role $rol)
     {
-      if ($request->ajax()) {
-
-        // Actualizar Rol
+    // Actualizar Rol
         $rol->update($request->all());
 
         //Actualizar permisos
         $rol->permissions()->sync($request->get('permissions'));
-
         return response()->json([
-        "mensaje" => "Rol editado correctamente."
+        "mensaje" => "Rol actualizado correctamente."
          ]);
-      }
     }
 
     /**

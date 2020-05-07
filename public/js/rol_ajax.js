@@ -23,7 +23,12 @@ function listaRoles(){
   });
 
 // llamar formulario de editar rol
+<<<<<<< HEAD
+function Editar(idRol) { 
+=======
 function Editar(idRol) {
+  e.preventDefault();
+>>>>>>> departamento
   $.ajax({
       type:'get',
       url:('roles_editar/'+idRol),
@@ -32,23 +37,6 @@ function Editar(idRol) {
       }
   });
 }
-
-$('#actualizarRol').click(function(e) {
-  e.preventDefault();
-  var idRol = $('#name').val();
-  console.log(idRol);
-  // var datos = $('#frm_editar_rol').serialize();
-  // const url = 'roles_actualizar/'+idRol;
-  // const params = datos;
-  // proccessFunction(url, 'POST', params, callbackStoreRoles);
-  // e.preventDefault();
-  // var nombre = $("#editarRol").val();
-  // var idRol = $("#idRol").val();
-  // const url = 'roles_editar';
-  // const params = {'idRol':idRol, 'nombre':nombre};
-  // proccessFunction(url, 'POST', params, callbackStoreRoles);
-});
-
 
 //Eliminar Rol
 function Eliminar(idRol, nombreRol) {
