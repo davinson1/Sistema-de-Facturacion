@@ -24,7 +24,7 @@ class MunicipioRequest extends FormRequest
     public function rules()
     {
       return [
-            'nombre' => 'required|min:3|max:100|unique:municipio,nombre|regex:/^[\pL\s\-]+$/u',
+            'nombre' => 'required|min:3|max:100|regex:/^[\pL\s\-]+$/u',
       ];
     }
 }
