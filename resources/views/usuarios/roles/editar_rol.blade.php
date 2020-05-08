@@ -119,7 +119,7 @@
   e.preventDefault();
   var datos = $('#frm_editar_rol').serialize();
   const url = $('#frm_editar_rol').attr('action');
-  
+
   $.ajax({
     url: url,
     method: 'put',

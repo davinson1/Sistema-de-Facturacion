@@ -51,13 +51,13 @@ $('#eliminarRol').click(function(e) {
 function callbackStoreRoles(status, response){
   if (status != 200){
     toastr.error(response.responseJSON.errors.name || response.responseJSON.errors.slug || response.responseJSON.errors.description);
-    
+
     return false;
   };
 
   toastr.success(response.mensaje);
 
-  $("#nombreRol").val('');   
+  $("#nombreRol").val('');
   $(".close").click();
   listaRoles();
 }
