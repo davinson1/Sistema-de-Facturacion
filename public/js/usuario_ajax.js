@@ -1,16 +1,13 @@
-// Listar los Usuarios
-function listadoUsuarios(){
-  $.ajax({
-    type:'get',
-    url:('listar_usuarios'),
-    success: function(data){
-      $('#listarUsuarios').empty().html(data);
-    }
-  });
-};
-
 $(document).ready(function() {
-  listadoUsuarios();
+  
+  $("#tabla-usuario").DataTable({
+    "responsive": true,
+    "autoWidth": true,
+    });
+
+  $('#modalCrearUsuario').click(function(){
+      $("#listarUsuarios").load("formulario_usuarios");
+  });
 });
 
 //Eliminar usuario

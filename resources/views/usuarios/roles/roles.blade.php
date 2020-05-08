@@ -36,11 +36,7 @@ active
         </button>
       </div>
         {{ Form::open(['id' => 'frm_crear_rol']) }}
-            @include('usuarios.roles.form.formulario')
-
-            <div class="form-group">
-              {{ Form::submit('Guardar', ['id' => 'roles', 'class' => 'btn btn-sm btn-primary']) }}
-            </div>
+            @include('usuarios.roles.form.formulario')            
         {{ Form::close() }}
     </div>
   </div>
@@ -105,17 +101,18 @@ active
 <!-- Page script -->
 <script>
   $(function () {
-    // Seleccionar todos los selectores del usuario
+    // Seleccionar todos los selectores del usuario al crear
     $('#switch1').change(function() {
       $('#todoUsuario > div > input').prop('checked', $(this).is(':checked'));      
       $('#color1').toggleClass('card-info card-success');
     });
 
-    // Seleccionar todos los selectores de ubicación
+    // Seleccionar todos los selectores de ubicación al crear
     $('#switch2').change(function() {
       $('#todoUbicacion > div > input').prop('checked', $(this).is(':checked'));      
       $('#color2').toggleClass('card-info card-success');
     });
   });
+
 </script>
 @endsection

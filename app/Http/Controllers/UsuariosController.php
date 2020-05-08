@@ -3,6 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\TipoDocumento;
+use App\Models\Municipios;
+use Caffeinated\Shinobi\Models\Role;
+use Caffeinated\Shinobi\Models\Permission;
 
 use App\User;
 
@@ -18,15 +22,10 @@ class UsuariosController extends Controller
         $this->middleware('auth');
     }
 
-    public function listarUsuarios()
-    {
-      $usuario = User::all();
-      return view('usuarios/usuario/tabla_usuarios', compact('usuario'));
-    }
-
     public function index()
     {
-        return view('usuarios/usuario/usuarios');
+      $usuario = User::all();
+      return view('usuarios/usuario/usuarios', compact('usuario'));
     }
 
     /**
@@ -36,7 +35,10 @@ class UsuariosController extends Controller
      */
     public function create()
     {
-        //
+      $tipoDocumento = TipoDocumento::get();
+      $municipios = Municipios::get();
+      $roles = Role::get();
+      return view('usuarios/usuario/crear_usuario', compact('roles', 'tipoDocumento', 'municipios'));
     }
 
     /**
@@ -47,7 +49,7 @@ class UsuariosController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        
     }
 
     /**
