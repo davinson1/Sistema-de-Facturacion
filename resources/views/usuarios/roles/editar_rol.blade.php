@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-<!-- estilos personalizados-->
-  <link rel="stylesheet" href="/css/style.css">
-=======
->>>>>>> departamento
+
 {!! Form::model($rol, ['route' => ['roles_actualizar', $rol->id], 'method' => 'PUT', 'id' =>'frm_editar_rol']) !!}
     @include('usuarios.roles.form.formulario')
     <div class="form-group">
@@ -14,8 +10,8 @@
   $('#actualizarRol').click(function(e) {
   e.preventDefault();
   var datos = $('#frm_editar_rol').serialize();
-  const url = $('#frm_editar_rol').attr('action');  
-  
+  const url = $('#frm_editar_rol').attr('action');
+
   $.ajax({
     url: url,
     method: 'put',

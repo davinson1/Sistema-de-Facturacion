@@ -44,7 +44,7 @@
           <div class="icheck-success">
             {{ Form::checkbox('permissions[]', $permission->id, null, ['id' => 'checkboxSuccess'.$permission->id]) }}
             {{ Form::label('checkboxSuccess'.$permission->id, $permission->name) }}
-            
+
           </div>
         </div>
         @endif
@@ -80,7 +80,7 @@
           <div class="icheck-success">
             {{ Form::checkbox('permissions[]', $permission->id, null, ['id' => 'checkboxSuccess'.$permission->id]) }}
             {{ Form::label('checkboxSuccess'.$permission->id, $permission->name) }}
-            
+
           </div>
         </div>
         @endif
