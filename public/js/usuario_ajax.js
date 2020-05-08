@@ -1,13 +1,14 @@
 $(document).ready(function() {
-  
+  // Inicializar la tabla
   $("#tabla-usuario").DataTable({
     "responsive": true,
     "autoWidth": true,
     });
 
+  // Llamar el formulario de crear usuarios
   $('#modalCrearUsuario').click(function(){
       $("#listarUsuarios").load("formulario_usuarios");
-  });
+  });  
 });
 
 //Eliminar usuario
@@ -33,5 +34,4 @@ function callbackStoreRoles(status, response){
   toastr.success(response.mensaje);
   $("#nombreUsuario").val('');   
   $(".close").click();
-  listadoMunicipios();
 }

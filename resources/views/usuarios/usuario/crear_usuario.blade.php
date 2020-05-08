@@ -3,11 +3,11 @@
     <h3 class="card-title">Datos del usuario</h3>
   </div>
   <div class="card-body">
-    {{ Form::open(['route' => 'crear_usuarios']) }}
-      <div class="row">
+    <form id="frmCrearUsuario" enctype="multipart/form-data">    
+      <div class="row mb-3">
         <div class="col-6">
           <label for="idTipoDocumento">Seleccione el documento</label>
-          <select id="idTipoDocumento" class="custom-select mb-3 form-control">
+          <select id="idTipoDocumento" class="custom-select form-control" name="tipoDocumento">
             @foreach ($tipoDocumento as $tipoDoc)
               <option value="{{$tipoDoc->id}}">{{$tipoDoc->nombre}}</option>
             @endforeach
@@ -15,7 +15,7 @@
         </div>
         <div class="col-6">
           <label for="idMunicipios">Seleccione el municipio</label>
-          <select id="idMunicipios" class="custom-select mb-3 form-control">
+          <select id="idMunicipios" class="custom-select form-control" name="municipio">
             @foreach ($municipios as $municipio)
               <option value="{{$municipio->id}}">{{$municipio->nombre}}</option>
             @endforeach
@@ -23,47 +23,47 @@
         </div>
       </div>
 
-      <div class="row">
+      <div class="row mb-3">
         <div class="col-6">
-          {{ Form::label('nombreUsusario', 'Nombre del usuario') }}
-          {{ Form::text('nombre', null, ['class' => 'form-control', 'id' => 'nombreUsusario', 'required' => 'required']) }}
+          <label for="nombreUsusario">Nombre del usuario</label>
+          <input id="nombreUsusario" class="form-control" type="text" name="nombreUsusario">
         </div>
         <div class="col-6">
-          {{ Form::label('apellidoUsusario', 'Apellido del usuario') }}
-          {{ Form::text('apellido', null, ['class' => 'form-control', 'id' => 'apellidoUsusario']) }}
-        </div>
-      </div>
-
-      <div class="row">
-        <div class="col-6">
-          {{ Form::label('documentoUsusario', 'Numero de documento') }}
-          {{ Form::number('documento', null, ['class' => 'form-control', 'id' => 'documentoUsusario']) }}
-        </div>
-        <div class="col-6">
-          {{ Form::label('direccionUsusario', 'Dirección') }}
-          {{ Form::text('direccion', null, ['class' => 'form-control', 'id' => 'direccionUsusario']) }}
+          <label for="apellidoUsusario">Apellido del usuario</label>
+          <input id="apellidoUsusario" class="form-control" type="text" name="apellidoUsusario">          
         </div>
       </div>
 
-      <div class="row">
+      <div class="row mb-3">
         <div class="col-6">
-          {{ Form::label('emailUsusario', 'Email') }}
-          {{ Form::email('email', null, ['class' => 'form-control', 'id' => 'emailUsusario']) }}
+          <label for="documentoUsusario">Número de documento</label>
+          <input id="documentoUsusario" class="form-control" type="number" name="documentoUsusario">
         </div>
         <div class="col-6">
-          {{ Form::label('imagenUsuario', 'Foto del usuario') }}
-          {{ Form::file('image', ['class' => 'form-control', 'id' => 'imagenUsuario'])}}
+          <label for="direccionUsusario">Dirección</label>
+          <input id="direccionUsusario" class="form-control" type="text" name="direccionUsusario">
         </div>
       </div>
 
-      <div class="row">
+      <div class="row mb-3">
         <div class="col-6">
-          {{ Form::label('copiaDocumento', 'Copia del documento') }}
-            {{ Form::file('image', [ 'class' => 'form-control', 'id' => 'copiaDocumento']) }}
+          <label for="emailUsusario">Correo electrónico</label>
+          <input id="emailUsusario" class="form-control" type="email" name="emailUsusario">
         </div>
         <div class="col-6">
-          {{ Form::label('claveUsusario', 'Contraseña') }}
-          {{ Form::password('clave', ['class' => 'form-control', 'id' => 'claveUsusario']) }}
+          <label for="fotoUsuario">Foto del usuario</label>
+          <input id="fotoUsuario" class="form-control" type="file" name="fotoUsuario">
+        </div>
+      </div>
+
+      <div class="row mb-3">
+        <div class="col-6">
+          <label for="copiaDocumento">Copia de documento</label>
+          <input id="copiaDocumento" class="form-control" type="file" name="copiaDocumento">
+        </div>
+        <div class="col-6">
+          <label for="claveUsusario">Contraseña</label>
+          <input id="claveUsusario" class="form-control" type="password" name="claveUsusario">
         </div>
       </div>
       <hr>
@@ -82,10 +82,27 @@
           </ul>
       </div>
       <div class="form-group">
-        {{ Form::submit('Guardar', ['class' => 'btn btn-sm btn-primary']) }}
-      </div>
-    {{ Form::close() }}
+        <button type="submit" id="crearUsuario" class="btn btn-primary">Crear usuario</button>
+      </div>    
+    </form>
   </div>
   <!-- /.card-body -->      
 </div>
 <!-- /.card -->
+<script type="text/javascript">
+  $("#frmCrearUsuario").submit(function(ev){
+    $.ajax({
+      url: 'crear_usuarios',
+      type: 'POST',
+      data: new FormData(this),
+      contentType: false,
+      processData: false,
+      cache: false, 
+      success: function(response){ // En caso de que todo salga bien.
+        toastr.success(response.mensaje);
+        console.log(response.mensaje);
+      },
+    });
+    ev.preventDefault();
+  });
+</script>

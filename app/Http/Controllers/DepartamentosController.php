@@ -48,13 +48,13 @@ class DepartamentosController extends Controller
     {
 
       if ($request->ajax()) {
-      $Departamento = new DepartamentoS();
-      $Departamento->id_pais = $request->idPais;
-      $Departamento->nombre = $request->nombre;
-      $Departamento->save();
-      return response()->json([
-      "mensaje" => "Departamento creado correctamente."
-       ]);
+        $Departamento = new Departamentos();
+        $Departamento->id_pais = $request->idPais;
+        $Departamento->nombre = $request->nombre;
+        $Departamento->save();
+        return response()->json([
+        "mensaje" => "Departamento creado correctamente."
+         ]);
       }
     }
 
