@@ -25,9 +25,8 @@ Route::middleware(['auth'])->group(function(){
 
   // Rutas para usuarios
   Route::get('usuarios', 'UsuariosController@index')->name('usuarios')->middleware('can:navegar.usuario');
-  Route::get('listar_usuarios', 'UsuariosController@listarUsuarios')->middleware('can:navegar.usuario');
   Route::get('formulario_usuarios', 'UsuariosController@create')->name('formulario_usuarios')->middleware('can:crear.usuario');
-  Route::get('crear_usuarios', 'UsuariosController@create')->name('crear_usuarios')->middleware('can:crear.usuario');
+  Route::post('crear_usuarios', 'UsuariosController@store')->name('crear_usuarios')->middleware('can:crear.usuario');
 
   Route::post('/usuarios_eliminar', 'UsuariosController@destroy')->name('usuarios_eliminar')->middleware('can:eliminar.usuario');
 

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
 use App\Models\TipoDocumento;
 use App\Models\Municipios;
@@ -49,7 +50,31 @@ class UsuariosController extends Controller
      */
     public function store(Request $request)
     {
-        
+      $foto = $request->file('fotoUsuario')->store('public');
+      $documento = $request->file('copiaDocumento')->store('public');
+
+      if ($request->ajax()) {
+
+        $usuario = new User();
+        $usuario->id_tipo_documento = $request->tipoDocumento;
+        $usuario->id_municipio = $request->municipio;
+        $usuario->name = $request->nombreUsusario;
+        $usuario->apellido = $request->apellidoUsusario;
+        $usuario->numero_documento = $request->documentoUsusario;
+        $usuario->direccion = $request->direccionUsusario;
+        $usuario->email = $request->emailUsusario;
+        $usuario->foto = $foto;
+        $usuario->copia_documento = $documento;
+        $usuario->password = Hash::make($request->claveUsusario);
+        $usuario->activo = '1';
+        $usuario->save();
+
+        $usuario->roles()->sync($request->get('roles'));
+
+        return response()->json([
+        "mensaje" => "Datos resividos correctamente."
+         ]);
+      }
     }
 
     /**
