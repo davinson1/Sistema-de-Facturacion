@@ -24,36 +24,6 @@ active
 </div>
 <!-- /.content-header -->
 
-@can('crear.usuario')
-{{-- Modal para registro de un nuevo usuario --}}
-<div class="modal fade" id="modal-crear" >
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header bg-info">
-        <h4 class="modal-title"><i class="fas fa-plus"></i> Registro de usuario</h4>
-        <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-
-      @csrf
-      <form>
-        <div class="modal-body">          
-          <div class="form-group">
-            <label for="nombreUsuario">Nombre del usuario: </label>
-            <input id="nombreUsuario" class="form-control focus" type="text" placeholder="Nombre del usuario" required="">
-          </div>
-        </div>
-        <div class="modal-footer">
-          <button class="btn btn-default" type="button" data-dismiss="modal">Cerrar</button>
-          <button id="crearUsuario" class="btn btn-info" type="submit">Crear usuario </button>
-        </div>
-      </form>
-    </div>
-  </div>
-</div>
-@endcan
-
 @can('editar.usuario')
 {{-- Modal para Editar un Usuario --}}
 <div id="modal-editar" class="modal fade">
@@ -113,9 +83,61 @@ active
 </div>
 @endcan
 
+ <!-- /.card -->
 <div class="content">
-  <div id="listarUsuarios">
-
+  <div class="card">
+    <div class="card-header ">
+      <h3 class="card-title">Listado de usuarios</h3>
+      @can('crear.usuario')
+      <!--modal de boton registar usuario-->
+      <button id="modalCrearUsuario" type="button" class="btn btn-info float-right">
+        <i class="fas fa-plus"></i>
+        Crear usuario
+      </button>
+     <!--fin modal de boton registar usuario-->
+     @endcan
+    </div>
+    <div class="card-body">
+      <div id="listarUsuarios">
+        <table id="tabla-usuario" class="table table-bordered table-striped">
+          <thead class="bg-info">
+          <tr>
+            <th>ID</th>
+            <th>Usuario</th>
+            <th>Documento</th>
+            <th>Correo</th>
+            <th>Dirección</th>
+            <th>Fecha de Creación</th>
+            <th>Acciones</th>
+          </tr>
+          </thead>
+          <tbody>
+            <tr>
+            @foreach ($usuario as $usuarios)
+              <td>{{ $usuarios->id }}</td>
+              <td>{{ $usuarios->name }} {{ $usuarios->apellido }}</td>
+              <td>{{ $usuarios->numero_documento }}</td>
+              <td>{{ $usuarios->email }}</td>
+              <td>{{ $usuarios->direccion }}</td>
+              <td>{{ $usuarios->updated_at }}</td>
+              <td>
+                @can('editar.usuario')
+                <button class="btn btn-info btn-xs" data-toggle="modal" data-target="#modal-editar" onclick="Editar('{{$usuarios->id}}','{{$usuarios->name}}')">
+                  <i class="fa fa-pen"></i>
+                </button>
+                @endcan
+                @can('eliminar.usuario')
+                <button class="btn btn-danger btn-xs" data-toggle="modal" data-target="#modal-eliminar" onclick="Eliminar('{{$usuarios->id}}','{{$usuarios->name}}')">
+                  <i class="fa fa-times"></i>
+                </button>
+                @endcan
+               </td>
+              </tr>
+            @endforeach
+          </tbody>
+        </table>
+      </div>
+    </div>
   </div>
 </div>
 

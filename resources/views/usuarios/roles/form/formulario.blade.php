@@ -82,7 +82,7 @@
             {{ Form::label('checkboxSuccess'.$permission->id, $permission->name) }}
             
           </div>
-        </div>
+        </div>        
         @endif
       @endforeach
     </div>
@@ -91,5 +91,8 @@
       <label>Nota:</label>
     </div>
     <!-- /.card-footer-->
+  </div>
+  <div class="form-group">
+    {{ Form::submit('Guardar', ['id' => 'roles', 'class' => 'btn btn-primary']) }}
   </div>
 </div>

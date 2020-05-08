@@ -113,9 +113,8 @@ class RolesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Request $id)
+    public function destroy(Role $rol)
     {
-        $rol = Roles::Find($id->idRol);
         $rol->delete();
 
         return response()->json([

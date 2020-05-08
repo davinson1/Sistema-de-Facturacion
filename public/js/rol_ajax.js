@@ -23,12 +23,8 @@ function listaRoles(){
   });
 
 // llamar formulario de editar rol
-<<<<<<< HEAD
-function Editar(idRol) { 
-=======
+
 function Editar(idRol) {
-  e.preventDefault();
->>>>>>> departamento
   $.ajax({
       type:'get',
       url:('roles_editar/'+idRol),
@@ -47,9 +43,9 @@ function Eliminar(idRol, nombreRol) {
 $('#eliminarRol').click(function(e) {
   e.preventDefault();
   var idRol = $("#idRolEliminar").val();
-  const url = 'roles_eliminar';
+  const url = 'roles_eliminar/'+idRol;
   const params = {'idRol':idRol};
-  proccessFunction(url, 'POST', params, callbackStoreRoles);
+  proccessFunction(url, 'delete', params, callbackStoreRoles);
 });
 
 function callbackStoreRoles(status, response){

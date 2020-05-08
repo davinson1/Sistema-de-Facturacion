@@ -24,17 +24,20 @@ Route::middleware(['auth'])->group(function(){
 
 
   // Rutas para usuarios
-  Route::get('/usuarios', 'UsuariosController@index')->name('usuarios')->middleware('can:navegar.usuario');
-  Route::get('/listar_usuarios', 'UsuariosController@listarUsuarios')->middleware('can:navegar.usuario');
+  Route::get('usuarios', 'UsuariosController@index')->name('usuarios')->middleware('can:navegar.usuario');
+  Route::get('listar_usuarios', 'UsuariosController@listarUsuarios')->middleware('can:navegar.usuario');
+  Route::get('formulario_usuarios', 'UsuariosController@create')->name('formulario_usuarios')->middleware('can:crear.usuario');
+  Route::get('crear_usuarios', 'UsuariosController@create')->name('crear_usuarios')->middleware('can:crear.usuario');
+
   Route::post('/usuarios_eliminar', 'UsuariosController@destroy')->name('usuarios_eliminar')->middleware('can:eliminar.usuario');
 
   // Rutas para roles
-  Route::get('/roles', 'RolesController@index')->name('roles')->middleware('can:navegar.rol');
+  Route::get('roles', 'RolesController@index')->name('roles')->middleware('can:navegar.rol');
   Route::get('listar_roles', 'RolesController@listarRoles')->middleware('can:navegar.rol');
   Route::post('roles_crear', 'RolesController@store')->name('roles_crear')->middleware('can:crear.rol');
   Route::get('roles_editar/{rol}', 'RolesController@edit')->name('roles_editar')->middleware('can:editar.rol');
   Route::put('roles_actualizar/{rol}', 'RolesController@update')->name('roles_actualizar')->middleware('can:editar.rol');
-  Route::post('/roles_eliminar', 'RolesController@destroy')->name('roles_eliminar')->middleware('can:eliminar.rol');
+  Route::delete('roles_eliminar/{rol}', 'RolesController@destroy')->name('roles_eliminar')->middleware('can:eliminar.rol');
 
   // Rutas para tipo de documentos
   Route::get('/tipo_documento', 'TipoDocumentoController@index')->name('tipo_documento')->middleware('can:navegar.tipo.documento');
