@@ -50,8 +50,8 @@ $('#eliminarRol').click(function(e) {
 
 function callbackStoreRoles(status, response){
   if (status != 200){
-    toastr.error(response.responseJSON.errors.name || response.responseJSON.errors.slug || response.responseJSON.errors.description);
-
+   var array = Object.values(response.responseJSON.errors);
+        array.forEach(element => toastr.error(element));
     return false;
   };
 

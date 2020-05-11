@@ -14,12 +14,8 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', 'Auth\LoginController@index');
-
-
 Auth::routes();
-
 Route::get('/home', 'HomeController@index')->name('home');
-
 Route::middleware(['auth'])->group(function(){
 
 
@@ -27,8 +23,8 @@ Route::middleware(['auth'])->group(function(){
   Route::get('usuarios', 'UsuariosController@index')->name('usuarios')->middleware('can:navegar.usuario');
   Route::get('formulario_usuarios', 'UsuariosController@create')->name('formulario_usuarios')->middleware('can:crear.usuario');
   Route::post('crear_usuarios', 'UsuariosController@store')->name('crear_usuarios')->middleware('can:crear.usuario');
-
-  Route::post('/usuarios_eliminar', 'UsuariosController@destroy')->name('usuarios_eliminar')->middleware('can:eliminar.usuario');
+  Route::delete('usuarios_eliminar/{idUser}', 'UsuariosController@destroy')->name('usuarios_eliminar')->middleware('can:eliminar.usuario');
+   Route::get('listar_usuarios', 'UsuariosController@ListarUsuarios');
 
   // Rutas para roles
   Route::get('roles', 'RolesController@index')->name('roles')->middleware('can:navegar.rol');

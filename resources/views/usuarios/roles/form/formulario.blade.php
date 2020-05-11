@@ -2,11 +2,11 @@
   <div class="form-group">
     {{ Form::hidden('id', null, ['id' => 'idRol']) }}
   	{{ Form::label('name', 'Nombre del rol *') }}
-  	{{ Form::text('name', null, ['class' => 'form-control', 'id' => 'name']) }}
+  	{{ Form::text('name', null, ['class' => 'form-control', 'id' => 'name', 'required' => 'required']) }}
   </div>
   <div class="form-group">
   	{{ Form::label('slug', 'URL Amigable *') }}
-  	{{ Form::text('slug', null, ['class' => 'form-control', 'id' => 'slug']) }}
+  	{{ Form::text('slug', null, ['class' => 'form-control', 'id' => 'slug' ,'required' => 'required']) }}
   </div>
   <div class="form-group">
   	{{ Form::label('description', 'Descripción') }}
@@ -82,7 +82,7 @@
             {{ Form::label('checkboxSuccess'.$permission->id, $permission->name) }}
 
           </div>
-        </div>        
+        </div>
         @endif
       @endforeach
     </div>

@@ -1,13 +1,14 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Http\Requests\UsuariosRequest;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
 use App\Models\TipoDocumento;
 use App\Models\Municipios;
 use Caffeinated\Shinobi\Models\Role;
 use Caffeinated\Shinobi\Models\Permission;
+
 
 use App\User;
 
@@ -23,10 +24,15 @@ class UsuariosController extends Controller
         $this->middleware('auth');
     }
 
+    public function ListarUsuarios(){
+        $usuario = User::all();
+        return view('usuarios/usuario/tabla_usuarios', compact('usuario'));
+    }
+
     public function index()
     {
-      $usuario = User::all();
-      return view('usuarios/usuario/usuarios', compact('usuario'));
+      // $usuario = User::all();
+      return view('usuarios/usuario/usuarios');
     }
 
     /**
@@ -48,11 +54,10 @@ class UsuariosController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(UsuariosRequest $request)
     {
-      $foto = $request->file('fotoUsuario')->store('public');
-      $documento = $request->file('copiaDocumento')->store('public');
-
+      $foto = $request->file('fotoUsuario')->store('public/fotosusuarios');
+      $documento = $request->file('copiaDocumento')->store('public/documentosusuarios');
       if ($request->ajax()) {
 
         $usuario = new User();
@@ -72,7 +77,7 @@ class UsuariosController extends Controller
         $usuario->roles()->sync($request->get('roles'));
 
         return response()->json([
-        "mensaje" => "Datos resividos correctamente."
+        "mensaje" => "Usuario creado correctamente."
          ]);
       }
     }
@@ -117,8 +122,13 @@ class UsuariosController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(User $idUser)
     {
-        //
+        $idUser->delete();
+
+        return response()->json([
+        "mensaje" => "Usuario eliminado correctamente"
+         ]);
+
     }
 }

@@ -23,7 +23,7 @@
     <ul class="navbar-nav ml-auto">
 
       <li class="nav-item dropdown d-flex">
-          <img src="dist/img/user2-160x160.jpg" class="img-circle elevation-2 image" alt="User Image" width="40px">
+          <img src="{{ Storage::url(Auth::user()->foto)}} " class="img-circle elevation-2 image" alt="User Image" width="40px" height="40px">
 
           <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
               {{ Auth::user()->name }} <span class="caret"></span>

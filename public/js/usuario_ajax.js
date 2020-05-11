@@ -1,28 +1,17 @@
-$(document).ready(function() {
-  // Inicializar la tabla
-  $("#tabla-usuario").DataTable({
-    "responsive": true,
-    "autoWidth": true,
-    });
 
-  // Llamar el formulario de crear usuarios
-  $('#modalCrearUsuario').click(function(){
-      $("#listarUsuarios").load("formulario_usuarios");
-  });  
-});
 
 //Eliminar usuario
 function Eliminar(idUsuario, nombreUsuario) {
   document.getElementById("nombreDeUsuario").innerHTML = nombreUsuario;
-  $("#idUsuarioEliminar").val(idMunicipio);
+  $("#idUsuarioEliminar").val(idUsuario);
 }
-
 $('#eliminarUsuario').click(function(e) {
   e.preventDefault();
   var idUsuario = $("#idUsuarioEliminar").val();
-  const url = 'usuarios_eliminar';
-  const params = {'idUsuario':idUsuario};
-  proccessFunction(url, 'POST', params, callbackStoreRoles);
+  const url = 'usuarios_eliminar/'+idUsuario;
+  const params = '';
+  proccessFunction(url, 'DELETE', params, callbackStoreRoles);
+  listadoUsuarios()
 });
 
 function callbackStoreRoles(status, response){
@@ -32,6 +21,29 @@ function callbackStoreRoles(status, response){
   };
 
   toastr.success(response.mensaje);
-  $("#nombreUsuario").val('');   
+  $("#nombreUsuario").val('');
   $(".close").click();
+
 }
+
+function recartabla(){
+  var table = $('#tabla-usuario').DataTable( {
+    ajax: "data.json"
+} );
+}
+
+
+// Listar los usuarios
+function listadoUsuarios(){
+  $.ajax({
+    type:'get',
+    url:('listar_usuarios'),
+    success: function(data){
+      $('#ListarUsuarios').empty().html(data);
+    }
+  });
+};
+
+$(document).ready(function() {
+  listadoUsuarios();
+});

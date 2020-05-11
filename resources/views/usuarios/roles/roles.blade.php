@@ -36,7 +36,7 @@ active
         </button>
       </div>
         {{ Form::open(['id' => 'frm_crear_rol']) }}
-            @include('usuarios.roles.form.formulario')            
+            @include('usuarios.roles.form.formulario')
         {{ Form::close() }}
     </div>
   </div>
@@ -55,7 +55,7 @@ active
         </button>
       </div>
       <div id="formulario">
-        
+
       </div>
     </div>
   </div>
@@ -92,8 +92,8 @@ active
 
 <div class="content">
   <div id="listarRoles">
-    
-  </div>  
+
+  </div>
 </div>
 @endsection
 @section('script_ajax')
@@ -103,13 +103,13 @@ active
   $(function () {
     // Seleccionar todos los selectores del usuario al crear
     $('#switch1').change(function() {
-      $('#todoUsuario > div > input').prop('checked', $(this).is(':checked'));      
+      $('#todoUsuario > div > input').prop('checked', $(this).is(':checked'));
       $('#color1').toggleClass('card-info card-success');
     });
 
     // Seleccionar todos los selectores de ubicación al crear
     $('#switch2').change(function() {
-      $('#todoUbicacion > div > input').prop('checked', $(this).is(':checked'));      
+      $('#todoUbicacion > div > input').prop('checked', $(this).is(':checked'));
       $('#color2').toggleClass('card-info card-success');
     });
   });
