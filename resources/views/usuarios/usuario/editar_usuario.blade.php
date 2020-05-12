@@ -74,7 +74,18 @@
         </div>
         <div class="col-6">
           <label for="copiaDocumento">Copia de documento</label>
-          <a target="_blank" class="btn btn-default form-control" href="{{ Storage::url($user->copia_documento) }}"><i class="fas fa-external-link-alt"></i> Ver documento</a>
+          @if(!$user->copia_documento)          
+            <input id="copiaDocumento" class="form-control" type="file" name="copiaDocumento">
+          @else
+          <div class="row">
+            <div class="col-6">
+              <a target="_blank" class="btn btn-default form-control" href="{{Storage::url($user->copia_documento) }}"><i class="fas fa-external-link-alt"></i> Ver documento</a>
+            </div>
+            <div class="col-6">
+              <input id="copiaDocumento" class="form-control" type="file" name="copiaDocumento">
+            </div>
+          </div>
+          @endif
         </div>
       </div>
 

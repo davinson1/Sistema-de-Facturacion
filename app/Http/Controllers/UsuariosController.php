@@ -117,15 +117,27 @@ class UsuariosController extends Controller
      */
     public function update(Request $request, $usuario)
     {
-      if ($request->ajax()) {
-        $usuar = User::Find($usuario);
+      $usuar = User::Find($usuario);
 
+      if ($request->ajax()) {
+        // Si el usuario cambia la foto 
+        if($request->hasFile('foto')){
+          // aquí compruebo que exista la foto anterior
+          if (\Storage::exists($usuar->foto))
+          {
+               // aquí la borro
+               \Storage::delete($usuar->foto);
+          }
+          $usuar->foto=\Storage::putFile('public/fotosusuarios', $request->file('foto'));
+        }
+
+        // Contraseña del usuario
         if ($request->claveUsusario != '') {
           $pass = Hash::make($request->claveUsusario);
         }else{
           $pass = $usuar->password;
         }
-        
+
         $usuar->id_tipo_documento = $request->tipoDocumento;
         $usuar->id_municipio = $request->municipio;
         $usuar->name = $request->nombreUsusario;
