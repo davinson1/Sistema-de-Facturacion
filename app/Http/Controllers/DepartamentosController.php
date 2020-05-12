@@ -89,15 +89,15 @@ class DepartamentosController extends Controller
      */
     public function update(DepartamentosRequest $request)
     {
-        if ($request->ajax()) {
+      if ($request->ajax()) {
 
-      $departamento = Departamentos::Find($request->idDepartamento);
-      $departamento->id_pais = $request->idPais;
-      $departamento->nombre = $request->nombre;
-      $departamento->save();
-      return response()->json([
-      "mensaje" => "Departamento editado correctamente."
-       ]);
+        $departamento = Departamentos::Find($request->idDepartamento);
+        $departamento->id_pais = $request->idPais;
+        $departamento->nombre = $request->nombre;
+        $departamento->save();
+        return response()->json([
+        "mensaje" => "Departamento editado correctamente."
+         ]);
       }
     }
 

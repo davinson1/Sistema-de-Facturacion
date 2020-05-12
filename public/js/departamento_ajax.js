@@ -54,10 +54,11 @@ $('#eliminarDepartamento').click(function(e) {
   const params = {'idDepartamento':idDepartamento};
   proccessFunction(url, 'POST', params, callbackDeleteDepartamentos);
 });
+
 function callbackDeleteDepartamentos(status, response){
   if (status != 200){
   	if (response.responseJSON.exception == "Illuminate\\Database\\QueryException") {
-    toastr.error("Por favor, elimine los municipios asociados a este departamento");
+    toastr.error("Por favor, elimine los municipios asociados a este departamento.");
      $(".close").click();
     return false;
 

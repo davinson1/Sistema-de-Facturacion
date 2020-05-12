@@ -24,37 +24,6 @@ active
 </div>
 <!-- /.content-header -->
 
-@can('editar.usuario')
-{{-- Modal para Editar un Usuario --}}
-<div id="modal-editar" class="modal fade">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header bg-info">
-        <h4 class="modal-title"><i class="fa fa-pen"></i> Editar usuario</h4>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-
-      @csrf
-      <form>
-        <div class="modal-body">
-          <div class="form-group">
-            <label for="editarUsuario">Editar el nombre de usuario: </label>
-            <input id="idUsuario" class="form-control" type="hidden" required="">
-            <input id="editarUsuario" class="form-control focus" type="text" required="">
-          </div>
-        </div>
-        <div class="modal-footer">
-          <button class="btn btn-default" type="button" data-dismiss="modal">Cerrar</button>
-          <button id="editUsuario" class="btn btn-info" type="submit" >Editar usuario </button>
-        </div>
-      </form>
-    </div>
-  </div>
-</div>
-@endcan
-
 @can('eliminar.usuario')
 {{-- Modal para Eliminar un Usuario --}}
 <div class="modal fade" id="modal-eliminar" >
@@ -83,7 +52,7 @@ active
 </div>
 @endcan
 
-<div class="content">
+<div class="content">  
   <div id="ListarUsuarios">
 
   </div>
@@ -92,9 +61,4 @@ active
 @endsection
 @section('script_ajax')
 <script  type="text/javascript" src="/js/usuario_ajax.js"></script>
-<script type="text/javascript">
-
-
-
-</script>
 @endsection
