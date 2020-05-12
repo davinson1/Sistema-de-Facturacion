@@ -21,10 +21,11 @@ Route::middleware(['auth'])->group(function(){
 
   // Rutas para usuarios
   Route::get('usuarios', 'UsuariosController@index')->name('usuarios')->middleware('can:navegar.usuario');
+   Route::get('listar_usuarios', 'UsuariosController@ListarUsuarios')->middleware('can:navegar.usuario');
   Route::get('formulario_usuarios', 'UsuariosController@create')->name('formulario_usuarios')->middleware('can:crear.usuario');
   Route::post('crear_usuarios', 'UsuariosController@store')->name('crear_usuarios')->middleware('can:crear.usuario');
+  Route::get('editar_usuarios/{user}', 'UsuariosController@edit')->name('editar_usuarios')->middleware('can:editar.usuario');
   Route::delete('usuarios_eliminar/{idUser}', 'UsuariosController@destroy')->name('usuarios_eliminar')->middleware('can:eliminar.usuario');
-   Route::get('listar_usuarios', 'UsuariosController@ListarUsuarios');
 
   // Rutas para roles
   Route::get('roles', 'RolesController@index')->name('roles')->middleware('can:navegar.rol');

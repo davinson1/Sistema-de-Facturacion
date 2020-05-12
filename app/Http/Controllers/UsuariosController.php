@@ -99,11 +99,15 @@ class UsuariosController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(User $user)
     {
-        //
-    }
+      $tiposDocumento = TipoDocumento::get();
+      $municipios = Municipios::get();
+      $roles = Role::get();
 
+      return view('usuarios/usuario/editar_usuario', compact('user', 'roles', 'tiposDocumento', 'municipios'));
+    }
+    
     /**
      * Update the specified resource in storage.
      *
