@@ -20,7 +20,7 @@
           <th>ID</th>
           <th>Nombre</th>
           <th>Fecha de Creación</th>
-          <th>Acciones</th>
+          <th width="120px">Acciones</th>
         </tr>
         </thead>
         <tbody id="datos">
@@ -29,15 +29,15 @@
             <td>{{$roles->id}}</td>
             <td>{{$roles->name}}</td>
             <td>{{$roles->updated_at}}</td>
-            <td>
+            <td class="text-center">
               @can('editar.rol')
               <button class="btn btn-info btn-xs" data-toggle="modal" data-target="#modal-editar" onclick="Editar('{{$roles->id}}')">
-                <i class="fa fa-pen"></i>
+                <i class="fa fa-pen"></i> Editar
               </button>
               @endcan
               @can('eliminar.rol')
               <button class="btn btn-danger btn-xs" data-toggle="modal" data-target="#modal-eliminar" onclick="Eliminar('{{$roles->id}}','{{$roles->name}}')">
-                <i class="fa fa-times"></i>
+                <i class="fa fa-times"></i> Eliminar
               </button>
               @endcan
              </td>

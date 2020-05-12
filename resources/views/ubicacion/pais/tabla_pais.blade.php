@@ -20,7 +20,7 @@
           <th>ID</th>
           <th>Nombre</th>
           <th>Fecha de Creación</th>
-          <th>Acciones</th>
+          <th width="120px">Acciones</th>
         </tr>
         </thead>
         <tbody>
@@ -29,15 +29,15 @@
             <td>{{$paises->id}}</td>
             <td>{{$paises->nombre}}</td>
             <td>{{$paises->updated_at}}</td>
-            <td>
+            <td class="text-center">
               @can('editar.pais')
               <button class="btn btn-info btn-xs" data-toggle="modal" data-target="#modal-editar" onclick="Editar('{{$paises->id}}','{{$paises->nombre}}')">
-                <i class="fa fa-pen"></i>
+                <i class="fa fa-pen"></i> Editar
               </button>
               @endcan
               @can('eliminar.pais')
               <button class="btn btn-danger btn-xs" data-toggle="modal" data-target="#modal-eliminar" onclick="Eliminar('{{$paises->id}}','{{$paises->nombre}}')">
-                <i class="fa fa-times"></i>
+                <i class="fa fa-times"></i> Eliminar
               </button>
               @endcan
              </td>

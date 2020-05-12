@@ -19,7 +19,7 @@
           <th>Departamento</th>
           <th>Municipio</th>
           <th>Fecha de Creación</th>
-          <th>Acciones</th>
+          <th width="120px">Acciones</th>
         </tr>
         </thead>
         <tbody>
@@ -29,12 +29,12 @@
             <td>{{$municipios->departamentos->nombre}}</td>
             <td>{{$municipios->nombre}}</td>
             <td>{{$municipios->updated_at}}</td>
-            <td>
+            <td class="text-center">
               <button class="btn btn-info btn-xs" data-toggle="modal" data-target="#modal-editar" onclick="Editar('{{$municipios->id}}','{{$municipios->nombre}}','{{$municipios->id_departamento}}', '{{ $municipios->departamentos->nombre }}')">
-                <i class="fa fa-pen"></i>
+                <i class="fa fa-pen"></i> Editar
               </button>
               <button class="btn btn-danger btn-xs" data-toggle="modal" data-target="#modal-eliminar" onclick="Eliminar('{{$municipios->id}}','{{$municipios->nombre}}')">
-                <i class="fa fa-times"></i>
+                <i class="fa fa-times"></i> Eliminar
               </button>
              </td>
             </tr>
