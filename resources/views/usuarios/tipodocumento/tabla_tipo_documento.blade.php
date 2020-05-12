@@ -20,7 +20,7 @@
           <th>ID</th>
           <th>Nombre</th>
           <th>Fecha de Creación</th>
-          <th>Acciones</th>
+          <th width="120px">Acciones</th>
         </tr>
         </thead>
         <tbody id="datos">
@@ -29,16 +29,16 @@
             <td>{{$tipo_documento->id}}</td>
             <td>{{$tipo_documento->nombre}}</td>
             <td>{{$tipo_documento->updated_at}}</td>
-            <td>
+            <td class="text-center">
               @can('editar.tipo.documento')
               <button class="btn btn-info btn-xs" data-toggle="modal" data-target="#modal-editar" onclick="Editar('{{$tipo_documento->id}}','{{$tipo_documento->nombre}}')">
-                <i class="fa fa-pen"></i>
+                <i class="fa fa-pen"></i> Editar
               </button>
               @endcan
 
               @can('eliminar.tipo.documento')
               <button class="btn btn-danger btn-xs" data-toggle="modal" data-target="#modal-eliminar" onclick="Eliminar('{{$tipo_documento->id}}','{{$tipo_documento->nombre}}')">
-                <i class="fa fa-times"></i>
+                <i class="fa fa-times"></i> Eliminar
               </button>
               @endcan
              </td>

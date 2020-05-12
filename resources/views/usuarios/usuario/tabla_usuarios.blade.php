@@ -24,7 +24,7 @@
             <th>Correo</th>
             <th>Dirección</th>
             <th>Fecha de Creación</th>
-            <th>Acciones</th>
+            <th width="120px">Acciones</th>
           </tr>
           </thead>
           <tbody>
@@ -36,15 +36,15 @@
               <td>{{ $usuarios->email }}</td>
               <td>{{ $usuarios->direccion }}</td>
               <td>{{ $usuarios->updated_at }}</td>
-              <td>
+              <td class="text-center">                
                 @can('editar.usuario')
                 <button class="btn btn-info btn-xs" data-toggle="modal" data-target="#modal-editar" onclick="Editar('{{ $usuarios->id }}')">
-                  <i class="fa fa-pen"></i>
+                  <i class="fa fa-pen"></i> Editar
                 </button>
                 @endcan
                 @can('eliminar.usuario')
                 <button class="btn btn-danger btn-xs" data-toggle="modal" data-target="#modal-eliminar" onclick="Eliminar('{{$usuarios->id}}','{{$usuarios->name}}')">
-                  <i class="fa fa-times"></i>
+                  <i class="fa fa-times"></i> Eliminar
                 </button>
                 @endcan
                </td>

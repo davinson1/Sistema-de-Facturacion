@@ -1,7 +1,7 @@
  <!-- /.card -->
 <div class="content">
   <div class="card">
-    <div class="card-header ">
+    <div class="card-header">
       <h3 class="card-title">Listado de departamentos</h3>
       <!--modal de boton registar rol-->
       <button id="modal" type="button" class="btn btn-info float-right" data-toggle="modal" data-target="#modal-crear">
@@ -19,7 +19,7 @@
           <th>País</th>
           <th>Departamento</th>
           <th>Fecha de Creación</th>
-          <th>Acciones</th>
+          <th width="120px">Acciones</th>
         </tr>
         </thead>
         <tbody>
@@ -29,12 +29,12 @@
             <td>{{$departamentos->pais->nombre}}</td>
             <td>{{$departamentos->nombre}}</td>
             <td>{{$departamentos->updated_at}}</td>
-            <td>
+            <td class="text-center">
               <button class="btn btn-info btn-xs" data-toggle="modal" data-target="#modal-editar" onclick="Editar('{{$departamentos->id}}','{{$departamentos->nombre}}','{{$departamentos->id_pais}}','{{$departamentos->pais->nombre}}')">
-                <i class="fa fa-pen"></i>
+                <i class="fa fa-pen"></i> Editar
               </button>
               <button class="btn btn-danger btn-xs" data-toggle="modal" data-target="#modal-eliminar" onclick="Eliminar('{{$departamentos->id}}','{{$departamentos->nombre}}')">
-                <i class="fa fa-times"></i>
+                <i class="fa fa-times"></i> Eliminar
               </button>
              </td>
             </tr>
