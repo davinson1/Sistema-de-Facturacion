@@ -23,11 +23,24 @@
     <ul class="navbar-nav ml-auto">
 
       <li class="nav-item dropdown d-flex">
+             @if(!Auth::user()->foto)
+           <img src="/img/social.png" class="img-circle elevation-2 image" alt="User Image" width="40px" height="40px">
+      @else
           <img src="{{ Storage::url(Auth::user()->foto)}} " class="img-circle elevation-2 image" alt="User Image" width="40px" height="40px">
-
+      @endif
           <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-              {{ Auth::user()->name }} <span class="caret"></span>
+              {{ Auth::user()->name }}
+                  @if ($roless = auth()->user()->roles)
+                  @foreach ($roless as $rol)
+                    - {{$rol->name}}
+                  @endforeach
+                @endif
+
+              <span class="caret"></span>
           </a>
+
+
+
           <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
               <a class="dropdown-item" href="{{ route('logout') }}"
                   onclick="event.preventDefault();

@@ -4,8 +4,8 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="csrf-token" content="{{ csrf_token() }}">
-  <!-- CSRF Token -->    
-  <title>Inicio</title>
+  <!-- CSRF Token -->
+  <title>@yield("titulo","Bienvenido ".Auth::user()->name)</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <!-- Font Awesome -->

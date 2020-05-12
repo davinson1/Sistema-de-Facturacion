@@ -24,9 +24,9 @@ class UsuariosTable extends Migration
             $table->integer('numero_documento');
             $table->text('direccion');
             $table->string('email')->unique();
-            $table->timestamp('email_verified_at')->nullable();            
-            $table->string('foto');
-            $table->string('copia_documento');
+            $table->timestamp('email_verified_at')->nullable();
+            $table->string('foto')->nullable();
+            $table->string('copia_documento')->nullable();
             $table->string('password');
             $table->rememberToken();
             $table->tinyInteger('activo');

@@ -23,7 +23,7 @@ $('#crearPais').click(function(e) {
 });
 
 // Editar país
-function Editar(idPais, nombrePais) {  
+function Editar(idPais, nombrePais) {
   $("#idPais").val(idPais);
   $("#editarPais").val(nombrePais);
 }
@@ -52,14 +52,20 @@ $('#eliminarPais').click(function(e) {
 });
 
 
+
 function callbackStoreRoles(status, response){
   if (status != 200){
-    toastr.error(response.responseJSON.errors.nombre);
+ if (response.responseJSON.exception == "Illuminate\\Database\\QueryException") {
+    toastr.error("Por favor, elimine los departamentos asociados a este pais.");
+     $(".close").click();
+    }else {
+      toastr.error(response.responseJSON.errors.nombre);
+    }
     return false;
   };
 
   toastr.success(response.mensaje);
-  $("#nombrePais").val('');   
+  $("#nombrePais").val('');
   $(".close").click();
   listaPaises();
 }

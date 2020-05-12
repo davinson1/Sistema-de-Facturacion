@@ -24,6 +24,8 @@ class UsuariosController extends Controller
         $this->middleware('auth');
     }
 
+
+
     public function ListarUsuarios(){
         $usuario = User::all();
         return view('usuarios/usuario/tabla_usuarios', compact('usuario'));
@@ -117,13 +119,11 @@ class UsuariosController extends Controller
      */
     public function update(Request $request, $usuario)
     {
-<<<<<<< HEAD
-      console.log/()
-=======
+
       $usuar = User::Find($usuario);
 
       if ($request->ajax()) {
-        // Si el usuario cambia la foto 
+        // Si el usuario cambia la foto
         if($request->hasFile('foto')){
           // aquí compruebo que exista la foto anterior
           if (\Storage::exists($usuar->foto))
@@ -133,6 +133,21 @@ class UsuariosController extends Controller
           }
           $usuar->foto=\Storage::putFile('public/fotosusuarios', $request->file('foto'));
         }
+
+// Si el usuario cambia el documento
+        if($request->hasFile('copiaDocumento')){
+          // aquí compruebo que exista la foto anterior
+          if (\Storage::exists($usuar->copia_documento))
+          {
+               // aquí la borro
+               \Storage::delete($usuar->copia_documento);
+          }
+          $usuar->copia_documento=\Storage::putFile('public/documentosusuarios', $request->file('copiaDocumento'));
+        }
+
+
+
+
 
         // Contraseña del usuario
         if ($request->claveUsusario != '') {
@@ -158,7 +173,6 @@ class UsuariosController extends Controller
         "mensaje" => "Usuario editado correctamente."
          ]);
       }
->>>>>>> 9f24c3525e17b1994c6850c9c107eeccb560499a
     }
 
     /**

@@ -13,7 +13,10 @@
     <input id="idUsuario" type="hidden" value="{{ $user->id }}">
       <div class="row mb-3">
         <div class="col-6 mx-auto">
-          <img id="img1" src="{{ Storage::url($user->foto) }}" class="mb-3 rounded mx-auto d-block" alt="Foto del usuario" width="200" height="200">
+        @if(!$user->foto)
+          <img id="img1"  src="/img/social.png" class="mb-3 rounded mx-auto d-block " alt="Foto del usuario" width="200" height="200"> @else
+          <img id="img1"  src="{{ Storage::url($user->foto) }}" class="mb-3 rounded mx-auto d-block " alt="Foto del usuario" width="200" height="200">
+          @endif
           <div class="custom-file">
             <label class="custom-file-label" for="customFileLang">Cambiar foto</label>
             <input type="file" class="custom-file-input" id="customFileLang" name="foto" lang="es" accept="image/png, .jpeg, .jpg, image/gif" name="archivofoto">
@@ -23,8 +26,8 @@
       <div class="row mb-3">
         <div class="col-6">
           <label for="idTipoDocumento">Seleccione el documento (*)</label>
-          <select id="idTipoDocumento" class="custom-select form-control" name="tipoDocumento" required="">            
-            <option id="documentoSeleccionado" onfocus="" value="{{ $user->tipoDocumento->id }}">{{ $user->tipoDocumento->nombre }}</option>            
+          <select id="idTipoDocumento" class="custom-select form-control" name="tipoDocumento" required="">
+            <option id="documentoSeleccionado" onfocus="" value="{{ $user->tipoDocumento->id }}">{{ $user->tipoDocumento->nombre }}</option>
             <optgroup label="Documentos">
               @foreach ($tiposDocumento as $tipoDoc)
                 <option value="{{$tipoDoc->id}}">{{$tipoDoc->nombre}}</option>
@@ -74,7 +77,7 @@
         </div>
         <div class="col-6">
           <label for="copiaDocumento">Copia de documento</label>
-          @if(!$user->copia_documento)          
+          @if(!$user->copia_documento)
             <input id="copiaDocumento" class="form-control" type="file" name="copiaDocumento">
           @else
           <div class="row">
@@ -89,7 +92,7 @@
         </div>
       </div>
 
-      <div class="row mb-3">        
+      <div class="row mb-3">
         <div class="col-6">
           <label for="claveUsusario">Contraseña (*)</label>
           <input id="claveUsusario" class="form-control" type="password" name="claveUsusario" placeholder="Nueva contraseña (Opcional)">
@@ -111,7 +114,7 @@
           </ul>
       </div>
       <div class="form-group">
-        <button type="submit" id="crearUsuario" class="btn btn-primary">Crear usuario</button>
+        <button type="submit" id="crearUsuario" class="btn btn-primary">Editar usuario</button>
       </div>
     {{ Form::close() }}
   </div>
@@ -129,7 +132,7 @@ $('.custom-file-input').on('change', function(event) {
   function readFile(input) {
     if (input.files && input.files[0]) {
       var reader = new FileReader();
-        reader.onload = function (e) {            
+        reader.onload = function (e) {
           $('#img1').attr("src", e.target.result);
         }
       reader.readAsDataURL(input.files[0]);
@@ -143,7 +146,7 @@ $('#regresar').click(function(){
     $("#ListarUsuarios").load("listar_usuarios");
   });
 
-  $("#frmEditarUsuario").submit(function(ev){    
+  $("#frmEditarUsuario").submit(function(ev){
     var idUser = $('#idUsuario').val();
     $.ajax({
       url: 'actualizar_usuarios/'+idUser,

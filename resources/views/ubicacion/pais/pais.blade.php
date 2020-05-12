@@ -1,4 +1,7 @@
 @extends('layouts.app')
+@section('titulo')
+Pais
+@endsection
 @section('menu-open1')
 menu-open
 @endsection
@@ -73,7 +76,7 @@ active
           <div class="form-group">
             <input id="idPais" class="form-control" type="hidden" required="">
             <input id="editarPais" class="form-control focus" type="text" required="">
-          </div>          
+          </div>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
@@ -115,7 +118,7 @@ active
 
 <div class="content">
   <div id="listarPaises">
-    
+
   </div>
 </div>
 

@@ -12,7 +12,7 @@
     </div>
     <!-- /.card-header -->
     <div class="card-body">
-      <table id="tabla-departamento" class="table table-bordered table-striped">
+      <table id="tabla-departamento" class="table table-bordered table-striped w-100">
         <thead class="bg-info">
         <tr>
           <th>ID</th>

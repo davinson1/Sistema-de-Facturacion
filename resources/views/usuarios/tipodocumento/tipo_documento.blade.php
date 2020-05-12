@@ -1,4 +1,7 @@
 @extends('layouts.app')
+@section('titulo')
+Tipo de documento
+@endsection
 @section('menu-open')
 menu-open
 @endsection

@@ -15,7 +15,7 @@
 
 <div class="card-body">
       <div id="listarUsuarios">
-        <table id="tabla-usuario" class="table table-bordered table-striped">
+        <table id="tabla-usuario" class="table table-bordered table-striped w-100">
           <thead class="bg-info">
           <tr>
             <th>ID</th>

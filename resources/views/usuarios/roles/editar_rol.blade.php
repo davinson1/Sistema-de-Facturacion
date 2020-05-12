@@ -1,3 +1,4 @@
+
 {!! Form::model($rol, ['route' => ['roles_actualizar', $rol->id], 'method' => 'PUT', 'id' =>'frm_editar_rol']) !!}
     <div class="modal-body">
       <div class="form-group">
@@ -45,7 +46,7 @@
               <div class="icheck-success">
                 {{ Form::checkbox('permissions[]', $permission->id, null, ['id' => 'checkbox'.$permission->id]) }}
                 {{ Form::label('checkbox'.$permission->id, $permission->name) }}
-                
+
               </div>
             </div>
             @endif
@@ -81,7 +82,7 @@
               <div class="icheck-success">
                 {{ Form::checkbox('permissions[]', $permission->id, null, ['id' => 'checkboxUbicacion'.$permission->id]) }}
                 {{ Form::label('checkboxUbicacion'.$permission->id, $permission->name) }}
-                
+
               </div>
             </div>
             @endif
@@ -104,13 +105,13 @@
   $(function () {
     // Seleccionar todos los selectores del usuario al editar
     $('#switchOnOff').change(function() {
-      $('#todoUsuario > div > input').prop('checked', $(this).is(':checked'));      
+      $('#todoUsuario > div > input').prop('checked', $(this).is(':checked'));
       $('#color-1').toggleClass('card-info card-success');
     });
 
     // Seleccionar todos los selectores de ubicación al editar
     $('#switchOnOff2').change(function() {
-      $('#todoUbicacion > div > input').prop('checked', $(this).is(':checked'));      
+      $('#todoUbicacion > div > input').prop('checked', $(this).is(':checked'));
       $('#color2').toggleClass('card-info card-success');
     });
   });

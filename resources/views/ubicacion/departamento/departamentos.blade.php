@@ -1,4 +1,7 @@
 @extends('layouts.app')
+@section('titulo')
+Departamentos
+@endsection
 @section('menu-open1')
 menu-open
 @endsection

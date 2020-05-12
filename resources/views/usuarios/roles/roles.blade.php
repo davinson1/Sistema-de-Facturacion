@@ -1,4 +1,7 @@
 @extends('layouts.app')
+@section('titulo')
+Roles
+@endsection
 @section('menu-open')
 menu-open
 @endsection
