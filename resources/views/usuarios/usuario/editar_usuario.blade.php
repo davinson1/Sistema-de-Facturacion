@@ -9,24 +9,32 @@
 
   </div>
   <div class="card-body">
-    <form id="frmCrearUsuario" enctype="multipart/form-data">
+    {!! Form::model($user, ['id' =>'frm_editar_usuario', 'enctype' => 'multipart/form-data']) !!}
+      <div class="row mb-3">
+        <img src="{{ Storage::url($user->foto)}} " class="img-circle elevation-2 image" alt="User Image" width="100px" height="100px">
+      </div>
       <div class="row mb-3">
         <div class="col-6">
           <label for="idTipoDocumento">Seleccione el documento (*)</label>
-          <select id="idTipoDocumento" class="custom-select form-control" name="tipoDocumento" required="">
-            <option>Seleccione un tipo de documento</option>
-            @foreach ($tipoDocumento as $tipoDoc)
-              <option value="{{$tipoDoc->id}}">{{$tipoDoc->nombre}}</option>
-            @endforeach
+          <select id="idTipoDocumento" class="custom-select form-control" name="tipoDocumento" required="">            
+            <option id="documentoSeleccionado" onfocus="" value="{{ $user->tipoDocumento->id }}">{{ $user->tipoDocumento->nombre }}</option>            
+            <optgroup label="Documentos">
+              @foreach ($tiposDocumento as $tipoDoc)
+              <option>Seleccione un tipo de documento</option>
+                <option value="{{$tipoDoc->id}}">{{$tipoDoc->nombre}}</option>
+              @endforeach
+            </optgroup>
           </select>
         </div>
         <div class="col-6">
           <label for="idMunicipios">Seleccione el municipio (*)</label>
           <select id="idMunicipios" class="custom-select form-control" name="municipio" required="">
-            <option>Seleccione un municipio</option>
-            @foreach ($municipios as $municipio)
-              <option value="{{$municipio->id}}">{{$municipio->nombre}}</option>
-            @endforeach
+            <option id="documentoSeleccionado" onfocus="" value="{{ $user->municipio->id }}">{{ $user->municipio->nombre }}</option>
+              <optgroup label="Municipios">
+                @foreach ($municipios as $municipio)
+                  <option value="{{$municipio->id}}">{{$municipio->nombre}}</option>
+                @endforeach
+              </optgroup>
           </select>
         </div>
       </div>
@@ -34,29 +42,29 @@
       <div class="row mb-3">
         <div class="col-6">
           <label for="nombreUsusario">Nombre del usuario (*)</label>
-          <input id="nombreUsusario" class="form-control" type="text" name="nombreUsusario" required="">
+          <input id="nombreUsusario" class="form-control" type="text" name="nombreUsusario" required="" value="{{ $user->name }}">
         </div>
         <div class="col-6">
           <label for="apellidoUsusario">Apellido del usuario (*)</label>
-          <input id="apellidoUsusario" class="form-control" type="text" name="apellidoUsusario" required="" >
+          <input id="apellidoUsusario" class="form-control" type="text" name="apellidoUsusario" required="" value="{{ $user->apellido }}">
         </div>
       </div>
 
       <div class="row mb-3">
         <div class="col-6">
           <label for="documentoUsusario">Número de documento (*)</label>
-          <input id="documentoUsusario" class="form-control" type="number" name="documentoUsusario" required="">
+          <input id="documentoUsusario" class="form-control" type="number" name="documentoUsusario" required="" value="{{ $user->numero_documento }}">
         </div>
         <div class="col-6">
           <label for="direccionUsusario">Dirección</label>
-          <input id="direccionUsusario" class="form-control" type="text" name="direccionUsusario">
+          <input id="direccionUsusario" class="form-control" type="text" name="direccionUsusario" value="{{ $user->direccion }}">
         </div>
       </div>
 
       <div class="row mb-3">
         <div class="col-6">
           <label for="emailUsusario">Correo electrónico (*)</label>
-          <input id="emailUsusario" class="form-control" type="email" name="emailUsusario" required="">
+          <input id="emailUsusario" class="form-control" type="email" name="emailUsusario" required="" value="{{ $user->email }}">
         </div>
         <div class="col-6">
           <label for="fotoUsuario">Foto del usuario</label>
@@ -71,7 +79,7 @@
         </div>
         <div class="col-6">
           <label for="claveUsusario">Contraseña (*)</label>
-          <input id="claveUsusario" class="form-control" type="password" name="claveUsusario" required="">
+          <input id="claveUsusario" class="form-control" type="password" name="claveUsusario" required="" value="*****">
         </div>
       </div>
       <hr>
@@ -92,7 +100,7 @@
       <div class="form-group">
         <button type="submit" id="crearUsuario" class="btn btn-primary">Crear usuario</button>
       </div>
-    </form>
+    {{ Form::close() }}
   </div>
   <!-- /.card-body -->
 </div>
@@ -127,7 +135,9 @@ $('#regresar').click(function(){
       error: function(eerror) {
         var array = Object.values(eerror.responseJSON.errors);
         array.forEach(element => toastr.error(element));
+
        }
+
     });
     ev.preventDefault();
   });

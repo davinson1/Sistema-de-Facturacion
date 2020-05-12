@@ -31,6 +31,13 @@ class User extends Authenticatable
       'activo',
     ];
 
+    public function tipoDocumento() {
+      return $this->belongsTo(Models\TipoDocumento::class, 'id_tipo_documento');
+    }
+    public function municipio() {
+      return $this->belongsTo(Models\Municipios::class, 'id_municipio');
+    }
+
     /**
      * The attributes that should be hidden for arrays.
      *

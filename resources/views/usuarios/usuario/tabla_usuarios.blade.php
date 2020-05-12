@@ -38,7 +38,7 @@
               <td>{{ $usuarios->updated_at }}</td>
               <td>
                 @can('editar.usuario')
-                <button class="btn btn-info btn-xs" data-toggle="modal" data-target="#modal-editar" onclick="Editar('{{$usuarios->id}}','{{$usuarios->name}}')">
+                <button class="btn btn-info btn-xs" data-toggle="modal" data-target="#modal-editar" onclick="Editar('{{ $usuarios->id }}')">
                   <i class="fa fa-pen"></i>
                 </button>
                 @endcan
