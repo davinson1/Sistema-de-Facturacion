@@ -25,6 +25,7 @@ Route::middleware(['auth'])->group(function(){
   Route::get('formulario_usuarios', 'UsuariosController@create')->name('formulario_usuarios')->middleware('can:crear.usuario');
   Route::post('crear_usuarios', 'UsuariosController@store')->name('crear_usuarios')->middleware('can:crear.usuario');
   Route::get('editar_usuarios/{user}', 'UsuariosController@edit')->name('editar_usuarios')->middleware('can:editar.usuario');
+  Route::put('actualizar_usuarios/{usuario}', 'UsuariosController@update')->name('actualizar_usuarios')->middleware('can:editar.usuario');
   Route::delete('usuarios_eliminar/{idUser}', 'UsuariosController@destroy')->name('usuarios_eliminar')->middleware('can:eliminar.usuario');
 
   // Rutas para roles

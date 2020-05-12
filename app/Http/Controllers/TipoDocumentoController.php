@@ -97,14 +97,14 @@ class TipoDocumentoController extends Controller
     {
         if ($request->ajax()) {
 
-        $tipoDoc = TipoDocumento::Find($request->idTipo);
-        $tipoDoc->nombre = $request->nombre;
-        $tipoDoc->save();
+          $tipoDoc = TipoDocumento::Find($request->idTipo);
+          $tipoDoc->nombre = $request->nombre;
+          $tipoDoc->save();
 
-        return response()->json([
-        "mensaje" => "Tipo de documento editado correctamente."
-         ]);
-      }
+          return response()->json([
+          "mensaje" => "Tipo de documento editado correctamente."
+           ]);
+        }
     }
 
     /**
