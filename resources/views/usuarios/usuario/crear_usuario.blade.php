@@ -127,9 +127,7 @@ $('#regresar').click(function(){
       error: function(eerror) {
         var array = Object.values(eerror.responseJSON.errors);
         array.forEach(element => toastr.error(element));
-
        }
-
     });
     ev.preventDefault();
   });
