@@ -115,35 +115,32 @@ class UsuariosController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, User $usuario)
+    public function update(Request $request, $usuario)
     {
-      // $foto = $request->file('fotoUsuario')->store('public/fotosusuarios');
-      // $documento = $request->file('copiaDocumento')->store('public/documentosusuarios');
-      // if ($request->ajax()) {
-
-      //   $usuario = new User();
-      //   $usuario->id_tipo_documento = $request->tipoDocumento;
-      //   $usuario->id_municipio = $request->municipio;
-      //   $usuario->name = $request->nombreUsusario;
-      //   $usuario->apellido = $request->apellidoUsusario;
-      //   $usuario->numero_documento = $request->documentoUsusario;
-      //   $usuario->direccion = $request->direccionUsusario;
-      //   $usuario->email = $request->emailUsusario;
-      //   $usuario->foto = $foto;
-      //   $usuario->copia_documento = $documento;
-      //   $usuario->password = Hash::make($request->claveUsusario);
-      //   $usuario->activo = '1';
-      //   $usuario->save();
-
-      //   $usuario->roles()->sync($request->get('roles'));
       if ($request->ajax()) {
-         // $usuario->name = $request->nombreUsusario;
-         // $usuario->update();
+        $usuar = User::Find($usuario);
 
-         // $usuario->roles()->sync($request->get('roles'));
+        if ($request->claveUsusario != '') {
+          $pass = Hash::make($request->claveUsusario);
+        }else{
+          $pass = $usuar->password;
+        }
+        
+        $usuar->id_tipo_documento = $request->tipoDocumento;
+        $usuar->id_municipio = $request->municipio;
+        $usuar->name = $request->nombreUsusario;
+        $usuar->apellido = $request->apellidoUsusario;
+        $usuar->numero_documento = $request->documentoUsusario;
+        $usuar->direccion = $request->direccionUsusario;
+        $usuar->email = $request->emailUsusario;
+        $usuar->password = $pass;
+        $usuar->activo = '1';
+        $usuar->save();
+
+        $usuar->roles()->sync($request->get('roles'));
 
         return response()->json([
-        "mensaje" => "Usuario editado correctamente.".$request
+        "mensaje" => "Usuario editado correctamente."
          ]);
       }
     }
