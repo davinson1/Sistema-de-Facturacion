@@ -9,9 +9,16 @@
 
   </div>
   <div class="card-body">
-    {!! Form::model($user, ['id' =>'frm_editar_usuario', 'enctype' => 'multipart/form-data']) !!}
+    {!! Form::model($user, ['method'=>'PUT', 'id' =>'frmEditarUsuario', 'enctype' => 'multipart/form-data']) !!}
+    <input id="idUsuario" type="hidden" value="{{ $user->id }}">
       <div class="row mb-3">
-        <img src="{{ Storage::url($user->foto)}} " class="img-circle elevation-2 image" alt="User Image" width="100px" height="100px">
+        <div class="col-6 mx-auto">
+          <img id="img1" src="{{ Storage::url($user->foto) }}" class="mb-3 rounded mx-auto d-block" alt="Foto del usuario" width="200" height="200">
+          <div class="custom-file">
+            <label class="custom-file-label" for="customFileLang">Cambiar foto</label>
+            <input type="file" class="custom-file-input" id="customFileLang" name="foto" lang="es" accept="image/png, .jpeg, .jpg, image/gif" name="archivofoto">
+          </div>
+        </div>
       </div>
       <div class="row mb-3">
         <div class="col-6">
@@ -67,16 +74,12 @@
           <input id="emailUsusario" class="form-control" type="email" name="emailUsusario" required="" value="{{ $user->email }}">
         </div>
         <div class="col-6">
-          <label for="fotoUsuario">Foto del usuario</label>
-          <input id="fotoUsuario" class="form-control" type="file" name="fotoUsuario">
+          <label for="copiaDocumento">Copia de documento</label>
+          <a target="_blank" class="btn btn-default form-control" href="{{ Storage::url($user->copia_documento) }}"><i class="fas fa-external-link-alt"></i> Ver documento</a>
         </div>
       </div>
 
-      <div class="row mb-3">
-        <div class="col-6">
-          <label for="copiaDocumento">Copia de documento</label>
-          <input id="copiaDocumento" class="form-control" type="file" name="copiaDocumento">
-        </div>
+      <div class="row mb-3">        
         <div class="col-6">
           <label for="claveUsusario">Contraseña (*)</label>
           <input id="claveUsusario" class="form-control" type="password" name="claveUsusario" required="" value="*****">
@@ -106,15 +109,35 @@
 </div>
 <!-- /.card -->
 <script type="text/javascript">
+$('.custom-file-input').on('change', function(event) {
+    var inputFile = event.currentTarget;
+    $(inputFile).parent()
+        .find('.custom-file-label')
+        .html(inputFile.files[0].name);
+  });
+
+  function readFile(input) {
+    if (input.files && input.files[0]) {
+      var reader = new FileReader();
+        reader.onload = function (e) {            
+          $('#img1').attr("src", e.target.result);
+        }
+      reader.readAsDataURL(input.files[0]);
+    }
+  }
+  document.getElementById('customFileLang').onchange = function (e) {
+    readFile(e.srcElement);
+  }
 
 $('#regresar').click(function(){
     $("#ListarUsuarios").load("listar_usuarios");
   });
 
-  $("#frmCrearUsuario").submit(function(ev){
+  $("#frmEditarUsuario").submit(function(ev){    
+    var idUser = $('#idUsuario').val();
     $.ajax({
-      url: 'crear_usuarios',
-      type: 'POST',
+      url: 'actualizar_usuarios/'+idUser,
+      type: 'PUT',
       data: new FormData(this),
       contentType: false,
       processData: false,
@@ -122,15 +145,6 @@ $('#regresar').click(function(){
       success: function(response){ // En caso de que todo salga bien.
         toastr.success(response.mensaje);
         console.log(response.mensaje);
-        $("#nombreUsusario").val('');
-        $("#apellidoUsusario").val('');
-        $("#documentoUsusario").val('');
-        $("#direccionUsusario").val('');
-        $("#direccionUsusario").val('');
-        $("#emailUsusario").val('');
-        $("#fotoUsuario").val('');
-        $("#copiaDocumento").val('');
-        $("#claveUsusario").val('');
       },
       error: function(eerror) {
         var array = Object.values(eerror.responseJSON.errors);
