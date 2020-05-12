@@ -9,7 +9,7 @@
 
   </div>
   <div class="card-body">
-    {!! Form::model($user, ['method'=>'PUT', 'id' =>'frmEditarUsuario', 'enctype' => 'multipart/form-data']) !!}
+    {!! Form::model($user, ['id' =>'frmEditarUsuario', 'enctype' => 'multipart/form-data']) !!}
     <input id="idUsuario" type="hidden" value="{{ $user->id }}">
       <div class="row mb-3">
         <div class="col-6 mx-auto">
@@ -27,7 +27,6 @@
             <option id="documentoSeleccionado" onfocus="" value="{{ $user->tipoDocumento->id }}">{{ $user->tipoDocumento->nombre }}</option>            
             <optgroup label="Documentos">
               @foreach ($tiposDocumento as $tipoDoc)
-              <option>Seleccione un tipo de documento</option>
                 <option value="{{$tipoDoc->id}}">{{$tipoDoc->nombre}}</option>
               @endforeach
             </optgroup>
@@ -75,14 +74,25 @@
         </div>
         <div class="col-6">
           <label for="copiaDocumento">Copia de documento</label>
-          <a target="_blank" class="btn btn-default form-control" href="{{ Storage::url($user->copia_documento) }}"><i class="fas fa-external-link-alt"></i> Ver documento</a>
+          @if(!$user->copia_documento)          
+            <input id="copiaDocumento" class="form-control" type="file" name="copiaDocumento">
+          @else
+          <div class="row">
+            <div class="col-6">
+              <a target="_blank" class="btn btn-default form-control" href="{{Storage::url($user->copia_documento) }}"><i class="fas fa-external-link-alt"></i> Ver documento</a>
+            </div>
+            <div class="col-6">
+              <input id="copiaDocumento" class="form-control" type="file" name="copiaDocumento">
+            </div>
+          </div>
+          @endif
         </div>
       </div>
 
       <div class="row mb-3">        
         <div class="col-6">
           <label for="claveUsusario">Contraseña (*)</label>
-          <input id="claveUsusario" class="form-control" type="password" name="claveUsusario" required="" value="*****">
+          <input id="claveUsusario" class="form-control" type="password" name="claveUsusario" placeholder="Nueva contraseña (Opcional)">
         </div>
       </div>
       <hr>
@@ -137,7 +147,7 @@ $('#regresar').click(function(){
     var idUser = $('#idUsuario').val();
     $.ajax({
       url: 'actualizar_usuarios/'+idUser,
-      type: 'PUT',
+      type: 'POST',
       data: new FormData(this),
       contentType: false,
       processData: false,
