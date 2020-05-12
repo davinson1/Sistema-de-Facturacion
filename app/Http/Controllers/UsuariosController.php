@@ -107,7 +107,7 @@ class UsuariosController extends Controller
 
       return view('usuarios/usuario/editar_usuario', compact('user', 'roles', 'tiposDocumento', 'municipios'));
     }
-    
+
     /**
      * Update the specified resource in storage.
      *
@@ -117,35 +117,7 @@ class UsuariosController extends Controller
      */
     public function update(Request $request, User $usuario)
     {
-      // $foto = $request->file('fotoUsuario')->store('public/fotosusuarios');
-      // $documento = $request->file('copiaDocumento')->store('public/documentosusuarios');
-      // if ($request->ajax()) {
-
-      //   $usuario = new User();
-      //   $usuario->id_tipo_documento = $request->tipoDocumento;
-      //   $usuario->id_municipio = $request->municipio;
-      //   $usuario->name = $request->nombreUsusario;
-      //   $usuario->apellido = $request->apellidoUsusario;
-      //   $usuario->numero_documento = $request->documentoUsusario;
-      //   $usuario->direccion = $request->direccionUsusario;
-      //   $usuario->email = $request->emailUsusario;
-      //   $usuario->foto = $foto;
-      //   $usuario->copia_documento = $documento;
-      //   $usuario->password = Hash::make($request->claveUsusario);
-      //   $usuario->activo = '1';
-      //   $usuario->save();
-
-      //   $usuario->roles()->sync($request->get('roles'));
-      if ($request->ajax()) {
-         // $usuario->name = $request->nombreUsusario;
-         // $usuario->update();
-
-         // $usuario->roles()->sync($request->get('roles'));
-
-        return response()->json([
-        "mensaje" => "Usuario editado correctamente.".$request
-         ]);
-      }
+      console.log/()
     }
 
     /**
