@@ -24,20 +24,15 @@ class UsuariosRequest extends FormRequest
     public function rules()
     {
         return [
-                'tipoDocumento' => 'required',
-                'municipio' =>      'required',
-                'nombreUsusario' => 'required|min:3|max:100',
-                'apellidoUsusario' => 'required|min:3|max:100',
-                'documentoUsusario' => 'required|min:6|unique:users,numero_documento|numeric',
-                'emailUsusario' =>      'required|unique:users,email',
-                'fotoUsuario'         =>      'image',
-                'copiaDocumento'    =>      'mimes:pdf',
-                'claveUsusario'  =>         'required|min:8|string',
-
-
-
-
-
+          'tipoDocumento'     => 'required',
+          'municipio'         => 'required',
+          'nombreUsusario'    => 'required|min:3|max:100',
+          'apellidoUsusario'  => 'required|min:3|max:100',
+          'documentoUsusario' => 'required|min:6|unique:users,numero_documento|numeric',
+          'emailUsusario'     => 'required|unique:users,email',
+          'fotoUsuario'       => 'image',
+          'copiaDocumento'    => 'mimes:pdf',
+          'claveUsusario'     => 'required|min:8|string',
         ];
     }
 }

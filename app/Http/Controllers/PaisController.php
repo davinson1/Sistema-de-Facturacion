@@ -11,23 +11,17 @@ use Illuminate\Support\Facades\DB;
 
 class PaisController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
-
-
     public function listarPais()
     {
       $pais = Paises::all();
       return view('ubicacion/pais/tabla_pais', compact('pais'));
     }
-
+    
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function index()
     {
         return view('ubicacion/pais/pais');

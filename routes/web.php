@@ -20,8 +20,11 @@ Route::middleware(['auth'])->group(function(){
 
 
   // Rutas para usuarios
+  Route::get('perfil_usuarios/{user}', 'UsuariosController@perfil')->name('perfil_usuarios');
+  Route::post('actualizar_perfil/{user}', 'UsuariosController@editarPerfil')->name('actualizar_perfil');
+
   Route::get('usuarios', 'UsuariosController@index')->name('usuarios')->middleware('can:navegar.usuario');
-   Route::get('listar_usuarios', 'UsuariosController@ListarUsuarios')->middleware('can:navegar.usuario');
+  Route::get('listar_usuarios', 'UsuariosController@ListarUsuarios')->middleware('can:navegar.usuario');
   Route::get('formulario_usuarios', 'UsuariosController@create')->name('formulario_usuarios')->middleware('can:crear.usuario');
   Route::post('crear_usuarios', 'UsuariosController@store')->name('crear_usuarios')->middleware('can:crear.usuario');
   Route::get('editar_usuarios/{user}', 'UsuariosController@edit')->name('editar_usuarios')->middleware('can:editar.usuario');

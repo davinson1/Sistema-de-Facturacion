@@ -10,23 +10,17 @@ use App\Http\Requests\MunicipioRequest;
 
 class MunicipiosController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
-
-
     public function listarMunicipios()
     {
       $municipio = Municipios::all();
       return view('ubicacion/municipio/tabla_municipio', compact('municipio'));
     }
 
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function index()
     {
       $departamento = Departamentos::all();      
