@@ -51,6 +51,18 @@ $(function () {
    $("#tabla-departamento").DataTable({
     "responsive": true,
     "autoWidth": true,
+     language: {
+        search: "Buscar",
+        "lengthMenu":"Filtrar _MENU_ numero de filas",
+         "info": "pagina _PAGE_ de _PAGES_",
+         "infoFiltered": "(resultados encontrado de _MAX_ en total)",
+         paginate: {
+            first:      "Premier",
+            previous:   "anterior",
+            next:       "Siguiente",
+            last:       "Dernier"
+        }
+      }
     });
 
    // Autoenfoque para los campos inputs de los modals

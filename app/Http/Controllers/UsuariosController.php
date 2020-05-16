@@ -60,8 +60,8 @@ class UsuariosController extends Controller
     {
       $foto = $request->file('fotoUsuario')->store('public/fotosusuarios');
       $documento = $request->file('copiaDocumento')->store('public/documentosusuarios');
-      if ($request->ajax()) {
 
+      if ($request->ajax()) {
         $usuario = new User();
         $usuario->id_tipo_documento = $request->tipoDocumento;
         $usuario->id_municipio = $request->municipio;

@@ -12,9 +12,8 @@
     <form id="frmCrearUsuario" enctype="multipart/form-data">
       <div class="row mb-3">
         <div class="col-6">
-          <label for="idTipoDocumento">Seleccione el documento (*)</label>
-          <select id="idTipoDocumento" class="custom-select form-control" name="tipoDocumento" required="">
-            <option>Seleccione un tipo de documento</option>
+          <label for="idTipoDocumento">Seleccione tipo documento (*)</label>
+          <select id="idTipoDocumento" class="form-control selecttp" name="tipoDocumento" required="">
             @foreach ($tipoDocumento as $tipoDoc)
               <option value="{{$tipoDoc->id}}">{{$tipoDoc->nombre}}</option>
             @endforeach
@@ -22,8 +21,7 @@
         </div>
         <div class="col-6">
           <label for="idMunicipios">Seleccione el municipio (*)</label>
-          <select id="idMunicipios" class="custom-select form-control" name="municipio" required="">
-            <option>Seleccione un municipio</option>
+          <select id="idMunicipios" class="form-control selectmunicipio" name="municipio" required="">
             @foreach ($municipios as $municipio)
               <option value="{{$municipio->id}}">{{$municipio->nombre}}</option>
             @endforeach
@@ -98,7 +96,6 @@
 </div>
 <!-- /.card -->
 <script type="text/javascript">
-
 $('#regresar').click(function(){
     $("#ListarUsuarios").load("listar_usuarios");
   });
@@ -131,4 +128,16 @@ $('#regresar').click(function(){
     });
     ev.preventDefault();
   });
+
+</script>
+
+<script type="text/javascript">
+$(document).ready(function() {
+    $('.selecttp').select2({
+        theme: 'bootstrap4',
+    });
+     $('.selectmunicipio').select2({
+        theme: 'bootstrap4',
+    });
+});
 </script>

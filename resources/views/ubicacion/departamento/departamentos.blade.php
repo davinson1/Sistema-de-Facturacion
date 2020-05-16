@@ -10,6 +10,16 @@ active
 @endsection
 @section('contenido')
 <!-- Content Header (Page header) -->
+
+
+
+
+
+
+
+
+
+
 <div class="content-header">
   <div class="container-fluid">
     <div class="row mb-2">
@@ -44,7 +54,7 @@ active
         <div class="modal-body">
           <div class="form-group">
             <label for="idPais">Seleccione el pais</label>
-            <select id="idPais" class="custom-select mb-3">
+            <select id="idPais" class="form-control selectpais"  >
               @foreach ($pais as $paises)
                 <option value="{{$paises->id}}">{{$paises->nombre}}</option>
               @endforeach
@@ -82,8 +92,8 @@ active
         <div class="modal-body">
           <div class="form-group">
             <label for="editarIdPais">Seleccione el país</label>
-            <select id="editarIdPais" class="custom-select mb-3">
-              <option id="paisSeleccionado" onfocus=""></option>
+            <select id="editarIdPais" class="form-control selectpaisup">
+              <option id="paisSeleccionado" selected="selected" onfocus=""></option>
               <optgroup label="Paises">
                 @foreach ($pais as $paises)
                   <option value="{{$paises->id}}">{{$paises->nombre}}</option>
@@ -143,4 +153,19 @@ active
 @endsection
 @section('script_ajax')
 <script  type="text/javascript" src="/js/departamento_ajax.js"></script>
+
+
+<script type="text/javascript">
+
+$(document).ready(function() {
+    $('.selectpais').select2({
+        theme: 'bootstrap4',
+    });
+     $('.selectpaisup').select2({
+        theme: 'bootstrap4',
+        placeholder: 'Seleccione un país',
+    });
+});
+
+</script>
 @endsection

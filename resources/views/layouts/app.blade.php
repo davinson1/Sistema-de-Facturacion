@@ -35,6 +35,8 @@
   <link rel="stylesheet" href="/plugins/toastr/toastr.min.css">
   <!-- estilos personalizados-->
   <link rel="stylesheet" href="/css/style.css">
+  <link href="plugins/select2/css/select2.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css">
 </head>
 <body class="hold-transition sidebar-mini layout-navbar-fixed">
 <div class="wrapper">
@@ -99,6 +101,8 @@
 <script src="/plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
 <!-- Toastr -->
 <script src="/plugins/toastr/toastr.min.js"></script>
+<script src="/plugins/select2/js/select2.min.js"></script>
+<script src="/plugins/select2/js/select2.full.min.js"></script>
 
 <!-- Procesos con ajjax -->
 <script src="/js/config_ajax.js"></script>

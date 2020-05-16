@@ -36,7 +36,7 @@
               <td>{{ $usuarios->email }}</td>
               <td>{{ $usuarios->direccion }}</td>
               <td>{{ $usuarios->updated_at }}</td>
-              <td class="text-center">                
+              <td class="text-center">
                 @can('editar.usuario')
                 <button class="btn btn-info btn-xs" data-toggle="modal" data-target="#modal-editar" onclick="Editar('{{ $usuarios->id }}')">
                   <i class="fa fa-pen"></i> Editar
@@ -73,6 +73,18 @@ $(function () {
    $("#tabla-usuario").DataTable({
     "responsive": true,
     "autoWidth": true,
+     language: {
+        search: "Buscar",
+        "lengthMenu":"Filtrar _MENU_ numero de filas",
+         "info": "pagina _PAGE_ de _PAGES_",
+         "infoFiltered": "(resultados encontrado de _MAX_ en total)",
+         paginate: {
+            first:      "Premier",
+            previous:   "anterior",
+            next:       "Siguiente",
+            last:       "Dernier"
+        }
+        }
     });
 
    // Autoenfoque para los campos inputs de los modals

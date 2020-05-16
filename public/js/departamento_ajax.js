@@ -77,6 +77,7 @@ function callbackStoreRoles(status, response){
 
   toastr.success(response.mensaje);
   $("#nombreDepartamento").val('');
+   $("#idPais").val('');
   $(".close").click();
   listadoDepartamentos();
 }

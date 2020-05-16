@@ -26,7 +26,7 @@
       <div class="row mb-3">
         <div class="col-6">
           <label for="idTipoDocumento">Seleccione el documento (*)</label>
-          <select id="idTipoDocumento" class="custom-select form-control" name="tipoDocumento" required="">
+          <select id="idTipoDocumento" class="form-control selecttp" name="tipoDocumento" required="">
             <option id="documentoSeleccionado" onfocus="" value="{{ $user->tipoDocumento->id }}">{{ $user->tipoDocumento->nombre }}</option>
             <optgroup label="Documentos">
               @foreach ($tiposDocumento as $tipoDoc)
@@ -37,7 +37,7 @@
         </div>
         <div class="col-6">
           <label for="idMunicipios">Seleccione el municipio (*)</label>
-          <select id="idMunicipios" class="custom-select form-control" name="municipio" required="">
+          <select id="idMunicipios" class="form-control selectmunicipio" name="municipio" required="">
             <option id="documentoSeleccionado" onfocus="" value="{{ $user->municipio->id }}">{{ $user->municipio->nombre }}</option>
               <optgroup label="Municipios">
                 @foreach ($municipios as $municipio)
@@ -168,4 +168,14 @@ $('#regresar').click(function(){
     });
     ev.preventDefault();
   });
+</script>
+<script type="text/javascript">
+$(document).ready(function() {
+    $('.selecttp').select2({
+        theme: 'bootstrap4',
+    });
+     $('.selectmunicipio').select2({
+        theme: 'bootstrap4',
+    });
+});
 </script>

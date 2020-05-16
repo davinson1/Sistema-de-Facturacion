@@ -44,7 +44,7 @@ active
         <div class="modal-body">
           <div class="form-group">
             <label for="idDepartamento">Seleccione el departamento</label>
-            <select id="idDepartamento" class="custom-select mb-3">
+            <select id="idDepartamento" class="form-control selectdepar">
               @foreach ($departamento as $departamentos)
               <option value="{{$departamentos->id}}">{{$departamentos->nombre}}</option>
               @endforeach
@@ -82,7 +82,7 @@ active
         <div class="modal-body">
           <div class="form-group">
             <label for="editarIdDepartamento">Seleccione el departamento</label>
-            <select id="editarIdDepartamento" class="custom-select mb-3">
+            <select id="editarIdDepartamento" class="form-control selectdeparup">
               <option id="departamentoSeleccionado" onfocus=""></option>
               <optgroup label="Departamentos">
                 @foreach ($departamento as $departamentos)
@@ -144,4 +144,18 @@ active
 @endsection
 @section('script_ajax')
 <script  type="text/javascript" src="/js/municipio_ajax.js"></script>
+
+<script type="text/javascript">
+
+$(document).ready(function() {
+    $('.selectdepar').select2({
+        theme: 'bootstrap4',
+    });
+     $('.selectdeparup').select2({
+        theme: 'bootstrap4',
+        placeholder: 'Seleccione un departamento',
+    });
+});
+
+</script>
 @endsection
