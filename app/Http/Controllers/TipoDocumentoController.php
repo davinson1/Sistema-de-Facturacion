@@ -11,21 +11,16 @@ use Illuminate\Support\Facades\DB;
 
 class TipoDocumentoController extends Controller
 {
+    public function listarTipoDocumento(){
+        $tipoDoc = TipoDocumento::all();
+        return view('usuarios/tipodocumento/tabla_tipo_documento',compact('tipoDoc'));
+    }
+    
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
-
-    public function listarTipoDocumento(){
-        $tipoDoc = TipoDocumento::all();
-        return view('usuarios/tipodocumento/tabla_tipo_documento',compact('tipoDoc'));
-    }
-
     public function index()
     {
         return view('usuarios/tipodocumento/tipo_documento');

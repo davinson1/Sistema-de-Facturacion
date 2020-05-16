@@ -21,37 +21,30 @@
 
     <!-- Right navbar links -->
     <ul class="navbar-nav ml-auto">
-
       <li class="nav-item dropdown d-flex">
-             @if(!Auth::user()->foto)
+        @if(!Auth::user()->foto)
            <img src="/img/social.png" class="img-circle elevation-2 image" alt="User Image" width="40px" height="40px">
-      @else
+        @else
           <img src="{{ Storage::url(Auth::user()->foto)}} " class="img-circle elevation-2 image" alt="User Image" width="40px" height="40px">
-      @endif
-          <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-              {{ Auth::user()->name }}
-                  @if ($roless = auth()->user()->roles)
-                  @foreach ($roless as $rol)
-                    - {{$rol->name}}
-                  @endforeach
-                @endif
-
-              <span class="caret"></span>
+        @endif
+        <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+          {{ Auth::user()->name }}
+          @if ($roless = auth()->user()->roles)
+            @foreach ($roless as $rol)
+              - {{$rol->name}}
+            @endforeach
+          @endif
+          <span class="caret"></span>
+        </a>
+        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="{{ route('perfil_usuarios', Auth::user()->id) }}" onclick="event.preventDefault(); $('.content-wrapper').load('perfil_usuarios/'+{{ Auth::user()->id }});">Perfil</a>
+          <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+              {{ __('Salir') }}
           </a>
-
-
-
-          <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-              <a class="dropdown-item" href="{{ route('logout') }}"
-                  onclick="event.preventDefault();
-                                document.getElementById('logout-form').submit();">
-                  {{ __('Salir') }}
-              </a>
-
-              <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                  @csrf
-              </form>
-          </div>
+          <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+              @csrf
+          </form>          
+        </div>
       </li>
       <li class="nav-item">
         <a class="nav-link" data-widget="control-sidebar" data-slide="true" href="#" role="button"><i class="fas fa-th-large"></i></a>

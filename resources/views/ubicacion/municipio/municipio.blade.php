@@ -9,6 +9,7 @@ menu-open
 active
 @endsection
 @section('contenido')
+
 <!-- Content Header (Page header) -->
 <div class="content-header">
   <div class="container-fluid">

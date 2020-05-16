@@ -157,7 +157,7 @@ $('#regresar').click(function(){
       cache: false,
       success: function(response){ // En caso de que todo salga bien.
         toastr.success(response.mensaje);
-        console.log(response.mensaje);
+        $('#claveUsusario').val('');
       },
       error: function(eerror) {
         var array = Object.values(eerror.responseJSON.errors);

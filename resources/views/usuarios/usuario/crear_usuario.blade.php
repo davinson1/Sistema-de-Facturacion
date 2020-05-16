@@ -1,11 +1,10 @@
 <div class="card card-info">
   <div class="card-header">
     <h3 class="card-title">Datos del usuario</h3>
-
-<button id="regresar" type="button" class="btn btn-default float-right">
-        <i class="fas fa-angle-double-left"></i>
-        Regresar
-      </button>
+    <button id="regresar" type="button" class="btn btn-default float-right">
+      <i class="fas fa-angle-double-left"></i>
+      Regresar
+    </button>
 
   </div>
   <div class="card-body">

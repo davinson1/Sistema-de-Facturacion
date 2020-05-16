@@ -12,20 +12,16 @@ use Caffeinated\Shinobi\Models\Permission;
 
 class RolesController extends Controller
 {
+    public function listarRoles(){
+        $rol = Role::all();
+        return view('usuarios/roles/tabla_rol',compact('rol'));
+    }
+    
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
-    
-    public function listarRoles(){
-        $rol = Role::all();
-        return view('usuarios/roles/tabla_rol',compact('rol'));
-    }
 
     public function index(Role $rol)
     {
