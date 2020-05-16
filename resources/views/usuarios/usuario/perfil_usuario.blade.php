@@ -112,16 +112,14 @@
           </div>
         </div>
         <hr>
-        <h3>Lista de roles</h3>
+        <h3>Roles asignados</h3>
         <div class="form-group">
           <ul class="list-unstyled">
             @foreach($roles as $role)
               <li>
-                  <label>
-                  {{ Form::checkbox('roles[]', $role->id, null) }}
-                  {{ $role->name }}
-                  <em>({{ $role->description ?: 'Sin descripción' }})</em>
-                  </label>
+                <label>{{ $role->name }}
+                <em>({{ $role->description ?: 'Sin descripción' }})</em>
+                </label>
               </li>
               @endforeach
             </ul>

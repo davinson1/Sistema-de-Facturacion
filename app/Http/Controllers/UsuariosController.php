@@ -201,7 +201,7 @@ class UsuariosController extends Controller
     {
       $tiposDocumento = TipoDocumento::get();
       $municipios = Municipios::get();
-      $roles = Role::get();
+      $roles = auth()->user()->roles;
 
       return view('usuarios/usuario/perfil_usuario', compact('user', 'roles', 'tiposDocumento', 'municipios'));
     }

@@ -59,8 +59,6 @@
 </div>
 
 
-
-
 <script type="text/javascript">
   // Llamar el formulario de crear usuarios
   $('#modalCrearUsuario').click(function(){
