@@ -23,7 +23,7 @@
     </div>
     <div class="card-body">
       {!! Form::model($user, ['id' =>'frmEditarUsuario', 'enctype' => 'multipart/form-data']) !!}
-      <input id="idUsuario" type="hidden" value="{{ $user->id }}">
+      <input id="idUsuario" type="hidden" name="idUsuario" value="{{ $user->id }}">
         <div class="row mb-3">
           <div class="col-6 mx-auto">
           @if(!$user->foto)
@@ -166,7 +166,7 @@
           cache: false,
           success: function(response){ // En caso de que todo salga bien.
             toastr.success(response.mensaje);
-            console.log(response.mensaje);
+            $('#claveUsusario').val('');
           },
           error: function(eerror) {
             var array = Object.values(eerror.responseJSON.errors);

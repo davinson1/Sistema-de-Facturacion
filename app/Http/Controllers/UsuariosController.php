@@ -2,12 +2,14 @@
 
 namespace App\Http\Controllers;
 use App\Http\Requests\UsuariosRequest;
+use App\Http\Requests\ActualizarUsuarioRequest;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
 use App\Models\TipoDocumento;
 use App\Models\Municipios;
 use Caffeinated\Shinobi\Models\Role;
 use Caffeinated\Shinobi\Models\Permission;
+use Illuminate\Validation\Rule;
 
 
 use App\User;
@@ -112,6 +114,20 @@ class UsuariosController extends Controller
      */
     public function update(Request $request, $usuario)
     {
+      $data = request()->validate([        
+        'tipoDocumento'     => 'required',
+        'municipio'         => 'required',
+        'nombreUsusario'    => 'required|min:3|max:100',
+        'apellidoUsusario'  => 'required|min:3|max:100',
+        'documentoUsusario' => 'required|min:6|numeric|unique:users,numero_documento,'.$usuario,
+        'emailUsusario'     => 'required|email|unique:users,email,'.$usuario,
+        'fotoUsuario'       => 'image',
+        'copiaDocumento'    => 'mimes:pdf',
+        
+        // 'emailUsusario'     => ['required','email',Rule::unique('users', 'email')->ignore($usuario)],
+        // 'documentoUsusario'     => ['required','email',Rule::unique('users', 'numero_documento')->ignore($usuario)],
+      ]);
+
       $usuar = User::Find($usuario);
 
       if ($request->ajax()) {
@@ -139,6 +155,9 @@ class UsuariosController extends Controller
 
         // Contraseña del usuario
         if ($request->claveUsusario != '') {
+          $data = request()->validate([            
+            'claveUsusario'    => 'min:8|string',
+          ]);
           $pass = Hash::make($request->claveUsusario);
         }else{
           $pass = $usuar->password;
@@ -189,6 +208,19 @@ class UsuariosController extends Controller
 
     public function editarPerfil(Request $request, $usuario)
     {
+      $data = request()->validate([        
+        'tipoDocumento'     => 'required',
+        'municipio'         => 'required',
+        'nombreUsusario'    => 'required|min:3|max:100',
+        'apellidoUsusario'  => 'required|min:3|max:100',
+        'documentoUsusario' => 'required|min:6|numeric|unique:users,numero_documento,'.$usuario,
+        'emailUsusario'     => 'required|email|unique:users,email,'.$usuario,
+        'fotoUsuario'       => 'image',
+        'copiaDocumento'    => 'mimes:pdf',
+        
+        // 'emailUsusario'     => ['required','email',Rule::unique('users', 'email')->ignore($usuario)],
+        // 'documentoUsusario'     => ['required','email',Rule::unique('users', 'numero_documento')->ignore($usuario)],
+      ]);
       $usuar = User::Find($usuario);
 
       if ($request->ajax()) {
@@ -216,6 +248,9 @@ class UsuariosController extends Controller
 
         // Contraseña del usuario
         if ($request->claveUsusario != '') {
+          $data = request()->validate([            
+            'claveUsusario'    => 'min:8|string',
+          ]);
           $pass = Hash::make($request->claveUsusario);
         }else{
           $pass = $usuar->password;
