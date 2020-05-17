@@ -70,19 +70,19 @@ Route::middleware(['auth'])->group(function(){
   Route::post('/municipios_eliminar', 'MunicipiosController@destroy')->name('municipios_eliminar')->middleware('can:eliminar.municipio');
 
   // Rutas para articulos
-  Route::get('/articulos', 'ArticulosController@index')->name('articulos');
+  Route::get('/articulos', 'ArticulosController@index')->name('articulos')->middleware('can:navegar.articulos');
   // Rutas para formas de pago
-  Route::get('/formas_pago', 'FormasPagoController@index')->name('formas_pago');
+  Route::get('/formas_pago', 'FormasPagoController@index')->name('formas_pago')->middleware('can:navegar.formas.pagos');
   // Rutas para iva
-  Route::get('/iva', 'IvaController@index')->name('iva');
+  Route::get('/iva', 'IvaController@index')->name('iva')->middleware('can:navegar.iva');
   // Rutas para porcentaje
-  Route::get('/porcentaje', 'PorcentajeController@index')->name('porcentaje');
+  Route::get('/porcentaje', 'PorcentajeController@index')->name('porcentaje')->middleware('can:navegar.porcentaje');
   // Rutas para productos
-  Route::get('/productos', 'ProductosController@index')->name('productos');
+  Route::get('/productos', 'ProductosController@index')->name('productos')->middleware('can:navegar.productos');
   // Rutas para tipos de factura
-  Route::get('/tipo_factura', 'TipoFacturaController@index')->name('tipo_factura');
+  Route::get('/tipo_factura', 'TipoFacturaController@index')->name('tipo_factura')->middleware('can:navegar.tipos.facturas');
   // Rutas para tipos tributario
-  Route::get('/tipo_tributario', 'TipoTributarioController@index')->name('tipo_tributario');
+  Route::get('/tipo_tributario', 'TipoTributarioController@index')->name('tipo_tributario')->middleware('can:navegar.tipos.tributario');
   
 });
 
