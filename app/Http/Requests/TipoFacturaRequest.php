@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class PaisRequest extends FormRequest
+class TipoFacturaRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -23,8 +23,8 @@ class PaisRequest extends FormRequest
      */
     public function rules()
     {
-      return [
-        'nombre' => 'required|min:3|max:100|unique:pais,nombre|regex:/^[\pL\s\-]+$/u',
-      ];
+        return [
+          'nombre' => 'required|min:3|max:100|unique:tipo_factura,nombre|regex:/^[\pL\s\-]+$/u'
+        ];
     }
 }

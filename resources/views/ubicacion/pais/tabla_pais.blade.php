@@ -57,12 +57,12 @@ $(function () {
     "autoWidth": true,
      language: {
         search: "Buscar",
-        "lengthMenu":"Filtrar _MENU_ numero de filas",
-         "info": "pagina _PAGE_ de _PAGES_",
+        "lengthMenu":"Filtrar _MENU_ número de filas",
+         "info": "Página _PAGE_ de _PAGES_",
          "infoFiltered": "(resultados encontrado de _MAX_ en total)",
          paginate: {
             first:      "Premier",
-            previous:   "anterior",
+            previous:   "Anterior",
             next:       "Siguiente",
             last:       "Dernier"
         }

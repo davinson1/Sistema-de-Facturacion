@@ -81,6 +81,11 @@ Route::middleware(['auth'])->group(function(){
   Route::get('/productos', 'ProductosController@index')->name('productos')->middleware('can:navegar.productos');
   // Rutas para tipos de factura
   Route::get('/tipo_factura', 'TipoFacturaController@index')->name('tipo_factura')->middleware('can:navegar.tipos.facturas');
+  Route::get('/listar_tipo_factura', 'TipoFacturaController@listarTiposFacturas')->middleware('can:navegar.tipos.facturas');
+  Route::post('/tipo_factura_crear', 'TipoFacturaController@store')->name('tipo_factura_crear')->middleware('can:crear.tipos.facturas');
+  Route::put('/tipo_factura_editar/{idTipoFactura}', 'TipoFacturaController@update')->name('tipo_factura_editar')->middleware('can:editar.tipos.facturas');
+  Route::delete('/tipo_factura_eliminar/{idTipoFactura}', 'TipoFacturaController@destroy')->name('tipo_factura_eliminar')->middleware('can:eliminar.tipos.facturas');
+
   // Rutas para tipos tributario
   Route::get('/tipo_tributario', 'TipoTributarioController@index')->name('tipo_tributario')->middleware('can:navegar.tipos.tributario');
   

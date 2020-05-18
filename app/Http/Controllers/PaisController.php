@@ -11,11 +11,6 @@ use Illuminate\Support\Facades\DB;
 
 class PaisController extends Controller
 {
-    public function listarPais()
-    {
-      $pais = Paises::all();
-      return view('ubicacion/pais/tabla_pais', compact('pais'));
-    }
     
     /**
      * Display a listing of the resource.
@@ -25,6 +20,12 @@ class PaisController extends Controller
     public function index()
     {
         return view('ubicacion/pais/pais');
+    }
+    
+    public function listarPais()
+    {
+      $pais = Paises::all();
+      return view('ubicacion/pais/tabla_pais', compact('pais'));
     }
 
     /**

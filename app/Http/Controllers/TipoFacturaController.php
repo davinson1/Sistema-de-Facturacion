@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\TipoFactura;
+use App\Http\Requests\TipoFacturaRequest;
 
 class TipoFacturaController extends Controller
 {
@@ -16,14 +18,10 @@ class TipoFacturaController extends Controller
       return view('productos/tipo_factura/tipos_factura');
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
+    public function listarTiposFacturas()
     {
-        //
+      $tiposFacturas = TipoFactura::all();
+      return view('productos/tipo_factura/tabla_tipo_factura', compact('tiposFacturas'));
     }
 
     /**
@@ -32,31 +30,16 @@ class TipoFacturaController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(TipoFacturaRequest $request)
     {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
+      if ($request->ajax()) {
+        $tipoFactura = new TipoFactura();
+        $tipoFactura->nombre = $request->nombre;
+        $tipoFactura->save();
+        return response()->json([
+          "mensaje" => "Tipo de factura creado correctamente."
+        ]);
+      }
     }
 
     /**
@@ -66,9 +49,14 @@ class TipoFacturaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(TipoFacturaRequest $request, TipoFactura $idTipoFactura)
     {
-        //
+      if ($request->ajax()) {
+        $idTipoFactura->update($request->all());
+        return response()->json([
+          "mensaje" => "Tipo de factura editado correctamente."
+        ]);
+      }
     }
 
     /**
@@ -77,8 +65,11 @@ class TipoFacturaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(TipoFactura $idTipoFactura)
     {
-        //
+      $idTipoFactura->delete();
+      return response()->json([
+        "mensaje" => "Tipo de factura eliminado correctamente."
+      ]);      
     }
 }
