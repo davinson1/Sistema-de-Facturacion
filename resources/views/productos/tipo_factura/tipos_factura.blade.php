@@ -40,7 +40,7 @@ active
       </div>
 
       @csrf
-      <form id="frmTipoFactura">
+      <form>
         <div class="modal-body">
           <div class="form-group">
             <label for="nombreTipoFactura">Nombre tipo de factura:</label>
@@ -73,13 +73,14 @@ active
       <form>
         <div class="modal-body">
           <div class="form-group">
+            <label for="idTipoFactura">Nombre tipo de factura:</label>
             <input id="idTipoFactura" class="form-control" type="hidden" required="">
             <input id="editarTipoFactura" class="form-control focus" type="text" required="">
           </div>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-          <button type="submit" id="editarElTipoFactura" class="btn btn-info">Editar País </button>
+          <button type="submit" id="editarElTipoFactura" class="btn btn-info">Editar tipo factura </button>
         </div>
       </form>
     </div>
@@ -87,7 +88,7 @@ active
 </div>
 @endcan
 
-@can('eliminar.pais')
+@can('eliminar.tipos.facturas')
 {{-- Modal para Eliminar un tipo de factura --}}
 <div class="modal fade" id="modal-eliminar" >
   <div class="modal-dialog">

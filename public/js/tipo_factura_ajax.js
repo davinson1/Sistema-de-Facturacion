@@ -1,4 +1,4 @@
-// Listar los paises
+// Listar los tipos de facturas
 $(document).ready(function() {
   listarTipoFactura();
 });

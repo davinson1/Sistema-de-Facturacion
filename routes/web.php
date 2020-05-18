@@ -88,6 +88,10 @@ Route::middleware(['auth'])->group(function(){
 
   // Rutas para tipos tributario
   Route::get('/tipo_tributario', 'TipoTributarioController@index')->name('tipo_tributario')->middleware('can:navegar.tipos.tributario');
+  Route::get('/listar_tipo_tributario', 'TipoTributarioController@listarTiposTributarios')->middleware('can:navegar.tipos.tributario');
+  Route::post('/tipo_tributario_crear', 'TipoTributarioController@store')->name('tipo_tributario_crear')->middleware('can:crear.tipos.tributario');
+  Route::put('/tipo_tributario_editar/{idTipoTributario}', 'TipoTributarioController@update')->name('tipo_tributario_editar')->middleware('can:editar.tipos.tributario');
+  Route::delete('/tipo_tributario_eliminar/{idTipoTributario}', 'TipoTributarioController@destroy')->name('tipo_tributario_eliminar')->middleware('can:eliminar.tipos.tributario');
   
 });
 

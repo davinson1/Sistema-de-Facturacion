@@ -74,6 +74,7 @@ active
       <form>
         <div class="modal-body">
           <div class="form-group">
+            <label for="idPais">Nombre del país:</label>
             <input id="idPais" class="form-control" type="hidden" required="">
             <input id="editarPais" class="form-control focus" type="text" required="">
           </div>

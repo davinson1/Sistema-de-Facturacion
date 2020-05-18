@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\TipoTributario;
+use App\Http\Requests\TipoTributarioRequest;
 
 class TipoTributarioController extends Controller
 {
@@ -16,14 +18,10 @@ class TipoTributarioController extends Controller
       return view('productos/tipo_tributario/tipos_tributario');
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
+    public function listarTiposTributarios()
     {
-        //
+      $tiposTributarios = TipoTributario::all();
+      return view('productos/tipo_tributario/tabla_tipo_tributario', compact('tiposTributarios'));
     }
 
     /**
@@ -32,31 +30,16 @@ class TipoTributarioController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(TipoTributarioRequest $request)
     {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
+      if ($request->ajax()) {
+        $tipoTributario = new TipoTributario();
+        $tipoTributario->nombre = $request->nombre;
+        $tipoTributario->save();
+        return response()->json([
+          "mensaje" => "Tipo tributario creado correctamente."
+        ]);
+      }
     }
 
     /**
@@ -66,9 +49,14 @@ class TipoTributarioController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(TipoTributarioRequest $request, TipoTributario $idTipoTributario)
     {
-        //
+      if ($request->ajax()) {
+        $idTipoTributario->update($request->all());
+        return response()->json([
+          "mensaje" => "Tipo tributario editado correctamente."
+        ]);
+      }
     }
 
     /**
@@ -77,8 +65,11 @@ class TipoTributarioController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(TipoTributario $idTipoTributario)
     {
-        //
+      $idTipoTributario->delete();
+      return response()->json([
+        "mensaje" => "Tipo tributario eliminado correctamente."
+      ]);    
     }
 }

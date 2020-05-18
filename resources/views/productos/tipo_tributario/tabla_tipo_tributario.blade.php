@@ -2,43 +2,41 @@
 <div class="content">
   <div class="card">
     <div class="card-header ">
-      <h3 class="card-title">Listado tipos de facturas</h3>
-      @can('crear.tipos.facturas')
-        <!--modal de boton registar tipos de factura-->
+      <h3 class="card-title">Listado tipos tributarios</h3>
+      @can('crear.tipos.tributario')
+        <!--modal de boton registar tipos de tributario-->
         <button id="modal" type="button" class="btn btn-info float-right" data-toggle="modal" data-target="#modal-crear">
           <i class="fas fa-plus"></i>
-          Crear tipo de factura
+          Crear tipo tributario
         </button>
-       <!--fin modal de boton registar tipos de factura-->
+       <!--fin modal de boton registar tipos de tributario-->
       @endcan
     </div>
     <!-- /.card-header -->
     <div class="card-body">
-      <table id="tablaTipoFactura" class="table table-bordered table-striped w-100">
+      <table id="tablaTipoTributario" class="table table-bordered table-striped w-100">
         <thead class="bg-info">
         <tr>
           <th>ID</th>
           <th>Nombre</th>
-          <th>Consecutivo</th>
           <th>Fecha de Creación</th>
           <th width="120px">Acciones</th>
         </tr>
         </thead>
         <tbody>
           <tr>
-          @foreach ($tiposFacturas as $tipoFactura)
-            <td>{{$tipoFactura->id}}</td>
-            <td>{{$tipoFactura->nombre}}</td>
-            <td>{{$tipoFactura->consecutivo}}</td>
-            <td>{{$tipoFactura->updated_at}}</td>
+          @foreach ($tiposTributarios as $tipoTributario)
+            <td>{{$tipoTributario->id}}</td>
+            <td>{{$tipoTributario->nombre}}</td>
+            <td>{{$tipoTributario->updated_at}}</td>
             <td class="text-center">
-              @can('editar.tipos.facturas')
-                <button class="btn btn-info btn-xs" data-toggle="modal" data-target="#modal-editar" onclick="Editar('{{$tipoFactura->id}}','{{$tipoFactura->nombre}}')">
+              @can('editar.tipos.tributario')
+                <button class="btn btn-info btn-xs" data-toggle="modal" data-target="#modal-editar" onclick="Editar('{{$tipoTributario->id}}','{{$tipoTributario->nombre}}')">
                   <i class="fa fa-pen"></i> Editar
                 </button>
               @endcan
-              @can('eliminar.tipos.facturas')
-                <button class="btn btn-danger btn-xs" data-toggle="modal" data-target="#modal-eliminar" onclick="Eliminar('{{$tipoFactura->id}}','{{$tipoFactura->nombre}}')">
+              @can('eliminar.tipos.tributario')
+                <button class="btn btn-danger btn-xs" data-toggle="modal" data-target="#modal-eliminar" onclick="Eliminar('{{$tipoTributario->id}}','{{$tipoTributario->nombre}}')">
                   <i class="fa fa-times"></i> Eliminar
                 </button>
               @endcan
@@ -54,7 +52,7 @@
 <script type="text/javascript">
 //iniciacion de tabla tipo de factura
 $(function () {
-   $("#tablaTipoFactura").DataTable({
+   $("#tablaTipoTributario").DataTable({
     "responsive": true,
     "autoWidth": true,
      language: {
