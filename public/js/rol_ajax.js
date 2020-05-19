@@ -23,7 +23,6 @@ function listaRoles(){
   });
 
 // llamar formulario de editar rol
-
 function Editar(idRol) {
   $.ajax({
       type:'get',
@@ -57,7 +56,9 @@ function callbackStoreRoles(status, response){
 
   toastr.success(response.mensaje);
 
-  $("#nombreRol").val('');
+  $("#name").val(''); 
+  $("#slug").val(''); 
+  $("#description").val('');
   $(".close").click();
   listaRoles();
 }

@@ -115,7 +115,15 @@ active
       $('#todoUbicacion > div > input').prop('checked', $(this).is(':checked'));
       $('#color2').toggleClass('card-info card-success');
     });
+
+    // Seleccionar todos los selectores de productos al crear
+    $('#switch3').change(function() {
+      $('#todoProductos > div > input').prop('checked', $(this).is(':checked'));
+      $('#color3').toggleClass('card-info card-success');
+    });
   });
+
+
 
 </script>
 @endsection

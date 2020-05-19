@@ -20,7 +20,7 @@ class UsuariosTable extends Migration
             $table->unsignedBigInteger('id_municipio');
             // $table->unsignedBigInteger('Id_Doc_Fir');
             $table->string('name');
-            $table->text('apellido');
+            $table->string('apellido');
             $table->integer('numero_documento');
             $table->text('direccion');
             $table->string('email')->unique();

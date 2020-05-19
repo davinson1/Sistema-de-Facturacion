@@ -12,7 +12,7 @@ class PermisosTablaSeeder extends Seeder
      */
     public function run()
     {
-      // Permisos de usuarios
+      // Permisos para el modulo usuarios
         Permission::create([
           'name' => 'Navegar usuario',
           'categoria' => 'usuario',
@@ -90,10 +90,10 @@ class PermisosTablaSeeder extends Seeder
             'description' => 'Eliminar cualquier tipo de documento.',
           ]);
 
-      // Permisos de ubicacion
+      // Permisos para el modulo ubicacion
         Permission::create([
-         'name' => 'Navegar ubicación',
-         'categoria' => 'ubicacion',
+          'name' => 'Navegar ubicación',
+          'categoria' => 'ubicacion',
           'slug' => 'navegar.ubicacion',
           'description' => 'El usuario puede ver en el menú el enlace ubicación.',
         ]);
@@ -127,7 +127,7 @@ class PermisosTablaSeeder extends Seeder
             'name' => 'Navegar departamento',
             'categoria' => 'ubicacion',
             'slug' => 'navegar.departamento',
-            'description' => 'El usuario puede ver en el menú el enlace departamento',
+            'description' => 'El usuario puede ver en el menú el enlace departamento.',
           ]);
           Permission::create([
             'name' => 'Crear departamento',
@@ -173,5 +173,186 @@ class PermisosTablaSeeder extends Seeder
             'description' => 'El usuario puede ver el boton de eliminar municipio.',
           ]);
 
+      // Permisos para el modulo productos
+        Permission::create([
+          'name' => 'Navegar modulo productos',
+          'categoria' => 'productos',
+          'slug' => 'navegar.modulo.productos',
+          'description' => 'El usuario puede desplegar el menú productos.',
+        ]);
+        Permission::create([
+          'name' => 'Navegar productos',
+          'categoria' => 'productos',
+          'slug' => 'navegar.productos',
+          'description' => 'El usuario puede ver en el menú el enlace productos.',
+        ]);
+        Permission::create([
+          'name' => 'Crear productos',
+          'categoria' => 'productos',
+          'slug' => 'crear.productos',
+          'description' => 'El usuario puede ver el boton de crear productos.',
+        ]);
+        Permission::create([
+          'name' => 'Editar productos',
+          'categoria' => 'productos',
+          'slug' => 'editar.productos',
+          'description' => 'El usuario puede ver el boton de editar productos.',
+        ]);
+        Permission::create([
+          'name' => 'Eliminar productos',
+          'categoria' => 'productos',
+          'slug' => 'eliminar.productos',
+          'description' => 'El usuario puede ver el boton de eliminar productos.',
+        ]);
+        // Permisos de articulos
+          Permission::create([
+            'name' => 'Navegar articulos',
+            'categoria' => 'productos',
+            'slug' => 'navegar.articulos',
+            'description' => 'El usuario puede ver en el menú el enlace articulos.',
+          ]);
+          Permission::create([
+            'name' => 'Crear articulos',
+            'categoria' => 'productos',
+            'slug' => 'crear.articulos',
+            'description' => 'El usuario puede ver el boton de crear articulos.',
+          ]);
+          Permission::create([
+            'name' => 'Editar articulos',
+            'categoria' => 'productos',
+            'slug' => 'editar.articulos',
+            'description' => 'El usuario puede ver el boton de editar articulos.',
+          ]);
+          Permission::create([
+            'name' => 'Eliminar articulos',
+            'categoria' => 'productos',
+            'slug' => 'eliminar.articulos',
+            'description' => 'El usuario puede ver el boton de eliminar articulos.',
+          ]);
+        // Permisos de formas de pago
+          Permission::create([
+            'name' => 'Navegar formas de pago',
+            'categoria' => 'productos',
+            'slug' => 'navegar.formas.pagos',
+            'description' => 'El usuario puede ver en el menú el enlace formas de pagos.',
+          ]);
+          Permission::create([
+            'name' => 'Crear formas de pago',
+            'categoria' => 'productos',
+            'slug' => 'crear.formas.pagos',
+            'description' => 'El usuario puede ver el boton de crear formas de pagos.',
+          ]);
+          Permission::create([
+            'name' => 'Editar formas de pago',
+            'categoria' => 'productos',
+            'slug' => 'editar.formas.pagos',
+            'description' => 'El usuario puede ver el boton de editar formas de pagos.',
+          ]);
+          Permission::create([
+            'name' => 'Eliminar formas de pago',
+            'categoria' => 'productos',
+            'slug' => 'eliminar.formas.pagos',
+            'description' => 'El usuario puede ver el boton de eliminar formas de pagos.',
+          ]);
+        // Permisos de iva
+          Permission::create([
+            'name' => 'Navegar iva',
+            'categoria' => 'productos',
+            'slug' => 'navegar.iva',
+            'description' => 'El usuario puede ver en el menú el enlace iva.',
+          ]);
+          Permission::create([
+            'name' => 'Crear iva',
+            'categoria' => 'productos',
+            'slug' => 'crear.iva',
+            'description' => 'El usuario puede ver el boton de crear iva.',
+          ]);
+          Permission::create([
+            'name' => 'Editar iva',
+            'categoria' => 'productos',
+            'slug' => 'editar.iva',
+            'description' => 'El usuario puede ver el boton de editar iva.',
+          ]);
+          Permission::create([
+            'name' => 'Eliminar iva',
+            'categoria' => 'productos',
+            'slug' => 'eliminar.iva',
+            'description' => 'El usuario puede ver el boton de eliminar iva.',
+          ]);
+        // Permisos de porcentaje
+          Permission::create([
+            'name' => 'Navegar porcentaje',
+            'categoria' => 'productos',
+            'slug' => 'navegar.porcentaje',
+            'description' => 'El usuario puede ver en el menú el enlace porcentaje.',
+          ]);
+          Permission::create([
+            'name' => 'Crear porcentaje',
+            'categoria' => 'productos',
+            'slug' => 'crear.porcentaje',
+            'description' => 'El usuario puede ver el boton de crear porcentaje.',
+          ]);
+          Permission::create([
+            'name' => 'Editar porcentaje',
+            'categoria' => 'productos',
+            'slug' => 'editar.porcentaje',
+            'description' => 'El usuario puede ver el boton de editar porcentaje.',
+          ]);
+          Permission::create([
+            'name' => 'Eliminar porcentaje',
+            'categoria' => 'productos',
+            'slug' => 'eliminar.porcentaje',
+            'description' => 'El usuario puede ver el boton de eliminar porcentaje.',
+          ]);
+        // Permisos de tipos de facturas
+          Permission::create([
+            'name' => 'Navegar tipos de facturas',
+            'categoria' => 'productos',
+            'slug' => 'navegar.tipos.facturas',
+            'description' => 'El usuario puede ver en el menú el enlace tipos de facturas.',
+          ]);
+          Permission::create([
+            'name' => 'Crear tipos de facturas',
+            'categoria' => 'productos',
+            'slug' => 'crear.tipos.facturas',
+            'description' => 'El usuario puede ver el boton de creartipos de facturas.',
+          ]);
+          Permission::create([
+            'name' => 'Editar tipos de facturas',
+            'categoria' => 'productos',
+            'slug' => 'editar.tipos.facturas',
+            'description' => 'El usuario puede ver el boton de editar tipos de facturas.',
+          ]);
+          Permission::create([
+            'name' => 'Eliminar tipos de facturas',
+            'categoria' => 'productos',
+            'slug' => 'eliminar.tipos.facturas',
+            'description' => 'El usuario puede ver el boton de eliminar tipos de facturas.',
+          ]);
+        // Permisos de tipos tributarios
+          Permission::create([
+            'name' => 'Navegar tipos tributarios',
+            'categoria' => 'productos',
+            'slug' => 'navegar.tipos.tributario',
+            'description' => 'El usuario puede ver en el menú el enlace tipos tributarios.',
+          ]);
+          Permission::create([
+            'name' => 'Crear tipos tributarios',
+            'categoria' => 'productos',
+            'slug' => 'crear.tipos.tributario',
+            'description' => 'El usuario puede ver el boton de creartipos tributarios.',
+          ]);
+          Permission::create([
+            'name' => 'Editar tipos tributarios',
+            'categoria' => 'productos',
+            'slug' => 'editar.tipos.tributario',
+            'description' => 'El usuario puede ver el boton de editar tipos tributarios.',
+          ]);
+          Permission::create([
+            'name' => 'Eliminar tipos tributarios',
+            'categoria' => 'productos',
+            'slug' => 'eliminar.tipos.tributario',
+            'description' => 'El usuario puede ver el boton de eliminar tipos tributarios.',
+          ]);
     }
 }

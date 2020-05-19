@@ -4,14 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-use Illuminate\Http\Response;
-use App\Models\Paises;
-use App\Http\Requests\PaisRequest;
-use Illuminate\Support\Facades\DB;
-
-class PaisController extends Controller
+class ProductosController extends Controller
 {
-    
     /**
      * Display a listing of the resource.
      *
@@ -19,13 +13,7 @@ class PaisController extends Controller
      */
     public function index()
     {
-        return view('ubicacion/pais/pais');
-    }
-    
-    public function listarPais()
-    {
-      $pais = Paises::all();
-      return view('ubicacion/pais/tabla_pais', compact('pais'));
+      return view('productos/producto/productos');
     }
 
     /**
@@ -44,16 +32,9 @@ class PaisController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(PaisRequest $request)
+    public function store(Request $request)
     {
-      if ($request->ajax()) {
-        $pais = new Paises();
-        $pais->nombre = $request->nombre;
-        $pais->save();
-        return response()->json([
-          "mensaje" => "País creado correctamente."
-        ]);
-      }
+        //
     }
 
     /**
@@ -85,18 +66,9 @@ class PaisController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(PaisRequest $request)
+    public function update(Request $request, $id)
     {
-      if ($request->ajax()) {
-
-      $pais = Paises::Find($request->idPais);
-      $pais->nombre = $request->nombre;
-      $pais->save();
-
-      return response()->json([
-      "mensaje" => "País editado correctamente."
-       ]);
-      }
+        //
     }
 
     /**
@@ -105,13 +77,8 @@ class PaisController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Request $id)
+    public function destroy($id)
     {
-      $pais = Paises::Find($id->idPais);
-      $pais->delete();
-
-      return response()->json([
-      "mensaje" => "País eliminado correctamente."
-       ]);
+        //
     }
 }
