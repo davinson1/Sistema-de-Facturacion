@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use App\Models\Productos;
 class ProductosController extends Controller
 {
     /**
@@ -16,6 +16,11 @@ class ProductosController extends Controller
       return view('productos/producto/productos');
     }
 
+
+    public function listarproductos(){
+        $producto = Productos::all();
+      return view('productos/producto/tabla_producto', compact('producto'));
+    }
     /**
      * Show the form for creating a new resource.
      *
@@ -34,7 +39,20 @@ class ProductosController extends Controller
      */
     public function store(Request $request)
     {
-        //
+    request()->validate([
+            'nombre' => 'required|min:3|max:100|unique:porcentaje,nombre|regex:/^[\pL\s\-]+$/u',
+            'espcificaciones' => 'max:100',
+        ]);
+
+        if ($request->ajax()) {
+        $producto = new Productos();
+        $producto->nombre = $request->nombre;
+        $producto->especificaciones = $request->especificaciones;
+        $producto->save();
+        return response()->json([
+          "mensaje" => "producto creado correctamente."
+        ]);
+      }
     }
 
     /**
@@ -66,9 +84,19 @@ class ProductosController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request,Productos $idproducto)
     {
-        //
+
+         request()->validate([
+            'nombre' => 'required|min:3|max:100|unique:porcentaje,nombre|regex:/^[\pL\s\-]+$/u',
+            'espcificaciones' => 'max:100',
+        ]);
+         if ($request->ajax()) {
+        $idproducto->update($request->all());
+        return response()->json([
+          "mensaje" => "Producto editado correctamente."
+        ]);
+      }
     }
 
     /**
@@ -77,8 +105,12 @@ class ProductosController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Productos $idproducto)
     {
-        //
-    }
+         $idproducto->delete();
+      return response()->json([
+        "mensaje" => "porcentaje eliminado producto"
+      ]);
+       }
+
 }

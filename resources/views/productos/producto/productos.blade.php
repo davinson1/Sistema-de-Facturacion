@@ -26,11 +26,17 @@ active
   </div><!-- /.container-fluid -->
 </div>
 <!-- /.content-header -->
+@include("productos.producto.crear_producto")
+@include("productos.producto.editar_producto")
+@include("productos.producto.eliminar_producto")
+
 <div class="content">
-  <h1>Hola Productos</h1>
+  <div id="listaproductos">
+
+  </div>
 </div>
 
 @endsection
 @section('script_ajax')
-<script  type="text/javascript" src="/js/pais_ajax.js"></script>
+<script  type="text/javascript" src="/js/productos_ajax.js"></script>
 @endsection

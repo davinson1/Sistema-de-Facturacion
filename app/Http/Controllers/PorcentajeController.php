@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Porcentaje;
 use Illuminate\Http\Request;
+
 
 class PorcentajeController extends Controller
 {
@@ -14,6 +16,13 @@ class PorcentajeController extends Controller
     public function index()
     {
       return view('productos/porcentaje/porcentajes');
+    }
+
+    //metodo para listar porcentajes
+    public function listarprocentaje() {
+        $porcentaje = Porcentaje::all();
+      return view('productos/porcentaje/tabla_porcentaje', compact('porcentaje'));
+
     }
 
     /**
@@ -34,7 +43,22 @@ class PorcentajeController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        request()->validate([
+            'nombre' => 'required|min:3|max:100|unique:porcentaje,nombre|regex:/^[\pL\s\-]+$/u',
+            'descripcion' => 'max:100',
+            'porcentaje' => 'required'
+        ]);
+
+        if ($request->ajax()) {
+        $porcentaje = new Porcentaje();
+        $porcentaje->nombre = $request->nombre;
+        $porcentaje->descripcion = $request->descripcion;
+        $porcentaje->porcentaje = $request->porcentaje;
+        $porcentaje->save();
+        return response()->json([
+          "mensaje" => "Porcentaje creado correctamente."
+        ]);
+      }
     }
 
     /**
@@ -66,9 +90,19 @@ class PorcentajeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request,Porcentaje $idporcentaje)
     {
-        //
+         request()->validate([
+            'nombre' => 'required|min:3|max:100|unique:porcentaje,nombre|regex:/^[\pL\s\-]+$/u',
+            'descripcion' => 'max:100',
+            'porcentaje' => 'required'
+        ]);
+      if ($request->ajax()) {
+        $idporcentaje->update($request->all());
+        return response()->json([
+          "mensaje" => "POrcentaje editado correctamente."
+        ]);
+      }
     }
 
     /**
@@ -77,8 +111,11 @@ class PorcentajeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Porcentaje $idporcentaje)
     {
-        //
-    }
+          $idporcentaje->delete();
+      return response()->json([
+        "mensaje" => "porcentaje eliminado correctamente."
+      ]);
+       }
 }

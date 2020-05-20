@@ -25,12 +25,19 @@ active
     </div><!-- /.row -->
   </div><!-- /.container-fluid -->
 </div>
+
+@include("productos.porcentaje.crear_porcentaje")
+@include("productos.porcentaje.editar_porcentaje")
+@include("productos.porcentaje.eliminar_porcentaje")
+
 <!-- /.content-header -->
 <div class="content">
-  <h1>Hola Porcentaje</h1>
+  <div id="listarprocentajes">
+
+  </div>
 </div>
 
 @endsection
 @section('script_ajax')
-<script  type="text/javascript" src="/js/pais_ajax.js"></script>
+<script  type="text/javascript" src="/js/procentaje_ajax.js"></script>
 @endsection

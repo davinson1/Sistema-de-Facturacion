@@ -77,8 +77,17 @@ Route::middleware(['auth'])->group(function(){
   Route::get('/iva', 'IvaController@index')->name('iva')->middleware('can:navegar.iva');
   // Rutas para porcentaje
   Route::get('/porcentaje', 'PorcentajeController@index')->name('porcentaje')->middleware('can:navegar.porcentaje');
+  Route::get('/listar_procentaje', 'PorcentajeController@listarprocentaje')->middleware('can:navegar.porcentaje');
+  Route::post('/porcentaje_crear', 'PorcentajeController@store')->name('porcentaje_crear')->middleware('can:crear.porcentaje');
+  Route::put('/porcentaje_editar/{idporcentaje}', 'PorcentajeController@update')->name('porcentaje_editar')->middleware('can:editar.porcentaje');
+  Route::delete('/porcentaje_eliminar/{idporcentaje}', 'PorcentajeController@destroy')->name('porcentaje_eliminar')->middleware('can:eliminar.porcentaje');
+
   // Rutas para productos
   Route::get('/productos', 'ProductosController@index')->name('productos')->middleware('can:navegar.productos');
+   Route::get('/listar_productos', 'ProductosController@listarproductos')->middleware('can:navegar.productos');
+  Route::post('/productos_crear', 'ProductosController@store')->name('productos_crear')->middleware('can:crear.producto');
+Route::put('/productos_editar/{idproducto}', 'ProductosController@update')->name('producto_editar')->middleware('can:editar.producto');
+  Route::delete('/producto_eliminar/{idproducto}', 'ProductosController@destroy')->name('producto_eliminar')->middleware('can:eliminar.producto');
   // Rutas para tipos de factura
   Route::get('/tipo_factura', 'TipoFacturaController@index')->name('tipo_factura')->middleware('can:navegar.tipos.facturas');
   Route::get('/listar_tipo_factura', 'TipoFacturaController@listarTiposFacturas')->middleware('can:navegar.tipos.facturas');
@@ -92,6 +101,7 @@ Route::middleware(['auth'])->group(function(){
   Route::post('/tipo_tributario_crear', 'TipoTributarioController@store')->name('tipo_tributario_crear')->middleware('can:crear.tipos.tributario');
   Route::put('/tipo_tributario_editar/{idTipoTributario}', 'TipoTributarioController@update')->name('tipo_tributario_editar')->middleware('can:editar.tipos.tributario');
   Route::delete('/tipo_tributario_eliminar/{idTipoTributario}', 'TipoTributarioController@destroy')->name('tipo_tributario_eliminar')->middleware('can:eliminar.tipos.tributario');
-  
+
+
 });
 

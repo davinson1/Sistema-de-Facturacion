@@ -17,8 +17,8 @@ class ProductosTable extends Migration
             $table->bigIncrements('id');
             $table->text('nombre');
             $table->text('especificaciones');
-            $table->timestamp('fecha_creacion')->useCurrent();            
             $table->timestamps();
+
         });
     }
 
