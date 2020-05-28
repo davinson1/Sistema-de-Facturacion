@@ -124,5 +124,5 @@ active
 
 @endsection
 @section('script_ajax')
-<script  type="text/javascript" src="/js/tipo_factura_ajax.js"></script>
+<script  type="text/javascript" src="/js/productos/tipo_factura_ajax.js"></script>
 @endsection

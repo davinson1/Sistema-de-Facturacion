@@ -1,10 +1,12 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Productos;
+use App\Http\Controllers\Controller;
 
 use Illuminate\Http\Request;
+use App\Models\Proveedor;
 
-class IvaController extends Controller
+class ProveedoresController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,7 +15,13 @@ class IvaController extends Controller
      */
     public function index()
     {
-      return view('productos/iva/iva');
+      return view('productos/proveedor/proveedor');
+    }
+
+    public function listarProveedor()
+    {
+      $proveedores = Proveedor::all();
+      return view('productos/proveedor/tabla_proveedor', compact('proveedores'));
     }
 
     /**

@@ -124,5 +124,5 @@ active
 
 @endsection
 @section('script_ajax')
-<script type="text/javascript" src="/js/tipo_documento_ajax.js"></script>
+<script type="text/javascript" src="/js/usuarios/tipo_documento_ajax.js"></script>
 @endsection

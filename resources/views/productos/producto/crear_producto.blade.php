@@ -1,4 +1,3 @@
-
 @can('crear.producto')
 {{-- Modal para registro de un nuevo porcentaje --}}
 <div class="modal fade" id="modal-crear" >

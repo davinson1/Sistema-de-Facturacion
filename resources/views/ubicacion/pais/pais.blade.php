@@ -125,5 +125,5 @@ active
 
 @endsection
 @section('script_ajax')
-<script  type="text/javascript" src="/js/pais_ajax.js"></script>
+<script  type="text/javascript" src="/js/ubicacion/pais_ajax.js"></script>
 @endsection

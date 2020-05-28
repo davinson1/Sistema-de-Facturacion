@@ -16,17 +16,20 @@ class ArticulosTable extends Migration
       Schema::create('articulos', function (Blueprint $table) {
         $table->bigIncrements('id');
         $table->unsignedBigInteger('id_producto');
-        $table->unsignedBigInteger('id_tipo');
+        $table->unsignedBigInteger('id_tipo_articulo');
+        $table->unsignedBigInteger('id_proveedor');
         
         $table->integer('valor_compra');
         $table->integer('valor_envio');
-        $table->integer('id_porcentaje_Min');
+        $table->integer('porcentaje_minimo');
         $table->integer('id_porcentaje');
-        $table->integer('codigo_barras');
+        $table->text('codigo_barras');
+        $table->string('foto');
 
         $table->timestamps();
+
         $table->foreign('id_producto')->references('id')->on('productos');
-        $table->foreign('id_tipo')->references('id')->on('tipo_articulo');
+        $table->foreign('id_tipo_articulo')->references('id')->on('tipo_articulo');
       });
     }
 

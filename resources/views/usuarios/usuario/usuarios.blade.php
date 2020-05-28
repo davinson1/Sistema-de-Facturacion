@@ -65,5 +65,5 @@ active
 
 @endsection
 @section('script_ajax')
-<script  type="text/javascript" src="/js/usuario_ajax.js"></script>
+<script  type="text/javascript" src="/js/usuarios/usuario_ajax.js"></script>
 @endsection

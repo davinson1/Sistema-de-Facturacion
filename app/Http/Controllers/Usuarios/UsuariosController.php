@@ -1,6 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Usuarios;
+use App\Http\Controllers\Controller;
+
 use App\Http\Requests\UsuariosRequest;
 use App\Http\Requests\ActualizarUsuarioRequest;
 use Illuminate\Support\Facades\Hash;
@@ -266,8 +268,6 @@ class UsuariosController extends Controller
         $usuar->password = $pass;
         $usuar->activo = '1';
         $usuar->save();
-
-        $usuar->roles()->sync($request->get('roles'));
 
         return response()->json([
         "mensaje" => "Usuario editado correctamente."

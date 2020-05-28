@@ -38,5 +38,5 @@ active
 
 @endsection
 @section('script_ajax')
-<script  type="text/javascript" src="/js/productos_ajax.js"></script>
+<script  type="text/javascript" src="/js/productos/productos_ajax.js"></script>
 @endsection

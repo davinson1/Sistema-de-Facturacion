@@ -95,7 +95,7 @@
 
         @can('navegar.modulo.productos')
         <li class="nav-item has-treeview @yield('menu-open2')">
-          <a href="#" class="nav-link @yield('active9') @yield('active10') @yield('active11') @yield('active12') @yield('active13') @yield('active14') @yield('active15')">
+          <a href="#" class="nav-link @yield('active9') @yield('active10') @yield('active11') @yield('active12') @yield('active13') @yield('active14') @yield('active15') @yield('active16')">
             <i class="fas fa-shopping-cart nav-icon"></i>              
             <p>
               Productos
@@ -103,7 +103,15 @@
             </p>
           </a>
           <ul class="nav nav-treeview">
-             @can('navegar.articulos')
+            @can('navegar.proveedores')
+            <li class="nav-item">
+              <a href="proveedores" class="nav-link @yield('active16')">
+                <i class="fas fa-truck nav-icon"></i>
+                <p>Proveedores</p>
+              </a>
+            </li>
+            @endcan
+            @can('navegar.articulos')
             <li class="nav-item">
               <a href="articulos" class="nav-link @yield('active9')">
                 <i class="fas fa-shopping-basket nav-icon"></i>

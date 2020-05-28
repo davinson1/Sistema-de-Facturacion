@@ -204,7 +204,32 @@ class PermisosTablaSeeder extends Seeder
           'slug' => 'eliminar.productos',
           'description' => 'El usuario puede ver el boton de eliminar productos.',
         ]);
-        // Permisos de articulos
+        // Permisos de proveedor
+          Permission::create([
+            'name' => 'Navegar proveedores',
+            'categoria' => 'productos',
+            'slug' => 'navegar.proveedores',
+            'description' => 'El usuario puede ver en el menú el enlace proveedores.',
+          ]);
+          Permission::create([
+            'name' => 'Crear proveedores',
+            'categoria' => 'productos',
+            'slug' => 'crear.proveedores',
+            'description' => 'El usuario puede ver el boton de crear proveedores.',
+          ]);
+          Permission::create([
+            'name' => 'Editar proveedores',
+            'categoria' => 'productos',
+            'slug' => 'editar.proveedores',
+            'description' => 'El usuario puede ver el boton de editar proveedores.',
+          ]);
+          Permission::create([
+            'name' => 'Eliminar proveedores',
+            'categoria' => 'productos',
+            'slug' => 'eliminar.proveedores',
+            'description' => 'El usuario puede ver el boton de eliminar proveedores.',
+          ]);
+          // Permisos de articulos
           Permission::create([
             'name' => 'Navegar articulos',
             'categoria' => 'productos',

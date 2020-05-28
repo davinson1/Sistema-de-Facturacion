@@ -144,7 +144,7 @@ active
 
 @endsection
 @section('script_ajax')
-<script  type="text/javascript" src="/js/municipio_ajax.js"></script>
+<script  type="text/javascript" src="/js/ubicacion/municipio_ajax.js"></script>
 
 <script type="text/javascript">
 

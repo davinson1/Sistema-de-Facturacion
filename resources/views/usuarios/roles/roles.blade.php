@@ -100,7 +100,7 @@ active
 </div>
 @endsection
 @section('script_ajax')
-<script src="/js/rol_ajax.js" type="text/javascript"></script>
+<script type="text/javascript" src="/js/usuarios/rol_ajax.js"></script>
 <!-- Page script -->
 <script>
   $(function () {
@@ -122,8 +122,5 @@ active
       $('#color3').toggleClass('card-info card-success');
     });
   });
-
-
-
 </script>
 @endsection
