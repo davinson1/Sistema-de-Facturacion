@@ -2,10 +2,10 @@
 @section('titulo')
 Municipios
 @endsection
-@section('menu-open1')
+@section('menu-open-ubicacion')
 menu-open
 @endsection
-@section('active8')
+@section('active-municipio')
 active
 @endsection
 @section('contenido')

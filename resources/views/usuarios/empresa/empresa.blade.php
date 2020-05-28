@@ -2,10 +2,10 @@
 @section('titulo')
 Empresa
 @endsection
-@section('menu-open')
+@section('menu-open-usuario')
 menu-open
 @endsection
-@section('activeEmpresa')
+@section('active-empresa')
 active
 @endsection
 @section('contenido')
@@ -31,7 +31,7 @@ active
 
 <div class="content">
   <div id="ListarEmpresas">
-
+    <h1>Hola empresa</h1>
   </div>
 </div>
 

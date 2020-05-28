@@ -2,10 +2,10 @@
 @section('titulo')
 Iva
 @endsection
-@section('menu-open2')
+@section('menu-open-producto')
 menu-open
 @endsection
-@section('active11')
+@section('active-iva')
 active
 @endsection
 @section('contenido')

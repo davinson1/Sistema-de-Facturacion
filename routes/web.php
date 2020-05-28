@@ -48,6 +48,13 @@ Route::middleware(['auth'])->group(function(){
   Route::post('/tipo_documento_editar', 'Usuarios\TipoDocumentoController@update')->name('tipo_documento_editar')->middleware('can:editar.tipo.documento');
   Route::post('/tipo_documento_eliminar', 'Usuarios\TipoDocumentoController@destroy')->name('tipo_documento_eliminar')->middleware('can:eliminar.tipo.documento');
 
+  // Rutas para empresas
+  Route::get('/empresa', 'Usuarios\EmpresaController@index')->name('empresa')->middleware('can:navegar.empresa');
+  Route::get('/listar_empresa', 'Usuarios\EmpresaController@listarTipoDocumento')->middleware('can:navegar.empresa');
+  Route::post('/empresa_crear', 'Usuarios\EmpresaController@store')->name('empresa_crear')->middleware('can:crear.empresa');
+  Route::post('/empresa_editar', 'Usuarios\EmpresaController@update')->name('empresa_editar')->middleware('can:editar.empresa');
+  Route::post('/empresa_eliminar', 'Usuarios\EmpresaController@destroy')->name('empresa_eliminar')->middleware('can:eliminar.empresa');
+
   // Rutas para pais
   Route::get('/pais', 'Ubicacion\PaisController@index')->name('pais')->middleware('can:navegar.pais');
   Route::get('/listar_pais', 'Ubicacion\PaisController@listarPais')->middleware('can:navegar.pais');

@@ -2,10 +2,10 @@
 @section('titulo')
 Formas de pago
 @endsection
-@section('menu-open2')
+@section('menu-open-producto')
 menu-open
 @endsection
-@section('active10')
+@section('active-forma-pago')
 active
 @endsection
 @section('contenido')

@@ -2,10 +2,10 @@
 @section('titulo')
 Tipos de facturas
 @endsection
-@section('menu-open2')
+@section('menu-open-producto')
 menu-open
 @endsection
-@section('active14')
+@section('active-tipo-factura')
 active
 @endsection
 @section('contenido')

@@ -2,10 +2,10 @@
 @section('titulo')
 Roles
 @endsection
-@section('menu-open')
+@section('menu-open-usuario')
 menu-open
 @endsection
-@section('active3')
+@section('active-roles')
 active
 @endsection
 @section('contenido')

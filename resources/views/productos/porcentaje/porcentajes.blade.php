@@ -2,10 +2,10 @@
 @section('titulo')
 Porcentaje
 @endsection
-@section('menu-open2')
+@section('menu-open-producto')
 menu-open
 @endsection
-@section('active12')
+@section('active-porcentaje')
 active
 @endsection
 @section('contenido')

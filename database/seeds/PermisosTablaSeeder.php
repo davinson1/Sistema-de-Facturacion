@@ -90,6 +90,32 @@ class PermisosTablaSeeder extends Seeder
             'description' => 'Eliminar cualquier tipo de documento.',
           ]);
 
+        // Permisos de empresa
+          Permission::create([
+            'name' => 'Navegar empresas',
+            'categoria' => 'usuario',
+            'slug' => 'navegar.empresa',
+            'description' => 'Lista y navega todas las empresa del sistemas.',
+          ]);
+          Permission::create([
+            'name' => 'Crear de empresa',
+            'categoria' => 'usuario',
+            'slug' => 'crear.empresa',
+            'description' => 'Crear  empresa.',
+          ]);
+          Permission::create([
+            'name' => 'Edición de empresa',
+            'categoria' => 'usuario',
+            'slug' => 'editar.empresa',
+            'description' => 'Editar empresa.',
+          ]);
+          Permission::create([
+            'name' => 'Eliminar empresa',
+            'categoria' => 'usuario',
+            'slug' => 'eliminar.empresa',
+            'description' => 'Eliminar empresa.',
+          ]);
+
       // Permisos para el modulo ubicacion
         Permission::create([
           'name' => 'Navegar ubicación',

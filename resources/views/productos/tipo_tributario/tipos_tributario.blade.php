@@ -2,10 +2,10 @@
 @section('titulo')
 Tipos tributarios
 @endsection
-@section('menu-open2')
+@section('menu-open-producto')
 menu-open
 @endsection
-@section('active15')
+@section('active-tipo-tributario')
 active
 @endsection
 @section('contenido')

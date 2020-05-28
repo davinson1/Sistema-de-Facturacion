@@ -2,10 +2,10 @@
 @section('titulo')
 Usuarios
 @endsection
-@section('menu-open')
+@section('menu-open-usuario')
 menu-open
 @endsection
-@section('active2')
+@section('active-usuario')
 active
 @endsection
 @section('contenido')

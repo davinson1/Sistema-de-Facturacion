@@ -2,10 +2,10 @@
 @section('titulo')
 Pais
 @endsection
-@section('menu-open1')
+@section('menu-open-ubicacion')
 menu-open
 @endsection
-@section('active6')
+@section('active-pais')
 active
 @endsection
 @section('contenido')

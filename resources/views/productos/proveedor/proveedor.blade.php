@@ -2,10 +2,10 @@
 @section('titulo')
 Proveedor
 @endsection
-@section('menu-open2')
+@section('menu-open-producto')
 menu-open
 @endsection
-@section('active16')
+@section('active-proveedor')
 active
 @endsection
 @section('contenido')

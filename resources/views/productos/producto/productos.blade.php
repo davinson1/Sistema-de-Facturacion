@@ -2,10 +2,10 @@
 @section('titulo')
 Productos
 @endsection
-@section('menu-open2')
+@section('menu-open-producto')
 menu-open
 @endsection
-@section('active13')
+@section('active-producto')
 active
 @endsection
 @section('contenido')

@@ -19,8 +19,8 @@
           </a>
         </li>
         @can('navegar.usuario')
-        <li class="nav-item has-treeview @yield('menu-open')">
-          <a href="#" class="nav-link @yield('active2') @yield('active3') @yield('active4') @yield('active5')">
+        <li class="nav-item has-treeview @yield('menu-open-usuario')">
+          <a href="#" class="nav-link @yield('active-usuario') @yield('active-roles') @yield('active-empresa') @yield('active-tipo-documento')">
             <i class="fas fa-users nav-icon"></i>
             <p>
               Usuarios
@@ -30,7 +30,7 @@
           <ul class="nav nav-treeview">
             @can('navegar.usuario')
             <li class="nav-item">
-              <a href="usuarios" class="nav-link @yield('active2')">
+              <a href="usuarios" class="nav-link @yield('active-usuario')">
                 <i class="fas fa-user-friends nav-icon"></i>
                 <p>Usuarios</p>
               </a>
@@ -38,7 +38,7 @@
             @endcan
             @can('navegar.rol')
             <li class="nav-item">
-              <a href="roles" class="nav-link @yield('active3')">
+              <a href="roles" class="nav-link @yield('active-roles')">
                 <i class="fas fa-user-tag nav-icon"></i>
                 <p>Roles</p>
               </a>
@@ -46,9 +46,17 @@
             @endcan
             @can('navegar.tipo.documento')
             <li class="nav-item">
-              <a href="tipo_documento" class="nav-link @yield('active5')">
+              <a href="tipo_documento" class="nav-link @yield('active-tipo-documento')">
                 <i class="fas fa-id-card nav-icon"></i>
                 <p>Tipo documento</p>
+              </a>
+            </li>
+            @endcan
+            @can('navegar.empresa')
+            <li class="nav-item">
+              <a href="empresa" class="nav-link @yield('active-empresa')">
+                <i class="fas fa-building nav-icon"></i>
+                <p>Empresa</p>
               </a>
             </li>
             @endcan
@@ -56,8 +64,8 @@
         </li>
         @endcan
         @can('navegar.ubicacion')
-        <li class="nav-item has-treeview @yield('menu-open1')">
-          <a href="#" class="nav-link @yield('active6') @yield('active7') @yield('active8')">
+        <li class="nav-item has-treeview @yield('menu-open-ubicacion')">
+          <a href="#" class="nav-link @yield('active-pais') @yield('active-departamento') @yield('active-municipio')">
             <i class="fas fa-map-marked-alt nav-icon"></i>
             <p>
               Ubicación
@@ -67,7 +75,7 @@
           <ul class="nav nav-treeview">
             @can('navegar.pais')
             <li class="nav-item">
-              <a href="pais" class="nav-link @yield('active6')">
+              <a href="pais" class="nav-link @yield('active-pais')">
                 <i class="fas fa-globe-americas nav-icon"></i>
                 <p>País</p>
               </a>
@@ -75,7 +83,7 @@
             @endcan
             @can('navegar.departamento')
             <li class="nav-item">
-              <a href="departamentos" class="nav-link @yield('active7')">
+              <a href="departamentos" class="nav-link @yield('active-departamento')">
                 <i class="fas fa-location-arrow nav-icon"></i>
                 <p>Departamento</p>
               </a>
@@ -83,7 +91,7 @@
             @endcan
             @can('navegar.municipio')
             <li class="nav-item">
-              <a href="municipios" class="nav-link @yield('active8')">
+              <a href="municipios" class="nav-link @yield('active-municipio')">
                 <i class="fas fa-thumbtack nav-icon"></i>
                 <p>Municipio</p>
               </a>
@@ -94,8 +102,8 @@
         @endcan
 
         @can('navegar.modulo.productos')
-        <li class="nav-item has-treeview @yield('menu-open2')">
-          <a href="#" class="nav-link @yield('active9') @yield('active10') @yield('active11') @yield('active12') @yield('active13') @yield('active14') @yield('active15') @yield('active16')">
+        <li class="nav-item has-treeview @yield('menu-open-producto')">
+          <a href="#" class="nav-link @yield('active-proveedor') @yield('active-articulo') @yield('active-forma-pago') @yield('active-iva') @yield('active-porcentaje') @yield('active-producto') @yield('active-tipo-factura') @yield('active-tipo-tributario')">
             <i class="fas fa-shopping-cart nav-icon"></i>              
             <p>
               Productos
@@ -105,7 +113,7 @@
           <ul class="nav nav-treeview">
             @can('navegar.proveedores')
             <li class="nav-item">
-              <a href="proveedores" class="nav-link @yield('active16')">
+              <a href="proveedores" class="nav-link @yield('active-proveedor')">
                 <i class="fas fa-truck nav-icon"></i>
                 <p>Proveedores</p>
               </a>
@@ -113,7 +121,7 @@
             @endcan
             @can('navegar.articulos')
             <li class="nav-item">
-              <a href="articulos" class="nav-link @yield('active9')">
+              <a href="articulos" class="nav-link @yield('active-articulo')">
                 <i class="fas fa-shopping-basket nav-icon"></i>
                 <p>Artículos</p>
               </a>
@@ -121,7 +129,7 @@
             @endcan
             @can('navegar.formas.pagos')
             <li class="nav-item">
-              <a href="formas_pago" class="nav-link @yield('active10')">
+              <a href="formas_pago" class="nav-link @yield('active-forma-pago')">
                 <i class="fas fa-cash-register nav-icon"></i>
                 <p>Formas de pago</p>
               </a>
@@ -129,7 +137,7 @@
             @endcan
              @can('navegar.iva')
             <li class="nav-item">
-              <a href="iva" class="nav-link @yield('active11')">
+              <a href="iva" class="nav-link @yield('active-iva')">
                 <i class="fas fa-file-invoice-dollar nav-icon"></i>
                 <p>Iva</p>
               </a>
@@ -137,7 +145,7 @@
             @endcan
             @can('navegar.porcentaje')
             <li class="nav-item">
-              <a href="porcentaje" class="nav-link @yield('active12')">
+              <a href="porcentaje" class="nav-link @yield('active-porcentaje')">
                 <i class="fas fa-percentage nav-icon"></i>
                 <p>Porcentaje</p>
               </a>
@@ -145,7 +153,7 @@
             @endcan
             @can('navegar.productos')
             <li class="nav-item">
-              <a href="productos" class="nav-link @yield('active13')">
+              <a href="productos" class="nav-link @yield('active-producto')">
                 <i class="fas fa-shopping-cart nav-icon"></i>  
                 <p>Productos</p>
               </a>
@@ -153,7 +161,7 @@
             @endcan
              @can('navegar.tipos.facturas')
             <li class="nav-item">
-              <a href="tipo_factura" class="nav-link @yield('active14')">
+              <a href="tipo_factura" class="nav-link @yield('active-tipo-factura')">
                 <i class="fas fa-receipt nav-icon"></i>
                 <p>Tipos de facturas</p>
               </a>
@@ -161,7 +169,7 @@
             @endcan
             @can('navegar.tipos.tributario')
             <li class="nav-item">
-              <a href="tipo_tributario" class="nav-link @yield('active15')">
+              <a href="tipo_tributario" class="nav-link @yield('active-tipo-tributario')">
                 <i class="fas fa-gavel nav-icon"></i>
                 <p>Tipos tributarios</p>
               </a>

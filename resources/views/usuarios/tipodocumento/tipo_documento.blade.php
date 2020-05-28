@@ -2,10 +2,10 @@
 @section('titulo')
 Tipo de documento
 @endsection
-@section('menu-open')
+@section('menu-open-usuario')
 menu-open
 @endsection
-@section('active5')
+@section('active-tipo-documento')
 active
 @endsection
 @section('contenido')
