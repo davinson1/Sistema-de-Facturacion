@@ -50,10 +50,10 @@ Route::middleware(['auth'])->group(function(){
 
   // Rutas para empresas
   Route::get('/empresa', 'Usuarios\EmpresaController@index')->name('empresa')->middleware('can:navegar.empresa');
-  Route::get('/listar_empresa', 'Usuarios\EmpresaController@listarTipoDocumento')->middleware('can:navegar.empresa');
+  Route::get('/listar_empresa', 'Usuarios\EmpresaController@listarEmpresa')->middleware('can:navegar.empresa');
   Route::post('/empresa_crear', 'Usuarios\EmpresaController@store')->name('empresa_crear')->middleware('can:crear.empresa');
   Route::post('/empresa_editar', 'Usuarios\EmpresaController@update')->name('empresa_editar')->middleware('can:editar.empresa');
-  Route::post('/empresa_eliminar', 'Usuarios\EmpresaController@destroy')->name('empresa_eliminar')->middleware('can:eliminar.empresa');
+  Route::delete('/empresa_eliminar/{idEmpresa}', 'Usuarios\EmpresaController@destroy')->name('empresa_eliminar')->middleware('can:eliminar.empresa');
 
   // Rutas para pais
   Route::get('/pais', 'Ubicacion\PaisController@index')->name('pais')->middleware('can:navegar.pais');
@@ -88,9 +88,17 @@ Route::middleware(['auth'])->group(function(){
 
   // Rutas para formas de pago
   Route::get('/formas_pago', 'Productos\FormasPagoController@index')->name('formas_pago')->middleware('can:navegar.formas.pagos');
+  Route::get('/listar_forma_pago', 'Productos\FormasPagoController@listarFormaPago')->middleware('can:navegar.formas.pagos');
+  Route::post('/forma_pago_crear', 'Productos\FormasPagoController@store')->name('forma_pago_crear')->middleware('can:crear.formas.pagos');
+  Route::put('/forma_pago_editar/{idFormaPago}', 'Productos\FormasPagoController@update')->name('forma_pago_editar')->middleware('can:editar.formas.pagos');
+  Route::delete('/forma_pago_eliminar/{idFormaPago}', 'Productos\FormasPagoController@destroy')->name('forma_pago_eliminar')->middleware('can:eliminar.formas.pagos');
 
   // Rutas para iva
   Route::get('/iva', 'Productos\IvaController@index')->name('iva')->middleware('can:navegar.iva');
+  Route::get('/listar_iva', 'Productos\IvaController@listarIva')->middleware('can:navegar.iva');
+  Route::post('/iva_crear', 'Productos\IvaController@store')->name('iva_crear')->middleware('can:crear.iva');
+  Route::put('/iva_editar/{idIva}', 'Productos\IvaController@update')->name('iva_editar')->middleware('can:editar.iva');
+  Route::delete('/iva_eliminar/{idIva}', 'Productos\IvaController@destroy')->name('iva_eliminar')->middleware('can:eliminar.iva');
 
   // Rutas para porcentaje
   Route::get('/porcentaje', 'Productos\PorcentajeController@index')->name('porcentaje')->middleware('can:navegar.porcentaje');

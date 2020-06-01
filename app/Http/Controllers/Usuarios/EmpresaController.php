@@ -4,6 +4,10 @@ namespace App\Http\Controllers\Usuarios;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\Empresa;
+use App\Models\TipoTributario;
+use App\Models\Municipios;
+use App\Http\Requests\EmpresaRequest;
 
 class EmpresaController extends Controller
 {
@@ -14,17 +18,15 @@ class EmpresaController extends Controller
      */
     public function index()
     {
-      return view('usuarios/empresa/empresa');
+      $tipoTributario = TipoTributario::get();
+      $municipios = Municipios::get();
+      return view('usuarios/empresa/empresa', compact('tipoTributario', 'municipios'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
+    public function listarEmpresa()
     {
-        //
+      $empresas = Empresa::all();
+      return view('usuarios/empresa/tabla_empresa', compact('empresas'));
     }
 
     /**
@@ -33,9 +35,14 @@ class EmpresaController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(EmpresaRequest $request)
     {
-        //
+      if ($request->ajax()) {
+        $empresa = Empresa::create($request->all());        
+        return response()->json([
+        "mensaje" => "Empresa creada correctamente."
+         ]);
+      }
     }
 
     /**
@@ -78,8 +85,11 @@ class EmpresaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Empresa $idEmpresa)
     {
-        //
+      $idEmpresa->delete();
+      return response()->json([
+        "mensaje" => "Empresa eliminada correctamente."
+      ]);
     }
 }

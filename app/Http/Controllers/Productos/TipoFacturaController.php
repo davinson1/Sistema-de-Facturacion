@@ -71,6 +71,6 @@ class TipoFacturaController extends Controller
       $idTipoFactura->delete();
       return response()->json([
         "mensaje" => "Tipo de factura eliminado correctamente."
-      ]);      
+      ]);
     }
 }

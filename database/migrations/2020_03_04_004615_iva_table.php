@@ -16,7 +16,6 @@ class IvaTable extends Migration
         Schema::create('iva', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->integer('valor_iva');
-            $table->date('fecha_inicio');
             $table->date('fecha_fin');
             $table->timestamps();
         });
