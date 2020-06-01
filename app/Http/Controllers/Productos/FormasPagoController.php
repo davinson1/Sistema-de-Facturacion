@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Productos;
 use App\Http\Controllers\Controller;
 
 use Illuminate\Http\Request;
+use App\Models\FormasPago;
+use App\Http\Requests\FormaPagoRequest;
 
 class FormasPagoController extends Controller
 {
@@ -17,14 +19,10 @@ class FormasPagoController extends Controller
       return view('productos/forma_pago/formas_pago');
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
+    public function listarFormaPago()
     {
-        //
+      $formasPagos = FormasPago::all();
+      return view('productos/forma_pago/tabla_formas_pago', compact('formasPagos'));
     }
 
     /**
@@ -33,31 +31,16 @@ class FormasPagoController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(FormaPagoRequest $request)
     {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
+      if ($request->ajax()) {
+        $formaPago = new FormasPago();
+        $formaPago->nombre = $request->nombre;
+        $formaPago->save();
+        return response()->json([
+          "mensaje" => "Forma de pago creado correctamente."
+        ]);
+      }
     }
 
     /**
@@ -67,9 +50,14 @@ class FormasPagoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(FormaPagoRequest $request, FormasPago $idFormaPago)
     {
-        //
+      if ($request->ajax()) {
+        $idFormaPago->update($request->all());
+        return response()->json([
+          "mensaje" => "Forma pago editado correctamente."
+        ]);
+      }
     }
 
     /**
@@ -78,8 +66,11 @@ class FormasPagoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(FormasPago $idFormaPago)
     {
-        //
+      $idFormaPago->delete();
+      return response()->json([
+        "mensaje" => "Forma pago eliminado correctamente."
+      ]);
     }
 }

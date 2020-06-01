@@ -25,9 +25,8 @@ class EmpresaTable extends Migration
             $table->text('descripcion');
             $table->text('nombre_jefe');
             $table->text('celular_jefe');
-            $table->tinyInteger('Activo');
-            $table->date('creacion');
-            $table->timestamp('fecha_creacion')->useCurrent();
+            $table->tinyInteger('activo');
+            $table->date('fecha_creacion');
             $table->timestamps();
 
             $table->foreign('id_tipo_tributario')->references('id')->on('tipo_tributario');

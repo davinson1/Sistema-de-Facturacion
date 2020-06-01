@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Productos;
 use App\Http\Controllers\Controller;
 
 use Illuminate\Http\Request;
+use App\Models\Iva;
+use App\Http\Requests\IvaRequest;
 
 class IvaController extends Controller
 {
@@ -17,47 +19,28 @@ class IvaController extends Controller
       return view('productos/iva/iva');
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
+    public function listarIva()
     {
-        //
+      $ivas = Iva::all();
+      return view('productos/iva/tabla_iva', compact('ivas'));
     }
-
     /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(IvaRequest $request)
     {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
+      if ($request->ajax()) {
+        $iva = new Iva();
+        $iva->valor_iva = $request->valor_iva;
+        $iva->fecha_fin = $request->fecha_fin;
+        $iva->save();
+        return response()->json([
+          "mensaje" => "Iva creado correctamente."
+        ]);
+      }
     }
 
     /**
@@ -67,9 +50,14 @@ class IvaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(IvaRequest $request, Iva $idIva)
     {
-        //
+      if ($request->ajax()) {
+        $idIva->update($request->all());
+        return response()->json([
+          "mensaje" => "Iva editado correctamente."
+        ]);
+      }
     }
 
     /**
@@ -78,8 +66,11 @@ class IvaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Iva $idIva)
     {
-        //
+      $idIva->delete();
+      return response()->json([
+        "mensaje" => "Iva eliminado correctamente."
+      ]);
     }
 }
