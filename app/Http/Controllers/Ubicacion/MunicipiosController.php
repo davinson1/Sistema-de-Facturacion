@@ -1,15 +1,22 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Ubicacion;
+use App\Http\Controllers\Controller;
 
 use Illuminate\Http\Request;
+
+use App\Models\Municipios;
 use App\Models\Departamentos;
-use App\Models\Paises;
-use App\Http\Requests\DepartamentosRequest;
+use App\Http\Requests\MunicipioRequest;
 
-
-class DepartamentosController extends Controller
+class MunicipiosController extends Controller
 {
+    public function listarMunicipios()
+    {
+      $municipio = Municipios::all();
+      return view('ubicacion/municipio/tabla_municipio', compact('municipio'));
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -17,15 +24,8 @@ class DepartamentosController extends Controller
      */
     public function index()
     {
-        $pais = Paises::all();
-        return view('ubicacion/departamento/departamentos',compact('pais'));
-    }
-
-
-    public function ListarDepartamentos(){
-        $departamento = Departamentos::all();
-        return view('ubicacion/departamento/tabla_departamento', compact('departamento'));
-
+      $departamento = Departamentos::all();      
+      return view('ubicacion/municipio/municipio', compact('departamento'));
     }
 
     /**
@@ -44,17 +44,16 @@ class DepartamentosController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(DepartamentosRequest $request)
+    public function store(MunicipioRequest $request)
     {
-
       if ($request->ajax()) {
-        $Departamento = new Departamentos();
-        $Departamento->id_pais = $request->idPais;
-        $Departamento->nombre = $request->nombre;
-        $Departamento->save();
-        return response()->json([
-        "mensaje" => "Departamento creado correctamente."
-         ]);
+      $municipio = new Municipios();
+      $municipio->id_departamento = $request->idDepartamento;
+      $municipio->nombre = $request->nombre;
+      $municipio->save();
+      return response()->json([
+      "mensaje" => "Municipio creado correctamente."
+       ]);
       }
     }
 
@@ -87,17 +86,18 @@ class DepartamentosController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(DepartamentosRequest $request)
+    public function update(MunicipioRequest $request)
     {
       if ($request->ajax()) {
 
-        $departamento = Departamentos::Find($request->idDepartamento);
-        $departamento->id_pais = $request->idPais;
-        $departamento->nombre = $request->nombre;
-        $departamento->save();
-        return response()->json([
-        "mensaje" => "Departamento editado correctamente."
-         ]);
+      $municipio = Municipios::Find($request->idMunicipio);
+      $municipio->id_departamento = $request->idDepartamento;
+      $municipio->nombre = $request->nombre;
+      $municipio->save();
+
+      return response()->json([
+      "mensaje" => "Municipio editado correctamente."
+       ]);
       }
     }
 
@@ -109,15 +109,11 @@ class DepartamentosController extends Controller
      */
     public function destroy(Request $id)
     {
+      $municipio = Municipios::Find($id->idMunicipio);
+      $municipio->delete();
 
-        $departamento = Departamentos::Find($id->idDepartamento);
-        $departamento->delete();
       return response()->json([
-
-           "mensaje" => "Departamento eliminado correctamente."
-
-
+      "mensaje" => "Municipio eliminado correctamente."
        ]);
-
     }
 }

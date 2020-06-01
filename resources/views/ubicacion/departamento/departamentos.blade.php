@@ -2,10 +2,10 @@
 @section('titulo')
 Departamentos
 @endsection
-@section('menu-open1')
+@section('menu-open-ubicacion')
 menu-open
 @endsection
-@section('active7')
+@section('active-departamento')
 active
 @endsection
 @section('contenido')
@@ -142,7 +142,7 @@ active
 
 @endsection
 @section('script_ajax')
-<script  type="text/javascript" src="/js/departamento_ajax.js"></script>
+<script  type="text/javascript" src="/js/ubicacion/departamento_ajax.js"></script>
 
 
 <script type="text/javascript">

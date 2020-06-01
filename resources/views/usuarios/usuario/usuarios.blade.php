@@ -2,10 +2,10 @@
 @section('titulo')
 Usuarios
 @endsection
-@section('menu-open')
+@section('menu-open-usuario')
 menu-open
 @endsection
-@section('active2')
+@section('active-usuario')
 active
 @endsection
 @section('contenido')
@@ -65,5 +65,5 @@ active
 
 @endsection
 @section('script_ajax')
-<script  type="text/javascript" src="/js/usuario_ajax.js"></script>
+<script  type="text/javascript" src="/js/usuarios/usuario_ajax.js"></script>
 @endsection

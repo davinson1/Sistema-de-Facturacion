@@ -2,10 +2,10 @@
 @section('titulo')
 Tipo de documento
 @endsection
-@section('menu-open')
+@section('menu-open-usuario')
 menu-open
 @endsection
-@section('active5')
+@section('active-tipo-documento')
 active
 @endsection
 @section('contenido')
@@ -124,5 +124,5 @@ active
 
 @endsection
 @section('script_ajax')
-<script type="text/javascript" src="/js/tipo_documento_ajax.js"></script>
+<script type="text/javascript" src="/js/usuarios/tipo_documento_ajax.js"></script>
 @endsection

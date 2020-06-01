@@ -2,10 +2,10 @@
 @section('titulo')
 Pais
 @endsection
-@section('menu-open1')
+@section('menu-open-ubicacion')
 menu-open
 @endsection
-@section('active6')
+@section('active-pais')
 active
 @endsection
 @section('contenido')
@@ -125,5 +125,5 @@ active
 
 @endsection
 @section('script_ajax')
-<script  type="text/javascript" src="/js/pais_ajax.js"></script>
+<script  type="text/javascript" src="/js/ubicacion/pais_ajax.js"></script>
 @endsection

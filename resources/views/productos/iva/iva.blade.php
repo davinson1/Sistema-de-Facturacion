@@ -2,10 +2,10 @@
 @section('titulo')
 Iva
 @endsection
-@section('menu-open2')
+@section('menu-open-producto')
 menu-open
 @endsection
-@section('active11')
+@section('active-iva')
 active
 @endsection
 @section('contenido')
@@ -32,5 +32,5 @@ active
 
 @endsection
 @section('script_ajax')
-<script  type="text/javascript" src="/js/pais_ajax.js"></script>
+<script  type="text/javascript" src="/js/productos/pais_ajax.js"></script>
 @endsection

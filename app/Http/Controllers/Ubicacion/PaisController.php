@@ -1,11 +1,18 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Ubicacion;
+use App\Http\Controllers\Controller;
 
 use Illuminate\Http\Request;
 
-class ArticulosController extends Controller
+use Illuminate\Http\Response;
+use App\Models\Paises;
+use App\Http\Requests\PaisRequest;
+use Illuminate\Support\Facades\DB;
+
+class PaisController extends Controller
 {
+    
     /**
      * Display a listing of the resource.
      *
@@ -13,7 +20,13 @@ class ArticulosController extends Controller
      */
     public function index()
     {
-      return view('productos/articulo/articulos');
+        return view('ubicacion/pais/pais');
+    }
+    
+    public function listarPais()
+    {
+      $pais = Paises::all();
+      return view('ubicacion/pais/tabla_pais', compact('pais'));
     }
 
     /**
@@ -32,9 +45,16 @@ class ArticulosController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(PaisRequest $request)
     {
-        //
+      if ($request->ajax()) {
+        $pais = new Paises();
+        $pais->nombre = $request->nombre;
+        $pais->save();
+        return response()->json([
+          "mensaje" => "País creado correctamente."
+        ]);
+      }
     }
 
     /**
@@ -66,9 +86,18 @@ class ArticulosController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(PaisRequest $request)
     {
-        //
+      if ($request->ajax()) {
+
+      $pais = Paises::Find($request->idPais);
+      $pais->nombre = $request->nombre;
+      $pais->save();
+
+      return response()->json([
+      "mensaje" => "País editado correctamente."
+       ]);
+      }
     }
 
     /**
@@ -77,8 +106,13 @@ class ArticulosController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $id)
     {
-        //
+      $pais = Paises::Find($id->idPais);
+      $pais->delete();
+
+      return response()->json([
+      "mensaje" => "País eliminado correctamente."
+       ]);
     }
 }

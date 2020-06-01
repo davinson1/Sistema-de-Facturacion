@@ -1,4 +1,3 @@
-
 {!! Form::model($rol, ['route' => ['roles_actualizar', $rol->id], 'method' => 'PUT', 'id' =>'frm_editar_rol']) !!}
     <div class="modal-body">
       <div class="form-group">

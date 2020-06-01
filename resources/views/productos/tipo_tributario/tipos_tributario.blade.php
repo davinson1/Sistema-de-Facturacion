@@ -2,10 +2,10 @@
 @section('titulo')
 Tipos tributarios
 @endsection
-@section('menu-open2')
+@section('menu-open-producto')
 menu-open
 @endsection
-@section('active15')
+@section('active-tipo-tributario')
 active
 @endsection
 @section('contenido')
@@ -124,5 +124,5 @@ active
 
 @endsection
 @section('script_ajax')
-<script  type="text/javascript" src="/js/tipo_tributario_ajax.js"></script>
+<script  type="text/javascript" src="/js/productos/tipo_tributario_ajax.js"></script>
 @endsection

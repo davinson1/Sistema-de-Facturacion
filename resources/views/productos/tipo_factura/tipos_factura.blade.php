@@ -2,10 +2,10 @@
 @section('titulo')
 Tipos de facturas
 @endsection
-@section('menu-open2')
+@section('menu-open-producto')
 menu-open
 @endsection
-@section('active14')
+@section('active-tipo-factura')
 active
 @endsection
 @section('contenido')
@@ -124,5 +124,5 @@ active
 
 @endsection
 @section('script_ajax')
-<script  type="text/javascript" src="/js/tipo_factura_ajax.js"></script>
+<script  type="text/javascript" src="/js/productos/tipo_factura_ajax.js"></script>
 @endsection

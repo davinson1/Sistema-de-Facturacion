@@ -2,10 +2,10 @@
 @section('titulo')
 Roles
 @endsection
-@section('menu-open')
+@section('menu-open-usuario')
 menu-open
 @endsection
-@section('active3')
+@section('active-roles')
 active
 @endsection
 @section('contenido')
@@ -100,7 +100,7 @@ active
 </div>
 @endsection
 @section('script_ajax')
-<script src="/js/rol_ajax.js" type="text/javascript"></script>
+<script type="text/javascript" src="/js/usuarios/rol_ajax.js"></script>
 <!-- Page script -->
 <script>
   $(function () {
@@ -122,8 +122,5 @@ active
       $('#color3').toggleClass('card-info card-success');
     });
   });
-
-
-
 </script>
 @endsection

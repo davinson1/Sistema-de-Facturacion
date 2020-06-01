@@ -2,10 +2,10 @@
 @section('titulo')
 Porcentaje
 @endsection
-@section('menu-open2')
+@section('menu-open-producto')
 menu-open
 @endsection
-@section('active12')
+@section('active-porcentaje')
 active
 @endsection
 @section('contenido')
@@ -39,5 +39,5 @@ active
 
 @endsection
 @section('script_ajax')
-<script  type="text/javascript" src="/js/procentaje_ajax.js"></script>
+<script  type="text/javascript" src="/js/productos/procentaje_ajax.js"></script>
 @endsection

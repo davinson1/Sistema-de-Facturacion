@@ -13,25 +13,20 @@ class ProveedorTable extends Migration
      */
     public function up()
     {
-        Schema::create('proveedor', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->unsignedBigInteger('id_usuario');
-            $table->unsignedBigInteger('id_ciudad');
-            
-            $table->string('nit');
-            $table->string('nombre_proveedor');
-            $table->string('nombre_representante');
-            $table->string('telefono');
-            $table->text('direccion');
-            $table->string('tipo_cuenta');
-            $table->string('numero_cuenta');
-            $table->string('cuenta_banco');
-            $table->text('observaciones');
+        Schema::create('proveedor', function (Blueprint $table) {              
+          $table->bigIncrements('id');
+          $table->unsignedBigInteger('id_empresa');
+          $table->unsignedBigInteger('id_usuario');
+          
+          $table->string('nombre')->nullable();
+          $table->string('telefono')->nullable();
+          $table->string('descripcion')->nullable();
+          $table->tinyInteger('estato')->default('1');
 
-            $table->timestamps();
+          $table->timestamps();
 
-            $table->foreign('id_usuario')->references('id')->on('users');
-            $table->foreign('id_ciudad')->references('id')->on('municipio');
+          $table->foreign('id_empresa')->references('id')->on('empresa');
+          $table->foreign('id_usuario')->references('id')->on('users');
         });
     }
 

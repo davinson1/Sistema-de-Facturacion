@@ -16,7 +16,6 @@ class TipoFacturaTable extends Migration
         Schema::create('tipo_factura', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->text('nombre');
-            $table->integer('consecutivo');
             $table->timestamps();
         });
     }

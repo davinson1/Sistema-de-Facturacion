@@ -1,10 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Productos;
+use App\Http\Controllers\Controller;
 
 use Illuminate\Http\Request;
 
-class FormasPagoController extends Controller
+class ArticulosController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,7 +14,7 @@ class FormasPagoController extends Controller
      */
     public function index()
     {
-      return view('productos/forma_pago/formas_pago');
+      return view('productos/articulo/articulos');
     }
 
     /**

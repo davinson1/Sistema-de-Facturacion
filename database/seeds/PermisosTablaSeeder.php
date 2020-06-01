@@ -90,6 +90,32 @@ class PermisosTablaSeeder extends Seeder
             'description' => 'Eliminar cualquier tipo de documento.',
           ]);
 
+        // Permisos de empresa
+          Permission::create([
+            'name' => 'Navegar empresas',
+            'categoria' => 'usuario',
+            'slug' => 'navegar.empresa',
+            'description' => 'Lista y navega todas las empresa del sistemas.',
+          ]);
+          Permission::create([
+            'name' => 'Crear de empresa',
+            'categoria' => 'usuario',
+            'slug' => 'crear.empresa',
+            'description' => 'Crear  empresa.',
+          ]);
+          Permission::create([
+            'name' => 'Edición de empresa',
+            'categoria' => 'usuario',
+            'slug' => 'editar.empresa',
+            'description' => 'Editar empresa.',
+          ]);
+          Permission::create([
+            'name' => 'Eliminar empresa',
+            'categoria' => 'usuario',
+            'slug' => 'eliminar.empresa',
+            'description' => 'Eliminar empresa.',
+          ]);
+
       // Permisos para el modulo ubicacion
         Permission::create([
           'name' => 'Navegar ubicación',
@@ -204,7 +230,32 @@ class PermisosTablaSeeder extends Seeder
           'slug' => 'eliminar.productos',
           'description' => 'El usuario puede ver el boton de eliminar productos.',
         ]);
-        // Permisos de articulos
+        // Permisos de proveedor
+          Permission::create([
+            'name' => 'Navegar proveedores',
+            'categoria' => 'productos',
+            'slug' => 'navegar.proveedores',
+            'description' => 'El usuario puede ver en el menú el enlace proveedores.',
+          ]);
+          Permission::create([
+            'name' => 'Crear proveedores',
+            'categoria' => 'productos',
+            'slug' => 'crear.proveedores',
+            'description' => 'El usuario puede ver el boton de crear proveedores.',
+          ]);
+          Permission::create([
+            'name' => 'Editar proveedores',
+            'categoria' => 'productos',
+            'slug' => 'editar.proveedores',
+            'description' => 'El usuario puede ver el boton de editar proveedores.',
+          ]);
+          Permission::create([
+            'name' => 'Eliminar proveedores',
+            'categoria' => 'productos',
+            'slug' => 'eliminar.proveedores',
+            'description' => 'El usuario puede ver el boton de eliminar proveedores.',
+          ]);
+          // Permisos de articulos
           Permission::create([
             'name' => 'Navegar articulos',
             'categoria' => 'productos',

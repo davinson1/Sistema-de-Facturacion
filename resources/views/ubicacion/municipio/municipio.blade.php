@@ -2,10 +2,10 @@
 @section('titulo')
 Municipios
 @endsection
-@section('menu-open1')
+@section('menu-open-ubicacion')
 menu-open
 @endsection
-@section('active8')
+@section('active-municipio')
 active
 @endsection
 @section('contenido')
@@ -144,7 +144,7 @@ active
 
 @endsection
 @section('script_ajax')
-<script  type="text/javascript" src="/js/municipio_ajax.js"></script>
+<script  type="text/javascript" src="/js/ubicacion/municipio_ajax.js"></script>
 
 <script type="text/javascript">
 

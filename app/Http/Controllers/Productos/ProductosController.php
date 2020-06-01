@@ -1,6 +1,7 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Productos;
+use App\Http\Controllers\Controller;
 
 use Illuminate\Http\Request;
 use App\Models\Productos;
@@ -17,20 +18,11 @@ class ProductosController extends Controller
     }
 
 
-    public function listarproductos(){
-        $producto = Productos::all();
+    public function listarProductos(){
+      $producto = Productos::all();
       return view('productos/producto/tabla_producto', compact('producto'));
     }
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
+    
     /**
      * Store a newly created resource in storage.
      *
@@ -53,28 +45,6 @@ class ProductosController extends Controller
           "mensaje" => "producto creado correctamente."
         ]);
       }
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
     }
 
     /**
