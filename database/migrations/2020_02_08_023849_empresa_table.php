@@ -25,7 +25,7 @@ class EmpresaTable extends Migration
             $table->text('descripcion');
             $table->text('nombre_jefe');
             $table->text('celular_jefe');
-            $table->tinyInteger('activo');
+            $table->tinyInteger('estado')->default('1');
             $table->date('fecha_creacion');
             $table->timestamps();
 

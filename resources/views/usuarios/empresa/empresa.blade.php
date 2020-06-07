@@ -31,6 +31,25 @@ active
 
 @include("usuarios.empresa.crear_empresa")
 
+@can('editar.empresa')
+{{-- Modal para Editar un rol --}}
+<div class="modal fade" id="modal-editar" >
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header bg-info">
+        <h4 class="modal-title"><i class="fa fa-pen"></i> Editar empresa</h4>
+        <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div id="formulario">
+
+      </div>
+    </div>
+  </div>
+</div>
+@endcan
+
 @can('eliminar.empresa')
   {{-- Modal para Eliminar empresa --}}
   <div class="modal fade" id="modal-eliminar" >

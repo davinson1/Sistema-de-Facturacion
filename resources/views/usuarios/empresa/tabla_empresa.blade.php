@@ -22,6 +22,7 @@
           <th>Dirección</th>
           <th>Teléfono</th>
           <th>Jefe</th>
+          <th>Estado</th>
           <th>Fecha de Creación</th>
           <th width="120px">Acciones</th>
         </tr>
@@ -34,10 +35,15 @@
             <td>{{$empresa->direccion}}</td>
             <td>{{$empresa->telefono}}</td>
             <td>{{$empresa->nombre_jefe}}</td>
+              @if($empresa->estado == '1')
+                <td class="bg-success">Activo</td>
+              @else
+                <td class="bg-danger">Inactivo</td>
+              @endif
             <td>{{$empresa->created_at}}</td>
             <td class="text-center">
               @can('editar.empresa')
-                <button class="btn btn-info btn-xs" data-toggle="modal" data-target="#modal-editar" onclick="Editar('{{$empresa->id}}','{{$empresa->nombre}}')">
+                <button class="btn btn-info btn-xs" data-toggle="modal" data-target="#modal-editar" onclick="Editar('{{$empresa->id}}')">
                   <i class="fa fa-pen"></i> Editar
                 </button>
               @endcan

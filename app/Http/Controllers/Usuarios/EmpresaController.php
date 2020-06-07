@@ -46,25 +46,17 @@ class EmpresaController extends Controller
     }
 
     /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
      * Show the form for editing the specified resource.
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Empresa $empresa)
     {
-        //
+      // $tipoTributario = TipoTributario::get();
+      $tipoTributario = TipoTributario::all()->sortBy('nombre', SORT_NATURAL | SORT_FLAG_CASE)->pluck('nombre', 'id');
+      $municipios = Municipios::all()->sortBy('nombre', SORT_NATURAL | SORT_FLAG_CASE)->pluck('nombre', 'id');
+      return view('usuarios/empresa/editar_empresa', compact('empresa', 'tipoTributario', 'municipios'));      
     }
 
     /**
@@ -74,9 +66,13 @@ class EmpresaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Empresa $idEmpresa)
     {
-        //
+      // Actualizar Rol
+        $idEmpresa->update($request->all());
+        return response()->json([
+        "mensaje" => "Empresa actualizada correctamente."
+         ]);
     }
 
     /**
