@@ -52,7 +52,8 @@ Route::middleware(['auth'])->group(function(){
   Route::get('/empresa', 'Usuarios\EmpresaController@index')->name('empresa')->middleware('can:navegar.empresa');
   Route::get('/listar_empresa', 'Usuarios\EmpresaController@listarEmpresa')->middleware('can:navegar.empresa');
   Route::post('/empresa_crear', 'Usuarios\EmpresaController@store')->name('empresa_crear')->middleware('can:crear.empresa');
-  Route::post('/empresa_editar', 'Usuarios\EmpresaController@update')->name('empresa_editar')->middleware('can:editar.empresa');
+  Route::get('/empresa_editar/{empresa}', 'Usuarios\EmpresaController@edit')->name('empresa_editar')->middleware('can:editar.empresa');
+  Route::put('/empresa_actualizar{idEmpresa}', 'Usuarios\EmpresaController@update')->name('empresa_actualizar')->middleware('can:editar.empresa');
   Route::delete('/empresa_eliminar/{idEmpresa}', 'Usuarios\EmpresaController@destroy')->name('empresa_eliminar')->middleware('can:eliminar.empresa');
 
   // Rutas para pais

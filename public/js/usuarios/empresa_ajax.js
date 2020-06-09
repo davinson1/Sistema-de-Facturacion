@@ -22,6 +22,17 @@ $('#crearEmpresa').click(function(e) {
   proccessFunction(url, 'POST', params, callbackStoreEmpresa);
 });
 
+// llamar formulario de editar empresa
+function Editar(idEmpresa) {
+  $.ajax({
+      type:'get',
+      url:('empresa_editar/'+idEmpresa),
+      success: function(data){
+        $('#formulario').empty().html(data);
+      }
+  });
+}
+
 // Eliminar empresa
 function Eliminar(idEmpresa, nombreEmpresa) {
   $("#idEmpresaEliminar").val(idEmpresa);
