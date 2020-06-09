@@ -18,26 +18,35 @@
         <thead class="bg-info">
         <tr>
           <th>ID</th>
+          <th>ID empresa</th>
+          <th>ID usuario</th>
           <th>Nombre</th>
           <th>Teléfono</th>
-          <th>Descripción</th>          
-          <th>Estado</th>          
+          <th>Descripción</th>
+          <th>Estado</th>
           <th>Fecha de Creación</th>
-          <th width="120px">Acciones</th>
+          <th width="150px">Acciones</th>
         </tr>
         </thead>
         <tbody>
           <tr>
           @foreach ($proveedores as $proveedor)
+
             <td>{{$proveedor->id}}</td>
+            <td>{{$proveedor->empresa->nombre}}</td>
+            <td>{{$proveedor->usuario->name}} {{$proveedor->usuario->apellido}}</td>
             <td>{{$proveedor->nombre}}</td>
             <td>{{$proveedor->telefono}}</td>
             <td>{{$proveedor->descripcion}}</td>
-            <td>{{$proveedor->estado}}</td>
+            @if($proveedor->estado =='1')
+              <td><span class="badge badge-success">Activo</span></td>
+          @else
+             <td><span class="badge badge-danger">Inactivo</span></td>
+            @endif
             <td>{{$proveedor->updated_at}}</td>
             <td class="text-center">
               @can('editar.proveedores')
-                <button class="btn btn-info btn-xs" data-toggle="modal" data-target="#modal-editar" onclick="Editar('{{$proveedor->id}}','{{$proveedor->descripcion}}')">
+                <button class="btn btn-info btn-xs" data-toggle="modal" data-target="#modal-editar" onclick="Editar('{{$proveedor->id}}')">
                   <i class="fa fa-pen"></i> Editar
                 </button>
               @endcan

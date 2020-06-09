@@ -13,11 +13,12 @@ class ProveedorTable extends Migration
      */
     public function up()
     {
-        Schema::create('proveedor', function (Blueprint $table) {              
+        Schema::create('proveedor', function (Blueprint $table) {
           $table->bigIncrements('id');
           $table->unsignedBigInteger('id_empresa');
           $table->unsignedBigInteger('id_usuario');
-          
+          $table->unsignedBigInteger('id_usuario_modifica')->nullable();
+
           $table->string('nombre')->nullable();
           $table->string('telefono')->nullable();
           $table->string('descripcion')->nullable();
@@ -27,6 +28,7 @@ class ProveedorTable extends Migration
 
           $table->foreign('id_empresa')->references('id')->on('empresa');
           $table->foreign('id_usuario')->references('id')->on('users');
+          $table->foreign('id_usuario_modifica')->references('id')->on('users');
         });
     }
 

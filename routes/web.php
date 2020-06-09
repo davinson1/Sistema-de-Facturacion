@@ -79,9 +79,13 @@ Route::middleware(['auth'])->group(function(){
   // Rutas para proveedores
   Route::get('/proveedores', 'Productos\ProveedoresController@index')->name('proveedores')->middleware('can:navegar.proveedores');
   Route::get('/listar_proveedor', 'Productos\ProveedoresController@listarProveedor')->middleware('can:navegar.proveedores');
+
   Route::post('/proveedores_crear', 'Productos\ProveedoresController@store')->name('proveedores_crear')->middleware('can:crear.proveedores');
-  Route::put('/proveedores_editar/{idTipoFactura}', 'Productos\ProveedoresController@update')->name('proveedores_editar')->middleware('can:editar.proveedores');
-  Route::delete('/proveedores_eliminar/{idTipoFactura}', 'Productos\ProveedoresController@destroy')->name('proveedores_eliminar')->middleware('can:eliminar.proveedores');
+
+  Route::get('/proveedores_editar/{idProveedor}', 'Productos\ProveedoresController@edit')->name('proveedores_editar')->middleware('can:editar.proveedores');
+  Route::put('/proveedor_actulizar/{idProveedor}', 'Productos\ProveedoresController@update')->name('proveedor_actulizar')->middleware('can:editar.proveedores');
+
+  Route::delete('/proveedores_eliminar/{idProveedor}', 'Productos\ProveedoresController@destroy')->name('proveedores_eliminar')->middleware('can:eliminar.proveedores');
 
   // Rutas para articulos
   Route::get('/articulos', 'Productos\ArticulosController@index')->name('articulos')->middleware('can:navegar.articulos');

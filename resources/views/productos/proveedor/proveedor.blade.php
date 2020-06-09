@@ -27,51 +27,38 @@ active
 </div>
 <!-- /.content-header -->
 
-@can('crear.proveedores')
-{{-- Modal para registro de tipo de factura --}}
-<div class="modal fade" id="modal-crear" >
+@include("productos.Proveedor.crear_proveedor")
+@include("productos.Proveedor.eliminar_proveedor")
+{{-- @include("productos.Proveedor.editar_proveedor") --}}
+
+@can('editar.proveedores')
+{{-- Modal para registro de proveedor --}}
+<div class="modal fade" id="modal-editar" >
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header bg-info">
-        <h4 class="modal-title"><i class="fas fa-plus"></i> Registrar un proveedor</h4>
+        <h4 class="modal-title"><i class="fas fa-plus"></i> editar un proveedor</h4>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
 
-      @csrf
-      <form>
-        <div class="modal-body">
-          <div class="form-group">
-            <label for="nombreProveedor">Nombre:</label>
-            <input id="nombreProveedor" class="form-control focus" type="text" placeholder="Nombre del proveedor" required="">
-          </div>
-          <div class="form-group">
-            <label for="telefonoProveedor">Teléfono:</label>
-            <input id="telefonoProveedor" class="form-control focus" type="text" placeholder="Teléfono del proveedor" required="">
-          </div>
-          <div class="form-group">
-            <label for="descripcionProveedor">Descripción del proveedor:</label>
-            <input id="descripcionProveedor" class="form-control focus" type="text" placeholder="Descripcion del proveedor" required="">
-          </div>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-          <button type="submit" id="crearProveedor" class="btn btn-info">Crear proveedor </button>
-        </div>
-      </form>
+<div id="formularioeditar">
+
+
+</div>
     </div>
   </div>
 </div>
 @endcan
-
 <div class="content">
   <div id="listarProvedor">
-    
+
   </div>
 </div>
 
 @endsection
+
 @section('script_ajax')
 <script  type="text/javascript" src="/js/productos/proveedor_ajax.js"></script>
 @endsection
