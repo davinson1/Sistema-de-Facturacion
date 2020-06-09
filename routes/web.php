@@ -90,6 +90,7 @@ Route::middleware(['auth'])->group(function(){
 
   // Rutas para articulos
   Route::get('/articulos', 'Productos\ArticulosController@index')->name('articulos')->middleware('can:navegar.articulos');
+  Route::get('/listar_articulos', 'Productos\ArticulosController@listarArticulo')->middleware('can:navegar.articulos');
 
 //rutas para tipo de articulo
   Route::get('/tipo_articulo', 'Productos\TipoArticuloController@index')->name('tipo_articulo')->middleware('can:navegar.tipo_articulo');
