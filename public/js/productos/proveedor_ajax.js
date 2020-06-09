@@ -1,4 +1,4 @@
-// Listar los tipos tributarios
+// Listar los proveedor
 $(document).ready(function() {
   listarProvedores();
 

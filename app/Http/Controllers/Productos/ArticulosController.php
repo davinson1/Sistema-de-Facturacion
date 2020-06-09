@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Productos;
 use App\Http\Controllers\Controller;
 
 use Illuminate\Http\Request;
+use App\Models\Articulo;
 
 class ArticulosController extends Controller
 {
@@ -17,14 +18,10 @@ class ArticulosController extends Controller
       return view('productos/articulo/articulos');
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
+    public function listarArticulo()
     {
-        //
+      $articulos = Articulo::all();
+      return view('productos/articulo/tabla_articulos', compact('articulos'));
     }
 
     /**

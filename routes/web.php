@@ -90,6 +90,7 @@ Route::middleware(['auth'])->group(function(){
 
   // Rutas para articulos
   Route::get('/articulos', 'Productos\ArticulosController@index')->name('articulos')->middleware('can:navegar.articulos');
+  Route::get('/listar_articulos', 'Productos\ArticulosController@listarArticulo')->middleware('can:navegar.articulos');
 
   // Rutas para formas de pago
   Route::get('/formas_pago', 'Productos\FormasPagoController@index')->name('formas_pago')->middleware('can:navegar.formas.pagos');
