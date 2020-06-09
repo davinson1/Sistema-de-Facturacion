@@ -91,6 +91,13 @@ Route::middleware(['auth'])->group(function(){
   // Rutas para articulos
   Route::get('/articulos', 'Productos\ArticulosController@index')->name('articulos')->middleware('can:navegar.articulos');
 
+//rutas para tipo de articulo
+  Route::get('/tipo_articulo', 'Productos\TipoArticuloController@index')->name('tipo_articulo')->middleware('can:navegar.tipo_articulo');
+
+Route::get('/listar_tipo_articulo', 'Productos\TipoArticuloController@ListarTipoArticulo')->middleware('can:navegar.tipo.articulo');
+Route::post('/tipo_articulos_crear', 'Productos\TipoArticuloController@store')->name('tipo_articulos_crear')->middleware('can:crear.tipos.articulos');
+  Route::put('/tipo_articulo_editar/{idtparticulo}', 'Productos\TipoArticuloController@update')->name('tipo_articulo_editar')->middleware('can:editar.tipo.articulo');
+Route::delete('/tipoarticulo_eliminar/{idtparticulo}', 'Productos\TipoArticuloController@destroy')->name('tipoarticulo_eliminar')->middleware('can:eliminar.tipo.articulo');
   // Rutas para formas de pago
   Route::get('/formas_pago', 'Productos\FormasPagoController@index')->name('formas_pago')->middleware('can:navegar.formas.pagos');
   Route::get('/listar_forma_pago', 'Productos\FormasPagoController@listarFormaPago')->middleware('can:navegar.formas.pagos');

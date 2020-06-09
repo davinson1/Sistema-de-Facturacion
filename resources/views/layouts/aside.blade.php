@@ -104,7 +104,7 @@
         @can('navegar.modulo.productos')
         <li class="nav-item has-treeview @yield('menu-open-producto')">
           <a href="#" class="nav-link @yield('active-proveedor') @yield('active-articulo') @yield('active-forma-pago') @yield('active-iva') @yield('active-porcentaje') @yield('active-producto') @yield('active-tipo-factura') @yield('active-tipo-tributario')">
-            <i class="fas fa-shopping-cart nav-icon"></i>              
+            <i class="fas fa-shopping-cart nav-icon"></i>
             <p>
               Productos
               <i class="right fas fa-angle-left"></i>
@@ -124,6 +124,14 @@
               <a href="articulos" class="nav-link @yield('active-articulo')">
                 <i class="fas fa-shopping-basket nav-icon"></i>
                 <p>Artículos</p>
+              </a>
+            </li>
+            @endcan
+            @can('navegar.tipos.articulos')
+            <li class="nav-item">
+              <a href="tipo_articulo" class="nav-link @yield('active-tipo-articulo')">
+                <i class="fas fa-shopping-basket nav-icon"></i>
+                <p>Tipos de articulos</p>
               </a>
             </li>
             @endcan
@@ -154,7 +162,7 @@
             @can('navegar.productos')
             <li class="nav-item">
               <a href="productos" class="nav-link @yield('active-producto')">
-                <i class="fas fa-shopping-cart nav-icon"></i>  
+                <i class="fas fa-shopping-cart nav-icon"></i>
                 <p>Productos</p>
               </a>
             </li>
@@ -175,6 +183,7 @@
               </a>
             </li>
             @endcan
+
           </ul>
         </li>
         @endcan
