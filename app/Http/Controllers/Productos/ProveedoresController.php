@@ -137,10 +137,9 @@ class ProveedoresController extends Controller
      */
     public function destroy(Proveedor $idProveedor)
     {
-          $idProveedor->delete();
+      $idProveedor->delete();
       return response()->json([
         "mensaje" => "proveedor eliminado correctamente."
       ]);
-       }
-
+    }
 }

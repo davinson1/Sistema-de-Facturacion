@@ -2,41 +2,51 @@
 <div class="content">
   <div class="card">
     <div class="card-header ">
-      <h3 class="card-title">Listado formas de pagos</h3>
-      @can('crear.formas.pagos')
-        <!--modal de boton registar forma de pago-->
+      <h3 class="card-title">Listado de productos</h3>
+      @can('crear.productos')
+        <!--modal de boton registar producto -->
         <button id="modal" type="button" class="btn btn-info float-right" data-toggle="modal" data-target="#modal-crear">
           <i class="fas fa-plus"></i>
-          Crear forma de pago
+          Crear producto
         </button>
-       <!--fin modal de boton registar forma de pago-->
+       <!--fin modal de boton registar producto-->
       @endcan
     </div>
     <!-- /.card-header -->
     <div class="card-body">
-      <table id="tablaFormaPago" class="table table-bordered table-striped w-100">
+      <table id="tablaProducto" class="table table-bordered table-striped w-100">
         <thead class="bg-info">
         <tr>
           <th>ID</th>
+          <th>Foto</th>
           <th>Nombre</th>
+          <th>Descripción</th>
           <th>Fecha de Creación</th>
           <th width="120px">Acciones</th>
         </tr>
         </thead>
         <tbody>
           <tr>
-          @foreach ($formasPagos as $formaPago)
-            <td>{{$formaPago->id}}</td>
-            <td>{{$formaPago->nombre}}</td>
-            <td>{{$formaPago->created_at}}</td>
+          @foreach ($productos as $producto)
+            <td>{{$producto->id}}</td>
+            <td>
+              @if(!$producto->foto)
+                <img id="img1"  src="/img/social.png" class="mb-3 rounded mx-auto d-block " alt="Foto del producto" width="100" height="100"> 
+              @else
+                <img id="img1"  src="{{ Storage::url($producto->foto) }}" class="mb-3 rounded mx-auto d-block " alt="Foto del producto" width="100" height="100">
+              @endif
+            </td>
+            <td>{{$producto->nombre}}</td>
+            <td>{{$producto->especificaciones}}</td>
+            <td>{{$producto->created_at}}</td>
             <td class="text-center">
-              @can('editar.formas.pagos')
-                <button class="btn btn-info btn-xs" data-toggle="modal" data-target="#modal-editar" onclick="Editar('{{$formaPago->id}}','{{$formaPago->nombre}}')">
+              @can('editar.productos')
+                <button class="btn btn-info btn-xs" data-toggle="modal" data-target="#modal-editar" onclick="Editar('{{$producto->id}}')">
                   <i class="fa fa-pen"></i> Editar
                 </button>
               @endcan
-              @can('eliminar.formas.pagos')
-                <button class="btn btn-danger btn-xs" data-toggle="modal" data-target="#modal-eliminar" onclick="Eliminar('{{$formaPago->id}}','{{$formaPago->nombre}}')">
+              @can('eliminar.productos')
+                <button class="btn btn-danger btn-xs" data-toggle="modal" data-target="#modal-eliminar" onclick="Eliminar('{{$producto->id}}','{{$producto->nombre}}','{{$producto->foto}}')">
                   <i class="fa fa-times"></i> Eliminar
                 </button>
               @endcan
@@ -50,9 +60,9 @@
 </div>
 <!-- /.card -->
 <script type="text/javascript">
-//iniciacion de tabla forma de pago
+//iniciacion de tabla productos
 $(function () {
-   $("#tablaFormaPago").DataTable({
+   $("#tablaProducto").DataTable({
     "responsive": true,
     "autoWidth": true,
      language: {

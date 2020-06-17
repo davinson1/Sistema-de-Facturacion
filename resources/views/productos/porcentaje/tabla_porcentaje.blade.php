@@ -30,7 +30,7 @@
             <td>{{$porcentajes->nombre}}</td>
             <td>{{$porcentajes->descripcion}}</td>
             <td>{{$porcentajes->porcentaje}} %</td>
-            <td>{{$porcentajes->updated_at}}</td>
+            <td>{{$porcentajes->created_at}}</td>
             <td class="text-center">
               <button class="btn btn-info btn-xs" data-toggle="modal" data-target="#modal-editar" onclick="Editar('{{$porcentajes->id}}','{{$porcentajes->nombre}}','{{$porcentajes->descripcion}}','{{$porcentajes->porcentaje}}')">
                 <i class="fa fa-pen"></i> Editar

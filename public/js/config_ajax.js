@@ -2,11 +2,14 @@ $.ajaxSetup({
 headers: {'X-CSRF-TOKEN':$('meta[name="csrf-token"]').attr('content')}
 });
 
-function proccessFunction(url, method, params, callback){
+function proccessFunction(url, method, params, callback, tipoConten, procesoDato, cach){
   $.ajax({
     url: url,
     method: method,
     data: params,
+    contentType: tipoConten,
+    processData: procesoDato,
+    cache: cach,
 
     success: function(res){
       callback(200, res);

@@ -15,21 +15,23 @@ class ArticulosTable extends Migration
     {
       Schema::create('articulos', function (Blueprint $table) {
         $table->bigIncrements('id');
-        $table->unsignedBigInteger('id_producto');
         $table->unsignedBigInteger('id_tipo_articulo');
         $table->unsignedBigInteger('id_proveedor');
+        $table->unsignedBigInteger('id_porcentaje');
         
+        $table->text('nombre');
+        $table->text('especificaciones');
         $table->integer('valor_compra');
         $table->integer('valor_envio');
         $table->integer('porcentaje_minimo');
-        $table->integer('id_porcentaje');
         $table->text('codigo_barras');
-        $table->string('foto');
+        $table->string('foto')->nullable();
 
         $table->timestamps();
 
-        $table->foreign('id_producto')->references('id')->on('productos');
         $table->foreign('id_tipo_articulo')->references('id')->on('tipo_articulo');
+        $table->foreign('id_proveedor')->references('id')->on('proveedor');
+        $table->foreign('id_porcentaje')->references('id')->on('porcentaje');
       });
     }
 

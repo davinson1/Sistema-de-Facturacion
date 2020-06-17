@@ -22,7 +22,7 @@ class ProveedorTable extends Migration
           $table->string('nombre')->nullable();
           $table->string('telefono')->nullable();
           $table->string('descripcion')->nullable();
-          $table->tinyInteger('estato')->default('1');
+          $table->tinyInteger('estado')->default('1');
 
           $table->timestamps();
 

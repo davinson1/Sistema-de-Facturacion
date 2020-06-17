@@ -13,9 +13,10 @@
     <input id="idUsuario" type="hidden" value="{{ $user->id }}">
       <div class="row mb-3">
         <div class="col-6 mx-auto">
-        @if(!$user->foto)
-          <img id="img1"  src="/img/social.png" class="mb-3 rounded mx-auto d-block " alt="Foto del usuario" width="200" height="200"> @else
-          <img id="img1"  src="{{ Storage::url($user->foto) }}" class="mb-3 rounded mx-auto d-block " alt="Foto del usuario" width="200" height="200">
+          @if(!$user->foto)
+            <img id="img1"  src="/img/social.png" class="mb-3 rounded mx-auto d-block " alt="Foto del usuario" width="200" height="200">
+          @else
+            <img id="img1"  src="{{ Storage::url($user->foto) }}" class="mb-3 rounded mx-auto d-block " alt="Foto del usuario" width="200" height="200">
           @endif
           <div class="custom-file">
             <label class="custom-file-label" for="customFileLang">Cambiar foto</label>

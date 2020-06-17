@@ -8,7 +8,7 @@ function listarporcentaje(){
     type:'get',
     url:('listar_procentaje'),
     success: function(data){
-      $('#listarprocentajes').empty().html(data);
+      $('#listarPorcentajes').empty().html(data);
     }
   });
 };

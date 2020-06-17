@@ -88,16 +88,21 @@ Route::middleware(['auth'])->group(function(){
 
   Route::delete('/proveedores_eliminar/{idProveedor}', 'Productos\ProveedoresController@destroy')->name('proveedores_eliminar')->middleware('can:eliminar.proveedores');
 
-  // Rutas para articulos
-  Route::get('/articulos', 'Productos\ArticulosController@index')->name('articulos')->middleware('can:navegar.articulos');
+  // Rutas para productos
+  Route::get('/productos', 'Productos\ProductosController@index')->name('productos')->middleware('can:navegar.productos');
+  Route::get('/listar_productos', 'Productos\ProductosController@listarProductos')->middleware('can:navegar.productos');
+  Route::post('/producto_crear', 'Productos\ProductosController@store')->name('producto_crear')->middleware('can:crear.productos');
+  Route::get('/editar_producto/{producto}', 'Productos\ProductosController@edit')->name('editar_producto')->middleware('can:editar.productos');
+  Route::put('/producto_actualizar/{idProducto}', 'Productos\ProductosController@update')->name('producto_actualizar')->middleware('can:editar.productos');
+  Route::delete('/productos_eliminar/{idProducto}', 'Productos\ProductosController@destroy')->name('productos_eliminar')->middleware('can:eliminar.productos');
 
 //rutas para tipo de articulo
   Route::get('/tipo_articulo', 'Productos\TipoArticuloController@index')->name('tipo_articulo')->middleware('can:navegar.tipo_articulo');
+  Route::get('/listar_tipo_articulo', 'Productos\TipoArticuloController@ListarTipoArticulo')->middleware('can:navegar.tipo.articulo');
+  Route::post('/tipo_articulos_crear', 'Productos\TipoArticuloController@store')->name('tipo_articulos_crear')->middleware('can:crear.tipos.articulos');
+    Route::put('/tipo_articulo_editar/{idtparticulo}', 'Productos\TipoArticuloController@update')->name('tipo_articulo_editar')->middleware('can:editar.tipo.articulo');
+  Route::delete('/tipoarticulo_eliminar/{idtparticulo}', 'Productos\TipoArticuloController@destroy')->name('tipoarticulo_eliminar')->middleware('can:eliminar.tipo.articulo');
 
-Route::get('/listar_tipo_articulo', 'Productos\TipoArticuloController@ListarTipoArticulo')->middleware('can:navegar.tipo.articulo');
-Route::post('/tipo_articulos_crear', 'Productos\TipoArticuloController@store')->name('tipo_articulos_crear')->middleware('can:crear.tipos.articulos');
-  Route::put('/tipo_articulo_editar/{idtparticulo}', 'Productos\TipoArticuloController@update')->name('tipo_articulo_editar')->middleware('can:editar.tipo.articulo');
-Route::delete('/tipoarticulo_eliminar/{idtparticulo}', 'Productos\TipoArticuloController@destroy')->name('tipoarticulo_eliminar')->middleware('can:eliminar.tipo.articulo');
   // Rutas para formas de pago
   Route::get('/formas_pago', 'Productos\FormasPagoController@index')->name('formas_pago')->middleware('can:navegar.formas.pagos');
   Route::get('/listar_forma_pago', 'Productos\FormasPagoController@listarFormaPago')->middleware('can:navegar.formas.pagos');
@@ -119,12 +124,6 @@ Route::delete('/tipoarticulo_eliminar/{idtparticulo}', 'Productos\TipoArticuloCo
   Route::put('/porcentaje_editar/{idporcentaje}', 'Productos\PorcentajeController@update')->name('porcentaje_editar')->middleware('can:editar.porcentaje');
   Route::delete('/porcentaje_eliminar/{idporcentaje}', 'Productos\PorcentajeController@destroy')->name('porcentaje_eliminar')->middleware('can:eliminar.porcentaje');
 
-  // Rutas para productos
-  Route::get('/productos', 'Productos\ProductosController@index')->name('productos')->middleware('can:navegar.productos');
-  Route::get('/listar_productos', 'Productos\ProductosController@listarProductos')->middleware('can:navegar.productos');
-  Route::post('/productos_crear', 'Productos\ProductosController@store')->name('productos_crear')->middleware('can:crear.producto');
-  Route::put('/productos_editar/{idproducto}', 'Productos\ProductosController@update')->name('producto_editar')->middleware('can:editar.producto');
-  Route::delete('/producto_eliminar/{idproducto}', 'Productos\ProductosController@destroy')->name('producto_eliminar')->middleware('can:eliminar.producto');
 
   // Rutas para tipos de factura
   Route::get('/tipo_factura', 'Productos\TipoFacturaController@index')->name('tipo_factura')->middleware('can:navegar.tipos.facturas');
