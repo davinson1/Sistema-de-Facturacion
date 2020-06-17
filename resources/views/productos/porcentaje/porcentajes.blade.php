@@ -32,7 +32,7 @@ active
 
 <!-- /.content-header -->
 <div class="content">
-  <div id="listarprocentajes">
+  <div id="listarPorcentajes">
 
   </div>
 </div>

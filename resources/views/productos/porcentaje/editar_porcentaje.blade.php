@@ -32,8 +32,6 @@
           <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
           <button type="submit" id="editarPorcentaje" class="btn btn-info">Editar Porcentaje </button>
         </div>
-
-        </div>
       </form>
     </div>
   </div>

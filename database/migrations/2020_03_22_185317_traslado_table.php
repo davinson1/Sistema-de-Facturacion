@@ -15,7 +15,6 @@ class TrasladoTable extends Migration
     {
       Schema::create('traslado', function (Blueprint $table) {
         $table->bigIncrements('id');
-        $table->unsignedBigInteger('id_producto');
         $table->unsignedBigInteger('id_bodega_sale');
         $table->unsignedBigInteger('id_bodega_entra');
         $table->unsignedBigInteger('id_descuento_transporte');
@@ -24,7 +23,6 @@ class TrasladoTable extends Migration
         $table->timestamp('fecha_traslado')->useCurrent();
         $table->timestamps();
 
-        $table->foreign('id_producto')->references('id')->on('productos');
         $table->foreign('id_bodega_sale')->references('id')->on('bodega');
         $table->foreign('id_bodega_entra')->references('id')->on('bodega');
         $table->foreign('id_descuento_transporte')->references('id')->on('descuento_transporte');

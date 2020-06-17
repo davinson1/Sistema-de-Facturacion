@@ -1,78 +1,97 @@
 // Listar los productos
 $(document).ready(function() {
-  listarproductos();
+  // funcion para listar
+  listarProducto();
+  // Para seleccionar foto
+  $('.custom-file-input').on('change', function(event) {
+    var inputFile = event.currentTarget;
+    $(inputFile).parent()
+        .find('.custom-file-label')
+        .html(inputFile.files[0].name);
+  });
+
+  function readFile(input) {
+    if (input.files && input.files[0]) {
+      var reader = new FileReader();
+        reader.onload = function (e) {
+          $('#img1').attr("src", e.target.result);
+        }
+      reader.readAsDataURL(input.files[0]);
+    }
+  }
+  document.getElementById('customFileLang').onchange = function (e) {
+    readFile(e.srcElement);
+  }
+  // Selectores de busqueda
+  $('.select-producto').select2({
+    theme: 'bootstrap4',
+  });
+  
 });
 
-function listarproductos(){
+function listarProducto(){
   $.ajax({
     type:'get',
     url:('listar_productos'),
     success: function(data){
-      $('#listaproductos').empty().html(data);
+      $('#listarProductos').empty().html(data);
     }
   });
 };
 
-
-// Insertar porcentaje
-$('#crearproducto').click(function(e) {
+// Insertar producto
+$('#crearProducto').click(function(e) {
   e.preventDefault();
-  var nombre = $("#nombreproducto").val();
-  var especificaciones = $("#especificaciones").val();
-  const url = 'productos_crear';
-  const params = {'nombre':nombre,
-					'especificaciones':especificaciones,
-				};
-  proccessFunction(url, 'POST', params, callbackStoreProductos);
+  
+  const url = 'producto_crear';
+  const params = new FormData($('#frmCrearProducto')[0]);
+  proccessFunction(url, 'POST', params, callbackStoreProducto, false, false, false);
 });
 
-
-
-// Editar tipos tributarios
-function Editar(idproducto, nombreproducto,especificaciones) {
-  $("#idproducto").val(idproducto);
-  $("#editnombreproducto").val(nombreproducto);
-  $("#editespecificaciones").val(especificaciones);
-}
-$('#editarproducto').click(function(e) {
-  e.preventDefault();
-  var idproducto = $("#idproducto").val();
-  var nombre = $("#editnombreproducto").val();
-  var especificaciones = $("#editespecificaciones").val();
-
-  const url = 'productos_editar/'+idproducto;
-  const params = {'nombre':nombre,
-          'especificaciones':especificaciones,};
-  proccessFunction(url, 'PUT', params, callbackStoreProductos);
-});
-
-// Eliminar tipos tributarios
-function Eliminar(idproductoa, nombreproductoa) {
-  $("#idproducto").val(idproductoa);
-  document.getElementById("nombreprodcuto").innerHTML = nombreproductoa;
+// Llamar el formulario editar producto
+function Editar(idProducto){
+  $.ajax({
+    type:'get',
+    url:('editar_producto/'+idProducto),
+    success: function(data){
+      $('#formulario').empty().html(data);
+    }
+  });
 }
 
-$('#eliminarproducto').click(function(e) {
+// Eliminar Producto
+function Eliminar(idProducto, nombreProducto, imgProducto) {
+  $("#idProductoEliminar").val(idProducto);
+  document.getElementById("nombreDelProducto").innerHTML = nombreProducto;  
+  if (imgProducto==''){
+    document.getElementById("imgProducto").src="/img/social.png";
+  }else{
+    document.getElementById("imgProducto").src="/storage/"+imgProducto.replace('public/', '');
+  }
+}
+
+$('#eliminarProducto').click(function(e) {
   e.preventDefault();
-  var idproductoa = $("#idproducto").val();
-  const url = 'producto_eliminar/'+idproductoa;
+  var idProducto = $("#idProductoEliminar").val();
+  const url = 'productos_eliminar/'+idProducto;
   const params = '';
-  proccessFunction(url, 'DELETE', params, callbackStoreProductos);
+  proccessFunction(url, 'DELETE', params, callbackStoreProducto);
 });
 
 
-function callbackStoreProductos(status, response){
+function callbackStoreProducto(status, response){
   if (status != 200){
-       var array = Object.values(response.responseJSON.errors);
+    if (response.responseJSON.exception == "Illuminate\\Database\\QueryException") {
+      toastr.error("Por favor, elimine los datos asociados a este tipo de factura.");
+       $(".close").click();
+      }else{
+        var array = Object.values(response.responseJSON.errors);
         array.forEach(element => toastr.error(element));
-
-
+      }
     return false;
   };
 
   toastr.success(response.mensaje);
-  $("#nombreproducto").val('');
-  $("#especificaciones").val('');
   $(".close").click();
-  listarproductos();
+  listarProducto();
 }
