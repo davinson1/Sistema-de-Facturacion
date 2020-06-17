@@ -187,6 +187,35 @@
           </ul>
         </li>
         @endcan
+
+        @can('navegar.modulo.configuracion')
+        <li class="nav-item has-treeview @yield('menu-open-configuracion')">
+          <a href="#" class="nav-link @yield('active-datosempresa')">
+            <i class="fas fa-cogs nav-icon"></i>
+            <p>
+              Configuración
+              <i class="right fas fa-angle-left"></i>
+            </p>
+          </a>
+          <ul class="nav nav-treeview">
+            @can('navegar.configuracion')
+            <li class="nav-item">
+              <a href="datos_empresa" class="nav-link @yield('active-datosempresa')">
+                <i class="fas fa-cog nav-icon"></i>
+                <p>Datos Empresa</p>
+              </a>
+            </li>
+            @endcan
+          </ul>
+        </li>
+        @endcan
+
+
+
+
+
+
+
       </ul>
     </nav>
     <!-- /.sidebar-menu -->

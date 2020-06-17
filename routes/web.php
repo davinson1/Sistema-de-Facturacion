@@ -140,5 +140,12 @@ Route::delete('/tipoarticulo_eliminar/{idtparticulo}', 'Productos\TipoArticuloCo
   Route::put('/tipo_tributario_editar/{idTipoTributario}', 'Productos\TipoTributarioController@update')->name('tipo_tributario_editar')->middleware('can:editar.tipos.tributario');
   Route::delete('/tipo_tributario_eliminar/{idTipoTributario}', 'Productos\TipoTributarioController@destroy')->name('tipo_tributario_eliminar')->middleware('can:eliminar.tipos.tributario');
 
+
+
+//rutas para datos de empresa modulo de configuración
+ Route::get('/datos_empresa', 'configuracion\DatosEmpresaController@index')->name('tipo_tributario')->middleware('can:navegar.datos.empresa');
+ Route::post('/datos_empresa_crear', 'configuracion\DatosEmpresaController@store')->name('datos_empresa_crear')->middleware('can:navegar.datos.empresa');
+
+
 });
 

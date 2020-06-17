@@ -53,13 +53,12 @@
               value="{{ old('email') }}" required autocomplete="email" autofocus placeholder="Correo Electronico">
 
             <div class="input-group-append">
-              <div class="input-group-text">
-                <span class="fas fa-envelope"></span>
+                 <button id="" class="btn btn-info" type="button" > <span class="fa fa-envelope"></span> </button>
               </div>
-            </div>
+
           </div>
           <div class="input-group mb-3">
-            <input type="password" class="form-control" placeholder="Contraseña"
+            <input type="password" class="form-control password" placeholder="Contraseña"
               class="form-control @error('password') is-invalid @enderror" name="password" required
               autocomplete="current-password">
             @error('password')
@@ -67,11 +66,15 @@
               <strong>{{ $message }}</strong>
             </span>
             @enderror
-            <div class="input-group-append">
+            {{-- <div class="input-group-append">
               <div class="input-group-text">
                 <span class="fas fa-lock"></span>
               </div>
-            </div>
+            </div> --}}
+               <div class="input-group-append" >
+                 <button id="ocpassword" class="btn btn-info" type="button" > <span class="fa fa-eye-slash icono" alt="ver contraseña"></span> </button>
+              </div>
+
           </div>
           <div class="row">
             <div class="col-8">
@@ -118,6 +121,21 @@
   <!-- AdminLTE App -->
   <script src="../../dist/js/adminlte.min.js"></script>
 
+  <script type="text/javascript">
+  let clickcontrasna=document.querySelector("#ocpassword")
+  clickcontrasna.addEventListener("click",function(){
+  let tipo = document.querySelector('.password')
+  let icono = document.querySelector('.icono')
+  if (tipo.type=='password') {
+      $('.icono').removeClass('fas fa-eye').addClass('fas fa-eye-slash')
+      tipo.type='text'
+  }
+  else {
+      $('.icono').removeClass('fas fa-eye-slash').addClass('fas fa-eye')
+      tipo.type='password'
+    }
+})
+  </script>
 </body>
 
 </html>

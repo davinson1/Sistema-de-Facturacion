@@ -116,7 +116,7 @@ class UsuariosController extends Controller
      */
     public function update(Request $request, $usuario)
     {
-      $data = request()->validate([        
+      $data = request()->validate([
         'tipoDocumento'     => 'required',
         'municipio'         => 'required',
         'nombreUsusario'    => 'required|min:3|max:100',
@@ -125,7 +125,7 @@ class UsuariosController extends Controller
         'emailUsusario'     => 'required|email|unique:users,email,'.$usuario,
         'fotoUsuario'       => 'image',
         'copiaDocumento'    => 'mimes:pdf',
-        
+
         // 'emailUsusario'     => ['required','email',Rule::unique('users', 'email')->ignore($usuario)],
         // 'documentoUsusario'     => ['required','email',Rule::unique('users', 'numero_documento')->ignore($usuario)],
       ]);
@@ -157,7 +157,7 @@ class UsuariosController extends Controller
 
         // Contraseña del usuario
         if ($request->claveUsusario != '') {
-          $data = request()->validate([            
+          $data = request()->validate([
             'claveUsusario'    => 'min:8|string',
           ]);
           $pass = Hash::make($request->claveUsusario);
@@ -210,7 +210,7 @@ class UsuariosController extends Controller
 
     public function editarPerfil(Request $request, $usuario)
     {
-      $data = request()->validate([        
+      $data = request()->validate([
         'tipoDocumento'     => 'required',
         'municipio'         => 'required',
         'nombreUsusario'    => 'required|min:3|max:100',
@@ -219,7 +219,7 @@ class UsuariosController extends Controller
         'emailUsusario'     => 'required|email|unique:users,email,'.$usuario,
         'fotoUsuario'       => 'image',
         'copiaDocumento'    => 'mimes:pdf',
-        
+
         // 'emailUsusario'     => ['required','email',Rule::unique('users', 'email')->ignore($usuario)],
         // 'documentoUsusario'     => ['required','email',Rule::unique('users', 'numero_documento')->ignore($usuario)],
       ]);
@@ -250,7 +250,7 @@ class UsuariosController extends Controller
 
         // Contraseña del usuario
         if ($request->claveUsusario != '') {
-          $data = request()->validate([            
+          $data = request()->validate([
             'claveUsusario'    => 'min:8|string',
           ]);
           $pass = Hash::make($request->claveUsusario);
