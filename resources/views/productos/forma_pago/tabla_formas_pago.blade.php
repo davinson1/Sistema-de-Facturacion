@@ -28,7 +28,7 @@
           @foreach ($formasPagos as $formaPago)
             <td>{{$formaPago->id}}</td>
             <td>{{$formaPago->nombre}}</td>
-            <td>{{$formaPago->updated_at}}</td>
+            <td>{{$formaPago->created_at}}</td>
             <td class="text-center">
               @can('editar.formas.pagos')
                 <button class="btn btn-info btn-xs" data-toggle="modal" data-target="#modal-editar" onclick="Editar('{{$formaPago->id}}','{{$formaPago->nombre}}')">

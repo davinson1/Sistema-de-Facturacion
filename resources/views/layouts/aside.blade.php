@@ -103,7 +103,7 @@
 
         @can('navegar.modulo.productos')
         <li class="nav-item has-treeview @yield('menu-open-producto')">
-          <a href="#" class="nav-link @yield('active-proveedor') @yield('active-articulo') @yield('active-forma-pago') @yield('active-iva') @yield('active-porcentaje') @yield('active-producto') @yield('active-tipo-factura') @yield('active-tipo-tributario')">
+          <a href="#" class="nav-link @yield('active-proveedor') @yield('active-articulo') @yield('active-forma-pago') @yield('active-iva') @yield('active-porcentaje') @yield('active-tipo-factura') @yield('active-tipo-tributario')">
             <i class="fas fa-shopping-cart nav-icon"></i>
             <p>
               Productos
@@ -119,11 +119,11 @@
               </a>
             </li>
             @endcan
-            @can('navegar.articulos')
+            @can('navegar.productos')
             <li class="nav-item">
-              <a href="articulos" class="nav-link @yield('active-articulo')">
+              <a href="productos" class="nav-link @yield('active-articulo')">
                 <i class="fas fa-shopping-basket nav-icon"></i>
-                <p>Artículos</p>
+                <p>Productos</p>
               </a>
             </li>
             @endcan
@@ -158,16 +158,8 @@
                 <p>Porcentaje</p>
               </a>
             </li>
-            @endcan
-            @can('navegar.productos')
-            <li class="nav-item">
-              <a href="productos" class="nav-link @yield('active-producto')">
-                <i class="fas fa-shopping-cart nav-icon"></i>
-                <p>Productos</p>
-              </a>
-            </li>
-            @endcan
-             @can('navegar.tipos.facturas')
+            @endcan            
+            @can('navegar.tipos.facturas')
             <li class="nav-item">
               <a href="tipo_factura" class="nav-link @yield('active-tipo-factura')">
                 <i class="fas fa-receipt nav-icon"></i>

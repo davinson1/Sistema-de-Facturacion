@@ -2,47 +2,51 @@
 <div class="content">
   <div class="card">
     <div class="card-header ">
-      <h3 class="card-title">Listado artículos</h3>
-      @can('crear.articulos')
-        <!--modal de boton registar artículos -->
+      <h3 class="card-title">Listado de productos</h3>
+      @can('crear.productos')
+        <!--modal de boton registar producto -->
         <button id="modal" type="button" class="btn btn-info float-right" data-toggle="modal" data-target="#modal-crear">
           <i class="fas fa-plus"></i>
-          Crear artículo
+          Crear producto
         </button>
-       <!--fin modal de boton registar artículos-->
+       <!--fin modal de boton registar producto-->
       @endcan
     </div>
     <!-- /.card-header -->
     <div class="card-body">
-      <table id="tablaArticulo" class="table table-bordered table-striped w-100">
+      <table id="tablaProducto" class="table table-bordered table-striped w-100">
         <thead class="bg-info">
         <tr>
           <th>ID</th>
-          <th>foto</th>
+          <th>Foto</th>
+          <th>Nombre</th>
+          <th>Descripción</th>
           <th>Fecha de Creación</th>
           <th width="120px">Acciones</th>
         </tr>
         </thead>
         <tbody>
           <tr>
-          @foreach ($articulos as $articulo)
-            <td>{{$articulo->id}}</td>
+          @foreach ($productos as $producto)
+            <td>{{$producto->id}}</td>
             <td>
-              @if(!$articulo->foto)
-                <img id="img1"  src="/img/social.png" class="mb-3 rounded mx-auto d-block " alt="Foto del usuario" width="100" height="100"> 
+              @if(!$producto->foto)
+                <img id="img1"  src="/img/social.png" class="mb-3 rounded mx-auto d-block " alt="Foto del producto" width="100" height="100"> 
               @else
-                <img id="img1"  src="{{ Storage::url($articulo->foto) }}" class="mb-3 rounded mx-auto d-block " alt="Foto del usuario" width="100" height="100">
+                <img id="img1"  src="{{ Storage::url($producto->foto) }}" class="mb-3 rounded mx-auto d-block " alt="Foto del producto" width="100" height="100">
               @endif
             </td>
-            <td>{{$articulo->created_at}}</td>
+            <td>{{$producto->nombre}}</td>
+            <td>{{$producto->especificaciones}}</td>
+            <td>{{$producto->created_at}}</td>
             <td class="text-center">
-              @can('editar.articulos')
-                <button class="btn btn-info btn-xs" data-toggle="modal" data-target="#modal-editar" onclick="Editar('{{$articulo->id}}')">
+              @can('editar.productos')
+                <button class="btn btn-info btn-xs" data-toggle="modal" data-target="#modal-editar" onclick="Editar('{{$producto->id}}')">
                   <i class="fa fa-pen"></i> Editar
                 </button>
               @endcan
-              @can('eliminar.articulos')
-                <button class="btn btn-danger btn-xs" data-toggle="modal" data-target="#modal-eliminar" onclick="Eliminar('{{$articulo->id}}','{{$articulo->foto}}')">
+              @can('eliminar.productos')
+                <button class="btn btn-danger btn-xs" data-toggle="modal" data-target="#modal-eliminar" onclick="Eliminar('{{$producto->id}}','{{$producto->nombre}}','{{$producto->foto}}')">
                   <i class="fa fa-times"></i> Eliminar
                 </button>
               @endcan
@@ -56,9 +60,9 @@
 </div>
 <!-- /.card -->
 <script type="text/javascript">
-//iniciacion de tabla artículos
+//iniciacion de tabla productos
 $(function () {
-   $("#tablaArticulo").DataTable({
+   $("#tablaProducto").DataTable({
     "responsive": true,
     "autoWidth": true,
      language: {

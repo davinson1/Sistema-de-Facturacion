@@ -254,32 +254,7 @@ class PermisosTablaSeeder extends Seeder
             'categoria' => 'productos',
             'slug' => 'eliminar.proveedores',
             'description' => 'El usuario puede ver el boton de eliminar proveedores.',
-          ]);
-          // Permisos de articulos
-          Permission::create([
-            'name' => 'Navegar articulos',
-            'categoria' => 'productos',
-            'slug' => 'navegar.articulos',
-            'description' => 'El usuario puede ver en el menú el enlace articulos.',
-          ]);
-          Permission::create([
-            'name' => 'Crear articulos',
-            'categoria' => 'productos',
-            'slug' => 'crear.articulos',
-            'description' => 'El usuario puede ver el boton de crear articulos.',
-          ]);
-          Permission::create([
-            'name' => 'Editar articulos',
-            'categoria' => 'productos',
-            'slug' => 'editar.articulos',
-            'description' => 'El usuario puede ver el boton de editar articulos.',
-          ]);
-          Permission::create([
-            'name' => 'Eliminar articulos',
-            'categoria' => 'productos',
-            'slug' => 'eliminar.articulos',
-            'description' => 'El usuario puede ver el boton de eliminar articulos.',
-          ]);
+          ]);          
         // Permisos de formas de pago
           Permission::create([
             'name' => 'Navegar formas de pago',

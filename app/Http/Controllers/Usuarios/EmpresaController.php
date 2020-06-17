@@ -56,7 +56,7 @@ class EmpresaController extends Controller
       // $tipoTributario = TipoTributario::get();
       $tipoTributario = TipoTributario::all()->sortBy('nombre', SORT_NATURAL | SORT_FLAG_CASE)->pluck('nombre', 'id');
       $municipios = Municipios::all()->sortBy('nombre', SORT_NATURAL | SORT_FLAG_CASE)->pluck('nombre', 'id');
-      return view('usuarios/empresa/editar_empresa', compact('empresa', 'tipoTributario', 'municipios'));      
+      return view('usuarios/empresa/editar_empresa', compact('empresa', 'tipoTributario', 'municipios'));
     }
 
     /**
@@ -68,11 +68,10 @@ class EmpresaController extends Controller
      */
     public function update(Request $request, Empresa $idEmpresa)
     {
-      // Actualizar Rol
-        $idEmpresa->update($request->all());
-        return response()->json([
-        "mensaje" => "Empresa actualizada correctamente."
-         ]);
+      $idEmpresa->update($request->all());
+      return response()->json([
+      "mensaje" => "Empresa actualizada correctamente."
+       ]);
     }
 
     /**
