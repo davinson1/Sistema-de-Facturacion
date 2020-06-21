@@ -87,6 +87,7 @@ Route::middleware(['auth'])->group(function(){
 
   Route::delete('/proveedores_eliminar/{idProveedor}', 'Productos\ProveedoresController@destroy')->name('proveedores_eliminar')->middleware('can:eliminar.proveedores');
 
+<<<<<<< HEAD
   // Rutas para productos
   Route::get('/productos', 'Productos\ProductosController@index')->name('productos')->middleware('can:navegar.productos');
   Route::get('/listar_productos', 'Productos\ProductosController@listarProductos')->middleware('can:navegar.productos');
@@ -94,6 +95,11 @@ Route::middleware(['auth'])->group(function(){
   Route::get('/editar_producto/{producto}', 'Productos\ProductosController@edit')->name('editar_producto')->middleware('can:editar.productos');
   Route::put('/producto_actualizar/{idProducto}', 'Productos\ProductosController@update')->name('producto_actualizar')->middleware('can:editar.productos');
   Route::delete('/productos_eliminar/{idProducto}', 'Productos\ProductosController@destroy')->name('productos_eliminar')->middleware('can:eliminar.productos');
+=======
+  // Rutas para articulos
+  Route::get('/articulos', 'Productos\ArticulosController@index')->name('articulos')->middleware('can:navegar.articulos');
+  Route::get('/listar_articulos', 'Productos\ArticulosController@listarArticulo')->middleware('can:navegar.articulos');
+>>>>>>> c51e02a... cambios en articulos
 
  // Rutas para tipo de articulo
   Route::get('/tipo_articulo', 'Productos\TipoArticuloController@index')->name('tipo_articulo')->middleware('can:navegar.tipo_articulo');
