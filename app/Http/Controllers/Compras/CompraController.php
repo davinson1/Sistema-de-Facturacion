@@ -4,6 +4,9 @@ namespace App\Http\Controllers\Compras;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\Compra;
+use App\Models\TipoCompra;
+use App\Models\FormasPago;
 
 class CompraController extends Controller
 {
@@ -14,17 +17,15 @@ class CompraController extends Controller
      */
     public function index()
     {
-      return view('compras/compra/compra');
+      $tiposCompras = TipoCompra::all();
+      $formasPago = FormasPago::all();
+      return view('compras/compra/compra', compact('tiposCompras','formasPago'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
+    public function listarCompras()
     {
-        //
+      $compras = Compra::all();
+      return view('compras/compra/tabla_compra', compact('compras'));
     }
 
     /**
@@ -35,18 +36,34 @@ class CompraController extends Controller
      */
     public function store(Request $request)
     {
-        //
-    }
+      $data = request()->validate([        
+        'idTipoCompra'      => 'required|numeric',
+        'idFormaPago'       => 'required|numeric',
+        'scannerCompra'     => 'file',
+        'descripcionCompra' => 'required',         
+      ]);
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
+      if ($request->ajax()) {
+        
+        if ($request->scannerCompra==null) {
+          $scanner = '';
+        }else{
+          $scanner = $request->file('scannerCompra')->store('public/scannerCompra');
+        }
+
+        $compra = new Compra();
+        $compra->id_tipo_compra = $request->idTipoCompra;
+        $compra->id_usuario     = Auth()->user()->id;
+        $compra->id_forma_pago  = $request->idFormaPago;
+        $compra->scanner        = $scanner;
+        $compra->descripcion    = $request->descripcionCompra;
+        $compra->save();
+
+
+        return response()->json([
+          "mensaje" => "Compra creada correctamente."
+        ]);
+      }
     }
 
     /**
@@ -55,9 +72,11 @@ class CompraController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Compra $compra)
     {
-        //
+      $tiposCompras = TipoCompra::all()->sortBy('nombre', SORT_NATURAL | SORT_FLAG_CASE)->pluck('nombre', 'id');
+      $formasPago = FormasPago::all()->sortBy('nombre', SORT_NATURAL | SORT_FLAG_CASE)->pluck('nombre', 'id');
+      return view('compras/compra/editar_compra', compact('compra', 'tiposCompras', 'formasPago'));
     }
 
     /**
@@ -67,9 +86,30 @@ class CompraController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Compra $idCompra)
     {
-        //
+      $data = request()->validate([        
+        'id_tipo_compra' => 'required|numeric',
+        'id_forma_pago'  => 'required|numeric',
+        'editarScanner'        => 'file',
+        'descripcion'    => 'required',         
+      ]);
+      if ($request->ajax()) {
+        // Si el usuario cambia el archivo
+        if($request->hasFile('editarScanner')){
+          // aquí compruebo que exista el archivo anterior
+          if (\Storage::exists($idCompra->scanner))
+          {
+            // aquí la borro
+            \Storage::delete($idCompra->scanner);
+          }
+          $idCompra->scanner=\Storage::putFile('public/scannerCompra', $request->file('editarScanner'));
+        }
+        $idCompra->update($request->all());
+        return response()->json([
+          "mensaje" => "Compra actualizada correctamente."
+        ]);
+      }    
     }
 
     /**
@@ -78,8 +118,11 @@ class CompraController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Compra $idCompra)
     {
-        //
+      $idCompra->delete();
+      return response()->json([
+        "mensaje" => "Compra eliminada correctamente."
+      ]);
     }
 }

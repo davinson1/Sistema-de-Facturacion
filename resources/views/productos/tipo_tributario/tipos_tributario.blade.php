@@ -73,7 +73,7 @@ active
       <form>
         <div class="modal-body">
           <div class="form-group">
-            <label for="idTipoTributario">Nombre tipo tributario:</label>
+            <label for="editarTipoTributario">Nombre tipo tributario:</label>
             <input id="idTipoTributario" class="form-control" type="hidden" required="">
             <input id="editarTipoTributario" class="form-control focus" type="text" required="">
           </div>

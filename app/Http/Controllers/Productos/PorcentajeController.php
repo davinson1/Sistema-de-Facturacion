@@ -93,11 +93,12 @@ class PorcentajeController extends Controller
      */
     public function update(Request $request,Porcentaje $idporcentaje)
     {
-         request()->validate([
-            'nombre' => 'required|min:3|max:100|unique:porcentaje,nombre|regex:/^[\pL\s\-]+$/u',
-            'descripcion' => 'max:100',
-            'porcentaje' => 'required'
-        ]);
+      request()->validate([
+        'nombre' => 'required|min:3|max:100|unique:porcentaje,nombre|regex:/^[\pL\s\-]+$/u',
+        'descripcion' => 'max:100',
+        'porcentaje' => 'required'
+      ]);
+      
       if ($request->ajax()) {
         $idporcentaje->update($request->all());
         return response()->json([

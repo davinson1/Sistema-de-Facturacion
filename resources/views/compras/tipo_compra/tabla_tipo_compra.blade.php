@@ -2,53 +2,43 @@
 <div class="content">
   <div class="card">
     <div class="card-header ">
-      <h3 class="card-title">Listado de empresas</h3>
-      @can('crear.empresa')
-        <!--modal de boton registar empresas -->
+      <h3 class="card-title">Listado tipos de compras</h3>
+      @can('crear.tipo.compra')
+        <!--modal de boton registar tipos de compra-->
         <button id="modal" type="button" class="btn btn-info float-right" data-toggle="modal" data-target="#modal-crear">
           <i class="fas fa-plus"></i>
-          Crear empresa
+          Crear tipo compra
         </button>
-       <!--fin modal de boton registar empresas -->
+       <!--fin modal de boton registar tipos de compra-->
       @endcan
     </div>
     <!-- /.card-header -->
     <div class="card-body">
-      <table id="tablaEmpresa" class="table table-bordered table-striped w-100">
+      <table id="tablaTipoCompra" class="table table-bordered table-striped w-100">
         <thead class="bg-info">
         <tr>
           <th>ID</th>
-          <th>Nombre</th>
-          <th>Dirección</th>
-          <th>Teléfono</th>
-          <th>Jefe</th>
-          <th>Estado</th>
+          <th>Nombre</th>          
+          <th>Descripción</th>          
           <th>Fecha de Creación</th>
           <th width="120px">Acciones</th>
         </tr>
         </thead>
         <tbody>
           <tr>
-          @foreach ($empresas as $empresa)
-            <td>{{$empresa->id}}</td>
-            <td>{{$empresa->nombre}}</td>
-            <td>{{$empresa->direccion}}</td>
-            <td>{{$empresa->telefono}}</td>
-            <td>{{$empresa->nombre_jefe}}</td>
-            @if($empresa->estado =='1')
-              <td><span class="badge badge-success">Activo</span></td>
-            @else
-              <td><span class="badge badge-danger">Inactivo</span></td>
-            @endif
-            <td>{{$empresa->created_at}}</td>
+          @foreach ($tiposCompras as $tipoCompra)
+            <td>{{$tipoCompra->id}}</td>
+            <td>{{$tipoCompra->nombre}}</td>
+            <td>{{$tipoCompra->descripcion}}</td>
+            <td>{{$tipoCompra->created_at}}</td>
             <td class="text-center">
-              @can('editar.empresa')
-                <button class="btn btn-info btn-xs" data-toggle="modal" data-target="#modal-editar" onclick="Editar('{{$empresa->id}}')">
+              @can('editar.tipo.compra')
+                <button class="btn btn-info btn-xs" data-toggle="modal" data-target="#modal-editar" onclick="Editar('{{$tipoCompra->id}}','{{$tipoCompra->nombre}}','{{$tipoCompra->descripcion}}')">
                   <i class="fa fa-pen"></i> Editar
                 </button>
               @endcan
-              @can('eliminar.empresa')
-                <button class="btn btn-danger btn-xs" data-toggle="modal" data-target="#modal-eliminar" onclick="Eliminar('{{$empresa->id}}','{{$empresa->nombre}}')">
+              @can('eliminar.tipo.compra')
+                <button class="btn btn-danger btn-xs" data-toggle="modal" data-target="#modal-eliminar" onclick="Eliminar('{{$tipoCompra->id}}','{{$tipoCompra->nombre}}')">
                   <i class="fa fa-times"></i> Eliminar
                 </button>
               @endcan
@@ -62,9 +52,9 @@
 </div>
 <!-- /.card -->
 <script type="text/javascript">
-//iniciacion de tabla empresa
+//iniciacion de tabla tipo de compra
 $(function () {
-   $("#tablaEmpresa").DataTable({
+   $("#tablaTipoCompra").DataTable({
     "responsive": true,
     "autoWidth": true,
      language: {

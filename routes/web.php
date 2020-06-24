@@ -145,8 +145,19 @@ Route::middleware(['auth'])->group(function(){
 
   // Rutas para compras
   Route::get('/compra', 'Compras\CompraController@index')->name('compra')->middleware('can:navegar.compra');
+  Route::get('/listar_compra', 'Compras\CompraController@listarCompras')->middleware('can:navegar.compra');
+  Route::post('/compra_crear', 'Compras\CompraController@store')->name('compra_crear')->middleware('can:crear.compra');
+  Route::get('/editar_compra/{compra}', 'Compras\CompraController@edit')->name('editar_compra')->middleware('can:editar.compra');
+  Route::put('/compra_actualizar/{idCompra}', 'Compras\CompraController@update')->name('compra_actualizar')->middleware('can:editar.compra');
+  Route::delete('/compra_eliminar/{idCompra}', 'Compras\CompraController@destroy')->name('compra_eliminar')->middleware('can:eliminar.compra');
+
   // Rutas para tipo compra
   Route::get('/tipo_compra', 'Compras\TipoCompraController@index')->name('tipo_compra')->middleware('can:navegar.tipo.compra');
+  Route::get('/listar_tipo_compra', 'Compras\TipoCompraController@listarTiposCompras')->middleware('can:navegar.tipo.compra');
+  Route::post('/tipo_compra_crear', 'Compras\TipoCompraController@store')->name('tipo_compra_crear')->middleware('can:crear.tipo.compra');
+  Route::put('/tipo_compra_editar/{idTipoCompra}', 'Compras\TipoCompraController@update')->name('tipo_compra_editar')->middleware('can:editar.tipo.compra');
+  Route::delete('/tipo_compra_eliminar/{idTipoCompra}', 'Compras\TipoCompraController@destroy')->name('tipo_compra_eliminar')->middleware('can:eliminar.tipo.compra');
+
   // Rutas para articulo compras
   Route::get('/articulo_compra', 'Compras\ArticuloCompraController@index')->name('articulo_compra')->middleware('can:navegar.articulo.compra');
   // Rutas para abono compras
