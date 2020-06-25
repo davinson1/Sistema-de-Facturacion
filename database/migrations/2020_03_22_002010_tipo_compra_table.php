@@ -17,7 +17,6 @@ class TipoCompraTable extends Migration
             $table->bigIncrements('id');
             $table->text('nombre');
             $table->text('descripcion');
-            $table->timestamp('fecha_creacion')->useCurrent();
             $table->timestamps();
         });
     }

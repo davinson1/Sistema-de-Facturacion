@@ -102,7 +102,7 @@ class ProductosController extends Controller
      */
     public function update(Request $request, Producto $idProducto)
     {
-      $data = request()->validate([        
+      $data = request()->validate([
         'fotoProducto'     => 'image',
         'id_tipo_articulo' => 'required|numeric',
         'id_proveedor'     => 'required|numeric',

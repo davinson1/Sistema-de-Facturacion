@@ -20,7 +20,6 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 Route::middleware(['auth'])->group(function(){
 
-
   // Rutas para usuarios
   Route::get('/perfil_usuarios/{user}', 'Usuarios\UsuariosController@perfil')->name('perfil_usuarios');
   Route::post('/actualizar_perfil/{user}', 'Usuarios\UsuariosController@editarPerfil')->name('actualizar_perfil');
@@ -96,7 +95,8 @@ Route::middleware(['auth'])->group(function(){
   Route::put('/producto_actualizar/{idProducto}', 'Productos\ProductosController@update')->name('producto_actualizar')->middleware('can:editar.productos');
   Route::delete('/productos_eliminar/{idProducto}', 'Productos\ProductosController@destroy')->name('productos_eliminar')->middleware('can:eliminar.productos');
 
-//rutas para tipo de articulo
+
+ // Rutas para tipo de articulo
   Route::get('/tipo_articulo', 'Productos\TipoArticuloController@index')->name('tipo_articulo')->middleware('can:navegar.tipo_articulo');
   Route::get('/listar_tipo_articulo', 'Productos\TipoArticuloController@ListarTipoArticulo')->middleware('can:navegar.tipo.articulo');
   Route::post('/tipo_articulos_crear', 'Productos\TipoArticuloController@store')->name('tipo_articulos_crear')->middleware('can:crear.tipos.articulos');
@@ -139,12 +139,28 @@ Route::middleware(['auth'])->group(function(){
   Route::put('/tipo_tributario_editar/{idTipoTributario}', 'Productos\TipoTributarioController@update')->name('tipo_tributario_editar')->middleware('can:editar.tipos.tributario');
   Route::delete('/tipo_tributario_eliminar/{idTipoTributario}', 'Productos\TipoTributarioController@destroy')->name('tipo_tributario_eliminar')->middleware('can:eliminar.tipos.tributario');
 
+  // Rutas para datos de empresa modulo de configuración
+  Route::get('/datos_empresa', 'configuracion\DatosEmpresaController@index')->name('tipo_tributario')->middleware('can:navegar.datos.empresa');
+  Route::post('/datos_empresa_crear', 'configuracion\DatosEmpresaController@store')->name('datos_empresa_crear')->middleware('can:navegar.datos.empresa');
 
+  // Rutas para compras
+  Route::get('/compra', 'Compras\CompraController@index')->name('compra')->middleware('can:navegar.compra');
+  Route::get('/listar_compra', 'Compras\CompraController@listarCompras')->middleware('can:navegar.compra');
+  Route::post('/compra_crear', 'Compras\CompraController@store')->name('compra_crear')->middleware('can:crear.compra');
+  Route::get('/editar_compra/{compra}', 'Compras\CompraController@edit')->name('editar_compra')->middleware('can:editar.compra');
+  Route::put('/compra_actualizar/{idCompra}', 'Compras\CompraController@update')->name('compra_actualizar')->middleware('can:editar.compra');
+  Route::delete('/compra_eliminar/{idCompra}', 'Compras\CompraController@destroy')->name('compra_eliminar')->middleware('can:eliminar.compra');
 
-//rutas para datos de empresa modulo de configuración
- Route::get('/datos_empresa', 'configuracion\DatosEmpresaController@index')->name('tipo_tributario')->middleware('can:navegar.datos.empresa');
- Route::post('/datos_empresa_crear', 'configuracion\DatosEmpresaController@store')->name('datos_empresa_crear')->middleware('can:navegar.datos.empresa');
+  // Rutas para tipo compra
+  Route::get('/tipo_compra', 'Compras\TipoCompraController@index')->name('tipo_compra')->middleware('can:navegar.tipo.compra');
+  Route::get('/listar_tipo_compra', 'Compras\TipoCompraController@listarTiposCompras')->middleware('can:navegar.tipo.compra');
+  Route::post('/tipo_compra_crear', 'Compras\TipoCompraController@store')->name('tipo_compra_crear')->middleware('can:crear.tipo.compra');
+  Route::put('/tipo_compra_editar/{idTipoCompra}', 'Compras\TipoCompraController@update')->name('tipo_compra_editar')->middleware('can:editar.tipo.compra');
+  Route::delete('/tipo_compra_eliminar/{idTipoCompra}', 'Compras\TipoCompraController@destroy')->name('tipo_compra_eliminar')->middleware('can:eliminar.tipo.compra');
 
-
+  // Rutas para articulo compras
+  Route::get('/articulo_compra', 'Compras\ArticuloCompraController@index')->name('articulo_compra')->middleware('can:navegar.articulo.compra');
+  // Rutas para abono compras
+  Route::get('/abono_compra', 'Compras\AbonoCompraController@index')->name('abono_compra')->middleware('can:navegar.abono.compra');
 });
 

@@ -121,6 +121,12 @@ active
       $('#todoProductos > div > input').prop('checked', $(this).is(':checked'));
       $('#color3').toggleClass('card-info card-success');
     });
+
+    // Seleccionar todos los selectores de compras al crear
+    $('#switch4').change(function() {
+      $('#todoCompras > div > input').prop('checked', $(this).is(':checked'));
+      $('#color4').toggleClass('card-info card-success');
+    });
   });
 </script>
 @endsection

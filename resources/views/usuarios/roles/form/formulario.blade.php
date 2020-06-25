@@ -37,7 +37,7 @@
         <!-- /.card-tools -->
       </div>
       <!-- /.card-header -->
-      <div id="bodyUsuario" class="card-body">
+      <div class="card-body">
         @foreach($permissions as $permission)
           @if($permission->categoria == 'usuario')
           <div id="todoUsuario" class="form-group clearfix">
@@ -73,7 +73,7 @@
         <!-- /.card-tools -->
       </div>
       <!-- /.card-header -->
-      <div id="bodyUbicacion" class="card-body">
+      <div class="card-body">
         @foreach($permissions as $permission)
           @if($permission->categoria == 'ubicacion')
           <div id="todoUbicacion" class="form-group clearfix">
@@ -109,10 +109,46 @@
         <!-- /.card-tools -->
       </div>
       <!-- /.card-header -->
-      <div id="bodyProductos" class="card-body">
+      <div class="card-body">
         @foreach($permissions as $permission)
           @if($permission->categoria == 'productos')
           <div id="todoProductos" class="form-group clearfix">
+            <div class="icheck-success">
+              {{ Form::checkbox('permissions[]', $permission->id, null, ['id' => 'checkboxSuccess'.$permission->id]) }}
+              {{ Form::label('checkboxSuccess'.$permission->id, $permission->name) }}
+
+            </div>
+          </div>
+          @endif
+        @endforeach
+      </div>
+      <!-- /.card-body -->
+      <div class="card-footer">
+        <label>Nota:</label>
+      </div>
+      <!-- /.card-footer-->
+    </div>
+
+  {{-- Permisos para compras --}}
+    <div id="color4" class="card card-outline card-info collapsed-card">
+      <div class="card-header">
+        <h3 class="card-title">Compras: crear, mostrar, editar y eliminar.</h3>
+
+        <div class="card-tools">
+          <button type="button" class="btn btn-tool">
+            <input id="switch4" class="switch" type="checkbox">
+            <label for="switch4" class="lbl align-middle"></label>
+          </button>
+          <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-plus"></i>
+          </button>
+        </div>
+        <!-- /.card-tools -->
+      </div>
+      <!-- /.card-header -->
+      <div class="card-body">
+        @foreach($permissions as $permission)
+          @if($permission->categoria == 'compras')
+          <div id="todoCompras" class="form-group clearfix">
             <div class="icheck-success">
               {{ Form::checkbox('permissions[]', $permission->id, null, ['id' => 'checkboxSuccess'.$permission->id]) }}
               {{ Form::label('checkboxSuccess'.$permission->id, $permission->name) }}

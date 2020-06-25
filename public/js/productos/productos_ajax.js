@@ -41,8 +41,7 @@ function listarProducto(){
 
 // Insertar producto
 $('#crearProducto').click(function(e) {
-  e.preventDefault();
-  
+  e.preventDefault();  
   const url = 'producto_crear';
   const params = new FormData($('#frmCrearProducto')[0]);
   proccessFunction(url, 'POST', params, callbackStoreProducto, false, false, false);

@@ -14,29 +14,36 @@ class PermisosTablaSeeder extends Seeder
     {
       // Permisos para el modulo usuarios
         Permission::create([
-          'name' => 'Navegar usuario',
+          'name' => 'Navegar usuarios',
           'categoria' => 'usuario',
-          'slug' => 'navegar.usuario',
+          'slug' => 'navegar.modulo.usuarios',
           'description' => 'El usuario puede ver en el menú el enlace usuarios.',
         ]);
-        Permission::create([
-          'name' => 'Crear usuario',
-          'categoria' => 'usuario',
-          'slug' => 'crear.usuario',
-          'description' => 'El usuario puede ver el boton de crear usuarios.',
-        ]);
-        Permission::create([
-          'name' => 'Editar usuario',
-          'categoria' => 'usuario',
-          'slug' => 'editar.usuario',
-          'description' => 'El usuario puede ver el boton de editar usuarios.',
-        ]);
-        Permission::create([
-          'name' => 'Eliminar usuario',
-          'categoria' => 'usuario',
-          'slug' => 'eliminar.usuario',
-          'description' => 'El usuario puede ver el boton de eliminar usuarios.',
-        ]);
+        // permisos para usuario
+          Permission::create([
+            'name' => 'Navegar usuario',
+            'categoria' => 'usuario',
+            'slug' => 'navegar.usuario',
+            'description' => 'El usuario puede ver en el menú el enlace usuarios.',
+          ]);
+          Permission::create([
+            'name' => 'Crear usuario',
+            'categoria' => 'usuario',
+            'slug' => 'crear.usuario',
+            'description' => 'El usuario puede ver el boton de crear usuarios.',
+          ]);
+          Permission::create([
+            'name' => 'Editar usuario',
+            'categoria' => 'usuario',
+            'slug' => 'editar.usuario',
+            'description' => 'El usuario puede ver el boton de editar usuarios.',
+          ]);
+          Permission::create([
+            'name' => 'Eliminar usuario',
+            'categoria' => 'usuario',
+            'slug' => 'eliminar.usuario',
+            'description' => 'El usuario puede ver el boton de eliminar usuarios.',
+          ]);
 
         // Permisos de roles
           Permission::create([
@@ -120,7 +127,7 @@ class PermisosTablaSeeder extends Seeder
         Permission::create([
           'name' => 'Navegar ubicación',
           'categoria' => 'ubicacion',
-          'slug' => 'navegar.ubicacion',
+          'slug' => 'navegar.modulo.ubicacion',
           'description' => 'El usuario puede ver en el menú el enlace ubicación.',
         ]);
         // Permisos de país
@@ -206,30 +213,31 @@ class PermisosTablaSeeder extends Seeder
           'slug' => 'navegar.modulo.productos',
           'description' => 'El usuario puede desplegar el menú productos.',
         ]);
-        Permission::create([
-          'name' => 'Navegar productos',
-          'categoria' => 'productos',
-          'slug' => 'navegar.productos',
-          'description' => 'El usuario puede ver en el menú el enlace productos.',
-        ]);
-        Permission::create([
-          'name' => 'Crear productos',
-          'categoria' => 'productos',
-          'slug' => 'crear.productos',
-          'description' => 'El usuario puede ver el boton de crear productos.',
-        ]);
-        Permission::create([
-          'name' => 'Editar productos',
-          'categoria' => 'productos',
-          'slug' => 'editar.productos',
-          'description' => 'El usuario puede ver el boton de editar productos.',
-        ]);
-        Permission::create([
-          'name' => 'Eliminar productos',
-          'categoria' => 'productos',
-          'slug' => 'eliminar.productos',
-          'description' => 'El usuario puede ver el boton de eliminar productos.',
-        ]);
+        // Permisos para producto
+          Permission::create([
+            'name' => 'Navegar productos',
+            'categoria' => 'productos',
+            'slug' => 'navegar.productos',
+            'description' => 'El usuario puede ver en el menú el enlace productos.',
+          ]);
+          Permission::create([
+            'name' => 'Crear productos',
+            'categoria' => 'productos',
+            'slug' => 'crear.productos',
+            'description' => 'El usuario puede ver el boton de crear productos.',
+          ]);
+          Permission::create([
+            'name' => 'Editar productos',
+            'categoria' => 'productos',
+            'slug' => 'editar.productos',
+            'description' => 'El usuario puede ver el boton de editar productos.',
+          ]);
+          Permission::create([
+            'name' => 'Eliminar productos',
+            'categoria' => 'productos',
+            'slug' => 'eliminar.productos',
+            'description' => 'El usuario puede ver el boton de eliminar productos.',
+          ]);
         // Permisos de proveedor
           Permission::create([
             'name' => 'Navegar proveedores',
@@ -379,6 +387,117 @@ class PermisosTablaSeeder extends Seeder
             'categoria' => 'productos',
             'slug' => 'eliminar.tipos.tributario',
             'description' => 'El usuario puede ver el boton de eliminar tipos tributarios.',
+          ]);
+
+      // Permisos para el modulo compras
+        Permission::create([
+          'name' => 'Navegar compras',
+          'categoria' => 'compras',
+          'slug' => 'navegar.modulo.compras',
+          'description' => 'El usuario puede ver en el menú el enlace compras.',
+        ]);
+        // Permiso para compra
+          Permission::create([
+            'name' => 'Navegar compra',
+            'categoria' => 'compras',
+            'slug' => 'navegar.compra',
+            'description' => 'Lista y navega todos las compras del sistemas.',
+          ]);
+          Permission::create([
+            'name' => 'Crear compra',
+            'categoria' => 'compras',
+            'slug' => 'crear.compra',
+            'description' => 'El usuario puede ver el boton de crear compra.',
+          ]);
+          Permission::create([
+            'name' => 'Editar compra',
+            'categoria' => 'compras',
+            'slug' => 'editar.compra',
+            'description' => 'El usuario puede ver el boton de editar compra.',
+          ]);
+          Permission::create([
+            'name' => 'Eliminar compra',
+            'categoria' => 'compras',
+            'slug' => 'eliminar.compra',
+            'description' => 'El usuario puede ver el boton de eliminar compra.',
+          ]);
+
+        // Permisos de tipo compra
+          Permission::create([
+            'name' => 'Navegar tipo de compra',
+            'categoria' => 'compras',
+            'slug' => 'navegar.tipo.compra',
+            'description' => 'Lista y navega todos los tipo de compra del sistemas.',
+          ]);
+          Permission::create([
+            'name' => 'Crear tipo de compra',
+            'categoria' => 'compras',
+            'slug' => 'crear.tipo.compra',
+            'description' => 'Crear cualquier tipo de compra.',
+          ]);
+          Permission::create([
+            'name' => 'Editar tipo de compra',
+            'categoria' => 'compras',
+            'slug' => 'editar.tipo.compra',
+            'description' => 'Editar cualquier tipo de compra.',
+          ]);
+          Permission::create([
+            'name' => 'Eliminar tipo de compra',
+            'categoria' => 'compras',
+            'slug' => 'eliminar.tipo.compra',
+            'description' => 'Eliminar cualquier tipo de compra.',
+          ]);
+
+        // Permisos de articulo compra
+          Permission::create([
+            'name' => 'Navegar artículo compra',
+            'categoria' => 'compras',
+            'slug' => 'navegar.articulo.compra',
+            'description' => 'Lista y navega todos los artículo compra del sistemas.',
+          ]);
+          Permission::create([
+            'name' => 'Crear de artículo compra',
+            'categoria' => 'compras',
+            'slug' => 'crear.articulo.compra',
+            'description' => 'Crear cualquier artículo compra.',
+          ]);
+          Permission::create([
+            'name' => 'Edición de artículo compra',
+            'categoria' => 'compras',
+            'slug' => 'editar.articulo.compra',
+            'description' => 'Editar cualquier artículo compra.',
+          ]);
+          Permission::create([
+            'name' => 'Eliminar artículo compra',
+            'categoria' => 'compras',
+            'slug' => 'eliminar.articulo.compra',
+            'description' => 'Eliminar cualquier artículo compra.',
+          ]);
+
+        // Permisos de abono compra
+          Permission::create([
+            'name' => 'Navegar abono compra',
+            'categoria' => 'compras',
+            'slug' => 'navegar.abono.compra',
+            'description' => 'Lista y navega todas las abono compra del sistemas.',
+          ]);
+          Permission::create([
+            'name' => 'Crear abono compra',
+            'categoria' => 'compras',
+            'slug' => 'crear.abono.compra',
+            'description' => 'Crear  abono compra.',
+          ]);
+          Permission::create([
+            'name' => 'Edición abono compra',
+            'categoria' => 'compras',
+            'slug' => 'editar.abono.compra',
+            'description' => 'Editar abono compra.',
+          ]);
+          Permission::create([
+            'name' => 'Eliminar abono compra',
+            'categoria' => 'compras',
+            'slug' => 'eliminar.abono.compra',
+            'description' => 'Eliminar abono compra.',
           ]);
     }
 }

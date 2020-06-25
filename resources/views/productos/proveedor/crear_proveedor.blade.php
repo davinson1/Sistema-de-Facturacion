@@ -35,14 +35,14 @@
           <div class="row mb-3">
             <div class="col-12">
               <label for="telefonoProveedor">Teléfono:</label>
-              <input id="telefonoProveedor" class="form-control focus" type="number" placeholder="Teléfono del proveedor">
+              <input id="telefonoProveedor" class="form-control" type="number" placeholder="Teléfono del proveedor">
             </div>
           </div>
 
           <div class="row mb-3">
             <div class="col-12">
               <label for="descripcionProveedor">Descripción del proveedor:</label>
-             <textarea id="descripcionProveedor" class="form-control focus" rows="3" placeholder="Agregue una especificacion"></textarea>
+              <textarea id="descripcionProveedor" class="form-control" rows="3" placeholder="Agregue una especificación"></textarea>
             </div>
           </div>
 

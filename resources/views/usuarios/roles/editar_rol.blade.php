@@ -129,6 +129,42 @@
           </div>
           <!-- /.card-footer-->
         </div>
+
+      {{-- Permisos para compras --}}
+        <div id="color4" class="card card-outline card-info collapsed-card">
+          <div class="card-header">
+            <h3 class="card-title">Compras: crear, mostrar, editar y eliminar.</h3>
+
+            <div class="card-tools">
+              <button type="button" class="btn btn-tool">
+                <input id="switch4" class="switch" type="checkbox">
+                <label for="switch4" class="lbl align-middle"></label>
+              </button>
+              <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-plus"></i>
+              </button>
+            </div>
+            <!-- /.card-tools -->
+          </div>
+          <!-- /.card-header -->
+          <div class="card-body">
+            @foreach($permissions as $permission)
+              @if($permission->categoria == 'compras')
+              <div id="todoCompras" class="form-group clearfix">
+                <div class="icheck-success">
+                  {{ Form::checkbox('permissions[]', $permission->id, null, ['id' => 'checkboxSuccess'.$permission->id]) }}
+                  {{ Form::label('checkboxSuccess'.$permission->id, $permission->name) }}
+
+                </div>
+              </div>
+              @endif
+            @endforeach
+          </div>
+          <!-- /.card-body -->
+          <div class="card-footer">
+            <label>Nota:</label>
+          </div>
+          <!-- /.card-footer-->
+        </div>
       <div class="form-group">
         {{ Form::submit('Guardar', ['id' => 'actualizarRol', 'class' => 'btn btn-primary']) }}
       </div>
@@ -150,10 +186,16 @@
       $('#color2').toggleClass('card-info card-success');
     });
 
-    // Seleccionar todos los selectores de productos al crear
+    // Seleccionar todos los selectores de productos al editar
     $('#switch3').change(function() {
       $('#todoProductos > div > input').prop('checked', $(this).is(':checked'));
       $('#color3').toggleClass('card-info card-success');
+    });
+
+    // Seleccionar todos los selectores de compras al editar
+    $('#switch4').change(function() {
+      $('#todoCompras > div > input').prop('checked', $(this).is(':checked'));
+      $('#color4').toggleClass('card-info card-success');
     });
   });
 

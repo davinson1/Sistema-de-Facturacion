@@ -19,8 +19,7 @@ class CompraTable extends Migration
         $table->unsignedBigInteger('id_usuario');
         $table->unsignedBigInteger('id_forma_pago');
         
-        $table->timestamp('fecha_compra')->useCurrent();
-        $table->string('scanner');
+        $table->string('scanner')->nullable();
         $table->text('descripcion');
 
         $table->timestamps();
