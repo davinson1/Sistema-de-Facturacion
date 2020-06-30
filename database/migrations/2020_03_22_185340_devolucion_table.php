@@ -17,7 +17,7 @@ class DevolucionTable extends Migration
             $table->bigIncrements('id');
             $table->integer('id_articulo');
             $table->integer('id_factura');
-            $table->integer('id_per_act');
+            $table->integer('id_persona_act');
             $table->timestamp('fecha_devolucion')->useCurrent();
             $table->integer('cantidad');
             $table->integer('valor_total');

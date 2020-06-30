@@ -15,7 +15,7 @@ class AbonoCompraTable extends Migration
     {
       Schema::create('abono_compra', function (Blueprint $table) {
         $table->bigIncrements('id');
-        $table->unsignedBigInteger('id_factura');
+        $table->unsignedBigInteger('id_compra');
         $table->unsignedBigInteger('interes');
 
         $table->integer('numero_cuota');
@@ -29,7 +29,7 @@ class AbonoCompraTable extends Migration
         $table->tinyInteger('pagado');
 
         $table->timestamps();
-        $table->foreign('id_factura')->references('id')->on('factura');
+        $table->foreign('id_compra')->references('id')->on('compra');
         $table->foreign('interes')->references('id')->on('porcentaje');
       });
     }

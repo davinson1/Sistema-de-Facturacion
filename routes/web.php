@@ -160,6 +160,12 @@ Route::middleware(['auth'])->group(function(){
 
   // Rutas para articulo compras
   Route::get('/articulo_compra', 'Compras\ArticuloCompraController@index')->name('articulo_compra')->middleware('can:navegar.articulo.compra');
+  Route::get('/listar_articulo_compra', 'Compras\ArticuloCompraController@listarArticulosCompra')->middleware('can:navegar.articulo.compra');
+  Route::post('/articulo_compra_crear', 'Compras\ArticuloCompraController@store')->name('articulo_compra_crear')->middleware('can:crear.articulo.compra');
+  Route::get('/editar_articulo_compra/{articuloCompra}', 'Compras\ArticuloCompraController@edit')->name('editar_articulo_compra')->middleware('can:editar.articulo.compra');
+  Route::put('/articulo_compra_actualizar/{idArticuloCompra}', 'Compras\ArticuloCompraController@update')->name('articulo_compra_actualizar')->middleware('can:editar.articulo.compra');
+  Route::delete('/articulo_compra_eliminar/{idArticuloCompra}', 'Compras\ArticuloCompraController@destroy')->name('articulo_compra_eliminar')->middleware('can:eliminar.articulo.compra');
+
   // Rutas para abono compras
   Route::get('/abono_compra', 'Compras\AbonoCompraController@index')->name('abono_compra')->middleware('can:navegar.abono.compra');
 });

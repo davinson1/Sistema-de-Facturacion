@@ -16,6 +16,7 @@ class BodegaTable extends Migration
       Schema::create('bodega', function (Blueprint $table) {
         $table->bigIncrements('id');
         $table->unsignedBigInteger('id_ciudad');
+        $table->unsignedBigInteger('id_encargado');
 
         $table->text('nombre');
         $table->text('direccion');
@@ -24,6 +25,7 @@ class BodegaTable extends Migration
         $table->timestamps();
 
         $table->foreign('id_ciudad')->references('id')->on('municipio');
+        $table->foreign('id_encargado')->references('id')->on('users');
       });
     }
 
