@@ -60,10 +60,22 @@ active
                 </select>
               </div>
             </div>
+            
             <div class="form-group">
               <label for="cantidad">Cantidad</label>
               <input type="number" id="cantidad" class="form-control focus" name="cantidad">
-              <input type="hidden" id="entregado" class="form-control" name="entregado" value="1">
+            </div>
+
+            <div class="form-group">
+              <label>Estado de la entrega:</label>
+              <div class="form-check">
+                {{ Form::radio('entregado', '1', null, ['class'=> 'form-check-input', 'id' => 'radioEntregado']) }}
+                <label class="form-check-label" for="radioActivo">Entregado</label>
+              </div>
+              <div class="form-check">
+                {{ Form::radio('entregado', '0', null, ['class'=> 'form-check-input', 'id' => 'radioNoEntregado']) }}
+                <label class="form-check-label" for="radioInactivo">No entregado</label>
+              </div>
             </div>
             <div class="form-group">
               <label for="descripcion">Descripción:</label>
@@ -75,6 +87,27 @@ active
             <button type="submit" id="crearArticuloCompra" class="btn btn-info">Crear artículo compra</button>
           </div>
         </form>
+      </div>
+    </div>
+  </div>
+@endcan
+
+@can('editar.articulo.compra')
+  {{-- Modal para Editar un articulo compra --}}
+  <div class="modal fade" id="modal-editar" >
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header bg-info">
+          <h4 class="modal-title"><i class="fa fa-pen"></i> Editar artículo compra</h4>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div id="formulario">
+        
+          </div>
+        </div>
       </div>
     </div>
   </div>

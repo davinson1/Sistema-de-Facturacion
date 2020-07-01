@@ -26,7 +26,7 @@ $('#crearArticuloCompra').click(function(e) {
   proccessFunction(url, 'POST', params, callbackStoreArticuloCompra);
 });
 
-// Llamar el formulario editar compra
+// Llamar el formulario editar articulo compra
 function Editar(idCompra){
   $.ajax({
     type:'get',

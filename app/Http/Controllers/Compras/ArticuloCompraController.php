@@ -36,6 +36,13 @@ class ArticuloCompraController extends Controller
      */
     public function store(Request $request)
     {
+      $data = request()->validate([        
+        'id_articulo' => 'required|numeric',
+        'id_compra'   => 'required|numeric',
+        'cantidad'    => 'required|numeric',
+        'entregado'   => 'required|numeric',         
+        'descripcion' => 'required',         
+      ]);
       if ($request->ajax()) {
         ArticuloCompra::create($request->all());
         return response()->json([
@@ -45,25 +52,16 @@ class ArticuloCompraController extends Controller
     }
 
     /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
      * Show the form for editing the specified resource.
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(ArticuloCompra $articuloCompra)
     {
-        //
+      $productos = Producto::all()->sortBy('nombre', SORT_NATURAL | SORT_FLAG_CASE)->pluck('nombre', 'id');
+      $compras = Compra::all()->sortBy('nombre', SORT_NATURAL | SORT_FLAG_CASE)->pluck('descripcion', 'id');
+      return view('compras/articulo_compra/editar_articulo_compra', compact('articuloCompra','productos', 'compras'));
     }
 
     /**
@@ -73,9 +71,21 @@ class ArticuloCompraController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, ArticuloCompra $idArticuloCompra)
     {
-        //
+      $data = request()->validate([        
+        'id_articulo' => 'required|numeric',
+        'id_compra'   => 'required|numeric',
+        'cantidad'    => 'required|numeric',
+        'entregado'   => 'required|numeric',         
+        'descripcion' => 'required',         
+      ]);
+      if ($request->ajax()) {
+        $idArticuloCompra->update($request->all());
+        return response()->json([
+          "mensaje" => "Artículo compra actualizado correctamente."
+        ]);
+      }     
     }
 
     /**
