@@ -3,11 +3,11 @@
     <div class="row mb-3">
       <div class="col-6">
         <label for="idTipoTributario">Seleccione tipo tributario (*)</label>
-        {{ Form::select('id_tipo_tributario', $tipoTributario, null, array('class'=>'form-control')) }}
+        {{ Form::select('id_tipo_tributario', $tipoTributario, null, array('class'=>'form-control select-empresa')) }}
       </div>
       <div class="col-6">
         <label for="idMunicipios">Seleccione el municipio (*)</label> 
-        {{ Form::select('id_municipio', $municipios, null, array('class'=>'form-control')) }}
+        {{ Form::select('id_municipio', $municipios, null, array('class'=>'form-control select-empresa')) }}
       </div>
     </div>
 
@@ -78,6 +78,10 @@
   </div>
 {!! Form::close() !!}
 <script type="text/javascript">
+  // Selectores de busqueda
+  $('.select-empresa').select2({
+    theme: 'bootstrap4',
+  });
   $('#actualizarEmpresa').click(function(e) {
     e.preventDefault();
     var datos = $('#frm_editar_empresa').serialize();

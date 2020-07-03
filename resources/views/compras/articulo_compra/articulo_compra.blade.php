@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('titulo')
-Tipos de compras
+Artículos compras
 @endsection
 @section('menu-open-compras')
 menu-open
@@ -45,7 +45,7 @@ active
             <div class="row mb-3">
               <div class="col-6">
                 <label for="idProducto">Seleccione el producto (*)</label>
-                <select id="idProducto" class="form-control select-compra" name="id_articulo" required="">
+                <select id="idProducto" class="form-control select-articulo-compra" name="id_articulo" required="">
                   @foreach ($productos as $producto)
                     <option value="{{$producto->id}}">{{$producto->nombre}}</option>
                   @endforeach
@@ -53,7 +53,7 @@ active
               </div>
               <div class="col-6">
                 <label for="idCompra">Seleccione la compra (*)</label>
-                <select id="idCompra" class="form-control select-compra" name="id_compra" required="">
+                <select id="idCompra" class="form-control select-articulo-compra" name="id_compra" required="">
                   @foreach ($compras as $compra)
                     <option value="{{$compra->id}}">{{$compra->descripcion}}</option>
                   @endforeach
@@ -113,7 +113,7 @@ active
   </div>
 @endcan
 
-@can('eliminar.compra')
+@can('eliminar.articulo.compra')
   {{-- Modal para Eliminar un articulo compra --}}
   <div class="modal fade" id="modal-eliminar" >
     <div class="modal-dialog">

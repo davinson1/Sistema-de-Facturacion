@@ -60,7 +60,7 @@
 </div>
 <!-- /.card -->
 <script type="text/javascript">
-//iniciacion de tabla tipo de factura
+//iniciacion de tabla compra
 $(function () {
    $("#tablaCompra").DataTable({
     "responsive": true,

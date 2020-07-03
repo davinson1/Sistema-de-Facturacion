@@ -18,7 +18,7 @@ function listarArticuloCompra(){
   });
 };
 
-// Insertar compra
+// Insertar articulo compra
 $('#crearArticuloCompra').click(function(e) {
   e.preventDefault();
   const url = 'articulo_compra_crear';
@@ -47,7 +47,7 @@ $('#editarElCompra').click(function(e) {
   proccessFunction(url, 'PUT', params, callbackStoreArticuloCompra);
 });
 
-// Eliminar compra
+// Eliminar articulo compra
 function Eliminar(idCompra, nombreCompra) {
   $("#idArticuloCompraEliminar").val(idCompra);
   document.getElementById("nombreDeArticuloCompra").innerHTML = nombreCompra;

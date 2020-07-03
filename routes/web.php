@@ -168,5 +168,10 @@ Route::middleware(['auth'])->group(function(){
 
   // Rutas para abono compras
   Route::get('/abono_compra', 'Compras\AbonoCompraController@index')->name('abono_compra')->middleware('can:navegar.abono.compra');
+  Route::get('/listar_abono_compra', 'Compras\AbonoCompraController@listarAbonosCompra')->middleware('can:navegar.abono.compra');
+  Route::post('/abono_compra_crear', 'Compras\AbonoCompraController@store')->name('abono_compra_crear')->middleware('can:crear.abono.compra');
+  Route::get('/editar_abono_compra/{abonoCompra}', 'Compras\AbonoCompraController@edit')->name('editar_abono_compra')->middleware('can:editar.abono.compra');
+  Route::put('/abono_compra_actualizar/{idAbonoCompra}', 'Compras\AbonoCompraController@update')->name('abono_compra_actualizar')->middleware('can:editar.abono.compra');
+  Route::delete('/abono_compra_eliminar/{idAbonoCompra}', 'Compras\AbonoCompraController@destroy')->name('abono_compra_eliminar')->middleware('can:eliminar.abono.compra');
 });
 

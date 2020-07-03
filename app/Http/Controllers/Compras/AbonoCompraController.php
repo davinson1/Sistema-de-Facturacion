@@ -4,6 +4,9 @@ namespace App\Http\Controllers\Compras;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\AbonoCompra;
+use App\Models\Compra;
+use App\Models\Porcentaje;
 
 class AbonoCompraController extends Controller
 {
@@ -14,17 +17,15 @@ class AbonoCompraController extends Controller
      */
     public function index()
     {
-      return view('compras/abono_compra/abono_compra');
+      $compras = Compra::all();
+      $intereses = Porcentaje::all();
+      return view('compras/abono_compra/abono_compra', compact('compras', 'intereses'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
+    public function listarAbonosCompra()
     {
-        //
+      $abonosCompras = AbonoCompra::all();
+      return view('compras/abono_compra/tabla_abono_compra', compact('abonosCompras'));
     }
 
     /**
@@ -35,7 +36,25 @@ class AbonoCompraController extends Controller
      */
     public function store(Request $request)
     {
-        //
+      $data = request()->validate([        
+        'id_compra'           => 'required|numeric',
+        'interes'             => 'required|numeric',
+        'numero_cuota'        => 'required|numeric',
+        'total_cuota'         => 'required|numeric',
+        'fecha_programada'    => 'required|date',
+        'fecha_compromiso'    => 'required|date',
+        'fecha_pago'          => 'required|date',
+        'valor'               => 'required|numeric',
+        'valor_pago'          => 'required|numeric',
+        'descripcion_no_pago' => 'required',
+        'pagado'              => 'required|numeric',        
+      ]);
+      if ($request->ajax()) {
+        AbonoCompra::create($request->all());
+        return response()->json([
+          "mensaje" => "Abono compra creado correctamente."
+        ]);
+      }  
     }
 
     /**
@@ -78,8 +97,11 @@ class AbonoCompraController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(AbonoCompra $idAbonoCompra)
     {
-        //
+      $idAbonoCompra->delete();
+      return response()->json([
+        "mensaje" => "Abono compra eliminada correctamente."
+      ]);
     }
 }
