@@ -1,5 +1,9 @@
 // Listar las empresas
 $(document).ready(function() {
+  // Selectores de busqueda
+  $('.select-empresa').select2({
+    theme: 'bootstrap4',
+  });
   listarEmpresa();
 });
 

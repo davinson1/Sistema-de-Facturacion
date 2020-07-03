@@ -16,7 +16,7 @@
             <div class="row mb-3">
               <div class="col-6">
                 <label for="idTipoTributario">Seleccione tipo tributario (*)</label>
-                <select id="idTipoTributario" class="form-control selecttp" required="" name="id_tipo_tributario">
+                <select id="idTipoTributario" class="form-control select-empresa" required="" name="id_tipo_tributario">
                   @foreach ($tipoTributario as $tipoTri)
                     <option value="{{$tipoTri->id}}">{{$tipoTri->nombre}}</option>
                   @endforeach
@@ -24,7 +24,7 @@
               </div>
               <div class="col-6">
                 <label for="idMunicipios">Seleccione el municipio (*)</label>
-                <select id="idMunicipios" class="form-control selectmunicipio" required="" name="id_municipio">
+                <select id="idMunicipios" class="form-control select-empresa" required="" name="id_municipio">
                   @foreach ($municipios as $municipio)
                     <option value="{{$municipio->id}}">{{$municipio->nombre}}</option>
                   @endforeach
