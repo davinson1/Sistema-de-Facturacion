@@ -15,16 +15,17 @@ class ArticuloCompraTable extends Migration
     {
         Schema::create('articulo_compra', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->unsignedBigInteger('id_articulo');
+            $table->unsignedBigInteger('id_productos');
             $table->unsignedBigInteger('id_compra');
 
             $table->tinyInteger('entregado');
             $table->integer('cantidad');
+            $table->decimal('valor_compra');
             $table->text('descripcion');
 
             $table->timestamps();
 
-            $table->foreign('id_articulo')->references('id')->on('articulos');
+            $table->foreign('id_productos')->references('id')->on('productos');
             $table->foreign('id_compra')->references('id')->on('compra');
         });
     }

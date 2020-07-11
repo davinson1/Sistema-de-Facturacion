@@ -15,7 +15,7 @@ class ArticuloBodegaTable extends Migration
     {
         Schema::create('articulo_bodega', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->unsignedBigInteger('id_articulo');
+            $table->unsignedBigInteger('id_productos');
             $table->unsignedBigInteger('id_bodega');
 
             $table->timestamp('fecha_ingreso')->useCurrent();
@@ -24,7 +24,7 @@ class ArticuloBodegaTable extends Migration
             
             $table->timestamps();
 
-            $table->foreign('id_articulo')->references('id')->on('articulos');
+            $table->foreign('id_productos')->references('id')->on('productos');
             $table->foreign('id_bodega')->references('id')->on('bodega');
         });
     }

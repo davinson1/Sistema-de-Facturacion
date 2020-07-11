@@ -25,6 +25,7 @@ class FacturaTable extends Migration
           $table->tinyInteger('anulado');
           $table->tinyInteger('devolucion_producto');
           $table->date('fecha_devolucion');
+          $table->integer('valor_envio');
           $table->integer('valor_iva');
           $table->integer('valor_devolucion');
           $table->integer('valor_total');

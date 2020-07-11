@@ -13,16 +13,17 @@ class ArticulosTable extends Migration
      */
     public function up()
     {
-      Schema::create('articulos', function (Blueprint $table) {
+      Schema::create('productos', function (Blueprint $table) {
         $table->bigIncrements('id');
         $table->unsignedBigInteger('id_tipo_articulo');
         $table->unsignedBigInteger('id_proveedor');
+        $table->unsignedBigInteger('id_categoria');
         $table->unsignedBigInteger('id_porcentaje');
         
         $table->text('nombre');
-        $table->text('especificaciones');
-        $table->integer('valor_compra');
-        $table->integer('valor_envio');
+        $table->text('especificaciones')->nullable();
+        $table->decimal('valor_venta');
+        $table->integer('cantidad')->nullable();
         $table->integer('porcentaje_minimo');
         $table->text('codigo_barras');
         $table->string('foto')->nullable();
@@ -31,6 +32,7 @@ class ArticulosTable extends Migration
 
         $table->foreign('id_tipo_articulo')->references('id')->on('tipo_articulo');
         $table->foreign('id_proveedor')->references('id')->on('proveedor');
+        $table->foreign('id_categoria')->references('id')->on('categoria_productos');
         $table->foreign('id_porcentaje')->references('id')->on('porcentaje');
       });
     }
