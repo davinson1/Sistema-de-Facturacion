@@ -119,6 +119,14 @@
                 </a>
               </li>
               @endcan
+              @can('navegar.categoriaproductos')
+              <li class="nav-item">
+                <a href="categoria_productos" class="nav-link @yield('active-categoriaproductos')">
+                  <i class="fas fa-shopping-cart nav-icon"></i>
+                  <p>Categorias de Productos</p>
+                </a>
+              </li>
+              @endcan
               @can('navegar.productos')
               <li class="nav-item">
                 <a href="productos" class="nav-link @yield('active-articulo')">
@@ -158,7 +166,7 @@
                   <p>Porcentaje</p>
                 </a>
               </li>
-              @endcan            
+              @endcan
               @can('navegar.tipos.facturas')
               <li class="nav-item">
                 <a href="tipo_factura" class="nav-link @yield('active-tipo-factura')">
@@ -205,7 +213,7 @@
         @can('navegar.modulo.compras')
           <li class="nav-item has-treeview @yield('menu-open-compras')">
             <a href="#" class="nav-link @yield('active-compra') @yield('active-tipo-compra') @yield('active-articulo-compra') @yield('active-abono-compra')">
-              <i class="fas fa-money-check-alt nav-icon"></i>              
+              <i class="fas fa-money-check-alt nav-icon"></i>
               <p>
                 Compras
                 <i class="right fas fa-angle-left"></i>

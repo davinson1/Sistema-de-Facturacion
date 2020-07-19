@@ -15,8 +15,8 @@ class VencimientoProductoTable extends Migration
     {
         Schema::create('vencimiento_producto', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->bigIncrements('id_compra');
-            
+            $table->unsignedBigInteger('id_compra');
+
             $table->date('fecha_vencimiento');
 
             $table->timestamps();

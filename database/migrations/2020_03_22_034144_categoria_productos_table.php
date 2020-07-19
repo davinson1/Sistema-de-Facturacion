@@ -17,8 +17,8 @@ class CategoriaProductosTable extends Migration
             $table->bigIncrements('id');
 
             $table->string('nombre');
-            $table->text('detalle');
-            
+            $table->text('detalle')->nullable();
+
             $table->timestamps();
         });
     }
@@ -30,6 +30,8 @@ class CategoriaProductosTable extends Migration
      */
     public function down()
     {
+        DB::statement('SET FOREIGN_KEY_CHECKS = 0');
         Schema::dropIfExists('categoria_productos');
+        DB::statement('SET FOREIGN_KEY_CHECKS = 1');
     }
 }
