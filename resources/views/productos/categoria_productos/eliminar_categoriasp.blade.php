@@ -5,7 +5,7 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header bg-danger">
-        <h4 class="modal-title"><i class="fa fa-trash"></i> Eliminar Categoria de productos</h4>
+        <h4 class="modal-title"><i class="fa fa-trash"></i> Eliminar categoría de productos</h4>
         <button type="button" class="close cerrarcps" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -14,7 +14,7 @@
       @csrf
       <form>
         <div class="modal-body">
-          <h3 class="text-center">¿Esta seguro de eliminar la categoria <span id="nombrecategoriaps"></span>?</h3>
+          <h3 class="text-center">¿Esta seguro de eliminar la categoría <span id="nombrecategoriaps"></span>?</h3>
           <input id="idcategoriap" class="form-control" type="hidden" required="" value="">
         </div>
         <div class="modal-footer">
