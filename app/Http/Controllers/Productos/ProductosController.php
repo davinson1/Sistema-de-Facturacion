@@ -8,6 +8,7 @@ use App\Models\Producto;
 use App\Models\TipoArticulo;
 use App\Models\Proveedor;
 use App\Models\Porcentaje;
+use App\Models\CategoriaProductos;
 
 class ProductosController extends Controller
 {
@@ -21,7 +22,8 @@ class ProductosController extends Controller
       $tipoArticulos = TipoArticulo::all();
       $proveedores = Proveedor::all();
       $porcentajes = Porcentaje::all();
-      return view('productos/producto/productos', compact('tipoArticulos', 'proveedores', 'porcentajes'));
+      $categoriasp = CategoriaProductos::all();
+      return view('productos/producto/productos', compact('tipoArticulos', 'proveedores', 'porcentajes','categoriasp'));
     }
 
     public function listarProductos()
@@ -38,21 +40,19 @@ class ProductosController extends Controller
      */
     public function store(Request $request)
     {
-      $data = request()->validate([        
+      $data = request()->validate([
         'fotoProducto'            => 'image',
         'tipoArticulo'            => 'required|numeric',
         'tipoProveedor'           => 'required|numeric',
-        'nombreProducto'          => 'required|min:3|unique:articulos,nombre',
-        'valorCompraProducto'     => 'required|numeric',
-        'valorEnvioProducto'      => 'required|numeric',
-        'porcentajeMinimoProducto'=> 'required',
         'tipoPorcentaje'          => 'required|numeric',
+        'idCategoria'              => 'required|numeric',
+        'nombreProducto'          => 'required|min:3|unique:productos,nombre',
         'codigoBarrasProducto'    => 'required',
-        'descripcionProducto'     => 'required',        
+        'descripcionProducto'     => 'required',
       ]);
 
       if ($request->ajax()) {
-        
+
         if ($request->fotoProducto==null) {
           $foto = '';
         }else{
@@ -62,14 +62,12 @@ class ProductosController extends Controller
         $producto = new Producto();
         $producto->id_tipo_articulo = $request->tipoArticulo;
         $producto->id_proveedor = $request->tipoProveedor;
-        $producto->nombre = $request->nombreProducto;
-        $producto->especificaciones = $request->descripcionProducto;
-        $producto->valor_compra = $request->valorCompraProducto;
-        $producto->valor_envio = $request->valorEnvioProducto;
-        $producto->porcentaje_minimo = $request->porcentajeMinimoProducto;
+        $producto->id_categoria = $request->idCategoria;
         $producto->id_porcentaje = $request->tipoPorcentaje;
+        $producto->nombre = $request->nombreProducto;
         $producto->codigo_barras = $request->codigoBarrasProducto;
         $producto->foto = $foto;
+        $producto->especificaciones = $request->descripcionProducto;
         $producto->save();
 
 
@@ -89,8 +87,9 @@ class ProductosController extends Controller
     {
       $tipoArticulos = TipoArticulo::all()->sortBy('nombre', SORT_NATURAL | SORT_FLAG_CASE)->pluck('nombre', 'id');
       $proveedores = Proveedor::all()->sortBy('nombre', SORT_NATURAL | SORT_FLAG_CASE)->pluck('nombre', 'id');
+      $categoriasp = CategoriaProductos::all()->sortBy('nombre', SORT_NATURAL | SORT_FLAG_CASE)->pluck('nombre', 'id');
       $porcentajes = Porcentaje::all()->sortBy('nombre', SORT_NATURAL | SORT_FLAG_CASE)->pluck('nombre', 'id');
-      return view('productos/producto/editar_producto', compact('producto', 'tipoArticulos', 'proveedores', 'porcentajes'));
+      return view('productos/producto/editar_producto', compact('producto', 'tipoArticulos', 'proveedores', 'categoriasp','porcentajes'));
     }
 
     /**
@@ -106,13 +105,14 @@ class ProductosController extends Controller
         'fotoProducto'     => 'image',
         'id_tipo_articulo' => 'required|numeric',
         'id_proveedor'     => 'required|numeric',
-        'nombre'           => 'required|min:3|unique:articulos,nombre,'.$idProducto->id,
-        'valor_compra'     => 'required|numeric',
-        'valor_envio'      => 'required|numeric',
-        'porcentaje_minimo'=> 'required',
+        'id_categoria'     => 'required|numeric',
         'id_porcentaje'    => 'required|numeric',
+        'nombre'           => 'required|min:3|unique:productos,nombre,'.$idProducto->id,
+        'valor_venta'     => 'required|numeric',
+        'porcentaje_minimo'=> 'required',
         'codigo_barras'    => 'required',
-        'especificaciones' => 'required',        
+        'especificaciones' => 'required',
+
       ]);
       if ($request->ajax()) {
         // Si el usuario cambia la foto
@@ -129,7 +129,7 @@ class ProductosController extends Controller
         return response()->json([
           "mensaje" => "Producto actualizado correctamente."
         ]);
-      }      
+      }
     }
 
     /**

@@ -21,12 +21,12 @@ class ProductosTable extends Migration
             $table->unsignedBigInteger('id_porcentaje');
 
             $table->text('nombre');
-            $table->text('especificaciones')->nullable();
-            $table->decimal('valor_venta');
-            $table->integer('cantidad')->nullable();
-            $table->integer('porcentaje_minimo');
-            $table->text('codigo_barras');
+            $table->decimal('valor_venta')->nullable()->default(0);
+            $table->integer('porcentaje_minimo')->nullable()->default(0);
+            $table->integer('cantidad')->nullable()->default(0);
+            $table->text('codigo_barras')->nullable();
             $table->string('foto')->nullable();
+            $table->text('especificaciones')->nullable();
 
             $table->timestamps();
 

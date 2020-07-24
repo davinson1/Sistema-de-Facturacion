@@ -17,13 +17,19 @@
           <div class="row mb-3">
             <div class="col-12">
           <label for="nombreProveedor">Empresa</label>
+          <div class="input-group input-group-sm">
+            <select id="idEmpresa" class="form-control selectempresa" name="tipoDocumento" required="">
+                @foreach ($empresas as $empresa)
+                  <option value="{{$empresa->id}}">{{$empresa->nombre}}</option>
+                @endforeach
+              </select>
+            <span class="input-group-append">
+              <button type="button" class="btn btn-info btn-flat" data-toggle="modal" data-target="#modal-crear"><i class="fas fa-plus"></i></button>
+            </span>
+          </div>
 
-          <select id="idEmpresa" class="form-control selectempresa" name="tipoDocumento" required="">
-            @foreach ($empresas as $empresa)
-              <option value="{{$empresa->id}}">{{$empresa->nombre}}</option>
-            @endforeach
-          </select>
-            </div>
+
+        </div>
           </div>
           <div class="row mb-3">
             <div class="col-12">
@@ -64,6 +70,9 @@
     </div>
   </div>
 </div>
+
+{{--
+@include("usuarios.empresa.crear_empresa") --}}
 @endcan
 
 

@@ -12,7 +12,7 @@
 
         @csrf
         <form id="frmCrearProducto" enctype="multipart/form-data">
-          <div class="modal-body">            
+          <div class="modal-body">
             <div class="row mb-3">
               <div class="col-6 mx-auto">
                 <img id="img1" src="/img/social.png" class="mb-3 rounded mx-auto d-block " alt="Foto del producto" width="150" height="150">
@@ -41,26 +41,16 @@
               </div>
             </div>
             <div class="row mb-3">
-              <div class="col-6">
-                <label for="nombreProducto">Nombre del producto (*)</label>
-                <input id="nombreProducto" class="form-control" type="text" name="nombreProducto" required="">
-              </div>
-              <div class="col-6">
-                <label for="valorCompraProducto">Valor de compra del producto (*)</label>
-                <input id="valorCompraProducto" class="form-control" type="number" name="valorCompraProducto" required="" step="5">
-              </div>              
-            </div>
-            <div class="row mb-3">
-              <div class="col-6">
-                <label for="valorEnvioProducto">Valor de envio del producto (*)</label>
-                <input id="valorEnvioProducto" class="form-control" type="number" name="valorEnvioProducto" required="">
-              </div>
-              <div class="col-6">
-                <label for="porcentajeMinimoProducto">Porcentaje mínimo (*)</label>
-                <input id="porcentajeMinimoProducto" class="form-control" type="number" name="porcentajeMinimoProducto" required="">
-              </div>
-            </div>
-            <div class="row mb-3">
+
+                <div class="col-6">
+                    <label for="idCategoria">Seleccione la categoria</label>
+                    <select id="idCategoria" class="form-control select-producto" name="idCategoria" required="">
+                      @foreach ($categoriasp as $categoriap)
+                        <option value="{{$categoriap->id}}">{{$categoriap->nombre}}</option>
+                      @endforeach
+                    </select>
+                </div>
+
               <div class="col-6">
                 <label for="idPorcentaje">Seleccione el porcentaje (*)</label>
                 <select id="idPorcentaje" class="form-control select-producto" name="tipoPorcentaje" required="">
@@ -69,11 +59,25 @@
                   @endforeach
                 </select>
               </div>
-              <div class="col-6">
-                <label for="codigoBarrasProducto">Código de barras (*)</label>
-                <input id="codigoBarrasProducto" class="form-control" type="text" name="codigoBarrasProducto" required="">
-              </div>
             </div>
+
+            <div class="row mb-3">
+                <div class="col-6">
+                  <label for="nombreProducto">Nombre del producto (*)</label>
+                  <input id="nombreProducto" class="form-control" type="text" name="nombreProducto" required="">
+                </div>
+
+
+                <div class="col-6">
+                    <label for="codigoBarrasProducto">Código de barras (*)</label>
+                    <input id="codigoBarrasProducto" class="form-control" type="text" name="codigoBarrasProducto" required="">
+                  </div>
+
+
+              </div>
+
+
+
             <div class="row mb-3">
               <div class="col-12">
                 <label for="descripcionProducto">Descripción (*)</label>

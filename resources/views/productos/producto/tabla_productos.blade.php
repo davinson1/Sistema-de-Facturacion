@@ -18,8 +18,15 @@
         <thead class="bg-info">
         <tr>
           <th>ID</th>
-          <th>Foto</th>
+          <th>Tipo de articulo</th>
+          <th>Proveedor</th>
+          <th>Categoria</th>
+          <th>Porcentaje</th>
           <th>Nombre</th>
+          <th>Foto</th>
+          <th>Valor venta</th>
+          <th>cantidad</th>
+          <th>Porcentaje Minimo de Venta</th>
           <th>Descripción</th>
           <th>Fecha de Creación</th>
           <th width="120px">Acciones</th>
@@ -29,14 +36,21 @@
           <tr>
           @foreach ($productos as $producto)
             <td>{{$producto->id}}</td>
+            <td>{{$producto->tipoArticulos->nombre}}</td>
+            <td>{{$producto->proveedor->nombre}}</td>
+            <td>{{$producto->categoria->nombre}}</td>
+            <td>{{$producto->porcentaje->nombre}}</td>
+            <td>{{$producto->nombre}}</td>
             <td>
               @if(!$producto->foto)
-                <img id="img1"  src="/img/social.png" class="mb-3 rounded mx-auto d-block " alt="Foto del producto" width="100" height="100"> 
+                <img id="img1"  src="/img/social.png" class="mb-3 rounded mx-auto d-block " alt="Foto del producto" width="100" height="100">
               @else
                 <img id="img1"  src="{{ Storage::url($producto->foto) }}" class="mb-3 rounded mx-auto d-block " alt="Foto del producto" width="100" height="100">
               @endif
             </td>
-            <td>{{$producto->nombre}}</td>
+            <td>{{$producto->valor_venta}}</td>
+            <td>{{$producto->cantidad}}</td>
+            <td>{{$producto->porcentaje_minimo}}</td>
             <td>{{$producto->especificaciones}}</td>
             <td>{{$producto->created_at}}</td>
             <td class="text-center">

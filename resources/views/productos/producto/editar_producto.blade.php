@@ -8,7 +8,7 @@
           <img id="fotoProducto" src="{{ Storage::url($producto->foto) }}" class="mb-3 rounded mx-auto d-block " alt="Foto del producto" width="150" height="150">
         @endif
         <div class="custom-file">
-          <label class="custom-file-label" for="fotoSeleccionada">Foto del producto</label>          
+          <label class="custom-file-label" for="fotoSeleccionada">Foto del producto</label>
           <input type="file" class="custom-file-input" id="fotoSeleccionada" name="fotoProducto" lang="es" accept="image/png, .jpeg, .jpg, image/gif">
         </div>
       </div>
@@ -20,43 +20,47 @@
         {{ Form::select('id_tipo_articulo', $tipoArticulos, null, array('class'=>'form-control select-producto', 'id' => 'idTipoArticulo')) }}
       </div>
       <div class="col-6">
-        <label for="idProveedor">Seleccione el proveedor (*)</label> 
+        <label for="idProveedor">Seleccione el proveedor (*)</label>
         {{ Form::select('id_proveedor', $proveedores, null, array('class'=>'form-control select-producto', 'id' => 'idProveedor')) }}
       </div>
     </div>
 
+
     <div class="row mb-3">
-      <div class="col-6">                
+      <div class="col-6">
+        <label for="idCategeoria">Seleccione tipo artículo (*)</label>
+        {{ Form::select('id_categoria', $categoriasp, null, array('class'=>'form-control select-producto', 'id' => 'idCategoria')) }}
+      </div>
+      <div class="col-6">
+        <label for="idPorcentaje">Seleccione el porcentaje (*)</label>
+        {{ Form::select('id_porcentaje', $porcentajes, null, array('class'=>'form-control select-producto', 'id' => 'idPorcentaje')) }}
+      </div>
+    </div>
+
+
+
+    <div class="row mb-3">
+      <div class="col-6">
         <label for="nombreProducto">Nombre del producto (*)</label>
         {{ Form::text('nombre', null, ['class' => 'form-control', 'id' => 'nombreProducto']) }}
       </div>
       <div class="col-6">
-        <label for="valorCompraProducto">Valor de compra del producto (*)</label>
-        {{ Form::number('valor_compra', null, ['class' => 'form-control', 'id' => 'valorCompraProducto']) }}
+        <label for="valorVentaProducto">Valor de Venta del producto (*)</label>
+        {{ Form::number('valor_venta', null, ['class' => 'form-control', 'id' => 'valorVentaProducto']) }}
       </div>
     </div>
 
     <div class="row mb-3">
-      <div class="col-6">                
-        <label for="valorEnvioProducto">Valor de envio del producto (*)</label>        
-        {{ Form::number('valor_envio', null, ['class' => 'form-control', 'id' => 'valorEnvioProducto']) }}
-      </div>
       <div class="col-6">
-        <label for="porcentajeMinimoProducto">Porcentaje mínimo (*)</label>
+        <label for="porcentajeMinimoProducto">Porcentaje mínimo de venta(*)</label>
         {{ Form::number('porcentaje_minimo', null, ['class' => 'form-control', 'id' => 'porcentajeMinimoProducto']) }}
-      </div>
-    </div>
-
-    <div class="row mb-3">
-      <div class="col-6">                
-        <label for="idPorcentaje">Seleccione el porcentaje (*)</label>        
-        {{ Form::select('id_porcentaje', $porcentajes, null, array('class'=>'form-control select-producto', 'id' => 'idPorcentaje')) }}
       </div>
       <div class="col-6">
         <label for="codigoBarrasProducto">Código de barras (*)</label>
         {{ Form::text('codigo_barras', null, ['class' => 'form-control', 'id' => 'codigoBarrasProducto']) }}
       </div>
     </div>
+
 
     <div class="row mb-3">
       <div class="col-12">
