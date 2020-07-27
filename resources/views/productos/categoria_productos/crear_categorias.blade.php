@@ -5,7 +5,7 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header bg-info">
-        <h4 class="modal-title"><i class="fas fa-plus"></i> Registrar una categoria</h4>
+        <h4 class="modal-title"><i class="fas fa-plus"></i> Registrar una categoría</h4>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -26,7 +26,7 @@
 
         <div class="modal-footer">
           <button type="button" class="btn btn-default" data-dismiss="modal" tabindex="3">Cerrar</button>
-          <button type="submit" id="crearcategoriap" class="btn btn-info" tabindex="4">Crear Categoria </button>
+          <button type="submit" id="crearcategoriap" class="btn btn-info" tabindex="4">Crear Categoría </button>
         </div>
       </form>
     </div>

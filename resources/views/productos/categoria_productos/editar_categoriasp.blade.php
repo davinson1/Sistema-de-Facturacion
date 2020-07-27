@@ -5,7 +5,7 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header bg-info">
-        <h4 class="modal-title"><i class="fas fa-plus"></i> Editar una categoria</h4>
+        <h4 class="modal-title"><i class="fas fa-plus"></i> Editar una categoría</h4>
         <button type="button" class="close cerrarcpe" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -17,7 +17,7 @@
           <div class="form-group">
             <label for="editarnombrecategoriap"> Nombre (*) </label>
             <input id="editaridcategoriap" class="form-control" type="hidden" tabindex="1" required="">
-            <input id="editarnombrecategoriap" class="form-control focus" type="text" tabindex="1" placeholder="Nombre categoria" required="">
+            <input id="editarnombrecategoriap" class="form-control focus" type="text" tabindex="1" placeholder="Nombre categoría" required="">
 
         </div>
           <div class="form-group">
@@ -28,7 +28,7 @@
 
         <div class="modal-footer">
           <button type="button" class="btn btn-default" data-dismiss="modal" tabindex="3">Cerrar</button>
-          <button type="submit" id="editarcategoriaps" class="btn btn-info" tabindex="4">Editar Categoria </button>
+          <button type="submit" id="editarcategoriaps" class="btn btn-info" tabindex="4">Editar Categoría </button>
         </div>
       </form>
     </div>
