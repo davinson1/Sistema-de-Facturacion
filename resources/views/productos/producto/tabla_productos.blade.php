@@ -45,7 +45,7 @@
               @if(!$producto->foto)
                 <img id="img1"  src="/img/social.png" class="mb-3 rounded mx-auto d-block " alt="Foto del producto" width="100" height="100">
               @else
-                <img id="img1"  src="{{ Storage::url($producto->foto) }}" class="mb-3 rounded mx-auto d-block " alt="Foto del producto" width="100" height="100">
+                <img id="img1"  src="{{ $producto->foto }}" class="mb-3 rounded mx-auto d-block " alt="Foto del producto" width="100" height="100">
               @endif
             </td>
             <td>{{$producto->valor_venta}}</td>

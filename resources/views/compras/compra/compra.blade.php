@@ -8,6 +8,12 @@ menu-open
 @section('active-compra')
 active
 @endsection
+@section('css')
+<!-- CSS file -->
+<link rel="stylesheet" href="/plugins/EasyAutocomplete/easy-autocomplete.css">
+<!-- Additional CSS Themes file - not required-->
+{{-- <link rel="stylesheet" href="/plugins/EasyAutocomplete/easy-autocomplete.themes.css"> --}}
+@endsection
 @section('contenido')
 <!-- Content Header (Page header) -->
 <div class="content-header">
@@ -52,50 +58,38 @@ active
 
 
 
-              <div class="input-group mb-3">
-                <input type="search" class="form-control" placeholder="Buscar productos">
-                <div class="input-group-append">
-                  <span class="input-group-text"> <i class="fas fa-search"></i></span>
-                </div>
-              </div>
+              <input type="text" class="form-control" placeholder="Buscar productos" id="buscadorProducto" >
 
 
-              <div class="card-body table-responsive p-0" style="height: 500px;">
-              <table class="table table-bordered">
+              <div class="card-body table-responsive p-0 mt-3" style="height: 400px;">
+              <table class="table table-sm">
                 <thead class="bg-info">
                   <tr>
-                    <th style="width: 10px">Codigo</th>
-                    <th style="width: 300px">descripción</th>
-                    <th style="width: 100px">Cantidad</th>
-                    <th>Precio total</th>
-                    <th>Acciones</th>
+                    <th >Id</th>
+                    <th >Nombre</th>
+                    <th >Foto</th>
+                    <th >Codigo</th>
+                    <th>Descripcion</th>
+                    <th>Cantidad</th>
+                    <th>Precio</th>
+                    <th >Acciones</th>
                   </tr>
                 </thead>
-                <tbody>
-                  <tr>
-                    <td>10</td>
-                    <td>arroz</td>
-                    <td><input type="number"></td>
-                    <td>100</td>
-                    <td><button class="btn btn-danger btn-xs" data-toggle="modal" data-target="#modal-eliminar" onclick="Eliminar">
-                        <i class="fa fa-trash"></i> Eliminar
-                      </button>
-                    </td>
-                    <!-- Condenido de Ajax -->
-                  </tr>
+                <tbody id="listarCompra">
+
                 </tbody>
                 <tfoot id="detalle_totales" class="text-right">
                     <!-- Condenido de Ajax -->
                     <tr>
-                        <td colspan="4" class="textright">SUBTOTAL Q.</td>
+                        <td colspan="6" class="textright">SUBTOTAL Q.</td>
                         <td class="textright">50000</td>
                       </tr>
                       <tr>
-                        <td colspan="4" class="textright">IVA 19</td>
+                        <td colspan="6" class="textright">IVA 19</td>
                         <td class="textright">0.0</td>
                       </tr>
                       <tr>
-                        <td colspan="4" class="textright">TOTAL Q.</td>
+                        <td colspan="6" class="textright">TOTAL Q.</td>
                         <td class="textright">1000</td>
                       </tr>
 
@@ -183,4 +177,7 @@ active
 @endsection
 @section('script_ajax')
 <script  type="text/javascript" src="/js/compras/compra_ajax.js"></script>
+<!-- Para usar EasyAutoComplete -->
+<script src="plugins/EasyAutocomplete/jquery.easy-autocomplete.js"></script>
+
 @endsection

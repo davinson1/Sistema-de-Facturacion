@@ -37,6 +37,7 @@
   <link rel="stylesheet" href="/css/style.css">
   <link href="plugins/select2/css/select2.min.css" rel="stylesheet" />
   <link rel="stylesheet" href="/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css">
+  @yield('css')
 </head>
 <body class="hold-transition sidebar-mini layout-navbar-fixed">
 <div class="wrapper">

@@ -26,7 +26,7 @@ $(document).ready(function() {
   $('.select-producto').select2({
     theme: 'bootstrap4',
   });
-  
+
 });
 
 function listarProducto(){
@@ -41,7 +41,7 @@ function listarProducto(){
 
 // Insertar producto
 $('#crearProducto').click(function(e) {
-  e.preventDefault();  
+  e.preventDefault();
   const url = 'producto_crear';
   const params = new FormData($('#frmCrearProducto')[0]);
   proccessFunction(url, 'POST', params, callbackStoreProducto, false, false, false);
@@ -61,11 +61,11 @@ function Editar(idProducto){
 // Eliminar Producto
 function Eliminar(idProducto, nombreProducto, imgProducto) {
   $("#idProductoEliminar").val(idProducto);
-  document.getElementById("nombreDelProducto").innerHTML = nombreProducto;  
+  document.getElementById("nombreDelProducto").innerHTML = nombreProducto;
   if (imgProducto==''){
     document.getElementById("imgProducto").src="/img/social.png";
   }else{
-    document.getElementById("imgProducto").src="/storage/"+imgProducto.replace('public/', '');
+    document.getElementById("imgProducto").src=imgProducto;
   }
 }
 
