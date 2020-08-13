@@ -6,7 +6,56 @@ $(document).ready(function() {
   $('.select-compra').select2({
     theme: 'bootstrap4',
   });
+
+// Para la busqueda del producto
+var options = {
+    url: "/compra_buscar_producto",
+    getValue:function(element) {
+        return element.nombre + ' codigo: ' + element.codigo_barras;
+        },
+    template: {
+      type: "custom",
+      method: function(value, item) {
+        return `
+        <div class='card p-1 m-0'>
+        <img src=' `+ item.foto +`' height='50px' ='50px' class='mr-5 float-left'/>
+        <span class="badge badge-info float-right">Stock: `+item.cantidad+`</span>
+        <div>
+        <span class="text-dark h5" >`+  item.nombre +`</span><br>
+        <span class="text-secondary">Descripcion: `+item.especificaciones+` </span>
+        <span class="text-secondary">Codigo: `+item.codigo_barras+` </span>
+
+        </div>
+        </div>
+        `;
+    return "<img src='" + item.foto + "' height='50px' ='50px' class='mr-5'/>  " +  value + '<br>'+ "<span class='text-secondary ml-5'>"+item.especificaciones+"</span>";
+      }
+    },
+    theme: "square",
+
+    list: {
+      match: {
+        enabled: true
+      },
+      onChooseEvent: function() {
+        const url = 'guardar_compra_temporal';
+        const params = $("#buscadorProducto").getSelectedItemData();
+        proccessFunction(url, 'POST', params, callbackStoreCompra);
+        listarCompra();
+      }
+
+    }
+  };
+
+  $("#buscadorProducto").easyAutocomplete(options);
+
 });
+
+
+
+
+
+
 // Poner nombre del archivoi en el campo input
 $('.custom-file-input').on('change', function(event) {
   var inputFile = event.currentTarget;
@@ -78,6 +127,7 @@ function callbackStoreCompra(status, response){
       }else{
         var array = Object.values(response.responseJSON.errors);
         array.forEach(element => toastr.error(element));
+        $("#buscadorProducto").val('');
       }
     return false;
   };
@@ -85,6 +135,7 @@ function callbackStoreCompra(status, response){
   toastr.success(response.mensaje);
   $("#nombreCompra").val('');
   $("#descripcionCompra").val('');
+  $("#buscadorProducto").val('');
   $(".close").click();
   listarCompra();
 }

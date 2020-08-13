@@ -5,7 +5,7 @@
         @if(!$producto->foto)
           <img id="fotoProducto" src="/img/social.png" class="mb-3 rounded mx-auto d-block " alt="Foto del producto" width="150" height="150">
         @else
-          <img id="fotoProducto" src="{{ Storage::url($producto->foto) }}" class="mb-3 rounded mx-auto d-block " alt="Foto del producto" width="150" height="150">
+          <img id="fotoProducto" src="{{ $producto->foto }}" class="mb-3 rounded mx-auto d-block " alt="Foto del producto" width="150" height="150">
         @endif
         <div class="custom-file">
           <label class="custom-file-label" for="fotoSeleccionada">Foto del producto</label>

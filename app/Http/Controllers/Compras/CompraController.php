@@ -4,9 +4,12 @@ namespace App\Http\Controllers\Compras;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 use App\Models\Compra;
 use App\Models\TipoCompra;
 use App\Models\FormasPago;
+use App\Models\Producto;
+use App\Models\Compra_temporal;
 
 class CompraController extends Controller
 {
@@ -22,10 +25,47 @@ class CompraController extends Controller
       return view('compras/compra/compra', compact('tiposCompras','formasPago'));
     }
 
+    public function buscarProducto() {
+        $productos = Producto::all();
+        return response()->json($productos);
+    }
+
+    public function guardarCompraTemportal(Request $request){
+
+        request()->validate([
+            'nombre' => 'min:3|max:100|unique:compra_temporal,nombre_producto',
+
+        ],
+        [   'nombre.unique'=>'el producto '.'<strong>'.$request->nombre.'</strong>'.' ya esta agregado, por favor modifiqie las cantidades'
+
+        ]);
+
+          if ($request->ajax()) {
+
+              $temporal = new Compra_temporal();
+            $temporal->token_usuario = Hash::make(Auth()->user()->id);
+            $temporal->nombre_producto = $request->nombre;
+            $temporal->foto = $request->foto;
+            $temporal->id_producto = $request->id;
+            $temporal->codigo_barras = $request->codigo_barras;
+            $temporal->descripcion_producto = $request->especificaciones;
+            $temporal->save();
+            return response()->json([
+              "mensaje" => "producto agregado correctamente."
+            ]);
+
+
+          }
+
+    }
+
+
+
+
     public function listarCompras()
     {
-      $compras = Compra::all();
-      return view('compras/compra/tabla_compra', compact('compras'));
+      $compraTemportal = Compra_temporal::all();
+      return view('compras/compra/tabla_compra', compact('compraTemportal'));
     }
 
     /**
@@ -36,15 +76,15 @@ class CompraController extends Controller
      */
     public function store(Request $request)
     {
-      $data = request()->validate([        
+      $data = request()->validate([
         'idTipoCompra'      => 'required|numeric',
         'idFormaPago'       => 'required|numeric',
         'scannerCompra'     => 'file',
-        'descripcionCompra' => 'required',         
+        'descripcionCompra' => 'required',
       ]);
 
       if ($request->ajax()) {
-        
+
         if ($request->scannerCompra==null) {
           $scanner = '';
         }else{
@@ -88,11 +128,11 @@ class CompraController extends Controller
      */
     public function update(Request $request, Compra $idCompra)
     {
-      $data = request()->validate([        
+      $data = request()->validate([
         'id_tipo_compra' => 'required|numeric',
         'id_forma_pago'  => 'required|numeric',
         'editarScanner'        => 'file',
-        'descripcion'    => 'required',         
+        'descripcion'    => 'required',
       ]);
       if ($request->ajax()) {
         // Si el usuario cambia el archivo
@@ -109,7 +149,7 @@ class CompraController extends Controller
         return response()->json([
           "mensaje" => "Compra actualizada correctamente."
         ]);
-      }    
+      }
     }
 
     /**

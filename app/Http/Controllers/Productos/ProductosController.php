@@ -66,7 +66,7 @@ class ProductosController extends Controller
         $producto->id_porcentaje = $request->tipoPorcentaje;
         $producto->nombre = $request->nombreProducto;
         $producto->codigo_barras = $request->codigoBarrasProducto;
-        $producto->foto = $foto;
+        $producto->foto = str_replace("public/","storage/",$foto);
         $producto->especificaciones = $request->descripcionProducto;
         $producto->save();
 
