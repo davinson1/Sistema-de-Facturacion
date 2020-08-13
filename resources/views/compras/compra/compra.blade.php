@@ -58,7 +58,7 @@ active
 
 
 
-              <input type="text" class="form-control" placeholder="Buscar productos" id="buscadorProducto" >
+              <input type="text" class="form-control" placeholder="Buscar productos" id="buscadorProducto" name="nombre_producto" >
 
 
               <div class="card-body table-responsive p-0 mt-3" style="height: 400px;">

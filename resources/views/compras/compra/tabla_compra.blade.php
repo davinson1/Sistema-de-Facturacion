@@ -15,7 +15,7 @@
         </td>
          <td>
             <div class="col-12">
-                <input type="number" class="form-control" value="0">
+                <input type="number" class="form-control" name="precio" id="precio" value="{{old('precio')}}">
             </div>
         </td>
          <td> <button class="btn btn-danger btn-xs" data-toggle="modal" data-target="#modal-eliminar" >

@@ -32,6 +32,14 @@ class CompraController extends Controller
 
     public function guardarCompraTemportal(Request $request){
 
+        request()->validate([
+            'nombre' => 'min:3|max:100|unique:compra_temporal,nombre_producto',
+
+        ],
+        [   'nombre.unique'=>'el producto '.'<strong>'.$request->nombre.'</strong>'.' ya esta agregado, por favor modifiqie las cantidades'
+
+        ]);
+
           if ($request->ajax()) {
 
               $temporal = new Compra_temporal();

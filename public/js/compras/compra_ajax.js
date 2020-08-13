@@ -127,6 +127,7 @@ function callbackStoreCompra(status, response){
       }else{
         var array = Object.values(response.responseJSON.errors);
         array.forEach(element => toastr.error(element));
+        $("#buscadorProducto").val('');
       }
     return false;
   };
@@ -134,6 +135,7 @@ function callbackStoreCompra(status, response){
   toastr.success(response.mensaje);
   $("#nombreCompra").val('');
   $("#descripcionCompra").val('');
+  $("#buscadorProducto").val('');
   $(".close").click();
   listarCompra();
 }
