@@ -22,19 +22,19 @@
         </tr>
         </thead>
         <tbody>
-          <tr>
           @foreach ($tparticulo as $tparticulos)
-            <td>{{$tparticulos->id}}</td>
-            <td>{{$tparticulos->nombre}}</td>
-            <td>{{$tparticulos->updated_at}}</td>
-            <td class="text-center">
-              <button class="btn btn-info btn-xs" data-toggle="modal" data-target="#modal-editar" onclick="Editar('{{$tparticulos->id}}','{{$tparticulos->nombre}}')">
-                <i class="fa fa-pen"></i> Editar
-              </button>
-              <button class="btn btn-danger btn-xs" data-toggle="modal" data-target="#modal-eliminar" onclick="Eliminar('{{$tparticulos->id}}','{{$tparticulos->nombre}}')">
-                <i class="fa fa-times"></i> Eliminar
-              </button>
-             </td>
+            <tr>
+              <td>{{$tparticulos->id}}</td>
+              <td>{{$tparticulos->nombre}}</td>
+              <td>{{$tparticulos->updated_at}}</td>
+              <td class="text-center">
+                <button class="btn btn-info btn-xs" data-toggle="modal" data-target="#modal-editar" onclick="Editar('{{$tparticulos->id}}','{{$tparticulos->nombre}}')">
+                  <i class="fa fa-pen"></i> Editar
+                </button>
+                <button class="btn btn-danger btn-xs" data-toggle="modal" data-target="#modal-eliminar" onclick="Eliminar('{{$tparticulos->id}}','{{$tparticulos->nombre}}')">
+                  <i class="fa fa-times"></i> Eliminar
+                </button>
+              </td>
             </tr>
           @endforeach
         </tbody>

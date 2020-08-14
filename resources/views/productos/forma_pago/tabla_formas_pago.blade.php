@@ -24,23 +24,23 @@
         </tr>
         </thead>
         <tbody>
-          <tr>
           @foreach ($formasPagos as $formaPago)
-            <td>{{$formaPago->id}}</td>
-            <td>{{$formaPago->nombre}}</td>
-            <td>{{$formaPago->created_at}}</td>
-            <td class="text-center">
-              @can('editar.formas.pagos')
-                <button class="btn btn-info btn-xs" data-toggle="modal" data-target="#modal-editar" onclick="Editar('{{$formaPago->id}}','{{$formaPago->nombre}}')">
-                  <i class="fa fa-pen"></i> Editar
-                </button>
-              @endcan
-              @can('eliminar.formas.pagos')
-                <button class="btn btn-danger btn-xs" data-toggle="modal" data-target="#modal-eliminar" onclick="Eliminar('{{$formaPago->id}}','{{$formaPago->nombre}}')">
-                  <i class="fa fa-times"></i> Eliminar
-                </button>
-              @endcan
-             </td>
+            <tr>
+              <td>{{$formaPago->id}}</td>
+              <td>{{$formaPago->nombre}}</td>
+              <td>{{$formaPago->created_at}}</td>
+              <td class="text-center">
+                @can('editar.formas.pagos')
+                  <button class="btn btn-info btn-xs" data-toggle="modal" data-target="#modal-editar" onclick="Editar('{{$formaPago->id}}','{{$formaPago->nombre}}')">
+                    <i class="fa fa-pen"></i> Editar
+                  </button>
+                @endcan
+                @can('eliminar.formas.pagos')
+                  <button class="btn btn-danger btn-xs" data-toggle="modal" data-target="#modal-eliminar" onclick="Eliminar('{{$formaPago->id}}','{{$formaPago->nombre}}')">
+                    <i class="fa fa-times"></i> Eliminar
+                  </button>
+                @endcan
+              </td>
             </tr>
           @endforeach
         </tbody>

@@ -24,23 +24,23 @@
         </tr>
         </thead>
         <tbody id="datos">
-          <tr>
           @foreach ($rol as $roles)
-            <td>{{$roles->id}}</td>
-            <td>{{$roles->name}}</td>
-            <td>{{$roles->updated_at}}</td>
-            <td class="text-center">
-              @can('editar.rol')
-              <button class="btn btn-info btn-xs" data-toggle="modal" data-target="#modal-editar" onclick="Editar('{{$roles->id}}')">
-                <i class="fa fa-pen"></i> Editar
-              </button>
-              @endcan
-              @can('eliminar.rol')
-              <button class="btn btn-danger btn-xs" data-toggle="modal" data-target="#modal-eliminar" onclick="Eliminar('{{$roles->id}}','{{$roles->name}}')">
-                <i class="fa fa-times"></i> Eliminar
-              </button>
-              @endcan
-             </td>
+            <tr>
+              <td>{{$roles->id}}</td>
+              <td>{{$roles->name}}</td>
+              <td>{{$roles->updated_at}}</td>
+              <td class="text-center">
+                @can('editar.rol')
+                <button class="btn btn-info btn-xs" data-toggle="modal" data-target="#modal-editar" onclick="Editar('{{$roles->id}}')">
+                  <i class="fa fa-pen"></i> Editar
+                </button>
+                @endcan
+                @can('eliminar.rol')
+                <button class="btn btn-danger btn-xs" data-toggle="modal" data-target="#modal-eliminar" onclick="Eliminar('{{$roles->id}}','{{$roles->name}}')">
+                  <i class="fa fa-times"></i> Eliminar
+                </button>
+                @endcan
+              </td>
             </tr>
           @endforeach
         </tbody>

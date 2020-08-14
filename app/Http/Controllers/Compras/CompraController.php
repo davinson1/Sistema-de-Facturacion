@@ -9,6 +9,7 @@ use App\Models\Compra;
 use App\Models\TipoCompra;
 use App\Models\FormasPago;
 use App\Models\Producto;
+use App\Models\Proveedor;
 use App\Models\Compra_temporal;
 
 class CompraController extends Controller
@@ -20,9 +21,10 @@ class CompraController extends Controller
      */
     public function index()
     {
+      $proveedores = Proveedor::all();
       $tiposCompras = TipoCompra::all();
       $formasPago = FormasPago::all();
-      return view('compras/compra/compra', compact('tiposCompras','formasPago'));
+      return view('compras/compra/compra', compact('proveedores','tiposCompras','formasPago'));
     }
 
     public function buscarProducto() {

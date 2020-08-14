@@ -25,24 +25,24 @@
         </tr>
         </thead>
         <tbody>
-          <tr>
           @foreach ($ivas as $iva)
-            <td>{{$iva->id}}</td>
-            <td>{{$iva->valor_iva}} %</td>
-            <td>{{$iva->created_at}}</td>
-            <td>{{$iva->fecha_fin}}</td>
-            <td class="text-center">
-              @can('editar.iva')
-                <button class="btn btn-info btn-xs" data-toggle="modal" data-target="#modal-editar" onclick="Editar('{{ $iva->id }}','{{ $iva->valor_iva }}','{{ $iva->fecha_fin }}')">
-                  <i class="fa fa-pen"></i> Editar
-                </button>
-              @endcan
-              @can('eliminar.iva')
-                <button class="btn btn-danger btn-xs" data-toggle="modal" data-target="#modal-eliminar" onclick="Eliminar('{{ $iva->id }}','{{ $iva->valor_iva }}')">
-                  <i class="fa fa-times"></i> Eliminar
-                </button>
-              @endcan
-             </td>
+            <tr>
+              <td>{{$iva->id}}</td>
+              <td>{{$iva->valor_iva}} %</td>
+              <td>{{$iva->created_at}}</td>
+              <td>{{$iva->fecha_fin}}</td>
+              <td class="text-center">
+                @can('editar.iva')
+                  <button class="btn btn-info btn-xs" data-toggle="modal" data-target="#modal-editar" onclick="Editar('{{ $iva->id }}','{{ $iva->valor_iva }}','{{ $iva->fecha_fin }}')">
+                    <i class="fa fa-pen"></i> Editar
+                  </button>
+                @endcan
+                @can('eliminar.iva')
+                  <button class="btn btn-danger btn-xs" data-toggle="modal" data-target="#modal-eliminar" onclick="Eliminar('{{ $iva->id }}','{{ $iva->valor_iva }}')">
+                    <i class="fa fa-times"></i> Eliminar
+                  </button>
+                @endcan
+              </td>
             </tr>
           @endforeach
         </tbody>

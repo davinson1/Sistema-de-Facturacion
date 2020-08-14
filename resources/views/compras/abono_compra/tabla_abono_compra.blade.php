@@ -30,35 +30,35 @@
         </tr>
         </thead>
         <tbody>
-          <tr>
           @foreach ($abonosCompras as $abonoCompra)
-            <td>{{$abonoCompra->id}}</td>
-            <td>{{$abonoCompra->compra->descripcion}}</td>
-            <td>{{$abonoCompra->porcentaje->nombre}}</td>
-            <td>{{$abonoCompra->numero_cuota}}</td>
-            <td>{{$abonoCompra->total_cuota}}</td>
-            <td>{{$abonoCompra->fecha_programada}}</td>
-            <td>{{$abonoCompra->fecha_compromiso}}</td>
-            <td>{{$abonoCompra->fecha_pago}}</td>
-            <td>
-              @if($abonoCompra->pagado=="1")
-                <span class="badge badge-success">Pagado</span>
-              @else
-                <span class="badge badge-danger">Pendiente</span>
-              @endif
-            </td>
-            <td class="text-center">
-              @can('editar.abono.compra')
-                <button class="btn btn-info btn-xs" data-toggle="modal" data-target="#modal-editar" onclick="Editar('{{$abonoCompra->id}}')">
-                  <i class="fa fa-pen"></i> Editar
-                </button>
-              @endcan
-              @can('eliminar.abono.compra')
-                <button class="btn btn-danger btn-xs" data-toggle="modal" data-target="#modal-eliminar" onclick="Eliminar('{{$abonoCompra->id}}', '{{$abonoCompra->compra->descripcion}}')">
-                  <i class="fa fa-times"></i> Eliminar
-                </button>
-              @endcan
-             </td>
+            <tr>
+              <td>{{$abonoCompra->id}}</td>
+              <td>{{$abonoCompra->compra->descripcion}}</td>
+              <td>{{$abonoCompra->porcentaje->nombre}}</td>
+              <td>{{$abonoCompra->numero_cuota}}</td>
+              <td>{{$abonoCompra->total_cuota}}</td>
+              <td>{{$abonoCompra->fecha_programada}}</td>
+              <td>{{$abonoCompra->fecha_compromiso}}</td>
+              <td>{{$abonoCompra->fecha_pago}}</td>
+              <td>
+                @if($abonoCompra->pagado=="1")
+                  <span class="badge badge-success">Pagado</span>
+                @else
+                  <span class="badge badge-danger">Pendiente</span>
+                @endif
+              </td>
+              <td class="text-center">
+                @can('editar.abono.compra')
+                  <button class="btn btn-info btn-xs" data-toggle="modal" data-target="#modal-editar" onclick="Editar('{{$abonoCompra->id}}')">
+                    <i class="fa fa-pen"></i> Editar
+                  </button>
+                @endcan
+                @can('eliminar.abono.compra')
+                  <button class="btn btn-danger btn-xs" data-toggle="modal" data-target="#modal-eliminar" onclick="Eliminar('{{$abonoCompra->id}}', '{{$abonoCompra->compra->descripcion}}')">
+                    <i class="fa fa-times"></i> Eliminar
+                  </button>
+                @endcan
+              </td>
             </tr>
           @endforeach
         </tbody>

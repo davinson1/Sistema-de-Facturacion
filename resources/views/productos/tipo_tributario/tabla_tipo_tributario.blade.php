@@ -24,23 +24,23 @@
         </tr>
         </thead>
         <tbody>
-          <tr>
           @foreach ($tiposTributarios as $tipoTributario)
-            <td>{{$tipoTributario->id}}</td>
-            <td>{{$tipoTributario->nombre}}</td>
-            <td>{{$tipoTributario->updated_at}}</td>
-            <td class="text-center">
-              @can('editar.tipos.tributario')
-                <button class="btn btn-info btn-xs" data-toggle="modal" data-target="#modal-editar" onclick="Editar('{{$tipoTributario->id}}','{{$tipoTributario->nombre}}')">
-                  <i class="fa fa-pen"></i> Editar
-                </button>
-              @endcan
-              @can('eliminar.tipos.tributario')
-                <button class="btn btn-danger btn-xs" data-toggle="modal" data-target="#modal-eliminar" onclick="Eliminar('{{$tipoTributario->id}}','{{$tipoTributario->nombre}}')">
-                  <i class="fa fa-times"></i> Eliminar
-                </button>
-              @endcan
-             </td>
+            <tr>
+              <td>{{$tipoTributario->id}}</td>
+              <td>{{$tipoTributario->nombre}}</td>
+              <td>{{$tipoTributario->updated_at}}</td>
+              <td class="text-center">
+                @can('editar.tipos.tributario')
+                  <button class="btn btn-info btn-xs" data-toggle="modal" data-target="#modal-editar" onclick="Editar('{{$tipoTributario->id}}','{{$tipoTributario->nombre}}')">
+                    <i class="fa fa-pen"></i> Editar
+                  </button>
+                @endcan
+                @can('eliminar.tipos.tributario')
+                  <button class="btn btn-danger btn-xs" data-toggle="modal" data-target="#modal-eliminar" onclick="Eliminar('{{$tipoTributario->id}}','{{$tipoTributario->nombre}}')">
+                    <i class="fa fa-times"></i> Eliminar
+                  </button>
+                @endcan
+              </td>
             </tr>
           @endforeach
         </tbody>

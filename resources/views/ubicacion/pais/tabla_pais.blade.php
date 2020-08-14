@@ -24,23 +24,23 @@
         </tr>
         </thead>
         <tbody>
-          <tr>
           @foreach ($pais as $paises)
-            <td>{{$paises->id}}</td>
-            <td>{{$paises->nombre}}</td>
-            <td>{{$paises->updated_at}}</td>
-            <td class="text-center">
-              @can('editar.pais')
-              <button class="btn btn-info btn-xs" data-toggle="modal" data-target="#modal-editar" onclick="Editar('{{$paises->id}}','{{$paises->nombre}}')">
-                <i class="fa fa-pen"></i> Editar
-              </button>
-              @endcan
-              @can('eliminar.pais')
-              <button class="btn btn-danger btn-xs" data-toggle="modal" data-target="#modal-eliminar" onclick="Eliminar('{{$paises->id}}','{{$paises->nombre}}')">
-                <i class="fa fa-times"></i> Eliminar
-              </button>
-              @endcan
-             </td>
+            <tr>
+              <td>{{$paises->id}}</td>
+              <td>{{$paises->nombre}}</td>
+              <td>{{$paises->updated_at}}</td>
+              <td class="text-center">
+                @can('editar.pais')
+                <button class="btn btn-info btn-xs" data-toggle="modal" data-target="#modal-editar" onclick="Editar('{{$paises->id}}','{{$paises->nombre}}')">
+                  <i class="fa fa-pen"></i> Editar
+                </button>
+                @endcan
+                @can('eliminar.pais')
+                <button class="btn btn-danger btn-xs" data-toggle="modal" data-target="#modal-eliminar" onclick="Eliminar('{{$paises->id}}','{{$paises->nombre}}')">
+                  <i class="fa fa-times"></i> Eliminar
+                </button>
+                @endcan
+              </td>
             </tr>
           @endforeach
         </tbody>

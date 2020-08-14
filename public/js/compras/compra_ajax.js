@@ -16,22 +16,17 @@ var options = {
     template: {
       type: "custom",
       method: function(value, item) {
-        return `
-        <div class='card p-1 m-0'>
-        <img src=' `+ item.foto +`' height='50px' ='50px' class='mr-5 float-left'/>
-        <span class="badge badge-info float-right">Stock: `+item.cantidad+`</span>
-        <div>
-        <span class="text-dark h5" >`+  item.nombre +`</span><br>
-        <span class="text-secondary">Descripcion: `+item.especificaciones+` </span>
-        <span class="text-secondary">Codigo: `+item.codigo_barras+` </span>
-
-        </div>
-        </div>
+        return `          
+          <img src=' `+ item.foto +`' height='50px' width='50px' class='float-left mr-5'/>          
+          <span class="badge badge-info float-right">Stock: `+item.cantidad+`</span>
+          <div>
+            <span class="text-dark h5" >`+  item.nombre +`</span><br>
+            <span class="text-secondary">Descripcion: `+item.especificaciones+` </span>
+            <span class="text-secondary">Codigo: `+item.codigo_barras+` </span>
+          </div>
         `;
-    return "<img src='" + item.foto + "' height='50px' ='50px' class='mr-5'/>  " +  value + '<br>'+ "<span class='text-secondary ml-5'>"+item.especificaciones+"</span>";
       }
     },
-    theme: "square",
 
     list: {
       match: {
@@ -50,11 +45,6 @@ var options = {
   $("#buscadorProducto").easyAutocomplete(options);
 
 });
-
-
-
-
-
 
 // Poner nombre del archivoi en el campo input
 $('.custom-file-input').on('change', function(event) {

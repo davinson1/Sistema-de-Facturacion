@@ -28,26 +28,26 @@
           </tr>
           </thead>
           <tbody>
-            <tr>
             @foreach ($usuario as $usuarios)
-              <td>{{ $usuarios->id }}</td>
-              <td>{{ $usuarios->name }} {{ $usuarios->apellido }}</td>
-              <td>{{ $usuarios->numero_documento }}</td>
-              <td>{{ $usuarios->email }}</td>
-              <td>{{ $usuarios->direccion }}</td>
-              <td>{{ $usuarios->updated_at }}</td>
-              <td class="text-center">
-                @can('editar.usuario')
-                <button class="btn btn-info btn-xs" data-toggle="modal" data-target="#modal-editar" onclick="Editar('{{ $usuarios->id }}')">
-                  <i class="fa fa-pen"></i> Editar
-                </button>
-                @endcan
-                @can('eliminar.usuario')
-                <button class="btn btn-danger btn-xs" data-toggle="modal" data-target="#modal-eliminar" onclick="Eliminar('{{$usuarios->id}}','{{$usuarios->name}}')">
-                  <i class="fa fa-times"></i> Eliminar
-                </button>
-                @endcan
-               </td>
+              <tr>
+                <td>{{ $usuarios->id }}</td>
+                <td>{{ $usuarios->name }} {{ $usuarios->apellido }}</td>
+                <td>{{ $usuarios->numero_documento }}</td>
+                <td>{{ $usuarios->email }}</td>
+                <td>{{ $usuarios->direccion }}</td>
+                <td>{{ $usuarios->updated_at }}</td>
+                <td class="text-center">
+                  @can('editar.usuario')
+                  <button class="btn btn-info btn-xs" data-toggle="modal" data-target="#modal-editar" onclick="Editar('{{ $usuarios->id }}')">
+                    <i class="fa fa-pen"></i> Editar
+                  </button>
+                  @endcan
+                  @can('eliminar.usuario')
+                  <button class="btn btn-danger btn-xs" data-toggle="modal" data-target="#modal-eliminar" onclick="Eliminar('{{$usuarios->id}}','{{$usuarios->name}}')">
+                    <i class="fa fa-times"></i> Eliminar
+                  </button>
+                  @endcan
+                </td>
               </tr>
             @endforeach
           </tbody>
