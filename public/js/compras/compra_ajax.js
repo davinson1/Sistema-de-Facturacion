@@ -7,8 +7,8 @@ $(document).ready(function() {
     theme: 'bootstrap4',
   });
 
-// Para la busqueda del producto
-var options = {
+  // Para la busqueda del producto
+  var options = {
     url: "/compra_buscar_producto",
     getValue:function(element) {
         return element.nombre + ' codigo: ' + element.codigo_barras;
@@ -33,8 +33,17 @@ var options = {
         enabled: true
       },
       onChooseEvent: function() {
-        const url = 'guardar_compra_temporal';
-        const params = $("#buscadorProducto").getSelectedItemData();
+        let datos = {
+          'nombre': $("#buscadorProducto").getSelectedItemData().nombre,
+          'foto': $("#buscadorProducto").getSelectedItemData().foto,
+          'cantidad_compra': $("#cantidad_compra").val(),
+          'precio_compra': $("#precio_compra").val(),
+          'id_producto': $("#buscadorProducto").getSelectedItemData().id,
+          'codigo_barras': $("#buscadorProducto").getSelectedItemData().codigo_barras,
+          'descripcion_producto': $("#buscadorProducto").getSelectedItemData().especificaciones,
+        };
+        const url = 'guardar_compra_temporal';        
+        const params = datos;
         proccessFunction(url, 'POST', params, callbackStoreCompra);
         listarCompra();
       }
@@ -46,7 +55,20 @@ var options = {
 
 });
 
-// Poner nombre del archivoi en el campo input
+// Descartar el producto seleccionado
+function eliminarProducto(id, nombreProducto) {
+  $("#idCompraTemporal").val(id);
+  document.getElementById("nombreProducto").innerHTML = nombreProducto;
+}
+$('#descartarProductoTemporal').click(function(e) {
+  e.preventDefault();
+  var idCompraTemporal = $("#idCompraTemporal").val();
+  const url = 'descartar_producto_compra/'+idCompraTemporal;
+  const params = '';
+  proccessFunction(url, 'DELETE', params, callbackStoreCompra);
+});
+
+// Poner nombre del archivo en el campo input
 $('.custom-file-input').on('change', function(event) {
   var inputFile = event.currentTarget;
   $(inputFile).parent()

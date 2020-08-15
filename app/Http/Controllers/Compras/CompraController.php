@@ -4,13 +4,12 @@ namespace App\Http\Controllers\Compras;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Hash;
 use App\Models\Compra;
 use App\Models\TipoCompra;
 use App\Models\FormasPago;
 use App\Models\Producto;
 use App\Models\Proveedor;
-use App\Models\Compra_temporal;
+use App\Models\CompraTemporal;
 
 class CompraController extends Controller
 {
@@ -33,41 +32,42 @@ class CompraController extends Controller
     }
 
     public function guardarCompraTemportal(Request $request){
+      request()->validate([
+        'nombre' => 'min:3|max:100|unique:compra_temporal,nombre_producto',
+      ],
+      ['nombre.unique'=>'el producto '.'<strong>'.$request->nombre.'</strong>'.' ya esta agregado, por favor modifiqie las cantidades'
+      ]);
+      if ($request->ajax())
+      {
+        $temporal = new CompraTemporal();
+        $temporal->token_usuario = md5(Auth()->user()->id);
+        $temporal->nombre_producto = $request->nombre;
+        $temporal->foto = $request->foto;
+        $temporal->cantidad_producto = $request->cantidad_compra;
+        $temporal->precio_compra = $request->precio_compra;
+        $temporal->id_producto = $request->id_producto;
+        $temporal->codigo_barras = $request->codigo_barras;
+        $temporal->descripcion_producto = $request->descripcion_producto;
+        $temporal->save();
 
-        request()->validate([
-            'nombre' => 'min:3|max:100|unique:compra_temporal,nombre_producto',
-
-        ],
-        [   'nombre.unique'=>'el producto '.'<strong>'.$request->nombre.'</strong>'.' ya esta agregado, por favor modifiqie las cantidades'
-
+        return response()->json([
+          "mensaje" => "producto agregado correctamente."
         ]);
-
-          if ($request->ajax()) {
-
-              $temporal = new Compra_temporal();
-            $temporal->token_usuario = Hash::make(Auth()->user()->id);
-            $temporal->nombre_producto = $request->nombre;
-            $temporal->foto = $request->foto;
-            $temporal->id_producto = $request->id;
-            $temporal->codigo_barras = $request->codigo_barras;
-            $temporal->descripcion_producto = $request->especificaciones;
-            $temporal->save();
-            return response()->json([
-              "mensaje" => "producto agregado correctamente."
-            ]);
-
-
-          }
-
+      }
     }
-
-
-
 
     public function listarCompras()
     {
-      $compraTemportal = Compra_temporal::all();
+      $compraTemportal = CompraTemporal::where('token_usuario', md5(Auth()->user()->id))->get();
       return view('compras/compra/tabla_compra', compact('compraTemportal'));
+    }
+
+    public function descartarProducto(CompraTemporal $idCompraTemporal)
+    {
+      $idCompraTemporal->delete();
+      return response()->json([
+        "mensaje" => "Producto ".$idCompraTemporal->nombre_producto." descartado."
+      ]);
     }
 
     /**

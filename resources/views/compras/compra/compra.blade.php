@@ -33,6 +33,34 @@ active
 </div>
 <!-- /.content-header -->
 
+@can('eliminar.compra')
+  {{-- Modal para Eliminar un producto seleccionado --}}
+  <div class="modal fade" id="modal-descartar-producto" >
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header bg-danger">
+          <h4 class="modal-title"><i class="fa fa-trash"></i> Descartar producto</h4>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+
+        @csrf
+        <form>
+          <div class="modal-body">
+            <h3 class="text-center">¿Esta seguro de descartar el productos <span id="nombreProducto"></span>?</h3>
+            <input id="idCompraTemporal" class="form-control" type="hidden" required="">
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+            <button id="descartarProductoTemporal" class="btn btn-danger" type="submit">Descartar</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+@endcan
+
 <div class="content">
   <div class="row">
     <div class="col-md-12">

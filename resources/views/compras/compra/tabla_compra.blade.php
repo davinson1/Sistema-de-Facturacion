@@ -7,16 +7,16 @@
     <td> {{$temporal->descripcion_producto}}</td>
     <td>
       <div class="col-9">
-        <input type="number" class="form-control" value="1">
+        <input id="cantidad_compra" type="number" class="form-control" value="{{$temporal->cantidad_producto}}">
       </div>
     </td>
     <td>
       <div class="col-12">
-        <input type="number" class="form-control" name="precio" id="precio" value="{{old('precio')}}">
+        <input type="number" class="form-control" name="precio" id="precio_compra" value="{{$temporal->precio_compra}}">
       </div>
     </td>
     <td class="text-center">
-      <button class="btn btn-danger btn-xs" data-toggle="modal" data-target="#modal-eliminar" >
+      <button class="btn btn-danger btn-xs" data-toggle="modal" data-target="#modal-descartar-producto" onclick="eliminarProducto('{{$temporal->id}}', '{{$temporal->nombre_producto}}')">
         <i class="fa fa-trash"></i>
       </button>
     </td>
