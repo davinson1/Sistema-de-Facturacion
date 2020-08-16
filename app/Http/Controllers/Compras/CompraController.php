@@ -10,6 +10,7 @@ use App\Models\FormasPago;
 use App\Models\Producto;
 use App\Models\Proveedor;
 use App\Models\CompraTemporal;
+use App\Models\Iva;
 
 class CompraController extends Controller
 {
@@ -51,6 +52,7 @@ class CompraController extends Controller
         $temporal->foto = $request->foto;
         $temporal->cantidad_producto = $request->cantidad_compra;
         $temporal->precio_compra = $request->precio_compra;
+        $temporal->precio_venta = $request->precio_venta;
         $temporal->id_producto = $request->id_producto;
         $temporal->codigo_barras = $request->codigo_barras;
         $temporal->descripcion_producto = $request->descripcion_producto;
@@ -64,7 +66,7 @@ class CompraController extends Controller
 
     public function listarCompras()
     {
-      $compraTemportal = CompraTemporal::where('token_usuario', md5(Auth()->user()->id))->get();
+      $compraTemportal = CompraTemporal::where('token_usuario', md5(Auth()->user()->id))->get();      
       return view('compras/compra/tabla_compra', compact('compraTemportal'));
     }
 

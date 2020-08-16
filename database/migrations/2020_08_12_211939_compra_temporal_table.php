@@ -21,6 +21,7 @@ class CompraTemporalTable extends Migration
             $table->string('nombre_producto');
             $table->string('cantidad_producto');
             $table->string('precio_compra');
+            $table->string('precio_venta');
             $table->string('codigo_barras');
             $table->string('descripcion_producto');
             $table->timestamps();

@@ -3,11 +3,15 @@ var dataSel = '';
 
 // Listar compra
 $(document).ready(function() {
+  $(function () {
+  $('[data-toggle="tooltip"]').tooltip()
+});
   listarCompra();
 
   // Selectores de busqueda
   $('.select-compra').select2({
     theme: 'bootstrap4',
+    width: '100%',
   });
 
   // Para la busqueda del producto
@@ -43,7 +47,7 @@ $(document).ready(function() {
   };
 
   $("#buscadorProducto").easyAutocomplete(options);
-
+  
 });
 
 $('#agregarProducto').click(function(e) {
@@ -51,6 +55,8 @@ $('#agregarProducto').click(function(e) {
   // Organizar las variables para pasarlas en un objeto
   var cantidad_compra = $("#cantidad_compra").val();
   var precio_compra = $("#precio_compra").val();
+  var precio_venta = $("#precio_venta").val();
+
   if (cantidad_compra == '' || precio_compra == '')
   {
     toastr.error('Los campos cantidad y precio no tienen que ser vacios.');
@@ -62,14 +68,15 @@ $('#agregarProducto').click(function(e) {
       'codigo_barras': dataSel.codigo_barras,
       'descripcion_producto': dataSel.especificaciones,
       'cantidad_compra': cantidad_compra,
-      'precio_compra': precio_compra
+      'precio_compra': precio_compra,
+      'precio_venta': precio_venta
     };
     // Enviar la peticion para el registro temporal
     const url = 'guardar_compra_temporal';          
     proccessFunction(url, 'POST', objDatos, callbackStoreCompra);
     // Resetear los campos y añadir la clase d-none  
     $(".col").addClass("d-none");
-  }
+  }    
 });
 
 // Descartar el producto seleccionado
