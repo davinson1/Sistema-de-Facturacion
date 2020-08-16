@@ -24,21 +24,21 @@
         </tr>
         </thead>
         <tbody>
-          <tr>
           @foreach ($porcentaje as $porcentajes)
-            <td>{{$porcentajes->id}}</td>
-            <td>{{$porcentajes->nombre}}</td>
-            <td>{{$porcentajes->descripcion}}</td>
-            <td>{{$porcentajes->porcentaje}} %</td>
-            <td>{{$porcentajes->created_at}}</td>
-            <td class="text-center">
-              <button class="btn btn-info btn-xs" data-toggle="modal" data-target="#modal-editar" onclick="Editar('{{$porcentajes->id}}','{{$porcentajes->nombre}}','{{$porcentajes->descripcion}}','{{$porcentajes->porcentaje}}')">
-                <i class="fa fa-pen"></i> Editar
-              </button>
-              <button class="btn btn-danger btn-xs" data-toggle="modal" data-target="#modal-eliminar" onclick="Eliminar('{{$porcentajes->id}}','{{$porcentajes->nombre}}')">
-                <i class="fa fa-times"></i> Eliminar
-              </button>
-             </td>
+            <tr>
+              <td>{{$porcentajes->id}}</td>
+              <td>{{$porcentajes->nombre}}</td>
+              <td>{{$porcentajes->descripcion}}</td>
+              <td>{{$porcentajes->porcentaje}} %</td>
+              <td>{{$porcentajes->created_at}}</td>
+              <td class="text-center">
+                <button class="btn btn-info btn-xs" data-toggle="modal" data-target="#modal-editar" onclick="Editar('{{$porcentajes->id}}','{{$porcentajes->nombre}}','{{$porcentajes->descripcion}}','{{$porcentajes->porcentaje}}')">
+                  <i class="fa fa-pen"></i> Editar
+                </button>
+                <button class="btn btn-danger btn-xs" data-toggle="modal" data-target="#modal-eliminar" onclick="Eliminar('{{$porcentajes->id}}','{{$porcentajes->nombre}}')">
+                  <i class="fa fa-times"></i> Eliminar
+                </button>
+              </td>
             </tr>
           @endforeach
         </tbody>

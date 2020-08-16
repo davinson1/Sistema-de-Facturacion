@@ -23,20 +23,20 @@
           </tr>
           </thead>
           <tbody>
-            <tr>
             @foreach ($categoriap as $categoriaps)
-              <td>{{$categoriaps->id}}</td>
-              <td>{{$categoriaps->nombre}}</td>
-              <td>{{$categoriaps->detalle}}</td>
-              <td>{{$categoriaps->created_at}}</td>
-              <td class="text-center">
-                <button class="btn btn-info btn-xs" data-toggle="modal"  data-target="#modal-editar" onclick="Editar('{{$categoriaps->id}}','{{$categoriaps->nombre}}','{{$categoriaps->detalle}}')">
-                  <i class="fa fa-pen"></i> Editar
-                </button>
-                <button class="btn btn-danger btn-xs" data-toggle="modal" data-target="#modal-eliminar" onclick="Eliminar('{{$categoriaps->id}}','{{$categoriaps->nombre}}')">
-                  <i class="fa fa-times"></i> Eliminar
-                </button>
-               </td>
+              <tr>
+                <td>{{$categoriaps->id}}</td>
+                <td>{{$categoriaps->nombre}}</td>
+                <td>{{$categoriaps->detalle}}</td>
+                <td>{{$categoriaps->created_at}}</td>
+                <td class="text-center">
+                  <button class="btn btn-info btn-xs" data-toggle="modal"  data-target="#modal-editar" onclick="Editar('{{$categoriaps->id}}','{{$categoriaps->nombre}}','{{$categoriaps->detalle}}')">
+                    <i class="fa fa-pen"></i> Editar
+                  </button>
+                  <button class="btn btn-danger btn-xs" data-toggle="modal" data-target="#modal-eliminar" onclick="Eliminar('{{$categoriaps->id}}','{{$categoriaps->nombre}}')">
+                    <i class="fa fa-times"></i> Eliminar
+                  </button>
+                </td>
               </tr>
             @endforeach
           </tbody>

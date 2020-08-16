@@ -16,9 +16,11 @@ class CompraTemporalTable extends Migration
         Schema::create('compra_temporal', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('token_usuario');
-            $table->string('nombre_producto');
             $table->string('foto');
             $table->string('id_producto');
+            $table->string('nombre_producto');
+            $table->string('cantidad_producto');
+            $table->string('precio_compra');
             $table->string('codigo_barras');
             $table->string('descripcion_producto');
             $table->timestamps();

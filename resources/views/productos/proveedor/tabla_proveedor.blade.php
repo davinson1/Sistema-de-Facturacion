@@ -29,33 +29,32 @@
         </tr>
         </thead>
         <tbody>
-          <tr>
           @foreach ($proveedores as $proveedor)
-
-            <td>{{$proveedor->id}}</td>
-            <td>{{$proveedor->empresa->nombre}}</td>
-            <td>{{$proveedor->usuario->name}} {{$proveedor->usuario->apellido}}</td>
-            <td>{{$proveedor->nombre}}</td>
-            <td>{{$proveedor->telefono}}</td>
-            <td>{{$proveedor->descripcion}}</td>
-            @if($proveedor->estado =='1')
-              <td><span class="badge badge-success">Activo</span></td>
-            @else
-              <td><span class="badge badge-danger">Inactivo</span></td>
-            @endif
-            <td>{{$proveedor->updated_at}}</td>
-            <td class="text-center">
-              @can('editar.proveedores')
-                <button class="btn btn-info btn-xs" data-toggle="modal" data-target="#modal-editar" onclick="Editar('{{$proveedor->id}}')">
-                  <i class="fa fa-pen"></i> Editar
-                </button>
-              @endcan
-              @can('eliminar.proveedores')
-                <button class="btn btn-danger btn-xs" data-toggle="modal" data-target="#modal-eliminar" onclick="Eliminar('{{$proveedor->id}}','{{$proveedor->nombre}}')">
-                  <i class="fa fa-times"></i> Eliminar
-                </button>
-              @endcan
-             </td>
+            <tr>
+              <td>{{$proveedor->id}}</td>
+              <td>{{$proveedor->empresa->nombre}}</td>
+              <td>{{$proveedor->usuario->name}} {{$proveedor->usuario->apellido}}</td>
+              <td>{{$proveedor->nombre}}</td>
+              <td>{{$proveedor->telefono}}</td>
+              <td>{{$proveedor->descripcion}}</td>
+              @if($proveedor->estado =='1')
+                <td><span class="badge badge-success">Activo</span></td>
+              @else
+                <td><span class="badge badge-danger">Inactivo</span></td>
+              @endif
+              <td>{{$proveedor->updated_at}}</td>
+              <td class="text-center">
+                @can('editar.proveedores')
+                  <button class="btn btn-info btn-xs" data-toggle="modal" data-target="#modal-editar" onclick="Editar('{{$proveedor->id}}')">
+                    <i class="fa fa-pen"></i> Editar
+                  </button>
+                @endcan
+                @can('eliminar.proveedores')
+                  <button class="btn btn-danger btn-xs" data-toggle="modal" data-target="#modal-eliminar" onclick="Eliminar('{{$proveedor->id}}','{{$proveedor->nombre}}')">
+                    <i class="fa fa-times"></i> Eliminar
+                  </button>
+                @endcan
+              </td>
             </tr>
           @endforeach
         </tbody>

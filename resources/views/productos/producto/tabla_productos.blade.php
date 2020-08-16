@@ -33,38 +33,38 @@
         </tr>
         </thead>
         <tbody>
-          <tr>
           @foreach ($productos as $producto)
-            <td>{{$producto->id}}</td>
-            <td>{{$producto->tipoArticulos->nombre}}</td>
-            <td>{{$producto->proveedor->nombre}}</td>
-            <td>{{$producto->categoria->nombre}}</td>
-            <td>{{$producto->porcentaje->nombre}}</td>
-            <td>{{$producto->nombre}}</td>
-            <td>
-              @if(!$producto->foto)
-                <img id="img1"  src="/img/social.png" class="mb-3 rounded mx-auto d-block " alt="Foto del producto" width="100" height="100">
-              @else
-                <img id="img1"  src="{{ $producto->foto }}" class="mb-3 rounded mx-auto d-block " alt="Foto del producto" width="100" height="100">
-              @endif
-            </td>
-            <td>{{$producto->valor_venta}}</td>
-            <td>{{$producto->cantidad}}</td>
-            <td>{{$producto->porcentaje_minimo}}</td>
-            <td>{{$producto->especificaciones}}</td>
-            <td>{{$producto->created_at}}</td>
-            <td class="text-center">
-              @can('editar.productos')
-                <button class="btn btn-info btn-xs" data-toggle="modal" data-target="#modal-editar" onclick="Editar('{{$producto->id}}')">
-                  <i class="fa fa-pen"></i> Editar
-                </button>
-              @endcan
-              @can('eliminar.productos')
-                <button class="btn btn-danger btn-xs" data-toggle="modal" data-target="#modal-eliminar" onclick="Eliminar('{{$producto->id}}','{{$producto->nombre}}','{{$producto->foto}}')">
-                  <i class="fa fa-times"></i> Eliminar
-                </button>
-              @endcan
-             </td>
+            <tr>
+              <td>{{$producto->id}}</td>
+              <td>{{$producto->tipoArticulos->nombre}}</td>
+              <td>{{$producto->proveedor->nombre}}</td>
+              <td>{{$producto->categoria->nombre}}</td>
+              <td>{{$producto->porcentaje->nombre}}</td>
+              <td>{{$producto->nombre}}</td>
+              <td>
+                @if(!$producto->foto)
+                  <img id="img1"  src="/img/social.png" class="mb-3 rounded mx-auto d-block " alt="Foto del producto" width="100" height="100">
+                @else
+                  <img id="img1"  src="{{ $producto->foto }}" class="mb-3 rounded mx-auto d-block " alt="Foto del producto" width="100" height="100">
+                @endif
+              </td>
+              <td>{{$producto->valor_venta}}</td>
+              <td>{{$producto->cantidad}}</td>
+              <td>{{$producto->porcentaje_minimo}}</td>
+              <td>{{$producto->especificaciones}}</td>
+              <td>{{$producto->created_at}}</td>
+              <td class="text-center">
+                @can('editar.productos')
+                  <button class="btn btn-info btn-xs" data-toggle="modal" data-target="#modal-editar" onclick="Editar('{{$producto->id}}')">
+                    <i class="fa fa-pen"></i> Editar
+                  </button>
+                @endcan
+                @can('eliminar.productos')
+                  <button class="btn btn-danger btn-xs" data-toggle="modal" data-target="#modal-eliminar" onclick="Eliminar('{{$producto->id}}','{{$producto->nombre}}','{{$producto->foto}}')">
+                    <i class="fa fa-times"></i> Eliminar
+                  </button>
+                @endcan
+              </td>
             </tr>
           @endforeach
         </tbody>
