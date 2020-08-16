@@ -1,3 +1,6 @@
+// variables globales
+var dataSel = '';
+
 // Listar compra
 $(document).ready(function() {
   listarCompra();
@@ -17,7 +20,7 @@ $(document).ready(function() {
       type: "custom",
       method: function(value, item) {
         return `          
-          <img src=' `+ item.foto +`' height='50px' width='50px' class='float-left mr-5'/>          
+          <img src=' `+ item.foto +`' height='50px' width='50px' class='float-left mr-3'/>          
           <span class="badge badge-info float-right">Stock: `+item.cantidad+`</span>
           <div>
             <span class="text-dark h5" >`+  item.nombre +`</span><br>
@@ -32,22 +35,10 @@ $(document).ready(function() {
       match: {
         enabled: true
       },
-      onChooseEvent: function() {
-        let datos = {
-          'nombre': $("#buscadorProducto").getSelectedItemData().nombre,
-          'foto': $("#buscadorProducto").getSelectedItemData().foto,
-          'cantidad_compra': $("#cantidad_compra").val(),
-          'precio_compra': $("#precio_compra").val(),
-          'id_producto': $("#buscadorProducto").getSelectedItemData().id,
-          'codigo_barras': $("#buscadorProducto").getSelectedItemData().codigo_barras,
-          'descripcion_producto': $("#buscadorProducto").getSelectedItemData().especificaciones,
-        };
-        const url = 'guardar_compra_temporal';        
-        const params = datos;
-        proccessFunction(url, 'POST', params, callbackStoreCompra);
-        listarCompra();
+      onChooseEvent: function(){
+        $(".col").removeClass("d-none");
+        dataSel = $("#buscadorProducto").getSelectedItemData();
       }
-
     }
   };
 
@@ -55,8 +46,34 @@ $(document).ready(function() {
 
 });
 
+$('#agregarProducto').click(function(e) {
+  e.preventDefault();
+  // Organizar las variables para pasarlas en un objeto
+  var cantidad_compra = $("#cantidad_compra").val();
+  var precio_compra = $("#precio_compra").val();
+  if (cantidad_compra == '' || precio_compra == '')
+  {
+    toastr.error('Los campos cantidad y precio no tienen que ser vacios.');
+  }else{
+    var objDatos = {
+      'nombre': dataSel.nombre,
+      'foto': dataSel.foto,
+      'id_producto': dataSel.id,
+      'codigo_barras': dataSel.codigo_barras,
+      'descripcion_producto': dataSel.especificaciones,
+      'cantidad_compra': cantidad_compra,
+      'precio_compra': precio_compra
+    };
+    // Enviar la peticion para el registro temporal
+    const url = 'guardar_compra_temporal';          
+    proccessFunction(url, 'POST', objDatos, callbackStoreCompra);
+    // Resetear los campos y añadir la clase d-none  
+    $(".col").addClass("d-none");
+  }
+});
+
 // Descartar el producto seleccionado
-function eliminarProducto(id, nombreProducto) {
+function descartarProducto(id, nombreProducto) {
   $("#idCompraTemporal").val(id);
   document.getElementById("nombreProducto").innerHTML = nombreProducto;
 }
@@ -68,7 +85,7 @@ $('#descartarProductoTemporal').click(function(e) {
   proccessFunction(url, 'DELETE', params, callbackStoreCompra);
 });
 
-// Poner nombre del archivo en el campo input
+// Poner nombre del archivo en el campo input del scaner
 $('.custom-file-input').on('change', function(event) {
   var inputFile = event.currentTarget;
   $(inputFile).parent()
@@ -94,42 +111,6 @@ $('#crearCompra').click(function(e) {
   proccessFunction(url, 'POST', params, callbackStoreCompra, false, false, false);
 });
 
-// Llamar el formulario editar compra
-function Editar(idCompra){
-  $.ajax({
-    type:'get',
-    url:('editar_compra/'+idCompra),
-    success: function(data){
-      $('#formulario').empty().html(data);
-    }
-  });
-}
-
-$('#editarElCompra').click(function(e) {
-  e.preventDefault();
-  var idCompra = $("#idCompra").val();
-  var nombre = $("#editarCompra").val();
-  var descripcion = $("#descripcionCompraEditar").val();
-  const url = 'compra_editar/'+idCompra;
-  const params = {'nombre':nombre,'descripcion':descripcion};
-  proccessFunction(url, 'PUT', params, callbackStoreCompra);
-});
-
-// Eliminar compra
-function Eliminar(idCompra, nombreCompra) {
-  $("#idCompraEliminar").val(idCompra);
-  document.getElementById("idDeCompra").innerHTML = idCompra;
-  document.getElementById("nombreDeCompra").innerHTML = nombreCompra;
-}
-
-$('#eliminarCompra').click(function(e) {
-  e.preventDefault();
-  var idCompra = $("#idCompraEliminar").val();
-  const url = 'compra_eliminar/'+idCompra;
-  const params = '';
-  proccessFunction(url, 'DELETE', params, callbackStoreCompra);
-});
-
 
 function callbackStoreCompra(status, response){
   if (status != 200){
@@ -139,15 +120,13 @@ function callbackStoreCompra(status, response){
       }else{
         var array = Object.values(response.responseJSON.errors);
         array.forEach(element => toastr.error(element));
-        $("#buscadorProducto").val('');
+        document.querySelector("#frmBuscarProducto").reset(); 
       }
     return false;
   };
 
   toastr.success(response.mensaje);
-  $("#nombreCompra").val('');
-  $("#descripcionCompra").val('');
-  $("#buscadorProducto").val('');
+  document.querySelector("#frmBuscarProducto").reset();  
   $(".close").click();
   listarCompra();
 }

@@ -79,10 +79,23 @@ active
             <div class="col-md-8">
               <p class="text-center">
                 <strong>Productos</strong>
-              </p>
-
-              <input type="text" class="form-control" placeholder="Buscar productos" id="buscadorProducto" name="nombre_producto" >
-
+              </p>              
+              <form id="frmBuscarProducto">
+                <div class="form-row">
+                  <div class="col-7">
+                    <input id="buscadorProducto" type="text" class="form-control" placeholder="Buscar Producto" required="">
+                  </div>
+                  <div class="col d-none">
+                    <input id="cantidad_compra" class="form-control" type="number" value="1" required="">
+                  </div>
+                  <div class="col d-none">
+                    <input id="precio_compra" class="form-control" type="number" placeholder="2000" required="">
+                  </div>
+                  <div class="col d-none">
+                    <button id="agregarProducto" class="btn btn-success btn-sm" type="button"><i class="fas fa-plus"></i> Agregar</button>
+                  </div>
+                </div>
+              </form>
               <div class="card-body table-responsive p-0 mt-3" style="height: 400px;">
                 <table class="table table-sm">
                   <thead class="bg-info">
@@ -93,7 +106,7 @@ active
                       <th>Codigo</th>
                       <th>Descripcion</th>
                       <th>Cantidad</th>
-                      <th>Precio</th>
+                      <th>Total</th>
                       <th>Acciones</th>
                     </tr>
                   </thead>
