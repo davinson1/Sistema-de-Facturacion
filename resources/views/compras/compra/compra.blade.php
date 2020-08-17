@@ -109,7 +109,7 @@ active
               </div>
             </div>
             <!-- /.col -->
-            <div class="col-md-4 shadow rounded">
+            <div class="col-md-4 shadow rounded p-0">
               <div class="info-box bg-success m-0">
                 <span class="info-box-icon"><i class="fas fa-dollar-sign"></i></span>
                 <div class="info-box-content">
@@ -120,7 +120,7 @@ active
               </div>
               @can('crear.compra')
               <!-- form start -->
-              <form id="frmCrearCompra" class="mb-3" enctype="multipart/form-data">
+              <form id="frmCrearCompra" class="p-2" enctype="multipart/form-data">
                 <div class="box-body">
                   <div class="form-group">
                     <label for="idProveedor">Proveedor</label>
@@ -159,11 +159,12 @@ active
                   </div>
                 </div>
                 <!-- /.box-body -->
-                <div class="box-footer text-center">
-                  <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fas fa-ban"></i> Anular</button>
-                  <button type="submit" id="crearCompra" class="btn btn-success"><i class="fas fa-save"></i> Comprar</button>
-                </div>
               </form>              
+              <div class="box-footer">
+                <button id="btnAnular" class="btn btn-danger btn-lg float-left" type="button"><i class="fas fa-ban"></i> Anular</button>
+                <button class="btn btn-success btn-lg float-right" type="button"><i class="fas fa-save"></i> Comprar</button>
+                {{-- <button type="submit" id="crearCompra" class="btn btn-success "><i class="fas fa-save"></i> Comprar</button> --}}
+              </div>
               @endcan
             </div>
           </div>

@@ -108,7 +108,7 @@ class ProductosController extends Controller
         'id_categoria'     => 'required|numeric',
         'id_porcentaje'    => 'required|numeric',
         'nombre'           => 'required|min:3|unique:productos,nombre,'.$idProducto->id,
-        'valor_venta'     => 'required|numeric',
+        'valor_venta'      => 'required|numeric',
         'porcentaje_minimo'=> 'required',
         'codigo_barras'    => 'required',
         'especificaciones' => 'required',
