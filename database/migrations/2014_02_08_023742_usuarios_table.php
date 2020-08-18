@@ -29,7 +29,7 @@ class UsuariosTable extends Migration
             $table->string('foto')->nullable();
             $table->string('copia_documento')->nullable();
             $table->string('password');
-            $table->rememberToken();
+            $table->rememberToken()->unique();
             $table->tinyInteger('activo');
             $table->timestamp('fecha_creacion')->useCurrent();
             $table->timestamps();

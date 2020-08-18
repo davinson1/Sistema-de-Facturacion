@@ -20,8 +20,6 @@ function proccessFunction(url, method, params, callback, tipoConten, procesoDato
   });
 }
 
-
-
 //propiedades de las aletar
 toastr.options = {
   "closeButton": true,

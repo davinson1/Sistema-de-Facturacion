@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\UsuariosRequest;
 use App\Http\Requests\ActualizarUsuarioRequest;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Models\TipoDocumento;
 use App\Models\Municipios;
@@ -55,43 +56,43 @@ class UsuariosController extends Controller
      */
     public function store(UsuariosRequest $request)
     {
-      $foto = $request->file('fotoUsuario')->store('public/fotosusuarios');
-      $documento = $request->file('copiaDocumento')->store('public/documentosusuarios');
+      $token = Str::random(10);
+      $existe_token = User::where('remember_token', $token)->exists();      
+      if ($existe_token == true)
+      {
+        request()->validate([
+          'remember_token' => 'required',
+          ],
+          ['remember_token.required' => 'Ya hay un Token de usuario asignado, porfavor intente de nuevo.']);      
+      }else{        
+        $foto = $request->file('fotoUsuario')->store('public/fotosusuarios');
+        $documento = $request->file('copiaDocumento')->store('public/documentosusuarios');
 
-      if ($request->ajax()) {
-        $usuario = new User();
-        $usuario->id_tipo_documento = $request->tipoDocumento;
-        $usuario->id_municipio = $request->municipio;
-        $usuario->name = $request->nombreUsusario;
-        $usuario->apellido = $request->apellidoUsusario;
-        $usuario->numero_documento = $request->documentoUsusario;
-        $usuario->direccion = $request->direccionUsusario;
-        $usuario->email = $request->emailUsusario;
-        $usuario->foto = $foto;
-        $usuario->copia_documento = $documento;
-        $usuario->password = Hash::make($request->claveUsusario);
-        $usuario->activo = '1';
-        $usuario->save();
+        if ($request->ajax()) {
+          $usuario = new User();
+          $usuario->id_tipo_documento = $request->tipoDocumento;
+          $usuario->id_municipio = $request->municipio;
+          $usuario->name = $request->nombreUsusario;
+          $usuario->apellido = $request->apellidoUsusario;
+          $usuario->numero_documento = $request->documentoUsusario;
+          $usuario->direccion = $request->direccionUsusario;
+          $usuario->email = $request->emailUsusario;
+          $usuario->foto = $foto;
+          $usuario->copia_documento = $documento;
+          $usuario->password = Hash::make($request->claveUsusario);
+          $usuario->remember_token = $token;
+          $usuario->activo = '1';
+          $usuario->save();
 
-        $usuario->roles()->sync($request->get('roles'));
+          $usuario->roles()->sync($request->get('roles'));
 
-        return response()->json([
-        "mensaje" => "Usuario creado correctamente."
-         ]);
+          return response()->json([
+          "mensaje" => "Usuario creado correctamente."
+           ]);
+        }
       }
     }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
+    
     /**
      * Show the form for editing the specified resource.
      *
