@@ -29,6 +29,7 @@ class User extends Authenticatable
       'copia_documento',
       'password',
       'activo',
+      'remember_token',
     ];
 
     public function tipoDocumento() {

@@ -34,8 +34,8 @@ class CompraController extends Controller
 
     public function guardarCompraTemportal(Request $request){
       $data = request()->validate([
-          'nombre'          => 'required|min:3|max:100|unique:compra_temporal,nombre_producto',
-          'precio_compra' => 'required|numeric',
+          'nombre'          => 'required|min:3|max:100|unique:compra_temporal,nombre_producto,NULL,id,token_usuario,'.Auth()->user()->remember_token,
+          'precio_compra'   => 'required|numeric',
           'cantidad_compra' => 'required|numeric',
         ],
         [
@@ -44,10 +44,11 @@ class CompraController extends Controller
           'cantidad_compra.required'=>'El campo cantidad de compra es obligatorio.'
         ]
       );
+
       if ($request->ajax())
       {
         $temporal = new CompraTemporal();
-        $temporal->token_usuario = md5(Auth()->user()->id);
+        $temporal->token_usuario = Auth()->user()->remember_token;
         $temporal->nombre_producto = $request->nombre;
         $temporal->foto = $request->foto;
         $temporal->cantidad_producto = $request->cantidad_compra;
@@ -66,7 +67,7 @@ class CompraController extends Controller
 
     public function listarCompras()
     {
-      $compraTemportal = CompraTemporal::where('token_usuario', md5(Auth()->user()->id))->get();      
+      $compraTemportal = CompraTemporal::where('token_usuario', Auth()->user()->remember_token)->get();      
       return view('compras/compra/tabla_compra', compact('compraTemportal'));
     }
 
@@ -160,6 +161,14 @@ class CompraController extends Controller
           "mensaje" => "Compra actualizada correctamente."
         ]);
       }
+    }
+
+    public function anularCompra()
+    {
+      $CompraTemporal = CompraTemporal::where('token_usuario', Auth()->user()->remember_token)->delete();
+      return response()->json([
+        "mensaje" => "Compra anulada correctamente."
+      ]);
     }
 
     /**

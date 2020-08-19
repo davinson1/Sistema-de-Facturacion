@@ -1,5 +1,15 @@
-// variables globales
+// variables y funciones globales
 var dataSel = '';
+
+function listarCompra(){
+  $.ajax({
+    type:'get',
+    url:('listar_compra'),
+    success: function(data){
+      $('#listarCompra').empty().html(data);
+    }
+  });
+};
 
 // Listar compra
 $(document).ready(function() {
@@ -84,6 +94,7 @@ function descartarProducto(id, nombreProducto) {
   $("#idCompraTemporal").val(id);
   document.getElementById("nombreProducto").innerHTML = nombreProducto;
 }
+
 $('#descartarProductoTemporal').click(function(e) {
   e.preventDefault();
   var idCompraTemporal = $("#idCompraTemporal").val();
@@ -100,16 +111,6 @@ $('.custom-file-input').on('change', function(event) {
       .html(inputFile.files[0].name);
 });
 
-function listarCompra(){
-  $.ajax({
-    type:'get',
-    url:('listar_compra'),
-    success: function(data){
-      $('#listarCompra').empty().html(data);
-    }
-  });
-};
-
 // Insertar compra
 $('#crearCompra').click(function(e) {
   e.preventDefault();
@@ -118,6 +119,14 @@ $('#crearCompra').click(function(e) {
   proccessFunction(url, 'POST', params, callbackStoreCompra, false, false, false);
 });
 
+// Anular o descartar toda la compra
+$('#btnAnular').click(function(e)
+{
+  e.preventDefault();
+  const url = 'anular_compra';
+  const params = '';
+  proccessFunction(url, 'DELETE', params, callbackStoreCompra);
+});
 
 function callbackStoreCompra(status, response){
   if (status != 200){

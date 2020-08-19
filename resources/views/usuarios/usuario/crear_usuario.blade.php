@@ -84,9 +84,9 @@
                 </label>
             </li>
             @endforeach
-          </ul>
+          </ul>          
       </div>
-      <div class="form-group">
+      <div class="form-group">        
         <button type="submit" id="crearUsuario" class="btn btn-primary">Crear usuario</button>
       </div>
     </form>
@@ -110,18 +110,10 @@ $('#regresar').click(function(){
       success: function(response){ // En caso de que todo salga bien.
         toastr.success(response.mensaje);
         console.log(response.mensaje);
-        $("#nombreUsusario").val('');
-        $("#apellidoUsusario").val('');
-        $("#documentoUsusario").val('');
-        $("#direccionUsusario").val('');
-        $("#direccionUsusario").val('');
-        $("#emailUsusario").val('');
-        $("#fotoUsuario").val('');
-        $("#copiaDocumento").val('');
-        $("#claveUsusario").val('');
+        $("#frmCrearUsuario").reset();
       },
-      error: function(eerror) {
-        var array = Object.values(eerror.responseJSON.errors);
+      error: function(error) {
+        var array = Object.values(error.responseJSON.errors);
         array.forEach(element => toastr.error(element));
        }
     });

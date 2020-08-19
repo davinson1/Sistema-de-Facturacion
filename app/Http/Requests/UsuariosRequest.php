@@ -32,7 +32,7 @@ class UsuariosRequest extends FormRequest
           'emailUsusario'     => 'required|unique:users,email',
           'fotoUsuario'       => 'image',
           'copiaDocumento'    => 'mimes:pdf',
-          'claveUsusario'     => 'required|min:8|string',
+          'claveUsusario'     => 'required|min:8|string'
         ];
     }
 }
