@@ -46,7 +46,7 @@ active
         </div>
 
         @csrf
-        <form>
+        <form id="frmDescartarCompra">
           <div class="modal-body">
             <h3 class="text-center">¿Esta seguro de descartar el productos <span id="nombreProducto"></span>?</h3>
             <input id="idCompraTemporal" class="form-control" type="hidden" required="">
@@ -120,11 +120,11 @@ active
               </div>
               @can('crear.compra')
               <!-- form start -->
-              <form id="frmCrearCompra" class="p-2" enctype="multipart/form-data">
+              <form id="frmRegistrarCompra" class="p-2" enctype="multipart/form-data">
                 <div class="box-body">
                   <div class="form-group">
                     <label for="idProveedor">Proveedor</label>
-                    <select id="idProveedor" class="form-control select-compra" name="idProveedor" required="">
+                    <select class="form-control select-compra" name="idProveedor" required="">
                       @foreach ($proveedores as $proveedor)
                         <option value="{{$proveedor->id}}">{{$proveedor->nombre}}</option>
                       @endforeach
@@ -133,7 +133,7 @@ active
                   <div class="row mb-3">
                     <div class="col-6">
                       <label for="idTipoCompra">Tipo de compra</label>
-                      <select id="idTipoCompra" class="form-control select-compra" name="idTipoCompra" required="">
+                      <select class="form-control select-compra" name="idTipoCompra" required="">
                         @foreach ($tiposCompras as $tipoCompra)
                           <option value="{{$tipoCompra->id}}">{{$tipoCompra->nombre}}</option>
                         @endforeach
@@ -141,7 +141,7 @@ active
                     </div>
                     <div class="col-6">
                       <label for="idFormaPago">Forma de pago</label>
-                      <select id="idFormaPago" class="form-control select-compra" name="idFormaPago" required="">
+                      <select class="form-control select-compra" name="idFormaPago" required="">
                         @foreach ($formasPago as $formaPago)
                           <option value="{{$formaPago->id}}">{{$formaPago->nombre}}</option>
                         @endforeach
@@ -149,20 +149,21 @@ active
                     </div>
                   </div>
                   <div class="custom-file">
-                    <label class="custom-file-label" for="scannerCompra">Soporte de compra</label>
-                    <input type="file" class="custom-file-input" id="scannerCompra" name="scannerCompra" lang="es">
+                    <label id="file" class="custom-file-label" for="scannerCompra">Soporte de compra</label>
+                    <input id="scannerCompra" type="file" class="custom-file-input" name="scannerCompra" lang="es">
                   </div>
 
                   <div class="form-group">
                     <label for="descripcionCompra">Descripción</label>
-                    <textarea id="descripcionCompra" class="form-control" name="descripcionCompra" rows="3" placeholder="Descripción de compra" required=""></textarea>
+                    <textarea class="form-control" name="descripcionCompra" rows="3" placeholder="Descripción de compra" required=""></textarea>
                   </div>
                 </div>
                 <!-- /.box-body -->
+                <input id="total3" type="hidden" name="totalCompra">
               </form>              
               <div class="box-footer">
                 <button id="btnAnular" class="btn btn-danger btn-lg float-left" type="button"><i class="fas fa-ban"></i> Anular</button>
-                <button class="btn btn-success btn-lg float-right" type="button"><i class="fas fa-save"></i> Comprar</button>
+                <button id="registrarCompra" class="btn btn-success btn-lg float-right" type="button"><i class="fas fa-save"></i> Comprar</button>
                 {{-- <button type="submit" id="crearCompra" class="btn btn-success "><i class="fas fa-save"></i> Comprar</button> --}}
               </div>
               @endcan

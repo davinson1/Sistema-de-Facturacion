@@ -147,7 +147,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/compra', 'Compras\CompraController@index')->name('compra')->middleware('can:navegar.compra');
     Route::get('/listar_compra', 'Compras\CompraController@listarCompras')->middleware('can:navegar.compra');
     Route::get('/compra_buscar_producto', 'Compras\CompraController@buscarProducto')->name('compra_buscar_producto')->middleware('can:navegar.compra');
-    Route::post('/guardar_compra_temporal', 'Compras\CompraController@guardarCompraTemportal')->name('guardar_compra_temporal')->middleware('can:crear.compra');
+    Route::post('/guardar_compra_temporal', 'Compras\CompraController@guardarCompraTemporal')->name('guardar_compra_temporal')->middleware('can:crear.compra');
     Route::delete('/descartar_producto_compra/{idCompraTemporal}', 'Compras\CompraController@descartarProducto')->name('descartar_producto_compra')->middleware('can:eliminar.compra');
     Route::post('/compra_crear', 'Compras\CompraController@store')->name('compra_crear')->middleware('can:crear.compra');
     Route::delete('/anular_compra', 'Compras\CompraController@anularCompra')->name('anular_compra')->middleware('can:eliminar.compra');

@@ -18,10 +18,8 @@ class ArticuloCompraTable extends Migration
             $table->unsignedBigInteger('id_productos');
             $table->unsignedBigInteger('id_compra');
 
-            $table->tinyInteger('entregado');
             $table->integer('cantidad');
             $table->decimal('valor_compra');
-            $table->text('descripcion');
 
             $table->timestamps();
 

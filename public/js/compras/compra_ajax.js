@@ -112,11 +112,13 @@ $('.custom-file-input').on('change', function(event) {
 });
 
 // Insertar compra
-$('#crearCompra').click(function(e) {
+$('#registrarCompra').click(function(e) {
   e.preventDefault();
   const url = 'compra_crear';
-  const params = new FormData($('#frmCrearCompra')[0]);
+  const params = new FormData($('#frmRegistrarCompra')[0]);
   proccessFunction(url, 'POST', params, callbackStoreCompra, false, false, false);
+  document.querySelector('#frmRegistrarCompra').reset();
+  document.getElementById('file').innerHTML = 'Soporte de compra';  
 });
 
 // Anular o descartar toda la compra
@@ -126,6 +128,7 @@ $('#btnAnular').click(function(e)
   const url = 'anular_compra';
   const params = '';
   proccessFunction(url, 'DELETE', params, callbackStoreCompra);
+  document.querySelector('#frmDescartarCompra').reset();
 });
 
 function callbackStoreCompra(status, response){

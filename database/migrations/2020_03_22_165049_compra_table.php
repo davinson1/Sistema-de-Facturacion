@@ -21,6 +21,7 @@ class CompraTable extends Migration
         $table->unsignedBigInteger('id_proveedor');
 
         $table->string('scanner')->nullable();
+        $table->string('total_compra');
         $table->text('descripcion');
 
         $table->timestamps();
