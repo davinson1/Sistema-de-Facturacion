@@ -1,14 +1,14 @@
 // Listar los tipos de compras
 $(document).ready(function() {
-  listarTipoCompra();
+  listarCompras();
 });
 
-function listarTipoCompra(){
+function listarCompras(){
   $.ajax({
     type:'get',
-    url:('listar_tipo_compra'),
+    url:('listar_compras_realizadas'),
     success: function(data){
-      $('#listarTipoCompra').empty().html(data);
+      $('#listarCompras').empty().html(data);
     }
   });
 };

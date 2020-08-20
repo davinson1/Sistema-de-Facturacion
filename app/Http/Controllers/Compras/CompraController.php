@@ -12,6 +12,10 @@ use App\Models\Proveedor;
 use App\Models\CompraTemporal;
 use App\Models\Iva;
 use App\Models\ArticuloCompra;
+use App\Models\HistoricoPreciosProductos;
+
+
+
 
 class CompraController extends Controller
 {
@@ -25,7 +29,19 @@ class CompraController extends Controller
       $proveedores = Proveedor::all();
       $tiposCompras = TipoCompra::all();
       $formasPago = FormasPago::all();
+
       return view('compras/compra/compra', compact('proveedores','tiposCompras','formasPago'));
+
+    }
+
+    public function indexconsultacompras() {
+        return view('compras/compra/consulta_compra');
+
+    }
+
+    public function listarComprasr(){
+      $compras = Compra::all();
+      return view('compras/compra/tabla_consulta_compras', compact('compras'));
     }
 
     public function buscarProducto() {
@@ -68,7 +84,7 @@ class CompraController extends Controller
 
     public function listarCompras()
     {
-      $compraTemporal = CompraTemporal::where('token_usuario', Auth()->user()->remember_token)->get();      
+      $compraTemporal = CompraTemporal::where('token_usuario', Auth()->user()->remember_token)->get();
       return view('compras/compra/tabla_compra', compact('compraTemporal'));
     }
 
@@ -114,18 +130,26 @@ class CompraController extends Controller
         $compra->descripcion    = $request->descripcionCompra;
         $compra->save();
         // Almacenar en la tabla articulo_compra
-        if (CompraTemporal::where('token_usuario', Auth()->user()->remember_token)->exists()) {          
-          
+        if (CompraTemporal::where('token_usuario', Auth()->user()->remember_token)->exists()) {
+
           $getCompraTemporal = CompraTemporal::where('token_usuario', Auth()->user()->remember_token)->get();
-          foreach ($getCompraTemporal as $compraTemporal) {          
+          foreach ($getCompraTemporal as $compraTemporal) {
             $articuloCompra               = new ArticuloCompra();
             $articuloCompra->id_productos = $compraTemporal->id_producto;
             $articuloCompra->id_compra    = $compra->id;
             $articuloCompra->cantidad     = $compraTemporal->cantidad_producto;
             $articuloCompra->valor_compra = $compraTemporal->precio_compra;
             $articuloCompra->save();
-            //Almacenar el precio de venta a cada producto          
-            Producto::where('id', $compraTemporal->id_producto)->update(['valor_venta' => $compraTemporal->precio_venta]);          
+            //Almacenar el precio de venta a cada producto
+            Producto::where('id', $compraTemporal->id_producto)
+            ->increment('cantidad', $compraTemporal->cantidad_producto,[ 'valor_venta' => $compraTemporal->precio_venta]);
+            //Almacenar Historico de precios
+            $historicoPrecio = new HistoricoPreciosProductos();
+            $historicoPrecio->id_producto = $compraTemporal->id_producto;
+            $historicoPrecio->valor_venta = $compraTemporal->precio_venta;
+            $historicoPrecio->valor_compra = $request->totalCompra;
+            $historicoPrecio->save();
+
           }
           // Eliminar la tabla temporal
           CompraTemporal::where('token_usuario', Auth()->user()->remember_token)->delete();
@@ -181,7 +205,7 @@ class CompraController extends Controller
         }
 
         $idCompra->update($request->all());
-        
+
         return response()->json([
           "mensaje" => "Compra actualizada correctamente."
         ]);

@@ -8,7 +8,7 @@ use App\Models\ArticuloCompra;
 use App\Models\Producto;
 use App\Models\Compra;
 
-class ArticuloCompraController extends Controller
+class ConsultaComprasController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -19,13 +19,13 @@ class ArticuloCompraController extends Controller
     {
       $productos = Producto::all();
       $compras = Compra::all();
-      return view('compras/articulo_compra/articulo_compra', compact('productos', 'compras'));
+      return view('compras/consulta_compras/consulta_compra', compact('productos', 'compras'));
     }
 
-    public function listarArticulosCompra()
+    public function listarCompras()
     {
-      $articulosCompras = ArticuloCompra::all();
-      return view('compras/articulo_compra/tabla_articulo_compra', compact('articulosCompras'));
+      $compras = Compra::all();
+      return view('compras/consulta_compras/tabla_compras', compact('compras'));
     }
 
     /**
@@ -36,19 +36,19 @@ class ArticuloCompraController extends Controller
      */
     public function store(Request $request)
     {
-      $data = request()->validate([        
+      $data = request()->validate([
         'id_articulo' => 'required|numeric',
         'id_compra'   => 'required|numeric',
         'cantidad'    => 'required|numeric',
-        'entregado'   => 'required|numeric',         
-        'descripcion' => 'required',         
+        'entregado'   => 'required|numeric',
+        'descripcion' => 'required',
       ]);
       if ($request->ajax()) {
         ArticuloCompra::create($request->all());
         return response()->json([
           "mensaje" => "Artículo compra creado correctamente."
         ]);
-      }        
+      }
     }
 
     /**
@@ -73,19 +73,19 @@ class ArticuloCompraController extends Controller
      */
     public function update(Request $request, ArticuloCompra $idArticuloCompra)
     {
-      $data = request()->validate([        
+      $data = request()->validate([
         'id_articulo' => 'required|numeric',
         'id_compra'   => 'required|numeric',
         'cantidad'    => 'required|numeric',
-        'entregado'   => 'required|numeric',         
-        'descripcion' => 'required',         
+        'entregado'   => 'required|numeric',
+        'descripcion' => 'required',
       ]);
       if ($request->ajax()) {
         $idArticuloCompra->update($request->all());
         return response()->json([
           "mensaje" => "Artículo compra actualizado correctamente."
         ]);
-      }     
+      }
     }
 
     /**

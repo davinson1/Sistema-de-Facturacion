@@ -13,6 +13,8 @@ function listarCompra(){
 
 // Listar compra
 $(document).ready(function() {
+
+
   $(function () {
   $('[data-toggle="tooltip"]').tooltip()
 });
@@ -33,8 +35,8 @@ $(document).ready(function() {
     template: {
       type: "custom",
       method: function(value, item) {
-        return `          
-          <img src=' `+ item.foto +`' height='50px' width='50px' class='float-left mr-3'/>          
+        return `
+          <img src=' `+ item.foto +`' height='50px' width='50px' class='float-left mr-3'/>
           <span class="badge badge-info float-right">Stock: `+item.cantidad+`</span>
           <div>
             <span class="text-dark h5" >`+  item.nombre +`</span><br>
@@ -57,7 +59,7 @@ $(document).ready(function() {
   };
 
   $("#buscadorProducto").easyAutocomplete(options);
-  
+
 });
 
 $('#agregarProducto').click(function(e) {
@@ -82,11 +84,11 @@ $('#agregarProducto').click(function(e) {
       'precio_venta': precio_venta
     };
     // Enviar la peticion para el registro temporal
-    const url = 'guardar_compra_temporal';          
+    const url = 'guardar_compra_temporal';
     proccessFunction(url, 'POST', objDatos, callbackStoreCompra);
-    // Resetear los campos y añadir la clase d-none  
+    // Resetear los campos y añadir la clase d-none
     $(".col").addClass("d-none");
-  }    
+  }
 });
 
 // Descartar el producto seleccionado
@@ -118,7 +120,7 @@ $('#registrarCompra').click(function(e) {
   const params = new FormData($('#frmRegistrarCompra')[0]);
   proccessFunction(url, 'POST', params, callbackStoreCompra, false, false, false);
   document.querySelector('#frmRegistrarCompra').reset();
-  document.getElementById('file').innerHTML = 'Soporte de compra';  
+  document.getElementById('file').innerHTML = 'Soporte de compra';
 });
 
 // Anular o descartar toda la compra
@@ -139,13 +141,13 @@ function callbackStoreCompra(status, response){
       }else{
         var array = Object.values(response.responseJSON.errors);
         array.forEach(element => toastr.error(element));
-        document.querySelector("#frmBuscarProducto").reset(); 
+        document.querySelector("#frmBuscarProducto").reset();
       }
     return false;
   };
 
   toastr.success(response.mensaje);
-  document.querySelector("#frmBuscarProducto").reset();  
+  document.querySelector("#frmBuscarProducto").reset();
   $(".close").click();
   listarCompra();
 }

@@ -49,7 +49,11 @@
                 @endif
               </td>
               <td>{{$producto->valor_venta}}</td>
-              <td>{{$producto->cantidad}}</td>
+              @if($producto->cantidad <= 20)
+              <td> <span class="float-right badge bg-danger">{{$producto->cantidad}}</span></td>
+              @else
+              <td> <span class="float-right badge bg-success">{{$producto->cantidad}}</span></td>
+              @endif
               <td>{{$producto->porcentaje_minimo}}</td>
               <td>{{$producto->especificaciones}}</td>
               <td>{{$producto->created_at}}</td>

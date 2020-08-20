@@ -220,27 +220,28 @@
               </p>
             </a>
             <ul class="nav nav-treeview">
+                @can('navegar.tipo.compra')
+                <li class="nav-item">
+                  <a href="tipo_compra" class="nav-link @yield('active-tipo-compra')">
+                    <i class="fas fa-store-alt nav-icon"></i>
+                    <p>Tipo compra</p>
+                  </a>
+                </li>
+                @endcan
               @can('navegar.compra')
               <li class="nav-item">
                 <a href="compra" class="nav-link @yield('active-compra')">
                   <i class="fas fa-store nav-icon"></i>
-                  <p>Compra</p>
+                  <p> Realizar compras</p>
                 </a>
               </li>
               @endcan
-              @can('navegar.tipo.compra')
-              <li class="nav-item">
-                <a href="tipo_compra" class="nav-link @yield('active-tipo-compra')">
-                  <i class="fas fa-store-alt nav-icon"></i>
-                  <p>Tipo compra</p>
-                </a>
-              </li>
-              @endcan
+
               @can('navegar.articulo.compra')
               <li class="nav-item">
-                <a href="articulo_compra" class="nav-link @yield('active-articulo-compra')">
+                <a href="consulta_compras" class="nav-link @yield('active-consulta-compras')">
                   <i class="fas fa-shopping-bag nav-icon"></i>
-                  <p>Artículo compra</p>
+                  <p>Consultar compras</p>
                 </a>
               </li>
               @endcan
