@@ -13,7 +13,7 @@
     </tr>
   </thead>
   <tbody>
-    @foreach ($compraTemportal as $temporal)
+    @foreach ($compraTemporal as $temporal)
       <tr>
         <td>{{$temporal->id_producto}}</td>
         <td>{{$temporal->nombre_producto}}</td>
@@ -49,4 +49,5 @@
   })
   document.getElementById('total').innerHTML = suma;
   document.getElementById('total2').innerHTML = suma;
+  document.getElementById('total3').value = suma;
 </script>

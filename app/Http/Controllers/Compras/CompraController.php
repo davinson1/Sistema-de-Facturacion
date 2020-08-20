@@ -11,6 +11,7 @@ use App\Models\Producto;
 use App\Models\Proveedor;
 use App\Models\CompraTemporal;
 use App\Models\Iva;
+use App\Models\ArticuloCompra;
 
 class CompraController extends Controller
 {
@@ -32,7 +33,7 @@ class CompraController extends Controller
         return response()->json($productos);
     }
 
-    public function guardarCompraTemportal(Request $request){
+    public function guardarCompraTemporal(Request $request){
       $data = request()->validate([
           'nombre'          => 'required|min:3|max:100|unique:compra_temporal,nombre_producto,NULL,id,token_usuario,'.Auth()->user()->remember_token,
           'precio_compra'   => 'required|numeric',
@@ -67,8 +68,8 @@ class CompraController extends Controller
 
     public function listarCompras()
     {
-      $compraTemportal = CompraTemporal::where('token_usuario', Auth()->user()->remember_token)->get();      
-      return view('compras/compra/tabla_compra', compact('compraTemportal'));
+      $compraTemporal = CompraTemporal::where('token_usuario', Auth()->user()->remember_token)->get();      
+      return view('compras/compra/tabla_compra', compact('compraTemporal'));
     }
 
     public function descartarProducto(CompraTemporal $idCompraTemporal)
@@ -88,6 +89,7 @@ class CompraController extends Controller
     public function store(Request $request)
     {
       $data = request()->validate([
+        'idProveedor'      => 'required|numeric',
         'idTipoCompra'      => 'required|numeric',
         'idFormaPago'       => 'required|numeric',
         'scannerCompra'     => 'file',
@@ -101,19 +103,40 @@ class CompraController extends Controller
         }else{
           $scanner = $request->file('scannerCompra')->store('public/scannerCompra');
         }
-
+        // Almacenar en la tabla compra
         $compra = new Compra();
         $compra->id_tipo_compra = $request->idTipoCompra;
         $compra->id_usuario     = Auth()->user()->id;
         $compra->id_forma_pago  = $request->idFormaPago;
+        $compra->id_proveedor   = $request->idProveedor;
         $compra->scanner        = $scanner;
+        $compra->total_compra    = $request->totalCompra;
         $compra->descripcion    = $request->descripcionCompra;
         $compra->save();
-
-
-        return response()->json([
-          "mensaje" => "Compra creada correctamente."
-        ]);
+        // Almacenar en la tabla articulo_compra
+        if (CompraTemporal::where('token_usuario', Auth()->user()->remember_token)->exists()) {          
+          
+          $getCompraTemporal = CompraTemporal::where('token_usuario', Auth()->user()->remember_token)->get();
+          foreach ($getCompraTemporal as $compraTemporal) {          
+            $articuloCompra               = new ArticuloCompra();
+            $articuloCompra->id_productos = $compraTemporal->id_producto;
+            $articuloCompra->id_compra    = $compra->id;
+            $articuloCompra->cantidad     = $compraTemporal->cantidad_producto;
+            $articuloCompra->valor_compra = $compraTemporal->precio_compra;
+            $articuloCompra->save();
+            //Almacenar el precio de venta a cada producto          
+            Producto::where('id', $compraTemporal->id_producto)->update(['valor_venta' => $compraTemporal->precio_venta]);          
+          }
+          // Eliminar la tabla temporal
+          CompraTemporal::where('token_usuario', Auth()->user()->remember_token)->delete();
+          return response()->json([
+            "mensaje" => "Compra creada correctamente."
+          ]);
+        }else{
+          request()->validate([
+            'name' => 'required',
+          ], ['name.required' => 'No hay productos agregados.']);
+        }
       }
     }
 
@@ -156,7 +179,9 @@ class CompraController extends Controller
           }
           $idCompra->scanner=\Storage::putFile('public/scannerCompra', $request->file('editarScanner'));
         }
+
         $idCompra->update($request->all());
+        
         return response()->json([
           "mensaje" => "Compra actualizada correctamente."
         ]);
@@ -165,7 +190,7 @@ class CompraController extends Controller
 
     public function anularCompra()
     {
-      $CompraTemporal = CompraTemporal::where('token_usuario', Auth()->user()->remember_token)->delete();
+      CompraTemporal::where('token_usuario', Auth()->user()->remember_token)->delete();
       return response()->json([
         "mensaje" => "Compra anulada correctamente."
       ]);
