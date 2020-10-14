@@ -57,7 +57,6 @@ $(document).ready(function() {
       }
     }
   };
-
   $("#buscadorProducto").easyAutocomplete(options);
 
 });
@@ -132,6 +131,11 @@ $('#btnAnular').click(function(e)
   proccessFunction(url, 'DELETE', params, callbackStoreCompra);
   document.querySelector('#frmDescartarCompra').reset();
 });
+$(document).ready(function() {
+    listarCompras();
+  });
+
+
 
 function callbackStoreCompra(status, response){
   if (status != 200){

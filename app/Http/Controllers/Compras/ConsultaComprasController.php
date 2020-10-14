@@ -28,6 +28,14 @@ class ConsultaComprasController extends Controller
       return view('compras/consulta_compras/tabla_compras', compact('compras'));
     }
 
+    public function listarComprasr(){
+
+        $compras = Compra::all();
+        return view('compras/compra/tabla_consulta_compras', compact('compras'));
+      }
+
+
+
     /**
      * Store a newly created resource in storage.
      *
@@ -71,21 +79,17 @@ class ConsultaComprasController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, ArticuloCompra $idArticuloCompra)
+    public function anularCompraRealizada(Request $request,Compra $idCompra)
     {
-      $data = request()->validate([
-        'id_articulo' => 'required|numeric',
-        'id_compra'   => 'required|numeric',
-        'cantidad'    => 'required|numeric',
-        'entregado'   => 'required|numeric',
-        'descripcion' => 'required',
-      ]);
-      if ($request->ajax()) {
-        $idArticuloCompra->update($request->all());
-        return response()->json([
-          "mensaje" => "Artículo compra actualizado correctamente."
-        ]);
-      }
+
+        if ($request->ajax()) {
+            $idCompra->update($request->all());
+            return response()->json([
+              "mensaje" => "Compra Anulada correctamente."
+            ]);
+          }
+
+
     }
 
     /**

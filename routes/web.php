@@ -151,9 +151,13 @@ Route::middleware(['auth'])->group(function () {
     Route::delete('/descartar_producto_compra/{idCompraTemporal}', 'Compras\CompraController@descartarProducto')->name('descartar_producto_compra')->middleware('can:eliminar.compra');
     Route::post('/compra_crear', 'Compras\CompraController@store')->name('compra_crear')->middleware('can:crear.compra');
     Route::delete('/anular_compra', 'Compras\CompraController@anularCompra')->name('anular_compra')->middleware('can:eliminar.compra');
-
     Route::get('/consulta_compras', 'Compras\CompraController@indexconsultacompras')->name('consulta_compras')->middleware('can:navegar.articulo.compra');
-    Route::get('/listar_compras_realizadas', 'Compras\CompraController@listarComprasr')->middleware('can:navegar.articulo.compra');
+
+
+    // Rutas para consultar Compras
+    Route::put('/anular_compra_realizada/{idCompra}', 'Compras\ConsultaComprasController@anularCompraRealizada')->name('anular_compra_realizada')->middleware('can:anular.compra.realizada');
+    Route::get('/listar_compras_realizadas', 'Compras\ConsultaComprasController@listarComprasr')->middleware('can:navegar.articulo.compra');
+
     // Rutas para tipo compra
     Route::get('/tipo_compra', 'Compras\TipoCompraController@index')->name('tipo_compra')->middleware('can:navegar.tipo.compra');
     Route::get('/listar_tipo_compra', 'Compras\TipoCompraController@listarTiposCompras')->middleware('can:navegar.tipo.compra');

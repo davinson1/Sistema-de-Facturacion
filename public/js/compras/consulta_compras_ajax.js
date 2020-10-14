@@ -13,45 +13,18 @@ function listarCompras(){
   });
 };
 
-// Insertar tipos de compras
-$('#crearTipoCompra').click(function(e) {
-  e.preventDefault();
-  var nombre = $("#nombreTipoCompra").val();
-  var descripcion = $("#descripcionTipoCompra").val();
-  const url = 'tipo_compra_crear';
-  const params = {'nombre':nombre, 'descripcion':descripcion};
-  proccessFunction(url, 'POST', params, callbackStoreTipoCompra);
-});
-
-// Editar tipos de compras
-function Editar(idTipoCompar, nombreTipoCompar, descripcionTipoCompra) {
-  $("#idTipoCompra").val(idTipoCompar);
-  $("#editarTipoCompra").val(nombreTipoCompar);
-  $("#descripcionTipoCompraEditar").val(descripcionTipoCompra);
+// Anular
+function anularcompra(idcompra,descripcion) {
+  $("#idAnularCompra").val(idcompra);
+  document.getElementById("descripcionCompra").innerHTML = descripcion;
 }
 
-$('#editarElTipoCompra').click(function(e) {
+$('#anular_compra').click(function(e) {
   e.preventDefault();
-  var idTipoCompra = $("#idTipoCompra").val();
-  var nombre = $("#editarTipoCompra").val();
-  var descripcion = $("#descripcionTipoCompraEditar").val();
-  const url = 'tipo_compra_editar/'+idTipoCompra;
-  const params = {'nombre':nombre,'descripcion':descripcion};
-  proccessFunction(url, 'PUT', params, callbackStoreTipoCompra);
-});
-
-// Eliminar tipos de compras
-function Eliminar(idTipoCompra, nombreTipoCompra) {
-  $("#idTipoCompraEliminar").val(idTipoCompra);
-  document.getElementById("nombreDeTipoCompra").innerHTML = nombreTipoCompra;
-}
-
-$('#eliminarTipoCompra').click(function(e) {
-  e.preventDefault();
-  var idTipoCompra = $("#idTipoCompraEliminar").val();
-  const url = 'tipo_compra_eliminar/'+idTipoCompra;
+  var idCompra = $("#idAnularCompra").val();
+  const url = 'anular_compra_realizada/'+idCompra;
   const params = '';
-  proccessFunction(url, 'DELETE', params, callbackStoreTipoCompra);
+  proccessFunction(url, 'UPDATE', params, callbackStoreTipoCompra);
 });
 
 

@@ -3,14 +3,6 @@
   <div class="card">
     <div class="card-header ">
       <h3 class="card-title">Listado de artículos compra</h3>
-      @can('crear.articulo.compra')
-        <!--modal de boton registar artículo compra-->
-        <button id="modal" type="button" class="btn btn-info float-right" data-toggle="modal" data-target="#modal-crear">
-          <i class="fas fa-plus"></i>
-          Imprimir Compras
-        </button>
-       <!--fin modal de boton registar artículo compra-->
-      @endcan
     </div>
     <!-- /.card-header -->
     <div class="card-body">
@@ -41,9 +33,17 @@
               <td>{{$historialCompras->total_compra}}</td>
               <td>{{$historialCompras->descripcion}}</td>
               <td>{{$historialCompras->created_at}}</td>
-              <td>ver detalle</td>
+              <td>
+                <button type="button" class="btn btn-info" id="vermascompra" title="Ver Detalle de Compra" OnClick="vermascompra('{{$historialCompras->id}}')">
+                <i class="fas fa-eye"></i></button>
+                <button type="button" class="btn btn-danger" id="vermascompra" title="Anular Compra" data-toggle="modal" data-target="#modal-anularcompra"
+                OnClick="anularcompra('{{$historialCompras->id}}','{{$historialCompras->descripcion}}')">
+                <i class="fas fa-ban"></i></button>
+              </td>
+
             </tr>
           @endforeach
+
         </tbody>
       </table>
     </div>
@@ -67,11 +67,20 @@ $(function () {
           next:       "Siguiente",
           last:       "Dernier"
       }
-    }
+    },
+    dom: 'Bfrtip',
+    buttons: [
+        'copy', 'excel', 'pdf'
+    ]
+
   });
+
+
+
   // Autoenfoque para los campos inputs de los modals
   $('#modal-crear, #modal-editar').on('shown.bs.modal', function (e) {
     $('.focus').focus();
     });
   });
 </script>
+

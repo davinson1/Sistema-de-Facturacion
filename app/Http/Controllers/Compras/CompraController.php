@@ -39,10 +39,7 @@ class CompraController extends Controller
 
     }
 
-    public function listarComprasr(){
-      $compras = Compra::all();
-      return view('compras/compra/tabla_consulta_compras', compact('compras'));
-    }
+
 
     public function buscarProducto() {
         $productos = Producto::all();
@@ -140,9 +137,22 @@ class CompraController extends Controller
             $articuloCompra->cantidad     = $compraTemporal->cantidad_producto;
             $articuloCompra->valor_compra = $compraTemporal->precio_compra;
             $articuloCompra->save();
-            //Almacenar el precio de venta a cada producto
-            Producto::where('id', $compraTemporal->id_producto)
-            ->increment('cantidad', $compraTemporal->cantidad_producto,[ 'valor_venta' => $compraTemporal->precio_venta]);
+
+            //guarda las cantides de prodoctos y ponderado de precio venta
+            $updateProducto = Producto::find($compraTemporal->id_producto);
+            $stock_actual = $updateProducto->cantidad;
+            $valor_actual = $updateProducto->valor_venta;
+            $stock_nuevo  = $compraTemporal->cantidad_producto;
+            $valor_nuevo = $compraTemporal->precio_venta;
+
+            $nuevo_stock = $stock_actual + $stock_nuevo;
+            $nuevo_total = ($stock_actual * $valor_actual)+($stock_nuevo * $valor_nuevo);
+            $nuevo_precio = $nuevo_total / $nuevo_stock;
+
+            $updateProducto->valor_venta = $nuevo_precio;
+            $updateProducto->cantidad = $nuevo_stock;
+            $updateProducto->save();
+
             //Almacenar Historico de precios
             $historicoPrecio = new HistoricoPreciosProductos();
             $historicoPrecio->id_producto = $compraTemporal->id_producto;
